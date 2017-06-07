@@ -38,8 +38,9 @@ $lang["costbenefitanalysis"]  = "Cost - Benefit Analysis";
 $lang["ecotracking"]          = "Eco Tracking";
 $lang["closeproject"]         = "Close Project";
 
-$lang['slogan']               = "License-free web-based decision support software <br> for Cleaner Production and Industrial Symbiosis";
+$lang['slogan']               = "License-free web-based decision support software for Cleaner Production and Industrial Symbiosis";
 $lang['username']             = "Username";
+$lang['validcharacters']	  = "(Valid characters are a-z and 0-9)";
 $lang['password']             = "Password";
 $lang['forgotyourpassword']   = "Forgot your password?";
 $lang['userlogin']            = "User Login";

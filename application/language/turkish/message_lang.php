@@ -40,6 +40,7 @@ $lang["closeproject"]         = "Projeyi Kapat";
 
 $lang['slogan']               = "Temiz üretim ve Endüstriyel Simbiyoz için ücretsiz web-tabanlı karar destek yazılımı";
 $lang['username']             = "Kullanıcı Adı";
+$lang['validcharacters']	  = "(Valid characters are a-z and 0-9)"; #todo pleas translate
 $lang['password']             = "Şifre";
 $lang['forgotyourpassword']   = "Şifrenizi mi unuttunuz?";
 $lang['userlogin']            = "Kullanıcı Girişi";

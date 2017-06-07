@@ -112,6 +112,7 @@ class Company_model extends CI_Model {
   
   public function get_countries(){
     $this->db->select('gis_world.id,gis_world.country_name');
+    $this->db->order_by("gis_world.country_name", "asc");
     $this->db->from('gis_world');
     $query = $this->db->get();
     return $query->result_array();

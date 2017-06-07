@@ -15,7 +15,8 @@
 			<p class="lead"><?php echo lang("userregister"); ?></p>
 
 				<div class="form-group">
-						<label for="username"><?php echo lang("username"); ?></label>
+						<label for="username"><?php echo lang("username")?></label> 
+						<small><?php echo "&nbsp;", lang("validcharacters");?></small>
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username'); ?>" placeholder="<?php echo lang("username"); ?>" name="username">
 				</div>
 				<div class="form-group">

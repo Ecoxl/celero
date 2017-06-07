@@ -14,11 +14,16 @@
 				<div class="form-group">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<div class="fileinput-new thumbnail" style="width:100%;">
-								<img class="img-rounded" style="width:100%;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
-
+							<?php if(file_exists("assets/user_pictures/".$photo)): ?>
+									<img class="img-rounded" style="width:100%;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
+								<?php else: ?>
+									<img class="img-rounded" style="width:100%;" src="<?php echo asset_url("user_pictures/default.jpg"); ?>">
+							<?php endif ?>
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
+									<small>Supported filetypes jpg, png, gif.</small><br>
+									<small>Max filesize 5mb.</small>
 									<span class="btn btn-primary btn-block btn-file" name="photo">
 										<span class="fileinput-new"><span class="fui-image"></span> <?php echo lang("selectimage"); ?></span>
 										<span class="fileinput-exists"><span class="fui-gear"></span> <?php echo lang("change"); ?></span>
@@ -31,7 +36,8 @@
 			</div>
 			<div class="col-md-8">
 				<div class="form-group">
-						<label for="username"><?php echo lang("username"); ?></label>
+						<label for="username"><?php echo lang("username");?></label>
+						<small><?php echo "&nbsp;", lang("validcharacters");?></small>
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username',$user_name); ?>" placeholder="<?php echo lang("username"); ?>" name="username">
 				</div>
 				<div class="form-group">
