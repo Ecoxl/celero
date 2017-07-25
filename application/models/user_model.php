@@ -302,5 +302,10 @@ class User_model extends CI_Model {
     return $consultant || $contact;
   }
 
+  public function create_dataset_for_users($data){
+    $this->db->insert('t_users_data', $data);
+    return $this->db->insert_id();
+  }
+
 }
 ?>
