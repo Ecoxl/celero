@@ -95,31 +95,30 @@
 	</form>
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>" >
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
-	        <hr>
-	        <div class="row">
-	        	<div class="col-md-6">
-	        		<input type="text" class="form-control" id="latId" name="lat" style="color:#333333;" readonly/>
-	        	</div>
-	        	<div class="col-md-6">
-	        		<input type="text" class="form-control" id="longId" name="long"  style="color:#333333;" readonly/>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="modal-body">
-	       <?php echo $map['html']; ?>
-	      </div>
-	      <div class="modal-footer">
-	      </div>
-	    </div>
-	  </div>
-</div>
-
-
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
+			        <hr>
+			        <div class="row">
+			        	<div class="col-md-6">
+			        		<input type="text" class="form-control" id="latId" name="lat" style="color:#333333;" readonly/>
+			        	</div>
+			        	<div class="col-md-6">
+			        		<input type="text" class="form-control" id="longId" name="long"  style="color:#333333;" readonly/>
+			        	</div>
+			        </div>
+			    </div>
+			    <div class="modal-body">
+			       <?php echo $map['html']; ?>
+			       <br>
+			       <button type="button" data-dismiss="modal" class="btn btn-info btn-block" aria-hidden="true"><?php echo lang("done"); ?></button>
+			    </div>
+		    	<div class="modal-footer"></div>
+			</div>
+	  	</div>
+	</div>
 </div>
 
 

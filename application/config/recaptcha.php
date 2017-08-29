@@ -8,8 +8,8 @@
  * Author   : Andi Irwandi Langgara <irwandi@ourbluecode.com>
  */
 
-$config['public_key']   = '6LfrxAgTAAAAAA-b-Z6z6Tyu_wwnrfOp9-Hf7mOS';
-$config['private_key']  = '6LfrxAgTAAAAAC0RbrUt74rW4SxcEeTbQVMUXx7u';
+$config['public_key']   = '6LdPWCcUAAAAAArz0wWM3qAEI4m6qZ8D8QHS9Fic';
+$config['private_key']  = '6LdPWCcUAAAAAEvPoXKqj1nGbYEyHCdjTVZrMo8S';
 
 // Set Recaptcha options
 // Reference at https://developers.google.com/recaptcha/docs/customization
