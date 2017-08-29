@@ -50,8 +50,8 @@ class Project extends CI_Controller{
 
     $this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
-		$config['center'] = '47.3250690187567,18.52065861225128';
-		$config['zoom'] = '15';
+		$config['center'] = '47.566667, 7.600000'; //Basel (at center of europe)
+		$config['zoom'] = '4';
 		$config['map_type'] = "HYBRID";
 		$config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
 		$config['places'] = TRUE;
@@ -201,7 +201,7 @@ class Project extends CI_Controller{
 			redirect('projects','refresh');
 		}
 
-    $data['prj_id'] = $prj_id;
+    	$data['prj_id'] = $prj_id;
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
@@ -214,14 +214,14 @@ class Project extends CI_Controller{
 			$config['center'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
 			$marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
 		} else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
-	    $config['center'] = '39.97399584999243,32.746843099594116';
-	    $marker['position'] = '39.97399584999243,32.746843099594116';
+	   		$config['center'] = '47.566667, 7.600000';
+	    	$marker['position'] = '47.566667, 7.600000';
 		}
 
 		if($data['projects']['zoomlevel']!=null && $data['projects']['zoomlevel']!=null) {
-		  $config['zoom'] = $data['projects']['zoomlevel'];
+		 	$config['zoom'] = $data['projects']['zoomlevel'];
 		} else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
-		  $config['zoom'] = '15';
+		 	$config['zoom'] = '4';
 		}
 
 		$config['places'] = TRUE;
@@ -229,7 +229,7 @@ class Project extends CI_Controller{
 
 		// $this->googlemaps->add_marker($marker);
 		// $this->googlemaps->initialize($config);
-  	// $data['map'] = $this->googlemaps->create_map();
+  		// $data['map'] = $this->googlemaps->create_map();
 
 		$kullanici = $this->session->userdata('user_in');
 		$data['is_consultant_of_project'] = $is_consultant_of_project;

@@ -24,8 +24,8 @@ class Company extends CI_Controller{
 
 		$this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
-		$config['center'] = '39.98280915242299, 32.73923635482788';
-		$config['zoom'] = '15';
+		$config['center'] = '47.566667, 7.600000'; //Basel (at center of europe)
+		$config['zoom'] = '4';
 		$config['map_type'] = "HYBRID";
 		$config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
 		$config['places'] = TRUE;
@@ -41,7 +41,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('email', 'E-mail', 'required|trim|max_length[150]|xss_clean');
 		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|trim|max_length[49]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|trim|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|max_length[49]|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'required|trim|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
@@ -107,7 +107,7 @@ class Company extends CI_Controller{
 			redirect('company/'.$last_id, 'refresh');
 		}
 		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
-                $data['countries'] = $this->company_model->get_countries();
+        $data['countries'] = $this->company_model->get_countries();
 
 		$this->load->view('template/header');
 		$this->load->view('company/create_company',$data);
@@ -303,8 +303,8 @@ class Company extends CI_Controller{
 
 		$this->load->library('googlemaps');
 
-		$config['center'] = '39.98280915242299, 32.73923635482788';
-		$config['zoom'] = '15';
+		$config['center'] = '47.566667, 7.600000'; //Basel (at center of europe)
+		$config['zoom'] = '4';
 		$config['map_type'] = "HYBRID";
 		$config['places'] = TRUE;
 		$config['placesRadius'] = 20;
@@ -332,7 +332,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|max_length[49]|valid_email');
 		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|min_length[5]|max_length[49]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|min_length[5]|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'min_length[5]|max_length[49]|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean|max_length[100]');
 
 		if ($this->form_validation->run() !== FALSE)

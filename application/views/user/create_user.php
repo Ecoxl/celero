@@ -30,12 +30,13 @@
 						</div>
 						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 						<div>
-								<span class="btn btn-default btn-file">
-									<span class="fileinput-new"><span class="fui-image"></span>  <?php echo lang("selectimage"); ?></span>
-									<span class="fileinput-exists"><span class="fui-gear"></span>  <?php echo lang("change"); ?></span>
-									<input type="file" name="userfile">
-								</span>
-								<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  <?php echo lang("remove"); ?></a>
+							<small><? echo lang("imageinfo"); ?></small><br>
+							<span class="btn btn-default btn-file">
+								<span class="fileinput-new"><span class="fui-image"></span>  <?php echo lang("selectimage"); ?></span>
+								<span class="fileinput-exists"><span class="fui-gear"></span>  <?php echo lang("change"); ?></span>
+								<input type="file" name="userfile">
+							</span>
+							<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  <?php echo lang("remove"); ?></a>
 						</div>
 					</div>
 				</div>

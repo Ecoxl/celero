@@ -27,7 +27,7 @@ class Company_model extends CI_Model {
 
   public function search_nace_code($code){
     $this->db->select('id');
-    $this->db->from('t_nace_code');
+    $this->db->from('t_nace_code_rev2');
     $this->db->where('code',$code);
     $query = $this->db->get()->row_array();
     return $query;
@@ -94,9 +94,9 @@ class Company_model extends CI_Model {
   }
 
   public function get_nace_code($id){
-    $this->db->select('t_nace_code.code');
-    $this->db->from('t_nace_code');
-    $this->db->join('t_cmpny_nace_code', 't_cmpny_nace_code.nace_code_id = t_nace_code.id', 'left');
+    $this->db->select('t_nace_code_rev2.code');
+    $this->db->from('t_nace_code_rev2');
+    $this->db->join('t_cmpny_nace_code', 't_cmpny_nace_code.nace_code_id = t_nace_code_rev2.id', 'left');
     $this->db->join('t_cmpny', 't_cmpny.id = t_cmpny_nace_code.cmpny_id', 'left');
     $this->db->where('t_cmpny.id', $id);
     $query = $this->db->get();
@@ -104,15 +104,16 @@ class Company_model extends CI_Model {
   }
 
   public function get_all_nace_codes(){
-    $this->db->select('t_nace_code.code');
-    $this->db->from('t_nace_code');
+    $this->db->select('t_nace_code_rev2.code');
+    $this->db->order_by('t_nace_code_rev2.code', 'asc');
+    $this->db->from('t_nace_code_rev2');
     $query = $this->db->get();
     return $query->result_array();
   }
   
   public function get_countries(){
     $this->db->select('gis_world.id,gis_world.country_name');
-    $this->db->order_by("gis_world.country_name", "asc");
+    $this->db->order_by('gis_world.country_name', 'asc');
     $this->db->from('gis_world');
     $query = $this->db->get();
     return $query->result_array();
@@ -219,7 +220,7 @@ class Company_model extends CI_Model {
   }
 
   public function is_in_nace($nace){
-    $query = $this->db->get_where('t_nace_code', array('code' => $nace))->row_array();
+    $query = $this->db->get_where('t_nace_code_rev2', array('code' => $nace))->row_array();
     if(empty($query))
       return FALSE;
     else

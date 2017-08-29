@@ -181,7 +181,7 @@
 						</tr>
 					<?php endforeach ?>
 				</table>
-
+				<!-- equipment deactivated atm 
 				<table class="table table-bordered">
 					<tr class="success">
 						<th colspan="4"><?php echo lang("companyequipment"); ?></th>
@@ -200,7 +200,7 @@
 							<td><?php echo $eqpmnt['prcss_name']; ?></td>
 						</tr>
 					<?php endforeach ?>
-				</table>
+				</table> -->
 
 				<table class="table table-bordered">
 					<tr class="success">

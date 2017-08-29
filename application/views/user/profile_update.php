@@ -22,8 +22,7 @@
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
-									<small>Supported filetypes jpg, png, gif.</small><br>
-									<small>Max filesize 5mb.</small>
+									<small><? echo lang("imageinfo"); ?></small><br>
 									<span class="btn btn-primary btn-block btn-file" name="photo">
 										<span class="fileinput-new"><span class="fui-image"></span> <?php echo lang("selectimage"); ?></span>
 										<span class="fileinput-exists"><span class="fui-gear"></span> <?php echo lang("change"); ?></span>
