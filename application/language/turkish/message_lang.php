@@ -47,6 +47,7 @@ $lang['userlogin']            = "Kullanıcı Girişi";
 
 $lang["userregister"]         = "Kullanıcı Kayıtı";
 $lang["selectimage"]          = "Resim Seç";
+$lang["imageinfo"]            = "Supported filetypes jpg, png, gif.</br>Max filesize 5mb."; #todo translate
 $lang["change"]               = "Değiştir";
 $lang["remove"]               = "Sil";
 $lang["email"]                = "E-posta";
@@ -74,13 +75,16 @@ $lang["myprojectsinfo"]       = "Bu sayfada danışmanı ya da ilgili kişisi ol
 $lang["allprojectsinfo"]      ="Sistemdeki tüm projeleri görmektesiniz. İzninizin bulunduğu projeleri düzenleyebilir ve açabilirsiniz.";
 
 $lang["companyname"]          = "Firma İsmi";
-$lang["nacecode"]             = "Nace Kodu";
+$lang["nacecode"]             = "NACE Kodu";
+$lang["selectnace"]           = "Select a NACE Code"; #todo please translate
+$lang["selectlevel4nace"]     = "Select a level 4 NACE Code"; #todo please translate
 $lang["coordinates"]          = "Kordinatlar";
 $lang["address"]              = "Adres";
 $lang["companydescription"]   = "Firma Hakkında Açıklama";
 $lang["selectonmap"]          = "Harite Üzerinde Seç";
+$lang["done"]          		  = "Done"; #todo please translate
 $lang["createcompanyinfo"]    = "Yazmaya başlarayak kod arayabilirsiniz.";
-$lang["createcompanyinfo2"]   = "Logo hariç tüm bölümler zorunludur.";
+$lang["createcompanyinfo2"]   = "Logo/Fax No. hariç tüm bölümler zorunludur."; #todo I improvised the "and fax not mandatory", please correct
 $lang["lat"]                  = "Enlem";
 $lang["long"]                 = "Boylam";
 

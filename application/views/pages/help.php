@@ -166,7 +166,7 @@ Notes:
 	<?php endif ?>
 	<div class="col-md-2">
 		
-	<a href="<?php echo asset_url('CELEROusermanual.pdf'); ?>"><div class="swissheader" style="background-color:green;"><?php echo lang("usermanual"); ?></div></a>
+	<a href="<?php echo asset_url('CELEROusermanual.pdf'); ?>"><div  style="background-color:#2D8B42; color:white; text-align: center;"><?php echo lang("usermanual"); ?> <span class="glyphicon glyphicon-book"></span></div></a>
 	</div>
 </div>
 <?php $this->load->view('template/footer'); ?>

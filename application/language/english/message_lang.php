@@ -11,7 +11,7 @@ $lang["functionalities"]      = "Functionalities";
 $lang["consultants"]          = "Consultants";
 $lang["reporting"]            = "Reporting";
 $lang["help"]           	  = "Help";
-$lang["usermanual"]           = "Download User Manual";
+$lang["usermanual"]           = "Download</br>User Manual";
 
 $lang["createreport"]         = "Create Report";
 $lang["allreports"]           = "All Reports";
@@ -45,8 +45,9 @@ $lang['password']             = "Password";
 $lang['forgotyourpassword']   = "Forgot your password?";
 $lang['userlogin']            = "User Login";
 
-$lang["userregister"]         = "User Register";
+$lang["userregister"]         = "Register User";
 $lang["selectimage"]          = "Select Image";
+$lang["imageinfo"]            = "Supported filetypes jpg, png, gif.</br>Max filesize 5mb.";
 $lang["change"]               = "Change";
 $lang["remove"]               = "Remove";
 $lang["email"]                = "E-mail";
@@ -71,16 +72,19 @@ $lang["addtocluster"]         = "Add company to a cluster";
 $lang["openproject"]          = "Open Project";
 $lang["editprojectinfo"]      = "Edit Project Info";
 $lang["myprojectsinfo"]       = "You are seeing all the project that you work as a consultant or contact person.";
-$lang["allprojectsinfo"]      ="You are now seeing all the projects at the system. You can only access and open the projects that you are involved.";
+$lang["allprojectsinfo"]      = "You are now seeing all the projects at the system. You can only access and open the projects that you are involved.";
 
 $lang["companyname"]          = "Company Name";
-$lang["nacecode"]             = "Nace Code";
+$lang["nacecode"]             = "NACE Code";
+$lang["selectnace"]           = "Select a NACE Code";
+$lang["selectlevel4nace"]     = "Select a level 4 NACE Code";
 $lang["coordinates"]          = "Coordinates";
 $lang["address"]              = "Address";
 $lang["companydescription"]   = "Company Description";
 $lang["selectonmap"]          = "Select on Map";
+$lang["done"]          		  = "Done";
 $lang["createcompanyinfo"]    = "You can search nace codes by typing it";
-$lang["createcompanyinfo2"]   = "All fields are required expect logo";
+$lang["createcompanyinfo2"]   = "All fields are required expect logo and fax number";
 $lang["lat"]                  = "Lat";
 $lang["long"]                 = "Long";
 
