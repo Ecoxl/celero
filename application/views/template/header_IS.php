@@ -53,7 +53,7 @@
   <body <?php /*if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';}*/ ?>>
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
-      <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">Celero</a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">CELERO</a>
       <?php echo lang("msg_first_name"); ?>
 
       <form class="navbar-form navbar-right" action="<?php echo base_url('search'); ?>" method="post" role="search" style="display: table;">
@@ -66,16 +66,20 @@
           </div>
         </div>
       </form>
+      <!-- language selection moved to the footer
       <ul class="nav navbar-nav navbar-right">
         <li><a href='<?php echo base_url('language/switch/turkish'); ?>' style="padding-right: 0px; padding-bottom:25px; "><img src="<?php echo asset_url('images/Turkey.png'); ?>"></a></li>
         <li><a href='<?php echo base_url('language/switch/english'); ?>' style="padding-bottom: 25px;"><img src="<?php echo asset_url('images/United-States.png'); ?>"></a></li>
       </ul>
+      -->
       <ul class="nav navbar-nav navbar-left ust-nav">
         <li class="navtus" data-rel="profiles"><a id="l1" href="#" ><i class="fa fa-group"></i> <?php echo lang("profiles"); ?></a></li>
         <li class="navtus" data-rel="companies"><a id="l2" href="#" ><i class="fa fa-building-o"></i> <?php echo lang("companies"); ?></a></li>
         <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> <?php echo lang("projects"); ?></a></li>
         <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> <?php echo lang("analysis"); ?></a></li>
-        <li class="navtus" data-rel="reporting"><a id="l5" href="#" style="color:white;"><i class="fa fa-pie-chart"></i> <?php echo lang("reporting"); ?></a></li>
+        <!-- reporting ".not-active" atm, ".navtus" removed -->
+        <li data-rel="reporting"><a id="l5" href="#" class="not-active" title="Not available yet"><i class="fa fa-pie-chart"></i> <?php echo lang("reporting"); ?></a></li>
+        <li data-rel="help"><a id="l6" href="<?php echo base_url('help'); ?>"><i class="fa fa-question-circle"></i> <?php echo lang("help"); ?></a></li>
       </ul>
     </nav>
 
@@ -155,9 +159,11 @@
               </ul>
             </div>
           </li>
-          <li><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> <?php echo lang("gis"); ?></a></li>
           <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> <?php echo lang("costbenefitanalysis"); ?></a></li>
-          <li><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> <?php echo lang("ecotracking"); ?></a></li>
+          <!--link to the ecotracking is ".not-active" atm -->
+          <li><a class="not-active" title="Not available yet"><i class="fa fa-area-chart"></i> <?php echo lang("ecotracking"); ?></a></li>
+          <!--link to the gis panel move to the last position and is ".not-active" atm -->
+          <li><a class="not-active" title="Not available yet"><i class="fa fa-globe"></i> <?php echo lang("gis"); ?></a></li>
         <?php else: ?>
           <li><a href="#"><?php echo lang("analysisinfo"); ?></a></li>
           <!--<ul class="list-inline" style="margin:0px;">
@@ -211,7 +217,7 @@
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
-            else if ((pathname.toLowerCase().indexOf("report") >= 0) || (pathname.toLowerCase().indexOf("allreports") >= 0) ){
+      else if ((pathname.toLowerCase().indexOf("report") >= 0) || (pathname.toLowerCase().indexOf("allreports") >= 0) ){
         $('#l5').css('background-color', '#AE573E');
         $('.content-container ul.nav').hide();
         $('#reporting').fadeIn('slow');
@@ -220,6 +226,10 @@
         $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
+      }
+      else if ((pathname.toLowerCase().indexOf("help") >= 0)){
+        $('.content-container ul.nav').hide();
+        $('#homies').fadeIn('slow');
       }
       else {
         $('.content-container ul.nav').hide();
@@ -243,9 +253,10 @@
       else if($(this).data('rel') == "analysis"){
         $('#l4').css('background-color', '#84BFC3');
       }
+      /* inactive atm
       else if($(this).data('rel') == "reporting"){
         $('#l5').css('background-color', '#AE573E');
-      }
+      }*/
       $(this).siblings().find("a").css( "background-color", "#2D8B42" );
     });
   </script>

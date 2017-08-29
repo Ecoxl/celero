@@ -291,6 +291,11 @@ td {
     margin-top: 100px;
 }
 
+.footer-right {
+    float: right !important;
+    color: #16a085;
+}
+
 .navbar-nav > li > a {
     font-weight: 400;
 }
@@ -361,7 +366,7 @@ td {
     cursor: default;
 }
 
-#l1,#l2,#l3,#l4{
+#l1,#l2,#l3,#l4,#l5,#l6{
     color: white;
     text-decoration: none;
 }
@@ -451,4 +456,9 @@ pre p{
 .helpbody{
     padding: 10px;
     border-bottom: 1px solid #d0d0d0;
+}
+
+.not-active {
+   cursor: default;
+   opacity: 0.4;
 }

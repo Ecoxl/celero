@@ -1,6 +1,22 @@
     <div class="clearfix"></div>
-    <div class="footer">© 2013-2015 ecoman</div>
-
+    <div class="footer">© 2013-2015 ecoman
+      <div class="footer-right">
+        <!-- Language selection, underlines the selected language-->
+        <?php if($this->session->userdata['site_lang']==null || $this->session->userdata['site_lang']=='') { ?>
+                <a href='<?php echo base_url('language/switch/english'); ?>' style="text-decoration: underline;">English</a>
+                /
+                <a href='<?php echo base_url('language/switch/turkish'); ?>'>Turkish</a>
+        <?php }else if($this->session->userdata['site_lang']=='turkish'){ ?>
+                <a href='<?php echo base_url('language/switch/english'); ?>'>English</a>
+                 /
+                <a href='<?php echo base_url('language/switch/turkish'); ?>' style="text-decoration: underline;">Turkish</a>
+        <?php }else { ?>
+                <a href='<?php echo base_url('language/switch/english'); ?>' style="text-decoration: underline;">English</a>
+                 /
+                <a href='<?php echo base_url('language/switch/turkish'); ?>'>Turkish</a>
+        <?php } ?>
+      </div>
+    </div>
     <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
             and $this->uri->segment(1)!="isScopingAutoPrjBase"
@@ -32,9 +48,9 @@
         $('#myModal').on('shown.bs.modal', function (e) {
             google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 
-            map.setZoom(15);
+            map.setZoom(4);
             if(!marker)
-                map.setCenter(new google.maps.LatLng(39.9738971871888, 32.745467126369476));
+                map.setCenter(new google.maps.LatLng(47.566667, 7.600000));
             else
                 map.setCenter(marker.getPosition());
 

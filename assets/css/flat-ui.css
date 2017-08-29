@@ -5817,6 +5817,10 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
     width: 624px;
     margin: 30px auto;
   }
+  .modal-dialog-nace {
+    width: 1200px;
+    margin: 30px auto;
+  }
   .modal-content {
     -webkit-box-shadow: none;
     box-shadow: none;
