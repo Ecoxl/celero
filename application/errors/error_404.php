@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><?php echo lang("slogan"); ?></title>
+  <title></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <!-- Loading Bootstrap -->
   <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">

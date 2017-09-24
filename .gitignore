@@ -8,3 +8,5 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 assets/is/nbproject/private/private.xml
+
+application/config/database.php

@@ -1,45 +1,24 @@
--- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Sep 25, 2014 at 10:13 AM
--- Server version: 5.5.36
--- PHP Version: 5.4.27
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+CREATE SEQUENCE t_clstr_seq;
+
+CREATE TABLE IF NOT EXISTS t_clstr (
+  id int NOT NULL DEFAULT NEXTVAL ('t_clstr_seq'),
+  name varchar(200) NOT NULL,
+  active smallint NOT NULL,
+  org_ind_reg_id int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_clstr_seq RESTART WITH 7;
+
+CREATE INDEX org_ind_reg_id ON t_clstr (org_ind_reg_id);
 
 --
--- Database: `ecoman_db`
+-- Dumping data for table 't_clstr'
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `t_clstr`
---
-
-CREATE TABLE IF NOT EXISTS `t_clstr` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `active` tinyint(4) NOT NULL,
-  `org_ind_reg_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `org_ind_reg_id` (`org_ind_reg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `t_clstr`
---
-
-INSERT INTO `t_clstr` (`id`, `name`, `active`, `org_ind_reg_id`) VALUES
+INSERT INTO t_clstr (id, name, active, org_ind_reg_id) VALUES
 (4, 'Medikal Kümesi', 1, 1),
 (5, 'İş ve İnşaat Kümesi', 1, 2),
 (6, 'Savunma ve Havacılık Kümesi', 1, 3);
@@ -47,67 +26,76 @@ INSERT INTO `t_clstr` (`id`, `name`, `active`, `org_ind_reg_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpnnt`
+-- Table structure for table 't_cmpnnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpnnt` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE SEQUENCE t_cmpnnt_seq;
+
+CREATE TABLE IF NOT EXISTS t_cmpnnt (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cmpnnt_seq'),
+  name varchar(200) NOT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)   ;
+ 
+ALTER SEQUENCE t_cmpnnt_seq RESTART WITH 1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny`
+-- Table structure for table 't_cmpny'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `phone_num_1` varchar(50) DEFAULT NULL,
-  `phone_num_2` varchar(50) DEFAULT NULL,
-  `fax_num` varchar(50) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `postal_code` varchar(50) DEFAULT NULL,
-  `logo` varchar(60) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  `latitude` varchar(25) NOT NULL,
-  `longitude` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+CREATE SEQUENCE t_cmpny_seq;
+
+CREATE TABLE IF NOT EXISTS t_cmpny (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cmpny_seq'),
+  name varchar(255) NOT NULL,
+  phone_num_1 varchar(50) DEFAULT NULL,
+  phone_num_2 varchar(50) DEFAULT NULL,
+  fax_num varchar(50) DEFAULT NULL,
+  address varchar(100) DEFAULT NULL,
+  description varchar(200) DEFAULT NULL,
+  email varchar(150) DEFAULT NULL,
+  postal_code varchar(50) DEFAULT NULL,
+  logo varchar(60) DEFAULT NULL,
+  active smallint NOT NULL,
+  latitude varchar(25) NOT NULL,
+  longitude varchar(25) NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cmpny_seq RESTART WITH 9;
 
 --
--- Dumping data for table `t_cmpny`
+-- Dumping data for table 't_cmpny'
 --
 
-INSERT INTO `t_cmpny` (`id`, `name`, `phone_num_1`, `phone_num_2`, `fax_num`, `address`, `description`, `email`, `postal_code`, `logo`, `active`, `latitude`, `longitude`) VALUES
+INSERT INTO t_cmpny (id, name, phone_num_1, phone_num_2, fax_num, address, description, email, postal_code, logo, active, latitude, longitude) VALUES
 (7, 'Ostim A.Ş.', '90-312-385-50-90', '90-312-385-50-90', '90-312-354-58-98', 'Ostim Organize Sanayi Bölge Müdürlüğü 100. Yıl Bulvarı No: 101/A, 06370, Ostim / Ankara', 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.', 'iletisim@ostim.com.tr', 'NULL', '7.jpg', 1, '39.97346964672723', '32.745373249053955'),
 (8, 'Reddit', '1-222-111-11-11', '1-222-111-11-12', '1-222-111-11-10', 'San Francisco, Silicon Alley', 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.', 'contact@reddit.com', 'NULL', '8.jpg', 1, '44.08758502824516', '-107.578125');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_clstr`
+-- Table structure for table 't_cmpny_clstr'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_clstr` (
-  `cmpny_id` int(11) NOT NULL,
-  `clstr_id` int(11) NOT NULL,
-  PRIMARY KEY (`cmpny_id`,`clstr_id`),
-  KEY `clstr_id` (`clstr_id`),
-  KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_clstr (
+  cmpny_id int NOT NULL,
+  clstr_id int NOT NULL,
+  PRIMARY KEY (cmpny_id,clstr_id)
+) ;
+
+CREATE INDEX clstr_id ON t_cmpny_clstr (clstr_id);
+CREATE INDEX cmpny_id ON t_cmpny_clstr (cmpny_id);
 
 --
--- Dumping data for table `t_cmpny_clstr`
+-- Dumping data for table 't_cmpny_clstr'
 --
 
-INSERT INTO `t_cmpny_clstr` (`cmpny_id`, `clstr_id`) VALUES
+INSERT INTO t_cmpny_clstr (cmpny_id, clstr_id) VALUES
 (7, 4),
 (7, 5),
 (8, 6);
@@ -115,47 +103,52 @@ INSERT INTO `t_cmpny_clstr` (`cmpny_id`, `clstr_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_data`
+-- Table structure for table 't_cmpny_data'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_data` (
-  `cmpny_id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`cmpny_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_data (
+  cmpny_id int NOT NULL,
+  description varchar(200) DEFAULT NULL,
+  PRIMARY KEY (cmpny_id)
+) ;
 
 --
--- Dumping data for table `t_cmpny_data`
+-- Dumping data for table 't_cmpny_data'
 --
 
-INSERT INTO `t_cmpny_data` (`cmpny_id`, `description`) VALUES
+INSERT INTO t_cmpny_data (cmpny_id, description) VALUES
 (7, 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.'),
 (8, 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_eqpmnt`
+-- Table structure for table 't_cmpny_eqpmnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_eqpmnt` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cmpny_id` int(11) DEFAULT NULL,
-  `eqpmnt_id` int(11) DEFAULT NULL,
-  `eqpmnt_type_id` int(11) DEFAULT NULL,
-  `eqpmnt_type_attrbt_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `eqpmnt_id` (`eqpmnt_id`),
-  KEY `eqpmnt_type_id` (`eqpmnt_type_id`),
-  KEY `eqpmnt_type_attrbt_id` (`eqpmnt_type_attrbt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+CREATE SEQUENCE t_cmpny_eqpmnt_seq;
+
+CREATE TABLE IF NOT EXISTS t_cmpny_eqpmnt (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cmpny_eqpmnt_seq'),
+  cmpny_id int DEFAULT NULL,
+  eqpmnt_id int DEFAULT NULL,
+  eqpmnt_type_id int DEFAULT NULL,
+  eqpmnt_type_attrbt_id int DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cmpny_eqpmnt_seq RESTART WITH 19;
+
+CREATE INDEX cmpny_id ON t_cmpny_eqpmnt (cmpny_id);
+CREATE INDEX eqpmnt_id ON t_cmpny_eqpmnt (eqpmnt_id);
+CREATE INDEX eqpmnt_type_id ON t_cmpny_eqpmnt (eqpmnt_type_id);
+CREATE INDEX eqpmnt_type_attrbt_id ON t_cmpny_eqpmnt (eqpmnt_type_attrbt_id);
 
 --
--- Dumping data for table `t_cmpny_eqpmnt`
+-- Dumping data for table 't_cmpny_eqpmnt'
 --
 
-INSERT INTO `t_cmpny_eqpmnt` (`id`, `cmpny_id`, `eqpmnt_id`, `eqpmnt_type_id`, `eqpmnt_type_attrbt_id`) VALUES
+INSERT INTO t_cmpny_eqpmnt (id, cmpny_id, eqpmnt_id, eqpmnt_type_id, eqpmnt_type_attrbt_id) VALUES
 (15, 7, 1, 1, 1),
 (16, 7, 1, 1, 1),
 (18, 7, 1, 1, 1);
@@ -163,34 +156,39 @@ INSERT INTO `t_cmpny_eqpmnt` (`id`, `cmpny_id`, `eqpmnt_id`, `eqpmnt_type_id`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_flow`
+-- Table structure for table 't_cmpny_flow'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_flow` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cmpny_id` int(11) DEFAULT NULL,
-  `flow_id` int(11) NOT NULL,
-  `qntty` decimal(10,2) DEFAULT NULL,
-  `qntty_unit_id` int(11) DEFAULT NULL,
-  `cost` decimal(10,2) DEFAULT NULL,
-  `cost_unit_id` int(11) DEFAULT NULL,
-  `ep` decimal(10,2) DEFAULT NULL,
-  `ep_unit_id` int(11) DEFAULT NULL,
-  `flow_type_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `flow_type_id` (`flow_type_id`),
-  KEY `flow_id` (`flow_id`),
-  KEY `qntty_unit_id` (`qntty_unit_id`),
-  KEY `cost_unit_id` (`cost_unit_id`),
-  KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+CREATE SEQUENCE t_cmpny_flow_seq;
+
+CREATE TABLE IF NOT EXISTS t_cmpny_flow (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cmpny_flow_seq'),
+  cmpny_id int DEFAULT NULL,
+  flow_id int NOT NULL,
+  qntty decimal(10,2) DEFAULT NULL,
+  qntty_unit_id int DEFAULT NULL,
+  cost decimal(10,2) DEFAULT NULL,
+  cost_unit_id int DEFAULT NULL,
+  ep decimal(10,2) DEFAULT NULL,
+  ep_unit_id int DEFAULT NULL,
+  flow_type_id int DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cmpny_flow_seq RESTART WITH 10;
+
+CREATE INDEX cmpny_id ON t_cmpny_flow (cmpny_id);
+CREATE INDEX flow_type_id ON t_cmpny_flow (flow_type_id);
+CREATE INDEX flow_id ON t_cmpny_flow (flow_id);
+CREATE INDEX qntty_unit_id ON t_cmpny_flow (qntty_unit_id);
+CREATE INDEX cost_unit_id ON t_cmpny_flow (cost_unit_id);
+CREATE INDEX ep_unit_id ON t_cmpny_flow (ep_unit_id);
 
 --
--- Dumping data for table `t_cmpny_flow`
+-- Dumping data for table 't_cmpny_flow'
 --
 
-INSERT INTO `t_cmpny_flow` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id`, `cost`, `cost_unit_id`, `ep`, `ep_unit_id`, `flow_type_id`) VALUES
+INSERT INTO t_cmpny_flow (id, cmpny_id, flow_id, qntty, qntty_unit_id, cost, cost_unit_id, ep, ep_unit_id, flow_type_id) VALUES
 (5, 7, 2, '1000.00', 10, '1000.00', 10, '12.00', 2, 2),
 (7, 7, 2, '112.00', 4, '121.00', 2, '121.00', 3, 1),
 (8, 7, 1, '202.00', 3, '2020.00', 3, '202.00', 2, 1),
@@ -199,36 +197,38 @@ INSERT INTO `t_cmpny_flow` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_flow_cmpnnt`
+-- Table structure for table 't_cmpny_flow_cmpnnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_flow_cmpnnt` (
-  `cmpny_flow_id` int(11) NOT NULL,
-  `cmpnnt_id` int(11) NOT NULL,
-  PRIMARY KEY (`cmpny_flow_id`,`cmpnnt_id`),
-  KEY `cmpnnt_id` (`cmpnnt_id`),
-  KEY `cmpny_flow_id` (`cmpny_flow_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_flow_cmpnnt (
+  cmpny_flow_id int NOT NULL,
+  cmpnnt_id int NOT NULL,
+  PRIMARY KEY (cmpny_flow_id,cmpnnt_id)
+) ;
+
+CREATE INDEX cmpnnt_id ON t_cmpny_flow_cmpnnt (cmpnnt_id);
+CREATE INDEX cmpny_flow_id ON t_cmpny_flow_cmpnnt (cmpny_flow_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_flow_prcss`
+-- Table structure for table 't_cmpny_flow_prcss'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_flow_prcss` (
-  `cmpny_flow_id` int(11) NOT NULL,
-  `cmpny_prcss_id` int(11) NOT NULL,
-  PRIMARY KEY (`cmpny_flow_id`,`cmpny_prcss_id`),
-  KEY `cmpny_flow_id` (`cmpny_flow_id`),
-  KEY `cmpny_prcss_id` (`cmpny_prcss_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_flow_prcss (
+  cmpny_flow_id int NOT NULL,
+  cmpny_prcss_id int NOT NULL,
+  PRIMARY KEY (cmpny_flow_id,cmpny_prcss_id)
+) ;
+
+CREATE INDEX cmpny_flow_id ON t_cmpny_flow_prcss (cmpny_flow_id);
+CREATE INDEX cmpny_prcss_id ON t_cmpny_flow_prcss (cmpny_prcss_id);
 
 --
--- Dumping data for table `t_cmpny_flow_prcss`
+-- Dumping data for table 't_cmpny_flow_prcss'
 --
 
-INSERT INTO `t_cmpny_flow_prcss` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
+INSERT INTO t_cmpny_flow_prcss (cmpny_flow_id, cmpny_prcss_id) VALUES
 (5, 18),
 (5, 19),
 (5, 20),
@@ -241,59 +241,66 @@ INSERT INTO `t_cmpny_flow_prcss` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_nace_code`
+-- Table structure for table 't_cmpny_nace_code'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_nace_code` (
-  `cmpny_id` int(11) NOT NULL,
-  `nace_code_id` int(11) NOT NULL,
-  PRIMARY KEY (`cmpny_id`,`nace_code_id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `nace_code_id` (`nace_code_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_nace_code (
+  cmpny_id int NOT NULL,
+  nace_code_id int NOT NULL,
+  PRIMARY KEY (cmpny_id,nace_code_id)
+) ;
+
+CREATE INDEX cmpny_id ON t_cmpny_nace_code (cmpny_id);
+CREATE INDEX nace_code_id ON t_cmpny_nace_code (nace_code_id);
 
 --
--- Dumping data for table `t_cmpny_nace_code`
+-- Dumping data for table 't_cmpny_nace_code'
 --
 
-INSERT INTO `t_cmpny_nace_code` (`cmpny_id`, `nace_code_id`) VALUES
+INSERT INTO t_cmpny_nace_code (cmpny_id, nace_code_id) VALUES
 (7, 91),
 (8, 123);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_org_ind_reg`
+-- Table structure for table 't_cmpny_org_ind_reg'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_org_ind_reg` (
-  `org_ind_reg_id` int(11) NOT NULL,
-  `cmpny_id` int(11) NOT NULL,
-  PRIMARY KEY (`org_ind_reg_id`,`cmpny_id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `org_ind_reg_id` (`org_ind_reg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_org_ind_reg (
+  org_ind_reg_id int NOT NULL,
+  cmpny_id int NOT NULL,
+  PRIMARY KEY (org_ind_reg_id,cmpny_id)
+) ;
+
+CREATE INDEX cmpny_id ON t_cmpny_org_ind_reg (cmpny_id);
+CREATE INDEX org_ind_reg_id ON t_cmpny_org_ind_reg (org_ind_reg_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_prcss`
+-- Table structure for table 't_cmpny_prcss'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_prcss` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cmpny_id` int(11) DEFAULT NULL,
-  `prcss_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `prcss_id` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+CREATE SEQUENCE t_cmpny_prcss_seq;
+
+CREATE TABLE IF NOT EXISTS t_cmpny_prcss (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cmpny_prcss_seq'),
+  cmpny_id int DEFAULT NULL,
+  prcss_id int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cmpny_prcss_seq RESTART WITH 23;
+
+CREATE INDEX cmpny_id ON t_cmpny_prcss (cmpny_id);
+CREATE INDEX prcss_id ON t_cmpny_prcss (prcss_id);
 
 --
--- Dumping data for table `t_cmpny_prcss`
+-- Dumping data for table 't_cmpny_prcss'
 --
 
-INSERT INTO `t_cmpny_prcss` (`id`, `cmpny_id`, `prcss_id`) VALUES
+INSERT INTO t_cmpny_prcss (id, cmpny_id, prcss_id) VALUES
 (18, 7, 74),
 (19, 7, 1),
 (20, 7, 58),
@@ -303,37 +310,39 @@ INSERT INTO `t_cmpny_prcss` (`id`, `cmpny_id`, `prcss_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_prcss_eqpmnt_type`
+-- Table structure for table 't_cmpny_prcss_eqpmnt_type'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_prcss_eqpmnt_type` (
-  `cmpny_eqpmnt_type_id` int(11) NOT NULL,
-  `cmpny_prcss_id` int(11) NOT NULL,
-  PRIMARY KEY (`cmpny_eqpmnt_type_id`,`cmpny_prcss_id`),
-  KEY `cmpny_eqpmnt_type_id` (`cmpny_eqpmnt_type_id`),
-  KEY `cmpny_prcss_id` (`cmpny_prcss_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_prcss_eqpmnt_type (
+  cmpny_eqpmnt_type_id int NOT NULL,
+  cmpny_prcss_id int NOT NULL,
+  PRIMARY KEY (cmpny_eqpmnt_type_id,cmpny_prcss_id)
+) ;
+
+CREATE INDEX cmpny_eqpmnt_type_id ON t_cmpny_prcss_eqpmnt_type (cmpny_eqpmnt_type_id);
+CREATE INDEX cmpny_prcss_id ON t_cmpny_prcss_eqpmnt_type (cmpny_prcss_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cmpny_prsnl`
+-- Table structure for table 't_cmpny_prsnl'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cmpny_prsnl` (
-  `user_id` int(11) NOT NULL,
-  `cmpny_id` int(11) NOT NULL,
-  `is_contact` tinyint(4) NOT NULL,
-  PRIMARY KEY (`user_id`,`cmpny_id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cmpny_prsnl (
+  user_id int NOT NULL,
+  cmpny_id int NOT NULL,
+  is_contact smallint NOT NULL,
+  PRIMARY KEY (user_id,cmpny_id)
+) ;
+
+CREATE INDEX cmpny_id ON t_cmpny_prsnl (cmpny_id);
+CREATE INDEX user_id ON t_cmpny_prsnl (user_id);
 
 --
--- Dumping data for table `t_cmpny_prsnl`
+-- Dumping data for table 't_cmpny_prsnl'
 --
 
-INSERT INTO `t_cmpny_prsnl` (`user_id`, `cmpny_id`, `is_contact`) VALUES
+INSERT INTO t_cmpny_prsnl (user_id, cmpny_id, is_contact) VALUES
 (1, 7, 1),
 (2, 8, 1),
 (3, 7, 0);
@@ -341,21 +350,21 @@ INSERT INTO `t_cmpny_prsnl` (`user_id`, `cmpny_id`, `is_contact`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cnsltnt`
+-- Table structure for table 't_cnsltnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cnsltnt` (
-  `user_id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_cnsltnt (
+  user_id int NOT NULL,
+  description varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (user_id)
+) ;
 
 --
--- Dumping data for table `t_cnsltnt`
+-- Dumping data for table 't_cnsltnt'
 --
 
-INSERT INTO `t_cnsltnt` (`user_id`, `description`, `active`) VALUES
+INSERT INTO t_cnsltnt (user_id, description, active) VALUES
 (1, 'desc', 1),
 (2, 'burakdikili', 1),
 (3, 'etolan', 1);
@@ -363,42 +372,47 @@ INSERT INTO `t_cnsltnt` (`user_id`, `description`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cp_allocation`
+-- Table structure for table 't_cp_allocation'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cp_allocation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prcss_id` int(11) DEFAULT NULL,
-  `flow_id` int(11) DEFAULT NULL,
-  `flow_type_id` int(11) DEFAULT NULL,
-  `amount` double(11,2) DEFAULT NULL,
-  `unit_amount` varchar(25) NOT NULL,
-  `allocation_amount` varchar(250) DEFAULT NULL,
-  `importance_amount` varchar(250) DEFAULT NULL,
-  `cost` double(11,2) DEFAULT NULL,
-  `unit_cost` varchar(25) NOT NULL,
-  `allocation_cost` varchar(250) DEFAULT NULL,
-  `importance_cost` varchar(250) DEFAULT NULL,
-  `env_impact` double(11,2) DEFAULT NULL,
-  `unit_env_impact` varchar(25) NOT NULL,
-  `allocation_env_impact` varchar(250) DEFAULT NULL,
-  `importance_env_impact` varchar(250) DEFAULT NULL,
-  `reference` int(11) NOT NULL,
-  `unit_reference` varchar(25) NOT NULL,
-  `kpi` double NOT NULL,
-  `unit_kpi` varchar(25) NOT NULL,
-  `kpi_error` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `flow_id` (`flow_id`),
-  KEY `flow_type_id` (`flow_type_id`),
-  KEY `t_cp_scoping_ibfk_1` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+CREATE SEQUENCE t_cp_allocation_seq;
+
+CREATE TABLE IF NOT EXISTS t_cp_allocation (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cp_allocation_seq'),
+  prcss_id int DEFAULT NULL,
+  flow_id int DEFAULT NULL,
+  flow_type_id int DEFAULT NULL,
+  amount double precision DEFAULT NULL,
+  unit_amount varchar(25) NOT NULL,
+  allocation_amount varchar(250) DEFAULT NULL,
+  importance_amount varchar(250) DEFAULT NULL,
+  cost double precision DEFAULT NULL,
+  unit_cost varchar(25) NOT NULL,
+  allocation_cost varchar(250) DEFAULT NULL,
+  importance_cost varchar(250) DEFAULT NULL,
+  env_impact double precision DEFAULT NULL,
+  unit_env_impact varchar(25) NOT NULL,
+  allocation_env_impact varchar(250) DEFAULT NULL,
+  importance_env_impact varchar(250) DEFAULT NULL,
+  reference int NOT NULL,
+  unit_reference varchar(25) NOT NULL,
+  kpi double precision NOT NULL,
+  unit_kpi varchar(25) NOT NULL,
+  kpi_error int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cp_allocation_seq RESTART WITH 15;
+
+CREATE INDEX flow_id ON t_cp_allocation (flow_id);
+CREATE INDEX flow_type_id ON t_cp_allocation (flow_type_id);
+CREATE INDEX t_cp_scoping_ibfk_1 ON t_cp_allocation (prcss_id);
 
 --
--- Dumping data for table `t_cp_allocation`
+-- Dumping data for table 't_cp_allocation'
 --
 
-INSERT INTO `t_cp_allocation` (`id`, `prcss_id`, `flow_id`, `flow_type_id`, `amount`, `unit_amount`, `allocation_amount`, `importance_amount`, `cost`, `unit_cost`, `allocation_cost`, `importance_cost`, `env_impact`, `unit_env_impact`, `allocation_env_impact`, `importance_env_impact`, `reference`, `unit_reference`, `kpi`, `unit_kpi`, `kpi_error`) VALUES
+INSERT INTO t_cp_allocation (id, prcss_id, flow_id, flow_type_id, amount, unit_amount, allocation_amount, importance_amount, cost, unit_cost, allocation_cost, importance_cost, env_impact, unit_env_impact, allocation_env_impact, importance_env_impact, reference, unit_reference, kpi, unit_kpi, kpi_error) VALUES
 (1, 20, 1, 1, 1.50, 'Liter', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
 (2, 21, 1, 2, 1.50, 'KW', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
 (3, 21, 2, 1, 2.60, 'KW', '40', 'High', 1000.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
@@ -416,25 +430,30 @@ INSERT INTO `t_cp_allocation` (`id`, `prcss_id`, `flow_id`, `flow_type_id`, `amo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cp_company_project`
+-- Table structure for table 't_cp_company_project'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cp_company_project` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `allocation_id` int(11) DEFAULT NULL,
-  `prjct_id` int(11) DEFAULT NULL,
-  `cmpny_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `allocation_id` (`allocation_id`),
-  KEY `prjct_id` (`prjct_id`),
-  KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+CREATE SEQUENCE t_cp_company_project_seq;
+
+CREATE TABLE IF NOT EXISTS t_cp_company_project (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cp_company_project_seq'),
+  allocation_id int DEFAULT NULL,
+  prjct_id int DEFAULT NULL,
+  cmpny_id int DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cp_company_project_seq RESTART WITH 15;
+
+CREATE INDEX allocation_id ON t_cp_company_project (allocation_id);
+CREATE INDEX prjct_id ON t_cp_company_project (prjct_id);
+CREATE INDEX cmpny_id ON t_cp_company_project (cmpny_id);
 
 --
--- Dumping data for table `t_cp_company_project`
+-- Dumping data for table 't_cp_company_project'
 --
 
-INSERT INTO `t_cp_company_project` (`id`, `allocation_id`, `prjct_id`, `cmpny_id`) VALUES
+INSERT INTO t_cp_company_project (id, allocation_id, prjct_id, cmpny_id) VALUES
 (1, 1, 2, 7),
 (2, 2, 2, 7),
 (3, 3, 2, 7),
@@ -452,22 +471,27 @@ INSERT INTO `t_cp_company_project` (`id`, `allocation_id`, `prjct_id`, `cmpny_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cp_is_candidate`
+-- Table structure for table 't_cp_is_candidate'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cp_is_candidate` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `allocation_id` int(11) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `allocation_id` (`allocation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+CREATE SEQUENCE t_cp_is_candidate_seq;
+
+CREATE TABLE IF NOT EXISTS t_cp_is_candidate (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cp_is_candidate_seq'),
+  allocation_id int DEFAULT NULL,
+  active smallint DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cp_is_candidate_seq RESTART WITH 17;
+
+CREATE INDEX allocation_id ON t_cp_is_candidate (allocation_id);
 
 --
--- Dumping data for table `t_cp_is_candidate`
+-- Dumping data for table 't_cp_is_candidate'
 --
 
-INSERT INTO `t_cp_is_candidate` (`id`, `allocation_id`, `active`) VALUES
+INSERT INTO t_cp_is_candidate (id, allocation_id, active) VALUES
 (11, 1, 1),
 (12, 13, 0),
 (13, 3, 0),
@@ -478,60 +502,73 @@ INSERT INTO `t_cp_is_candidate` (`id`, `allocation_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_cp_scoping_files`
+-- Table structure for table 't_cp_scoping_files'
 --
 
-CREATE TABLE IF NOT EXISTS `t_cp_scoping_files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prjct_id` int(11) DEFAULT NULL,
-  `cmpny_id` int(11) DEFAULT NULL,
-  `file_name` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `prjct_id` (`prjct_id`),
-  KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+CREATE SEQUENCE t_cp_scoping_files_seq;
+
+CREATE TABLE IF NOT EXISTS t_cp_scoping_files (
+  id int NOT NULL DEFAULT NEXTVAL ('t_cp_scoping_files_seq'),
+  prjct_id int DEFAULT NULL,
+  cmpny_id int DEFAULT NULL,
+  file_name varchar(250) NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_cp_scoping_files_seq RESTART WITH 9;
+
+CREATE INDEX prjct_id ON t_cp_scoping_files (prjct_id);
+CREATE INDEX cmpny_id ON t_cp_scoping_files (cmpny_id);
 
 --
--- Dumping data for table `t_cp_scoping_files`
+-- Dumping data for table 't_cp_scoping_files'
 --
 
-INSERT INTO `t_cp_scoping_files` (`id`, `prjct_id`, `cmpny_id`, `file_name`) VALUES
+INSERT INTO t_cp_scoping_files (id, prjct_id, cmpny_id, file_name) VALUES
 (7, 2, 7, 'Metal machining benchmarks.xlsx'),
 (8, 2, 7, 'Mechanical Engineering.pdf');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_doc`
+-- Table structure for table 't_doc'
 --
 
-CREATE TABLE IF NOT EXISTS `t_doc` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `doc` varchar(40) DEFAULT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE SEQUENCE t_doc_seq;
+
+CREATE TABLE IF NOT EXISTS t_doc (
+  id int NOT NULL DEFAULT NEXTVAL ('t_doc_seq'),
+  doc varchar(40) DEFAULT NULL,
+  description varchar(200) DEFAULT NULL,
+  PRIMARY KEY (id)
+)   ;
+ 
+ALTER SEQUENCE t_doc_seq RESTART WITH 1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_eqpmnt`
+-- Table structure for table 't_eqpmnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_eqpmnt` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  `eqpmnt_type_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+CREATE SEQUENCE t_eqpmnt_seq;
+
+CREATE TABLE IF NOT EXISTS t_eqpmnt (
+  id int NOT NULL DEFAULT NEXTVAL ('t_eqpmnt_seq'),
+  name varchar(200) NOT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  eqpmnt_type_id int DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_eqpmnt_seq RESTART WITH 6;
 
 --
--- Dumping data for table `t_eqpmnt`
+-- Dumping data for table 't_eqpmnt'
 --
 
-INSERT INTO `t_eqpmnt` (`id`, `name`, `name_tr`, `active`, `eqpmnt_type_id`) VALUES
+INSERT INTO t_eqpmnt (id, name, name_tr, active, eqpmnt_type_id) VALUES
 (1, 'Casting Equipment', 'Döküm Tezgahları', 1, 0),
 (2, 'Forming Equipment', 'Şekillendirme tezgahları', 1, 0),
 (3, 'Joining Equipment', 'Birleştirme Tezgahları', 1, 0),
@@ -541,23 +578,27 @@ INSERT INTO `t_eqpmnt` (`id`, `name`, `name_tr`, `active`, `eqpmnt_type_id`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_eqpmnt_type`
+-- Table structure for table 't_eqpmnt_type'
 --
 
-CREATE TABLE IF NOT EXISTS `t_eqpmnt_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `mother_id` int(11) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+CREATE SEQUENCE t_eqpmnt_type_seq;
+
+CREATE TABLE IF NOT EXISTS t_eqpmnt_type (
+  id int NOT NULL DEFAULT NEXTVAL ('t_eqpmnt_type_seq'),
+  name varchar(200) DEFAULT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  mother_id int DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_eqpmnt_type_seq RESTART WITH 37;
 
 --
--- Dumping data for table `t_eqpmnt_type`
+-- Dumping data for table 't_eqpmnt_type'
 --
 
-INSERT INTO `t_eqpmnt_type` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
+INSERT INTO t_eqpmnt_type (id, name, name_tr, mother_id, active) VALUES
 (1, 'Centrifugal Casting Machine', 'Santrifüjal Döküm ', 1, 1),
 (2, 'Die Casting', 'Press Döküm', 1, 1),
 (3, 'Evaporative Pattern Casting', 'Buharlı Döküm', 1, 1),
@@ -598,25 +639,30 @@ INSERT INTO `t_eqpmnt_type` (`id`, `name`, `name_tr`, `mother_id`, `active`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_eqpmnt_type_attrbt`
+-- Table structure for table 't_eqpmnt_type_attrbt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_eqpmnt_type_attrbt` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `attribute_name` varchar(50) DEFAULT NULL,
-  `attribute_name_tr` varchar(50) DEFAULT NULL,
-  `attribute_value` varchar(200) DEFAULT NULL,
-  `eqpmnt_type_id` int(11) DEFAULT NULL,
-  `active` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `eqpmnt_type_id` (`eqpmnt_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=625 ;
+CREATE SEQUENCE t_eqpmnt_type_attrbt_seq;
+
+CREATE TABLE IF NOT EXISTS t_eqpmnt_type_attrbt (
+  id int NOT NULL DEFAULT NEXTVAL ('t_eqpmnt_type_attrbt_seq'),
+  attribute_name varchar(50) DEFAULT NULL,
+  attribute_name_tr varchar(50) DEFAULT NULL,
+  attribute_value varchar(200) DEFAULT NULL,
+  eqpmnt_type_id int DEFAULT NULL,
+  active smallint DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_eqpmnt_type_attrbt_seq RESTART WITH 625;
+
+CREATE INDEX eqpmnt_type_id ON t_eqpmnt_type_attrbt (eqpmnt_type_id);
 
 --
--- Dumping data for table `t_eqpmnt_type_attrbt`
+-- Dumping data for table 't_eqpmnt_type_attrbt'
 --
 
-INSERT INTO `t_eqpmnt_type_attrbt` (`id`, `attribute_name`, `attribute_name_tr`, `attribute_value`, `eqpmnt_type_id`, `active`) VALUES
+INSERT INTO t_eqpmnt_type_attrbt (id, attribute_name, attribute_name_tr, attribute_value, eqpmnt_type_id, active) VALUES
 (1, 'Casting Size OD MIN.', 'Döküm Boyutu OD MIN.', 'mm', 1, 1),
 (2, 'Casting Size OD MAX.', 'Döküm Boyutu OD MAX.', 'mm', 1, 1),
 (3, 'Casting Length MIN', 'Min. Döküm Uzunluğu', 'mm', 1, 1),
@@ -1052,10 +1098,10 @@ INSERT INTO `t_eqpmnt_type_attrbt` (`id`, `attribute_name`, `attribute_name_tr`,
 (433, 'Production Date', 'Üretim Tarihi', 'year', 25, 1),
 (434, 'Production Location', 'Üretim Yeri', '', 25, 1),
 (435, 'Product Acquisition Date', 'Ürünü satın Alma Tarihi', 'year', 25, 1),
-(436, 'Maximum Size of Workpiece', 'Parçanin Max. Boyutu', 'mm', 26, 1),
+(436, 'Maximum Size of Workpiece', 'Parçanin Max. Boyutu', 'mm', 26, 1),
 (437, 'The Grinding Workpiece Height Size', 'Taşalama İş Parçası Boyutu', 'mm', 26, 1),
 (438, 'The Maximum Speed of the Grinding Heel Spindle', 'Taşlama Topuk Milinin Maksimum Hızı', 'rpm', 26, 1),
-(439, 'Grinding Wheel/ Diameter', 'Bileme Teker Çapı', 'mm', 26, 1),
+(439, 'Grinding Wheel/ Diameter', 'Bileme Teker Çapı', 'mm', 26, 1),
 (440, 'Wheelhead Feed Speed ', 'Dişli Besleme Hızı', 'm/dk', 26, 1),
 (441, 'Chuck Workpiece Speed', 'Ayna Hızı', 'm/dk', 26, 1),
 (442, 'Table Size', 'Tabla Boyutu', 'mm*mm', 26, 1),
@@ -1150,7 +1196,7 @@ INSERT INTO `t_eqpmnt_type_attrbt` (`id`, `attribute_name`, `attribute_name_tr`,
 (531, 'Production Date', 'Üretim Tarihi', 'year', 30, 1),
 (532, 'Production Location', 'Üretim Yeri', '', 30, 1),
 (533, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 30, 1),
-(534, 'X,Y,Z Axis travel ', 'X/Y/Z Eksenlerindeki Hareket', 'mm', 31, 1),
+(534, 'X,Y,Z Axis travel ', 'X/Y/Z Eksenlerindeki Hareket', 'mm', 31, 1),
 (535, 'Spindle Nose to Worktable', 'Spindle Burnunun Tablaya Olan Uzaklığı', 'mm', 31, 1),
 (536, 'Spindle Centerline to Column', 'Spindle ile Kolon Arası Mesafe', 'mm', 31, 1),
 (537, 'Spindle Taper', 'Spindle Tutucu', '', 31, 1),
@@ -1245,22 +1291,26 @@ INSERT INTO `t_eqpmnt_type_attrbt` (`id`, `attribute_name`, `attribute_name_tr`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_flow`
+-- Table structure for table 't_flow'
 --
 
-CREATE TABLE IF NOT EXISTS `t_flow` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE SEQUENCE t_flow_seq;
+
+CREATE TABLE IF NOT EXISTS t_flow (
+  id int NOT NULL DEFAULT NEXTVAL ('t_flow_seq'),
+  name varchar(200) NOT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_flow_seq RESTART WITH 4;
 
 --
--- Dumping data for table `t_flow`
+-- Dumping data for table 't_flow'
 --
 
-INSERT INTO `t_flow` (`id`, `name`, `name_tr`, `active`) VALUES
+INSERT INTO t_flow (id, name, name_tr, active) VALUES
 (1, 'Water', 'Water', 1),
 (2, 'Electricity', 'Electricity', 1),
 (3, 'Air', 'Hava', 1);
@@ -1268,45 +1318,53 @@ INSERT INTO `t_flow` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_flow_type`
+-- Table structure for table 't_flow_type'
 --
 
-CREATE TABLE IF NOT EXISTS `t_flow_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+CREATE SEQUENCE t_flow_type_seq;
+
+CREATE TABLE IF NOT EXISTS t_flow_type (
+  id int NOT NULL DEFAULT NEXTVAL ('t_flow_type_seq'),
+  name varchar(200) DEFAULT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_flow_type_seq RESTART WITH 3;
 
 --
--- Dumping data for table `t_flow_type`
+-- Dumping data for table 't_flow_type'
 --
 
-INSERT INTO `t_flow_type` (`id`, `name`, `name_tr`, `active`) VALUES
+INSERT INTO t_flow_type (id, name, name_tr, active) VALUES
 (1, 'Input', 'Input', 1),
 (2, 'Output', 'Output', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_nace_code`
+-- Table structure for table 't_nace_code'
 --
 
-CREATE TABLE IF NOT EXISTS `t_nace_code` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_tr` varchar(255) DEFAULT NULL,
-  `code` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `active` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2187 ;
+CREATE SEQUENCE t_nace_code_seq;
+
+CREATE TABLE IF NOT EXISTS t_nace_code (
+  id int NOT NULL DEFAULT NEXTVAL ('t_nace_code_seq'),
+  name_tr varchar(255) DEFAULT NULL,
+  code varchar(255) NOT NULL,
+  name varchar(255) NOT NULL,
+  active int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_nace_code_seq RESTART WITH 2187;
 
 --
--- Dumping data for table `t_nace_code`
+-- Dumping data for table 't_nace_code'
 --
 
-INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
+INSERT INTO t_nace_code (id, name_tr, code, name, active) VALUES
 (1, 'PERAKENDE TİCARET', '47.11.01', '', 0),
 (2, 'PERAKENDE TİCARET', '47.11.02', '', 0),
 (3, 'PERAKENDE TİCARET', '47.11.03', '', 0),
@@ -2255,7 +2313,7 @@ INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
 (946, 'BASIM-YAYIN', '58.13.01', '', 0),
 (947, 'BASIM-YAYIN', '58.14.02', '', 0),
 (948, 'BASIM-YAYIN', '58.14.03', '', 0);
-INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
+INSERT INTO t_nace_code (id, name_tr, code, name, active) VALUES
 (949, 'BASIM-YAYIN', '58.14.90', '', 0),
 (950, 'BASIM-YAYIN', '58.19.04', '', 0),
 (951, 'BASIM-YAYIN', '58.19.90', '', 0),
@@ -3158,7 +3216,7 @@ INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
 (1848, 'TELEKOMÜNİKASYON', '46.52.05', '', 0),
 (1849, 'TELEKOMÜNİKASYON', '47.42.01', '', 0),
 (1850, 'TELEKOMÜNİKASYON', '47.89.05', '', 0);
-INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
+INSERT INTO t_nace_code (id, name_tr, code, name, active) VALUES
 (1851, 'TELEKOMÜNİKASYON', '61.10.15', '', 0),
 (1852, 'TELEKOMÜNİKASYON', '61.10.17', '', 0),
 (1853, 'TELEKOMÜNİKASYON', '61.20.02', '', 0),
@@ -3499,22 +3557,26 @@ INSERT INTO `t_nace_code` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_org_ind_reg`
+-- Table structure for table 't_org_ind_reg'
 --
 
-CREATE TABLE IF NOT EXISTS `t_org_ind_reg` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `active` tinyint(4) NOT NULL,
-  `country` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE SEQUENCE t_org_ind_reg_seq;
+
+CREATE TABLE IF NOT EXISTS t_org_ind_reg (
+  id int NOT NULL DEFAULT NEXTVAL ('t_org_ind_reg_seq'),
+  name varchar(200) NOT NULL,
+  active smallint NOT NULL,
+  country varchar(50) DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_org_ind_reg_seq RESTART WITH 4;
 
 --
--- Dumping data for table `t_org_ind_reg`
+-- Dumping data for table 't_org_ind_reg'
 --
 
-INSERT INTO `t_org_ind_reg` (`id`, `name`, `active`, `country`) VALUES
+INSERT INTO t_org_ind_reg (id, name, active, country) VALUES
 (1, 'Example 1', 1, 'Ankara'),
 (2, 'Example 2', 1, 'İstanbul'),
 (3, 'Example 3', 1, 'İzmir');
@@ -3522,25 +3584,30 @@ INSERT INTO `t_org_ind_reg` (`id`, `name`, `active`, `country`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prcss`
+-- Table structure for table 't_prcss'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prcss` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `mother_id` int(11) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  `layer` int(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `mother_id` (`mother_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=303 ;
+CREATE SEQUENCE t_prcss_seq;
+
+CREATE TABLE IF NOT EXISTS t_prcss (
+  id int NOT NULL DEFAULT NEXTVAL ('t_prcss_seq'),
+  name varchar(200) NOT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  mother_id int DEFAULT NULL,
+  active smallint NOT NULL,
+  layer int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_prcss_seq RESTART WITH 303;
+
+CREATE INDEX mother_id ON t_prcss (mother_id);
 
 --
--- Dumping data for table `t_prcss`
+-- Dumping data for table 't_prcss'
 --
 
-INSERT INTO `t_prcss` (`id`, `name`, `name_tr`, `mother_id`, `active`, `layer`) VALUES
+INSERT INTO t_prcss (id, name, name_tr, mother_id, active, layer) VALUES
 (1, 'Forming Processes', 'Şekillendirme Süreçleri', NULL, 1, 1),
 (2, 'machining Processes', 'Talaşlı İmalat üreçleri', NULL, 1, 1),
 (3, 'Casting Processes', 'Döküm Süreçleri', NULL, 1, 1),
@@ -3847,47 +3914,57 @@ INSERT INTO `t_prcss` (`id`, `name`, `name_tr`, `mother_id`, `active`, `layer`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prdct`
+-- Table structure for table 't_prdct'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prdct` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cmpny_id` int(11) DEFAULT NULL,
-  `name` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+CREATE SEQUENCE t_prdct_seq;
+
+CREATE TABLE IF NOT EXISTS t_prdct (
+  id int NOT NULL DEFAULT NEXTVAL ('t_prdct_seq'),
+  cmpny_id int DEFAULT NULL,
+  name varchar(200) NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_prdct_seq RESTART WITH 5;
+
+CREATE INDEX cmpny_id ON t_prdct (cmpny_id);
 
 --
--- Dumping data for table `t_prdct`
+-- Dumping data for table 't_prdct'
 --
 
-INSERT INTO `t_prdct` (`id`, `cmpny_id`, `name`) VALUES
+INSERT INTO t_prdct (id, cmpny_id, name) VALUES
 (4, 7, 'Product A');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj`
+-- Table structure for table 't_prj'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
-  `status_id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `status_id` (`status_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+CREATE SEQUENCE t_prj_seq;
+
+CREATE TABLE IF NOT EXISTS t_prj (
+  id int NOT NULL DEFAULT NEXTVAL ('t_prj_seq'),
+  name varchar(255) NOT NULL,
+  start_date date NOT NULL,
+  end_date date DEFAULT NULL,
+  status_id int NOT NULL,
+  description varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_prj_seq RESTART WITH 6;
+
+CREATE INDEX status_id ON t_prj (status_id);
 
 --
--- Dumping data for table `t_prj`
+-- Dumping data for table 't_prj'
 --
 
-INSERT INTO `t_prj` (`id`, `name`, `start_date`, `end_date`, `status_id`, `description`, `active`) VALUES
+INSERT INTO t_prj (id, name, start_date, end_date, status_id, description, active) VALUES
 (2, 'Project X', '2014-06-10', NULL, 3, 'The X-Men are a team of mutant superheroes in the Marvel Universe. They were created by writer Stan Lee and artist Jack Kirby, and first appeared in The X-Men #1 (September 1963). The basic concept of', 1),
 (3, 'Odessa Mobile  Technology Project', '2014-06-05', NULL, 1, 'This section should describe the work you have done to date, the choices you had with regard to hardware/software, and an explanation of how you arrived at the decision to use L3 and Tiburon.', 1),
 (4, 'Proje Y', '2014-06-10', NULL, 2, 'Project', 1),
@@ -3896,56 +3973,59 @@ INSERT INTO `t_prj` (`id`, `name`, `start_date`, `end_date`, `status_id`, `descr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_acss_cmpny`
+-- Table structure for table 't_prj_acss_cmpny'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_acss_cmpny` (
-  `cmpny_id` int(11) NOT NULL,
-  `prj_id` int(11) NOT NULL,
-  `read_acss` tinyint(4) DEFAULT NULL,
-  `write_acss` tinyint(4) DEFAULT NULL,
-  `delete_acss` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`cmpny_id`,`prj_id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `prj_id` (`prj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_acss_cmpny (
+  cmpny_id int NOT NULL,
+  prj_id int NOT NULL,
+  read_acss smallint DEFAULT NULL,
+  write_acss smallint DEFAULT NULL,
+  delete_acss smallint DEFAULT NULL,
+  PRIMARY KEY (cmpny_id,prj_id)
+) ;
+
+CREATE INDEX cmpny_id ON t_prj_acss_cmpny (cmpny_id);
+CREATE INDEX prj_id ON t_prj_acss_cmpny (prj_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_acss_user`
+-- Table structure for table 't_prj_acss_user'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_acss_user` (
-  `user_id` int(11) NOT NULL,
-  `prj_id` int(11) NOT NULL,
-  `read_acss` tinyint(4) DEFAULT NULL,
-  `write_acss` tinyint(4) DEFAULT NULL,
-  `delete_acss` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`prj_id`),
-  KEY `prj_id` (`prj_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_acss_user (
+  user_id int NOT NULL,
+  prj_id int NOT NULL,
+  read_acss smallint DEFAULT NULL,
+  write_acss smallint DEFAULT NULL,
+  delete_acss smallint DEFAULT NULL,
+  PRIMARY KEY (user_id,prj_id)
+) ;
+
+CREATE INDEX prj_id ON t_prj_acss_user (prj_id);
+CREATE INDEX user_id ON t_prj_acss_user (user_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_cmpny`
+-- Table structure for table 't_prj_cmpny'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_cmpny` (
-  `prj_id` int(11) NOT NULL,
-  `cmpny_id` int(11) NOT NULL,
-  PRIMARY KEY (`prj_id`,`cmpny_id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `prj_id` (`prj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_cmpny (
+  prj_id int NOT NULL,
+  cmpny_id int NOT NULL,
+  PRIMARY KEY (prj_id,cmpny_id)
+) ;
+
+CREATE INDEX cmpny_id ON t_prj_cmpny (cmpny_id);
+CREATE INDEX prj_id ON t_prj_cmpny (prj_id);
 
 --
--- Dumping data for table `t_prj_cmpny`
+-- Dumping data for table 't_prj_cmpny'
 --
 
-INSERT INTO `t_prj_cmpny` (`prj_id`, `cmpny_id`) VALUES
+INSERT INTO t_prj_cmpny (prj_id, cmpny_id) VALUES
 (2, 7),
 (3, 7),
 (4, 7),
@@ -3956,23 +4036,24 @@ INSERT INTO `t_prj_cmpny` (`prj_id`, `cmpny_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_cnsltnt`
+-- Table structure for table 't_prj_cnsltnt'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_cnsltnt` (
-  `prj_id` int(11) NOT NULL,
-  `cnsltnt_id` int(11) NOT NULL,
-  `active` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`prj_id`,`cnsltnt_id`),
-  KEY `cnsltnt_id` (`cnsltnt_id`),
-  KEY `prj_id` (`prj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_cnsltnt (
+  prj_id int NOT NULL,
+  cnsltnt_id int NOT NULL,
+  active smallint DEFAULT NULL,
+  PRIMARY KEY (prj_id,cnsltnt_id)
+) ;
+
+CREATE INDEX cnsltnt_id ON t_prj_cnsltnt (cnsltnt_id);
+CREATE INDEX prj_id ON t_prj_cnsltnt (prj_id);
 
 --
--- Dumping data for table `t_prj_cnsltnt`
+-- Dumping data for table 't_prj_cnsltnt'
 --
 
-INSERT INTO `t_prj_cnsltnt` (`prj_id`, `cnsltnt_id`, `active`) VALUES
+INSERT INTO t_prj_cnsltnt (prj_id, cnsltnt_id, active) VALUES
 (2, 1, 1),
 (2, 2, 1),
 (2, 3, 1),
@@ -3984,22 +4065,23 @@ INSERT INTO `t_prj_cnsltnt` (`prj_id`, `cnsltnt_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_cntct_prsnl`
+-- Table structure for table 't_prj_cntct_prsnl'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_cntct_prsnl` (
-  `prj_id` int(11) NOT NULL,
-  `usr_id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`prj_id`,`usr_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_cntct_prsnl (
+  prj_id int NOT NULL,
+  usr_id int NOT NULL,
+  description varchar(200) DEFAULT NULL,
+  PRIMARY KEY (prj_id,usr_id)
+) ;
+
+CREATE INDEX usr_id ON t_prj_cntct_prsnl (usr_id);
 
 --
--- Dumping data for table `t_prj_cntct_prsnl`
+-- Dumping data for table 't_prj_cntct_prsnl'
 --
 
-INSERT INTO `t_prj_cntct_prsnl` (`prj_id`, `usr_id`, `description`) VALUES
+INSERT INTO t_prj_cntct_prsnl (prj_id, usr_id, description) VALUES
 (2, 2, NULL),
 (3, 3, NULL),
 (4, 2, NULL),
@@ -4008,37 +4090,42 @@ INSERT INTO `t_prj_cntct_prsnl` (`prj_id`, `usr_id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_doc`
+-- Table structure for table 't_prj_doc'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_doc` (
-  `doc_id` int(11) NOT NULL,
-  `prj_id` int(11) NOT NULL,
-  PRIMARY KEY (`doc_id`,`prj_id`),
-  KEY `doc_id` (`doc_id`),
-  KEY `prj_id` (`prj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS t_prj_doc (
+  doc_id int NOT NULL,
+  prj_id int NOT NULL,
+  PRIMARY KEY (doc_id,prj_id)
+) ;
+
+CREATE INDEX doc_id ON t_prj_doc (doc_id);
+CREATE INDEX prj_id ON t_prj_doc (prj_id);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prj_status`
+-- Table structure for table 't_prj_status'
 --
 
-CREATE TABLE IF NOT EXISTS `t_prj_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  `short_code` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+CREATE SEQUENCE t_prj_status_seq;
+
+CREATE TABLE IF NOT EXISTS t_prj_status (
+  id int NOT NULL DEFAULT NEXTVAL ('t_prj_status_seq'),
+  name varchar(200) DEFAULT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  short_code varchar(3) DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_prj_status_seq RESTART WITH 6;
 
 --
--- Dumping data for table `t_prj_status`
+-- Dumping data for table 't_prj_status'
 --
 
-INSERT INTO `t_prj_status` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
+INSERT INTO t_prj_status (id, name, name_tr, active, short_code) VALUES
 (1, 'Envisioning', NULL, 1, 'env'),
 (2, 'Planing', NULL, 1, 'pln'),
 (3, 'Development', NULL, 1, 'dev'),
@@ -4048,23 +4135,27 @@ INSERT INTO `t_prj_status` (`id`, `name`, `name_tr`, `active`, `short_code`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_role`
+-- Table structure for table 't_role'
 --
 
-CREATE TABLE IF NOT EXISTS `t_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `name_tr` varchar(100) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  `short_code` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE SEQUENCE t_role_seq;
+
+CREATE TABLE IF NOT EXISTS t_role (
+  id int NOT NULL DEFAULT NEXTVAL ('t_role_seq'),
+  name varchar(100) NOT NULL,
+  name_tr varchar(100) DEFAULT NULL,
+  active smallint NOT NULL,
+  short_code varchar(3) DEFAULT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_role_seq RESTART WITH 4;
 
 --
--- Dumping data for table `t_role`
+-- Dumping data for table 't_role'
 --
 
-INSERT INTO `t_role` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
+INSERT INTO t_role (id, name, name_tr, active, short_code) VALUES
 (1, 'Consultant', 'Consultant', 1, 'CNS'),
 (2, 'Visitor', 'Visitor', 1, 'VST'),
 (3, 'Admin', 'Admin', 1, 'ADM');
@@ -4072,22 +4163,26 @@ INSERT INTO `t_role` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_unit`
+-- Table structure for table 't_unit'
 --
 
-CREATE TABLE IF NOT EXISTS `t_unit` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+CREATE SEQUENCE t_unit_seq;
+
+CREATE TABLE IF NOT EXISTS t_unit (
+  id int NOT NULL DEFAULT NEXTVAL ('t_unit_seq'),
+  name varchar(200) NOT NULL,
+  name_tr varchar(200) DEFAULT NULL,
+  active smallint NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_unit_seq RESTART WITH 37;
 
 --
--- Dumping data for table `t_unit`
+-- Dumping data for table 't_unit'
 --
 
-INSERT INTO `t_unit` (`id`, `name`, `name_tr`, `active`) VALUES
+INSERT INTO t_unit (id, name, name_tr, active) VALUES
 (1, '', NULL, 0),
 (2, '%', NULL, 1),
 (3, '1/seconed', NULL, 1),
@@ -4128,36 +4223,41 @@ INSERT INTO `t_unit` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_user`
+-- Table structure for table 't_user'
 --
 
-CREATE TABLE IF NOT EXISTS `t_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL,
-  `user_name` varchar(50) NOT NULL,
-  `psswrd` varchar(40) NOT NULL,
-  `role_id` int(11) DEFAULT '2',
-  `title` varchar(255) DEFAULT NULL,
-  `phone_num_1` varchar(50) DEFAULT NULL,
-  `phone_num_2` varchar(50) DEFAULT NULL,
-  `fax_num` varchar(50) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `linkedin_user` tinyint(1) DEFAULT NULL,
-  `photo` varchar(60) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  `random_string` varchar(20) NOT NULL,
-  `click_control` int(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `role_id` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+CREATE SEQUENCE t_user_seq;
+
+CREATE TABLE IF NOT EXISTS t_user (
+  id int NOT NULL DEFAULT NEXTVAL ('t_user_seq'),
+  name varchar(100) NOT NULL,
+  surname varchar(100) NOT NULL,
+  user_name varchar(50) NOT NULL,
+  psswrd varchar(40) NOT NULL,
+  role_id int DEFAULT '2',
+  title varchar(255) DEFAULT NULL,
+  phone_num_1 varchar(50) DEFAULT NULL,
+  phone_num_2 varchar(50) DEFAULT NULL,
+  fax_num varchar(50) DEFAULT NULL,
+  email varchar(150) DEFAULT NULL,
+  description varchar(200) DEFAULT NULL,
+  linkedin_user smallint DEFAULT NULL,
+  photo varchar(60) DEFAULT NULL,
+  active smallint NOT NULL,
+  random_string varchar(20) NOT NULL,
+  click_control int NOT NULL,
+  PRIMARY KEY (id)
+)    ;
+ 
+ALTER SEQUENCE t_user_seq RESTART WITH 7;
+
+CREATE INDEX role_id ON t_user (role_id);
 
 --
--- Dumping data for table `t_user`
+-- Dumping data for table 't_user'
 --
 
-INSERT INTO `t_user` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`, `title`, `phone_num_1`, `phone_num_2`, `fax_num`, `email`, `description`, `linkedin_user`, `photo`, `active`, `random_string`, `click_control`) VALUES
+INSERT INTO t_user (id, name, surname, user_name, psswrd, role_id, title, phone_num_1, phone_num_2, fax_num, email, description, linkedin_user, photo, active, random_string, click_control) VALUES
 (1, 'Tuna Çağlar', 'Gümüş', 'tcgumus', '8287458823facb8ff918dbfabcd22ccb', 1, 'Engineer', '0555-201-01-03', '0555-201-01-03', '1234-123-12-12', 'tunacaglargumus@gmail.com', 'Engineer at lead era ecoman project', NULL, '1.jpg', 0, '', 0),
 (2, 'Burak', 'Dikili', 'burakdikili', '39109a5bb10ccb7aff1313d369804b74', 1, 'Manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'burakdikili@gmail.com', 'desc', NULL, '2.jpg', 0, '', 0),
 (3, 'Ertan', 'Tolan', 'etolan', '31663bdaeeefb7ae67859c6413d58b39', 1, 'job title', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'etolan.11@gmail.com', 'description', NULL, '3.jpg', 0, '', 0),
@@ -4166,211 +4266,216 @@ INSERT INTO `t_user` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_user_log`
+-- Table structure for table 't_user_log'
 --
 
-CREATE TABLE IF NOT EXISTS `t_user_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE SEQUENCE t_user_log_seq;
+
+CREATE TABLE IF NOT EXISTS t_user_log (
+  id int NOT NULL DEFAULT NEXTVAL ('t_user_log_seq'),
+  user_id int DEFAULT NULL,
+  PRIMARY KEY (id)
+)   ;
+ 
+ALTER SEQUENCE t_user_log_seq RESTART WITH 1;
+
+CREATE INDEX user_id ON t_user_log (user_id);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `t_clstr`
+-- Constraints for table 't_clstr'
 --
-ALTER TABLE `t_clstr`
-  ADD CONSTRAINT `FK_T_CLSTR_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `t_org_ind_reg` (`id`);
+ALTER TABLE t_clstr
+  ADD CONSTRAINT FK_T_CLSTR_T_ORG_IND_REG FOREIGN KEY (org_ind_reg_id) REFERENCES t_org_ind_reg (id);
 
 --
--- Constraints for table `t_cmpny_clstr`
+-- Constraints for table 't_cmpny_clstr'
 --
-ALTER TABLE `t_cmpny_clstr`
-  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CLSTR` FOREIGN KEY (`clstr_id`) REFERENCES `t_clstr` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`);
+ALTER TABLE t_cmpny_clstr
+  ADD CONSTRAINT FK_T_CMPNY_CLSTR_T_CLSTR FOREIGN KEY (clstr_id) REFERENCES t_clstr (id),
+  ADD CONSTRAINT FK_T_CMPNY_CLSTR_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES 't_cmpny' (id);
 
 --
--- Constraints for table `t_cmpny_data`
+-- Constraints for table 't_cmpny_data'
 --
-ALTER TABLE `t_cmpny_data`
-  ADD CONSTRAINT `FK_T_CMPNY_PRJ_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`);
+ALTER TABLE t_cmpny_data
+  ADD CONSTRAINT FK_T_CMPNY_PRJ_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id);
 
 --
--- Constraints for table `t_cmpny_eqpmnt`
+-- Constraints for table 't_cmpny_eqpmnt'
 --
-ALTER TABLE `t_cmpny_eqpmnt`
-  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_1` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_2` FOREIGN KEY (`eqpmnt_id`) REFERENCES `t_eqpmnt` (`id`),
-  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_3` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `t_eqpmnt_type` (`id`),
-  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_4` FOREIGN KEY (`eqpmnt_type_attrbt_id`) REFERENCES `t_eqpmnt_type_attrbt` (`id`);
+ALTER TABLE t_cmpny_eqpmnt
+  ADD CONSTRAINT T_CMPNY_EQPMNT_ibfk_1 FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT T_CMPNY_EQPMNT_ibfk_2 FOREIGN KEY (eqpmnt_id) REFERENCES 't_eqpmnt' (id),
+  ADD CONSTRAINT T_CMPNY_EQPMNT_ibfk_3 FOREIGN KEY (eqpmnt_type_id) REFERENCES 't_eqpmnt_type' (id),
+  ADD CONSTRAINT T_CMPNY_EQPMNT_ibfk_4 FOREIGN KEY (eqpmnt_type_attrbt_id) REFERENCES 't_eqpmnt_type_attrbt' (id);
 
 --
--- Constraints for table `t_cmpny_flow`
+-- Constraints for table 't_cmpny_flow'
 --
-ALTER TABLE `t_cmpny_flow`
-  ADD CONSTRAINT `FK_T_FLOW_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny_data` (`cmpny_id`),
-  ADD CONSTRAINT `FK_T_FLOW_T_FLOW_NAME` FOREIGN KEY (`flow_id`) REFERENCES `t_flow` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_T_FLOW_TYPE` FOREIGN KEY (`flow_type_id`) REFERENCES `t_flow_type` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_T_UNIT_COST` FOREIGN KEY (`cost_unit_id`) REFERENCES `t_unit` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_T_UNIT_EP` FOREIGN KEY (`ep_unit_id`) REFERENCES `t_unit` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_T_UNIT_QNTTY` FOREIGN KEY (`qntty_unit_id`) REFERENCES `t_unit` (`id`);
+ALTER TABLE t_cmpny_flow
+  ADD CONSTRAINT FK_T_FLOW_T_CMPNY_DATA FOREIGN KEY (cmpny_id) REFERENCES t_cmpny_data (cmpny_id),
+  ADD CONSTRAINT FK_T_FLOW_T_FLOW_NAME FOREIGN KEY (flow_id) REFERENCES 't_flow' (id),
+  ADD CONSTRAINT FK_T_FLOW_T_FLOW_TYPE FOREIGN KEY (flow_type_id) REFERENCES 't_flow_type' (id),
+  ADD CONSTRAINT FK_T_FLOW_T_UNIT_COST FOREIGN KEY (cost_unit_id) REFERENCES 't_unit' (id),
+  ADD CONSTRAINT FK_T_FLOW_T_UNIT_EP FOREIGN KEY (ep_unit_id) REFERENCES 't_unit' (id),
+  ADD CONSTRAINT FK_T_FLOW_T_UNIT_QNTTY FOREIGN KEY (qntty_unit_id) REFERENCES 't_unit' (id);
 
 --
--- Constraints for table `t_cmpny_flow_cmpnnt`
+-- Constraints for table 't_cmpny_flow_cmpnnt'
 --
-ALTER TABLE `t_cmpny_flow_cmpnnt`
-  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME` FOREIGN KEY (`cmpnnt_id`) REFERENCES `t_cmpnnt` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `t_cmpny_flow` (`id`);
+ALTER TABLE t_cmpny_flow_cmpnnt
+  ADD CONSTRAINT FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME FOREIGN KEY (cmpnnt_id) REFERENCES t_cmpnnt (id),
+  ADD CONSTRAINT FK_T_FLOW_CMPNNT_T_FLOW FOREIGN KEY (cmpny_flow_id) REFERENCES 't_cmpny_flow' (id);
 
 --
--- Constraints for table `t_cmpny_flow_prcss`
+-- Constraints for table 't_cmpny_flow_prcss'
 --
-ALTER TABLE `t_cmpny_flow_prcss`
-  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `t_cmpny_flow` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `t_cmpny_prcss` (`id`);
+ALTER TABLE t_cmpny_flow_prcss
+  ADD CONSTRAINT FK_T_FLOW_PRCSS_T_FLOW FOREIGN KEY (cmpny_flow_id) REFERENCES t_cmpny_flow (id),
+  ADD CONSTRAINT FK_T_FLOW_PRCSS_T_PRCSS FOREIGN KEY (cmpny_prcss_id) REFERENCES 't_cmpny_prcss' (id);
 
 --
--- Constraints for table `t_cmpny_nace_code`
+-- Constraints for table 't_cmpny_nace_code'
 --
-ALTER TABLE `t_cmpny_nace_code`
-  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_NACE_CODE` FOREIGN KEY (`nace_code_id`) REFERENCES `t_nace_code` (`id`);
+ALTER TABLE t_cmpny_nace_code
+  ADD CONSTRAINT FK_T_CMPNY_NACE_CODE_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT FK_T_CMPNY_NACE_CODE_T_NACE_CODE FOREIGN KEY (nace_code_id) REFERENCES 't_nace_code' (id);
 
 --
--- Constraints for table `t_cmpny_org_ind_reg`
+-- Constraints for table 't_cmpny_org_ind_reg'
 --
-ALTER TABLE `t_cmpny_org_ind_reg`
-  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `t_org_ind_reg` (`id`);
+ALTER TABLE t_cmpny_org_ind_reg
+  ADD CONSTRAINT FK_T_CMPNY_ORG_IND_REG_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG FOREIGN KEY (org_ind_reg_id) REFERENCES 't_org_ind_reg' (id);
 
 --
--- Constraints for table `t_cmpny_prcss`
+-- Constraints for table 't_cmpny_prcss'
 --
-ALTER TABLE `t_cmpny_prcss`
-  ADD CONSTRAINT `FK_T_PRCSS_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny_data` (`cmpny_id`),
-  ADD CONSTRAINT `FK_T_PRCSS_T_PRCSS_NAME` FOREIGN KEY (`prcss_id`) REFERENCES `t_prcss` (`id`);
+ALTER TABLE t_cmpny_prcss
+  ADD CONSTRAINT FK_T_PRCSS_T_CMPNY_DATA FOREIGN KEY (cmpny_id) REFERENCES t_cmpny_data (cmpny_id),
+  ADD CONSTRAINT FK_T_PRCSS_T_PRCSS_NAME FOREIGN KEY (prcss_id) REFERENCES 't_prcss' (id);
 
 --
--- Constraints for table `t_cmpny_prcss_eqpmnt_type`
+-- Constraints for table 't_cmpny_prcss_eqpmnt_type'
 --
-ALTER TABLE `t_cmpny_prcss_eqpmnt_type`
-  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `t_cmpny_eqpmnt` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `t_cmpny_prcss` (`id`);
+ALTER TABLE t_cmpny_prcss_eqpmnt_type
+  ADD CONSTRAINT FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE FOREIGN KEY (cmpny_eqpmnt_type_id) REFERENCES t_cmpny_eqpmnt (id),
+  ADD CONSTRAINT FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS FOREIGN KEY (cmpny_prcss_id) REFERENCES 't_cmpny_prcss' (id);
 
 --
--- Constraints for table `t_cmpny_prsnl`
+-- Constraints for table 't_cmpny_prsnl'
 --
-ALTER TABLE `t_cmpny_prsnl`
-  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_USER` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`);
+ALTER TABLE t_cmpny_prsnl
+  ADD CONSTRAINT FK_T_CMPNY_PRSNL_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT FK_T_CMPNY_PRSNL_T_USER FOREIGN KEY (user_id) REFERENCES 't_user' (id);
 
 --
--- Constraints for table `t_cnsltnt`
+-- Constraints for table 't_cnsltnt'
 --
-ALTER TABLE `t_cnsltnt`
-  ADD CONSTRAINT `FK_T_CNSLTNT_T_USER` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`);
+ALTER TABLE t_cnsltnt
+  ADD CONSTRAINT FK_T_CNSLTNT_T_USER FOREIGN KEY (user_id) REFERENCES t_user (id);
 
 --
--- Constraints for table `t_cp_allocation`
+-- Constraints for table 't_cp_allocation'
 --
-ALTER TABLE `t_cp_allocation`
-  ADD CONSTRAINT `t_cp_allocation_ibfk_1` FOREIGN KEY (`prcss_id`) REFERENCES `t_cmpny_prcss` (`id`),
-  ADD CONSTRAINT `t_cp_allocation_ibfk_2` FOREIGN KEY (`flow_id`) REFERENCES `t_flow` (`id`),
-  ADD CONSTRAINT `t_cp_allocation_ibfk_3` FOREIGN KEY (`flow_type_id`) REFERENCES `t_flow_type` (`id`);
+ALTER TABLE t_cp_allocation
+  ADD CONSTRAINT t_cp_allocation_ibfk_1 FOREIGN KEY (prcss_id) REFERENCES t_cmpny_prcss (id),
+  ADD CONSTRAINT t_cp_allocation_ibfk_2 FOREIGN KEY (flow_id) REFERENCES 't_flow' (id),
+  ADD CONSTRAINT t_cp_allocation_ibfk_3 FOREIGN KEY (flow_type_id) REFERENCES 't_flow_type' (id);
 
 --
--- Constraints for table `t_cp_is_candidate`
+-- Constraints for table 't_cp_is_candidate'
 --
-ALTER TABLE `t_cp_is_candidate`
-  ADD CONSTRAINT `t_cp_is_candidate_ibfk_1` FOREIGN KEY (`allocation_id`) REFERENCES `t_cp_allocation` (`id`);
+ALTER TABLE t_cp_is_candidate
+  ADD CONSTRAINT t_cp_is_candidate_ibfk_1 FOREIGN KEY (allocation_id) REFERENCES t_cp_allocation (id);
 
 --
--- Constraints for table `t_cp_scoping_files`
+-- Constraints for table 't_cp_scoping_files'
 --
-ALTER TABLE `t_cp_scoping_files`
-  ADD CONSTRAINT `t_cp_scoping_files_ibfk_1` FOREIGN KEY (`prjct_id`) REFERENCES `t_prj` (`id`),
-  ADD CONSTRAINT `t_cp_scoping_files_ibfk_2` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`);
+ALTER TABLE t_cp_scoping_files
+  ADD CONSTRAINT t_cp_scoping_files_ibfk_1 FOREIGN KEY (prjct_id) REFERENCES t_prj (id),
+  ADD CONSTRAINT t_cp_scoping_files_ibfk_2 FOREIGN KEY (cmpny_id) REFERENCES 't_cmpny' (id);
 
 --
--- Constraints for table `t_eqpmnt_type_attrbt`
+-- Constraints for table 't_eqpmnt_type_attrbt'
 --
-ALTER TABLE `t_eqpmnt_type_attrbt`
-  ADD CONSTRAINT `FK_T_EQPMNT_ATTRBT_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `t_eqpmnt_type` (`id`);
+ALTER TABLE t_eqpmnt_type_attrbt
+  ADD CONSTRAINT FK_T_EQPMNT_ATTRBT_T_EQPMNT_TYPE FOREIGN KEY (eqpmnt_type_id) REFERENCES t_eqpmnt_type (id);
 
 --
--- Constraints for table `t_prcss`
+-- Constraints for table 't_prcss'
 --
-ALTER TABLE `t_prcss`
-  ADD CONSTRAINT `FK_T_PRCSS_NAME_T_PRCSS_NAME` FOREIGN KEY (`mother_id`) REFERENCES `t_prcss` (`id`);
+ALTER TABLE t_prcss
+  ADD CONSTRAINT FK_T_PRCSS_NAME_T_PRCSS_NAME FOREIGN KEY (mother_id) REFERENCES t_prcss (id);
 
 --
--- Constraints for table `t_prdct`
+-- Constraints for table 't_prdct'
 --
-ALTER TABLE `t_prdct`
-  ADD CONSTRAINT `FK_T_PRDCT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny_data` (`cmpny_id`);
+ALTER TABLE t_prdct
+  ADD CONSTRAINT FK_T_PRDCT_T_CMPNY_DATA FOREIGN KEY (cmpny_id) REFERENCES t_cmpny_data (cmpny_id);
 
 --
--- Constraints for table `t_prj`
+-- Constraints for table 't_prj'
 --
-ALTER TABLE `t_prj`
-  ADD CONSTRAINT `FK_T_PRJ_T_STATUS` FOREIGN KEY (`status_id`) REFERENCES `t_prj_status` (`id`);
+ALTER TABLE t_prj
+  ADD CONSTRAINT FK_T_PRJ_T_STATUS FOREIGN KEY (status_id) REFERENCES t_prj_status (id);
 
 --
--- Constraints for table `t_prj_acss_cmpny`
+-- Constraints for table 't_prj_acss_cmpny'
 --
-ALTER TABLE `t_prj_acss_cmpny`
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `t_prj` (`id`);
+ALTER TABLE t_prj_acss_cmpny
+  ADD CONSTRAINT FK_T_PRJ_ACSS_CMPNY_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT FK_T_PRJ_ACSS_CMPNY_T_PRJ FOREIGN KEY (prj_id) REFERENCES 't_prj' (id);
 
 --
--- Constraints for table `t_prj_acss_user`
+-- Constraints for table 't_prj_acss_user'
 --
-ALTER TABLE `t_prj_acss_user`
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `t_prj` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_USER` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`);
+ALTER TABLE t_prj_acss_user
+  ADD CONSTRAINT FK_T_PRJ_ACSS_USER_T_PRJ FOREIGN KEY (prj_id) REFERENCES t_prj (id),
+  ADD CONSTRAINT FK_T_PRJ_ACSS_USER_T_USER FOREIGN KEY (user_id) REFERENCES 't_user' (id);
 
 --
--- Constraints for table `t_prj_cmpny`
+-- Constraints for table 't_prj_cmpny'
 --
-ALTER TABLE `t_prj_cmpny`
-  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `t_prj` (`id`);
+ALTER TABLE t_prj_cmpny
+  ADD CONSTRAINT FK_T_PRJ_CMPNY_T_CMPNY FOREIGN KEY (cmpny_id) REFERENCES t_cmpny (id),
+  ADD CONSTRAINT FK_T_PRJ_CMPNY_T_PRJ FOREIGN KEY (prj_id) REFERENCES 't_prj' (id);
 
 --
--- Constraints for table `t_prj_cnsltnt`
+-- Constraints for table 't_prj_cnsltnt'
 --
-ALTER TABLE `t_prj_cnsltnt`
-  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_CNSLTNT` FOREIGN KEY (`cnsltnt_id`) REFERENCES `t_cnsltnt` (`user_id`),
-  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `t_prj` (`id`);
+ALTER TABLE t_prj_cnsltnt
+  ADD CONSTRAINT FK_T_PRJ_CNSLTNT_T_CNSLTNT FOREIGN KEY (cnsltnt_id) REFERENCES t_cnsltnt (user_id),
+  ADD CONSTRAINT FK_T_PRJ_CNSLTNT_T_PRJ FOREIGN KEY (prj_id) REFERENCES 't_prj' (id);
 
 --
--- Constraints for table `t_prj_cntct_prsnl`
+-- Constraints for table 't_prj_cntct_prsnl'
 --
-ALTER TABLE `t_prj_cntct_prsnl`
-  ADD CONSTRAINT `FK_T_PRJ_CNTCT_PRSNL_T_USER` FOREIGN KEY (`usr_id`) REFERENCES `t_user` (`id`);
+ALTER TABLE t_prj_cntct_prsnl
+  ADD CONSTRAINT FK_T_PRJ_CNTCT_PRSNL_T_USER FOREIGN KEY (usr_id) REFERENCES t_user (id);
 
 --
--- Constraints for table `t_prj_doc`
+-- Constraints for table 't_prj_doc'
 --
-ALTER TABLE `t_prj_doc`
-  ADD CONSTRAINT `FK_T_PRJ_DOC_T_DOC` FOREIGN KEY (`doc_id`) REFERENCES `t_doc` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_DOC_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `t_prj` (`id`);
+ALTER TABLE t_prj_doc
+  ADD CONSTRAINT FK_T_PRJ_DOC_T_DOC FOREIGN KEY (doc_id) REFERENCES t_doc (id),
+  ADD CONSTRAINT FK_T_PRJ_DOC_T_PRJ FOREIGN KEY (prj_id) REFERENCES 't_prj' (id);
 
 --
--- Constraints for table `t_user`
+-- Constraints for table 't_user'
 --
-ALTER TABLE `t_user`
-  ADD CONSTRAINT `FK_T_USER_T_ROLE` FOREIGN KEY (`role_id`) REFERENCES `t_role` (`id`);
+ALTER TABLE t_user
+  ADD CONSTRAINT FK_T_USER_T_ROLE FOREIGN KEY (role_id) REFERENCES t_role (id);
 
 --
--- Constraints for table `t_user_log`
+-- Constraints for table 't_user_log'
 --
-ALTER TABLE `t_user_log`
-  ADD CONSTRAINT `FK_T_USER_LOG_T_USER` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`);
+ALTER TABLE t_user_log
+  ADD CONSTRAINT FK_T_USER_LOG_T_USER FOREIGN KEY (user_id) REFERENCES t_user (id);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
