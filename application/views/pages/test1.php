@@ -1,28 +1,33 @@
 <?php
-//this is a classic 2-dimensional anonymous array
-$table = array( array("A1", "B1" , "C1"),
-                array("A2", "B2" , "B2"),
-                array("A3", "B3" , "C3") 
-             );  
-             
-echo "<pre>" .            
-'$table = array( array("a1", "b1" , "c1"),
-                array("a2", "b2" , "c2"),
-                array("a3", "b3" , "c3") 
-             );' . "</pre><br />" ;
-             
-echo "get single element <br />";            
-echo '$table[2][1] = ' . $table[2][1] . "<br /><br />";
+//  Include PHPExcel_IOFactory
+include APPPATH . 'libraries/Excel.php';
 
-echo "build html table from a 2d array <br />";
-foreach ($table as $rows => $row)
-{
-	echo "<table border='1'><tr>";
-	foreach ($row as $col => $cell)
-	{
-		echo "<td>" . $cell . "</td>";
-	}	
-  echo "</tr></table>";
-}	
+$inputFileName = './assets/excels/test.xlsx';
+
+//  Read your Excel workbook
+try {
+    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+    $objPHPExcel = $objReader->load($inputFileName);
+} catch(Exception $e) {
+    die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+}
+
+//  Get worksheet dimensions
+$sheet = $objPHPExcel->getSheet(0); 
+$highestRow = $sheet->getHighestRow(); 
+$highestColumn = $sheet->getHighestColumn();
+
+//  Loop through each row of the worksheet in turn
+for ($row = 1; $row <= $highestRow; $row++){ 
+    //  Read a row of data into an array
+    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+                                    NULL,
+                                    TRUE,
+                                    FALSE);
+    //  Insert row data array into your database of choice here
+    print_r($rowData[0]);
+}
+
       
 ?>
