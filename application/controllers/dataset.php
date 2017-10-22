@@ -25,6 +25,13 @@ class Dataset extends CI_Controller {
 		else return $data;
 	}
 
+	public function dataFromExcel($companyId){
+		$this->load->view('template/header');
+		echo "data from excel form";
+		echo $companyId;
+		$this->load->view('template/footer');
+	}
+
 	public function new_product($companyID)
 	{
 		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');

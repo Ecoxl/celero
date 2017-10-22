@@ -17,7 +17,9 @@
 		<div class="pull-right">
 		<span class="label label-default"><b><?php echo lang("email"); ?>:</b> <?php echo $company_info['email']; ?></span>
 		<span class="label label-default"><b><?php echo lang("cellphone"); ?>:</b> <?php echo $company_info['phone_num_1']; ?></span>
-		<span><a href="<?php echo base_url('company/'.$company_info['id']); ?>" class="label label-primary"><?php echo lang("gotocompany"); ?></a></span></div>
+		<span><a href="<?php echo base_url('company/'.$company_info['id']); ?>" class="label label-primary"><?php echo lang("gotocompany"); ?></a></span>
+		<span><a href="<?php echo base_url('datasetexcel/'.$company_info['id']); ?>" class="label label-primary">Add Data From Excel File</a></span>
+		</div>
 	</div>
 	<div>
 		<ul class="list-inline ultab">
