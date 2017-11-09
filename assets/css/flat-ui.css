@@ -3852,7 +3852,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .table-bordered > thead > tr td,
 .table-bordered > tbody > tr td,
 .table-bordered > tfoot > tr td {
-  border: 2px solid #eef0f0 !important;
+  border: 2px solid #eef0f0;
   padding-top: 8px;
   padding-bottom: 8px;
   vertical-align: middle;

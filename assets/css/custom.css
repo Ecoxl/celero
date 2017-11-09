@@ -274,7 +274,7 @@ td {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    padding: 8px!important;
+    padding: 8px;
 }
 
 .homemain {
@@ -458,7 +458,21 @@ pre p{
     border-bottom: 1px solid #d0d0d0;
 }
 
+/*for deactivated features*/
 .not-active {
    cursor: default;
    opacity: 0.4;
+}
+
+/*special formating for numbers (with separate unit) in tables*/
+.table-numbers {
+    text-align: right; 
+    border-right-style: hidden !important; 
+    padding-right: 0px !important;
+}
+
+/*special formating for units left from numbers in tables*/
+.table-units {
+    text-align: right; 
+    padding-left: 2px !important;
 }

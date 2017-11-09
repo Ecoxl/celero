@@ -15,9 +15,11 @@
 				}
 		}
 	</script>
-
 	<div class="col-md-4 borderli" <?php if(validation_errors() == NULL ){echo "id='gizle'";} ?>>
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
+			<?php if (validation_errors() == NULL ): ?>
+				<button id="ac-hide" type="button" class="close" aria-hidden="true">&times;</button>
+			<?php endif ?>
 			<p class="lead"><?php echo lang("addflow"); ?></p>
 			<div class="form-group">
 				<label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">*</span></label>
@@ -80,10 +82,10 @@
 						<div class="col-md-4">
 							<label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
 							<select id="costUnit" class="info select-block" name="costUnit">
-								<option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
+								<option value="CHF" <?php echo set_select('costUnit', 'CHF'); ?>>CHF</option>
 								<option value="Euro" <?php echo set_select('costUnit', 'Euro'); ?>>Euro</option>
 								<option value="Dollar" <?php echo set_select('costUnit', 'Dollar'); ?>>Dollar</option>
-								<option value="CHF" <?php echo set_select('costUnit', 'CHF'); ?>>CHF</option>
+								<option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
 							</select>
 						</div>
 		  		</div>
@@ -229,19 +231,20 @@
 		<?php endif ?>
 		<p class="lead pull-left"><?php echo lang("companyflows"); ?></p>
 		<?php if(validation_errors() == NULL ): ?>
-		<button id="ac" class="btn btn-warning" style="margin-left: 20px;"><?php echo lang("addflow"); ?></button>
+			<button id="ac" class="btn btn-warning" style="margin-left: 20px;"> <?php echo lang("addflow"); ?></button>
 		<?php endif ?>
+		
 		<table class="table table-bordered" style="font-size:12px;">
 			<tr>
 				<th><?php echo lang("flowname"); ?></th>
 				<th><?php echo lang("flowtype"); ?></th>
 				<th><?php echo lang("flowfamily"); ?></th>
 				<th><?php echo lang("charactertype"); ?></th>
-				<th><?php echo lang("quantity"); ?></th>
-				<th><?php echo lang("cost"); ?></th>
-				<th><?php echo lang("ep"); ?></th>
+				<th colspan="2"><?php echo lang("quantity"); ?></th>
+				<th><?php echo lang("cost"). " " .$company_flows[0][cost_unit]; ?></th>
+				<th><?php echo lang("ep"). " UBP"; ?>
+				<button id="prefix" class="btn btn-default btn-sm"> pts </button></th>
 				<th><?php echo lang("chemicalformula"); ?></th>
-				<th><?php echo lang("availability"); ?></th>
 				<th><?php echo lang("concentration"); ?></th>
 				<th><?php echo lang("pressure"); ?></th>
 				<th><?php echo lang("ph"); ?></th>
@@ -265,11 +268,13 @@
 					<td><?php echo $flow['flowtype']; ?></td>
 					<td><?php echo $flow['flowfamily']; ?></td>
 					<td><?php echo $flow['character_type']; ?></td>
-					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
-					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
-					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
+					<td class="table-numbers"><?php echo number_format($flow['qntty'], 2, ".", "'"); ?></td>
+					<td class="table-units"><?php echo $flow['qntty_unit_name']; ?></td>
+
+					<td align="right"><?php echo number_format($flow['cost'], 0, "", "'"); ?></td>
+
+					<td align="right"><?php echo number_format($flow['ep'], 0, "", "'"); ?></td>
 					<td><?php echo $flow['chemical_formula']; ?></td>
-					<td><?php if($flow['availability']=="t"){echo "Available";}else{echo "Not Available";} ?></td>
 					<td><?php echo $flow['concentration'].' '.$flow['concunit']; ?></td>
 					<td><?php echo $flow['pression'].' '.$flow['presunit']; ?></td>
 					<td><?php echo $flow['ph']; ?></td>
@@ -291,9 +296,73 @@
 		</table>
 	</div>
 	<script type="text/javascript">
-		$( "#ac" ).click(function() {
+		$("#ac").click(function() {
 			$("#buyukbas").attr("class", "col-md-8");
-		  $( "#gizle" ).show( "slow" );
-		  $( "#ac" ).hide( "slow" );
+			$("#gizle").show("slow");
+		 	$("#ac").hide("slow");
+		});
+		$("#ac-hide").click(function() {
+			$(".borderli").hide("slow");
+			$("#ac").show("slow");
+		});
+		
+		//a button which allows to display UBP's in kilo pts, Mega pts and Giga pts.
+		index = 0;	
+		var arr_values = [];
+		$("#prefix").click(function() {   
+		    if(index > 3){
+		    	index = 0;
+		    };
+		    
+		    //creates arr_values with the the column values
+		    var table_trs = $(".table").find('tr');
+		    if(index == 0){
+			    table_trs.each(function(i) {
+			        $tds = $(this).find('td');
+			        //position of the UBP column (special case if rowspan=2 is used for input and output flow)
+			  		var column = 7;
+			        if($tds.size() == 18){
+			        	column = 6;
+			        }
+			        value = $tds.eq(column).text();
+			        arr_values.push(value);
+			    });
+			};
+
+			//calculates and formats the kilo, Mega and Giga values
+			table_trs.each(function(i) {
+				$tds = $(this).find('td');
+				var column = 7;
+			    if($tds.size() == 18){
+			       	column = 6;
+			    }
+		        switch(index) {
+				    case 0:
+				        var number_calc = arr_values[i].replace(/'/g, "") / 1000;
+				        $tds.eq(column).html(number_calc.toLocaleString("de-CH",  {maximumFractionDigits: 1, minimumFractionDigits: 1})
+				        	+"k");
+				        $("#prefix").html("kilo pts");
+				        break;
+				    case 1:
+				    	var number_calc = arr_values[i].replace(/'/g, "") / 1000000;
+				        $tds.eq(column).html(number_calc.toLocaleString("de-CH",  {maximumFractionDigits: 1, minimumFractionDigits: 1})
+				        	+"M");
+		        		$("#prefix").html("Mega pts");
+				        break;
+				    case 2:
+				    	var number_calc = arr_values[i].replace(/'/g, "") / 1000000000;
+				        $tds.eq(column).html(number_calc.toLocaleString("de-CH",  {maximumFractionDigits: 1, minimumFractionDigits: 1})
+				        	+"G");
+		        		$("#prefix").html("Giga pts");
+				        break;				    
+				    case 3:
+				        $tds.eq(column).html(arr_values[i]);
+		        		$("#prefix").html("pts");
+				        break;
+				    default:
+				    	//alert("default");
+				};
+			});
+		    index++;
 		});
 	</script>
