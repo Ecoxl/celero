@@ -22,9 +22,9 @@
       <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
       <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
       <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
-      <?php   if($this->session->userdata['site_lang']==null || $this->session->userdata['site_lang']=='') { ?>
+      <?php   if($this->session->get_userdata('language')==null || $this->session->get_userdata('language')=='') { ?>
         <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-en.js'); ?>"></script>
-      <?php  }else if($this->session->userdata['site_lang']=='turkish'){ ?>
+      <?php  }else if($this->session->get_userdata('language')=='turkish'){ ?>
             <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
       <?php  }else { ?>
             <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-en.js'); ?>"></script>

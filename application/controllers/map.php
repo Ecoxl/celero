@@ -7,7 +7,7 @@ class Map extends CI_Controller {
 	}
 
 	public function index(){  
-            //print_r($this->session->userdata['site_lang']);
+            //print_r($this->session->get_userdata('language'));
             //print_r($this->session->userdata['user_in']);
             if(isset($this->session->userdata['user_in'])) {
                if(empty($this->session->userdata['user_in'])){
@@ -25,12 +25,12 @@ class Map extends CI_Controller {
                 redirect(base_url('projects'), 'refresh');
             }
             
-            if(isset($this->session->userdata['site_lang'])) {
-               if(empty($this->session->userdata['site_lang'])==null){
+            if(isset($this->session->get_userdata('language'))) {
+               if(empty($this->session->get_userdata('language'))==null){
 			$data['site_lang'] = 'english';
 		} else {
-                    if($this->session->userdata['site_lang']=='english')  $data['site_lang'] = 'english';
-                    if($this->session->userdata['site_lang']=='turkish')  $data['site_lang'] = 'turkish';
+                    if($this->session->get_userdata('language')=='english')  $data['site_lang'] = 'english';
+                    if($this->session->get_userdata('language')=='turkish')  $data['site_lang'] = 'turkish';
                 } 
             } else {
                 $data['site_lang'] = 'english';
