@@ -108,10 +108,14 @@ class Flow_model extends CI_Model {
 	}
 
 	public function update_flow_info($companyID,$flow_id,$flow_type_id,$flow){
-    $this->db->where('t_cmpny_flow.cmpny_id',$companyID);
-    $this->db->where('t_cmpny_flow.flow_id',$flow_id);
-    $this->db->where('t_cmpny_flow.flow_type_id',$flow_type_id);
-    $this->db->update('t_cmpny_flow',$flow);
+	    $this->db->where('t_cmpny_flow.cmpny_id',$companyID);
+	    $this->db->where('t_cmpny_flow.flow_id',$flow_id);
+	    $this->db->where('t_cmpny_flow.flow_type_id',$flow_type_id);
+	    $this->db->update('t_cmpny_flow',$flow);
+	}
+
+	public function set_userep($data){
+		$this->db->insert('t_user_ep_values',$data);
 	}
 
 }
