@@ -106,7 +106,7 @@ class User extends CI_Controller {
 			redirect('completed', 'refresh');
 		}
 
-		$data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
+		$data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html('',true);
 
 		$this->load->view('template/header');
 		$this->load->view('user/create_user',$data);

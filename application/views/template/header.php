@@ -99,7 +99,7 @@
         <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> <?php echo lang("consultants"); ?></a></li>
         <?php
               //print_r($this->session->userdata('user_in'));
-        if ($this->session->userdata('user_in') !== FALSE):
+        if(isset($_SESSION['user_in'])):
           $tmp = $this->session->userdata('user_in');
         ?>
         <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i> <?php echo $tmp['username']; ?></a></li>
