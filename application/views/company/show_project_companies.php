@@ -3,8 +3,8 @@
 		<div class="col-md-8">
 				<div class="swissheader"><?php echo lang("projectcompanies"); ?></div>
 				<!-- harita -->
-				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
 				<?php
 				$company_array = array();
 			 	foreach ($companies as $com => $k) {	 

@@ -223,7 +223,7 @@ class Company extends CI_Controller{
 		}else{
 			$data['valid'] = "1";
 		}
-		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);
+		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);;
 		$data['company_prcss'] = $this->process_model->get_cmpny_flow_prcss($term);
 		$data['company_component'] = $this->component_model->get_cmpnnt($term);
 		$data['company_equipment'] = $this->equipment_model->all_information_of_equipment($term);

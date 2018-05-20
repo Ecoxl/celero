@@ -137,7 +137,7 @@ class Dataset extends CI_Controller {
 					'tper' => $this->input->post('tper'),
 				);
 			$this->product_model->update_product($companyID,$product_id,$productArray);
-			redirect(base_url('new_product/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+			redirect(base_url('new_product/'.$companyID), 'refresh'); // tablo olusurken ajax kullanï¿½labilir.
 
 		}
 
@@ -154,7 +154,7 @@ class Dataset extends CI_Controller {
 	public function new_flow($companyID)
 	{
 	
-		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
+		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback_alpha_dash_space');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric|max_length[10]');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
@@ -249,8 +249,8 @@ class Dataset extends CI_Controller {
 
 			$this->flow_model->register_flow_to_company($flow);
 			redirect(current_url());
-			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanýlabilir.
-			//þuan sayfa yenileniyor her seferinde database'den satýrlar ekleniyor.
+			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanï¿½labilir.
+			//ï¿½uan sayfa yenileniyor her seferinde database'den satï¿½rlar ekleniyor.
 
 		}
 
@@ -354,14 +354,14 @@ class Dataset extends CI_Controller {
 
 			$this->flow_model->update_flow_info($companyID,$flow_id,$flow_type_id,$flow);
 
-			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
-			//þuan sayfa yenileniyor her seferinde database'den satýrlar ekleniyor.
+			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanï¿½labilir.
+			//ï¿½uan sayfa yenileniyor her seferinde database'den satï¿½rlar ekleniyor.
 
 		}
 
 		$data['flow']=$this->flow_model->get_company_flow($companyID,$flow_id,$flow_type_id);
 		if(empty($data['flow'])){
-			redirect(base_url(), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+			redirect(base_url(), 'refresh'); // tablo olusurken ajax kullanï¿½labilir.
 		}
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
@@ -396,7 +396,7 @@ class Dataset extends CI_Controller {
 
 	function alpha_dash_space($str)
 	{
-	  return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? FALSE : TRUE;
+	  return ( ! preg_match("/^([-a-z0-9_ ])+$/i", $str)) ? FALSE : TRUE;
 	}
 
 	public function new_component($companyID){
@@ -484,9 +484,9 @@ class Dataset extends CI_Controller {
 	}
 
 	public function new_process($companyID){
-
 		$this->form_validation->set_rules('process','Process','required');
 		$this->form_validation->set_rules('usedFlows','Used Flows','required');
+
 		// $this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');

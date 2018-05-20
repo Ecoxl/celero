@@ -116,6 +116,7 @@
 			</tr>
 			<?php foreach ($cmpny_flow_prcss as $key=>$attribute): ?>
 				<tr>
+                    <?php $son = ""; ?>
 					<?php if($son !== $attribute['prcessname']): ?>
 						<td rowspan="<?php echo $cmpny_flow_prcss_count[$attribute['prcessname']]; ?>"><?php echo $attribute['prcessname']; ?></td>
 					<?php endif ?>
