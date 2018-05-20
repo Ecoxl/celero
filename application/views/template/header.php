@@ -113,28 +113,28 @@
 
     <ul id="companies" class="nav navbar-nav alt-nav" style="display:none;">
          <li><a href="#" class="nav-info"></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
         <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("mycompanies"); ?></a></li>
-        <?php if($this->session->userdata('project_id') !== FALSE): ?>
+        <?php if(isset($_SESSION['project_id'])): ?>
           <li><a href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("projectcompanies"); ?></a></li>
         <?php endif ?>
       <?php endif ?>
         <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
         <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> <?php echo lang("createcompany"); ?></a></li>
       <?php endif ?>
     </ul>
 
     <ul id="projects" class="nav navbar-nav alt-nav" style="display:none;">
          <li><a href="#" class="nav-info"></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
         <li><a href="<?php echo base_url('myprojects'); ?>"><i class="fa fa-globe"></i> <?php echo lang("myprojects"); ?></a></li>
       <?php endif ?>
       <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> <?php echo lang("allprojects"); ?></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
         <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> <?php echo lang("createproject"); ?></a></li>
       <?php endif ?>
-      <?php if($this->session->userdata('project_id') !== FALSE): ?>
+      <?php if(isset($_SESSION['project_id'])): ?>
         <li class="pull-right"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
         <li class="pull-right"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a></li>
       <?php endif ?>
@@ -142,8 +142,8 @@
 
     <ul id="analysis" class="nav navbar-nav alt-nav" style="display:none;">
          <li><a href="#" class="nav-info"></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <?php if($this->session->userdata('project_id') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
+        <?php if(isset($_SESSION['project_id'])): ?>
           <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> <?php echo lang("cpidentification"); ?></a></li>
           <li>
             <div class="dropdown">
@@ -179,7 +179,7 @@
 
     <ul id="reporting" class="nav navbar-nav alt-nav" style="display:none;">
       <li><a href="#" class="nav-info"></a></li>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <?php if (isset($_SESSION['user_in'])): ?>
       <li><a href="<?php echo base_url('createreport'); ?>"><i class="fa fa-globe"></i> <?php echo lang("createreport"); ?></a></li>
       <?php endif ?>
       <li><a href="<?php echo base_url('allreports'); ?>"><i class="fa fa-globe"></i> <?php echo lang("allreports"); ?></a></li>

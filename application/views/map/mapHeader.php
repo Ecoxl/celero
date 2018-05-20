@@ -62,7 +62,7 @@
         <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i><?php echo lang("contactus"); ?> </a></li>
         <?php
           //print_r($this->session->userdata('user_in'));
-          if ($this->session->userdata('user_in') !== FALSE):
+          if (isset($_SESSION['user_in'])):
             $tmp = $this->session->userdata('user_in');
         ?>
           <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i>
