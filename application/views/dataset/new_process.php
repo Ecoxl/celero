@@ -39,7 +39,7 @@
 			</div>
  			<div class="form-group">
 		    	<label for="description"><?php echo lang("usedflows"); ?> <span style="color:red;">*</span></label>
-		    	<select multiple="multiple" class="select-block" id="usedFlows" name="usedFlows[]">
+		    	<select class="select-block" id="usedFlows" name="usedFlows">
 			    	<?php foreach ($company_flows as $flow): ?>
 						<option value="<?php echo $flow['cmpny_flow_id']; ?>"><?php echo $flow['flowname'].'('.$flow['flowtype'].')'; ?></option>
 					<?php endforeach ?>

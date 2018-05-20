@@ -519,14 +519,12 @@ class Dataset extends CI_Controller {
 				$cmpny_prcss_id['id'] = $this->process_model->cmpny_prcss($cmpny_prcss);
 			}
 
-			foreach($used_flows as $flow) {
-				if($this->process_model->can_write_cmpny_flow_prcss($flow,$cmpny_prcss_id['id']) == true){
+				if($this->process_model->can_write_cmpny_flow_prcss($used_flows,$cmpny_prcss_id['id']) == true){
 					$cmpny_flow_prcss = array(
-						'cmpny_flow_id' => $flow,
+						'cmpny_flow_id' => $used_flows,
 						'cmpny_prcss_id' => $cmpny_prcss_id['id']
 					);
 					$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
-				}
 			}
 		}
 
