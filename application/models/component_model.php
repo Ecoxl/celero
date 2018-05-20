@@ -44,7 +44,7 @@ class Component_model extends CI_Model {
   }
 
 	public function get_cmpnnt($cmpny_id){
-		$this->db->select('*,t_unit.name as qntty_name, t_cmpnnt.id as id,t_cmpnnt.name as component_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name');
+		$this->db->select('*,t_cmpnt_type.name as type_name,t_unit.name as qntty_name, t_cmpnnt.id as id,t_cmpnnt.name as component_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name');
 		$this->db->from('t_cmpny_flow');
 		$this->db->join('t_cmpny_flow_cmpnnt','t_cmpny_flow.id = t_cmpny_flow_cmpnnt.cmpny_flow_id');
 		$this->db->join('t_cmpnnt','t_cmpny_flow_cmpnnt.cmpnnt_id = t_cmpnnt.id');
