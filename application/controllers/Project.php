@@ -70,8 +70,8 @@ class Project extends CI_Controller{
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean|required');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|max_length[200]|mb_strtolower|is_unique[t_prj.name]');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[200]|xss_clean');
-		$this->form_validation->set_rules('assignCompany','Assign Company','required');
-		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
+		$this->form_validation->set_rules('assignCompany','Assign Company','callback_check_default2');
+		$this->form_validation->set_rules('assignConsultant','Assign Consultant','callback_check_default');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
 		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|xss_clean|max_length[2]|numeric');
 
@@ -135,6 +135,26 @@ class Project extends CI_Controller{
 		$this->load->view('template/header');
 		$this->load->view('project/create_project',$data);
 		$this->load->view('template/footer');
+	}
+
+	function check_default($array)
+	{
+		$choice = $this->input->post("assignConsultant");
+	  if(empty($choice)){
+		$this->form_validation->set_message('check_default', 'Consultant must be selected');
+	  	return FALSE;
+	  }
+	 return TRUE;
+	}
+
+	function check_default2($array)
+	{
+		$choice = $this->input->post("assignCompany");
+	  if(empty($choice)){
+		$this->form_validation->set_message('check_default2', 'Company must be selected');
+	  	return FALSE;
+	  }
+	 return TRUE;
 	}
 
 	public function contact_person(){
