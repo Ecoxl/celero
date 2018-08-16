@@ -45,16 +45,16 @@
                         //console.log(project);
   			var bounds = new L.LatLngBounds(project);
 
-        var map = L.map('map');
+        var map = L.map('map', {
+            center: [48.505, 11.59],
+            zoom: 3
+        });
         map.fitWorld().zoomIn();
 
 				map.on('resize', function(e) {
 				    map.fitWorld({reset: true}).zoomIn();
-				});
-        /*var map = L.map('map', {
-    center: [51.505, -0.09],
-    zoom: 13
-});*/
+				 });
+ 
 
         mapLink =
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';

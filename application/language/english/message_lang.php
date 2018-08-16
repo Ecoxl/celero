@@ -1,17 +1,24 @@
 <?php
 $lang["profiles"]             = "Profiles";
+$lang["account"]              = "My Account";
 $lang["companies"]            = "Companies";
 $lang["projects"]             = "Projects";
 $lang["projectcompanies"]     = "Project Companies";
 $lang["analysis"]             = "Analysis";
+$lang["services"]             = "Services";
+$lang["cases"]            	  = "Cases";
 $lang["search"]               = "Search";
 $lang["whoarewe"]             = "Who are we?";
 $lang["whatwedo"]             = "What we do?";
 $lang["functionalities"]      = "Functionalities";
 $lang["consultants"]          = "Consultants";
 $lang["reporting"]            = "Reporting";
+$lang["about"]          	  = "About";
+$lang["legal"]          	  = "Legal disclaimer";
 $lang["help"]           	  = "Help";
-$lang["usermanual"]           = "Download</br>User Manual";
+$lang["faq"]           	  	  = "Frequently asked questions";
+$lang["usermanual"]           = "User Manual";
+$lang["dl-usermanual"]        = "Download user manual here";
 
 $lang["createreport"]         = "Create Report";
 $lang["allreports"]           = "All Reports";
@@ -24,6 +31,7 @@ $lang["logout"]               = "Logout";
 $lang["allcompanies"]         = "All Companies";
 $lang["mycompanies"]          = "My Companies";
 $lang["createcompany"]        = "Create Company";
+$lang["add"]				  = "Add";
 
 $lang["allprojects"]          = "All Projects";
 $lang["myprojects"]           = "My Projects";
@@ -31,14 +39,16 @@ $lang["createproject"]        = "Create Project";
 
 $lang["analysisinfo"]         = "You need to open a project to work on the tools.";
 $lang["analysisinfo2"]        = "You need to login and open a project to use analysis tools.";
-$lang["cpidentification"]     = "CP - Potential Identification";
-$lang["isidentification"]     = "IS - Potential Identification";
+$lang["cpidentification"]     = "Identification of CP measures";
+$lang["isidentification"]     = "Identification of IS measures";
 $lang["gis"]                  = "GIS";
 $lang["costbenefitanalysis"]  = "Cost - Benefit Analysis";
 $lang["ecotracking"]          = "Eco Tracking";
 $lang["closeproject"]         = "Close Project";
 
-$lang['slogan']               = "License-free web-based decision support software for Cleaner Production and Industrial Symbiosis";
+$lang['slogan']               = "Optimize resources and identify industrial synergies";
+$lang['celerodescription']    = "License-free web app for Cleaner Production and Industrial Symbiosis";
+$lang['startusing']			  = "Start using CELERO";
 $lang['username']             = "Username";
 $lang['validcharacters']	  = "(Valid characters are a-z and 0-9)";
 $lang['password']             = "Password";
@@ -60,7 +70,8 @@ $lang["job"]                  = "Job";
 $lang["description"]          = "Description";
 
 $lang["consultantsdesc"]      = "You are seeing all the consultants of the system. You can access their profile and contact with them";
-$lang["mycompanydesc"]        = "You are now seeing the companies created by you or the companies that you belong as a user.";
+$lang["mycompanydesc"]        = "Here can you see the companies created by yourself and the companies that you belong too as a user.";
+$lang["nocompany"]			  = "You dont have a company yet.";
 $lang["allcompaniesdesc"]     = "You are seeing all companies in the system. You can access management pages if you have permission for the company.";
 $lang["editcompanydata"]      = "Edit Company Data";
 $lang["editcompanyinfo"]      = "Edit Company Info";

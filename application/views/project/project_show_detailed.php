@@ -137,7 +137,10 @@
                                     var planes = <?php echo json_encode($company_array); ?>;
                                     var bounds = new L.LatLngBounds(planes);
 
-                    var map = L.map('map').setView([41.83683, 19.33594], 4);
+                            		var map = L.map('map', {
+           								center: [48.505, 11.59],
+							           	zoom: 3
+							        });
                             map.fitWorld().zoomIn();
 
                                             map.on('resize', function(e) {

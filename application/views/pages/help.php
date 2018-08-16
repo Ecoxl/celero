@@ -2,7 +2,7 @@
 <div class="container" >
 	<?php if($this->session->userdata('site_lang') == "turkish"): ?>
 	<div class="col-md-10">
-		<div class="swissheader"><?php echo lang("help"); ?></div>
+		<div class="swissheader"><?php echo lang("faq"); ?></div>
 
 		<div class="helpheader">Bir akış nasıl eklenir?</div><div class="helpbody">Firma sayfası aracılığı ile erişilen veri yönetimi modülü üzerinde akış tabına basın ve "akış ekle" tuşu ile açılan formu doldurun. Formu onayladığınızda firmaya ait akış eklenecektir. </div>
 <div class="helpheader">Bir bileşeni nasıl eklerim?</div><div class="helpbody">Firma sayfası aracılığı ile erişilen veri yönetimi modülü üzerinde bileşen tabına basın ve açılan formu doldurun. Formu onayladığınızda firmaya ait akışa bağlı bileşen eklenecektir. </div>
@@ -74,7 +74,7 @@ Kullanıcı manuel olarak eşleşme gerçekleştirebilmektedir.
 	</div>
 <?php else: ?>
 	<div class="col-md-10">
-		<div class="swissheader"><?php echo lang("help"); ?></div>
+		<div class="swissheader"><?php echo lang("faq"); ?></div>
 
 		<div class="helpheader">How do I add a flow ?</div><div class="helpbody">When you login, choose a company and open Dataset Management, then press Add Flow and fill the information </div>
 <div class="helpheader">How do I add a component ?</div><div class="helpbody">When you login, choose a company and open Dataset Management, then press Add Component and fill the information </div>
@@ -100,8 +100,8 @@ Once the company page displays, the user clicks on the “edit company data” b
 <div class="helpheader">How I edit and/or view KPI information for a company ?</div><div class="helpbody">When you login, open a project, then press Analysis tab on top, then press CP-Potential Identification button, then press the View and Edit KPI Calculation button of the corresponding company that you are interested in for the project </div>
 <div class="helpheader">How do I see the map and GIS data for a company ?</div><div class="helpbody">When you login and open a project, you can press ANalysis tab on top, then press GIS button, it will show you the companies that are related to the project </div>
 <div class="helpheader">What is the difference between a automated and a manual IS potential identification?</div><div class="helpbody">When the user clicks on the “IS-Potential Identification” button, a scroll down menu appears. The user can choose to:
--  Operate a automatic IS detection (“Automated IS” button). When operating an Automated IS detection, Ecoman automatically detects Potential IS by matching the flows that have the same name. The user then selects from the pool of Potential IS the ones that seem the most relevant.
--   Operate a manual IS detection (“Manual IS” button). When operating a Manual IS detection, Ecoman displays all available flows from the opened project and the user himself matches the flow that can be mutualized.  </div>
+-  Operate a automatic IS detection (“Automated IS” button). When operating an Automated IS detection, CELERO automatically detects Potential IS by matching the flows that have the same name. The user then selects from the pool of Potential IS the ones that seem the most relevant.
+-   Operate a manual IS detection (“Manual IS” button). When operating a Manual IS detection, CELERO displays all available flows from the opened project and the user himself matches the flow that can be mutualized.  </div>
 <div class="helpheader">How to operate an automated IS Potential Detection?</div><div class="helpbody">1. Step 1: Flows (left upper table) : The user selects the flows that will be considered in the IS potential detection (multiple choice is possible).2. Step 2: Select a company and calculate IS potentials (right upper panel): During this step, the user selects the companies and the type of IS that will be considered in the IS potential detection:
 
 2.1 To select a company, the user needs to click on the company name in the table. The selected line will then highlight in yellow (see *1 in Figure  "Automated IS Potential Detection"). Multiple choices are possible. If the user would like all the company to be selected, he can click on the “select all companies” (see *2 in Figure "Automated IS Potential Detection")
@@ -164,9 +164,9 @@ Notes:
 
 	</div>
 	<?php endif ?>
-	<div class="col-md-2">
-		
-	<a href="<?php echo asset_url('CELEROusermanual.pdf'); ?>"><div  style="background-color:#2D8B42; color:white; text-align: center;"><?php echo lang("usermanual"); ?> <span class="glyphicon glyphicon-book"></span></div></a>
+	<div class="col-md-2 well">
+		<p><b>User Manual Download</b></p>
+		<a href="<?php echo asset_url('CELEROusermanual.pdf'); ?>"><div  style="background-color:#2D8B42; color:white; text-align: center;"><?php echo lang("usermanual"); ?> <span class="glyphicon glyphicon-book"></span></div></a>
 	</div>
 </div>
 <?php $this->load->view('template/footer'); ?>

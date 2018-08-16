@@ -1,4 +1,7 @@
 <div class="container">
+	<?php if(!empty($this->session->flashdata('project_error'))): ?>
+		<div class="alert alert-warning"><?php echo $this->session->flashdata('project_error'); ?></div>
+	<?php endif ?>
 	<div class="row">
 		<div class="col-md-8">
 				<div class="swissheader"><?php echo lang("myprojects"); ?></div>
@@ -16,26 +19,29 @@
 				?>
 				<div id="map"></div>
 				<script type="text/javascript">
-  			var project = <?php echo json_encode($project_array); ?>;
-  			var bounds = new L.LatLngBounds(project);
+			  		var project = <?php echo json_encode($project_array); ?>;
+			  		var bounds = new L.LatLngBounds(project);
 
-        var map = L.map('map').setView([41.83683, 19.33594], 1);
-        map.fitWorld().zoomIn();
+			        var map = L.map('map', {
+			            center: [48.505, 11.59],
+			            zoom: 3
+			        });
+			        map.fitWorld().zoomIn();
 
-				map.on('resize', function(e) {
-				    map.fitWorld({reset: true}).zoomIn();
-				});
-        mapLink = 
-            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-				}).addTo(map);
+							map.on('resize', function(e) {
+							    map.fitWorld({reset: true}).zoomIn();
+							});
+			        mapLink = 
+			            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+			        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+								attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+						}).addTo(map);
 
-				for (var i = 0; i < project.length; i++) {
-					marker = new L.marker([project[i][0],project[i][1]])
-						.bindPopup(project[i][2])
-						.addTo(map);
-				}
+						for (var i = 0; i < project.length; i++) {
+							marker = new L.marker([project[i][0],project[i][1]])
+								.bindPopup(project[i][2])
+								.addTo(map);
+						}
 				</script>
 				<!-- harita bitti -->
 			<table class="table-hover" style="clear:both; width: 100%;">
