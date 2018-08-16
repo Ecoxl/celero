@@ -99,8 +99,7 @@
 			</div>
 	    <button type="submit" class="btn btn-info"><?php echo lang("addprocess"); ?></button>
 	    </form>
-	    			<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
-
+	    		<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 	    </div>
 		<div class="col-md-8">
 			<p class="lead"><?php echo lang("companyprocess"); ?></p>
@@ -108,21 +107,21 @@
 			<tr>
 				<th><?php echo lang("processname"); ?></th>
 				<th><?php echo lang("usedflows"); ?></th>
-<!-- 				<th>Minimum rate of utilization</th>
+<!-- 			<th>Minimum rate of utilization</th>
 				<th>Typical rate of utilization</th>
 				<th>Maximum rate of utilization</th> -->
 				<th><?php echo lang("comments"); ?></th>
 				<th><?php echo lang("manage"); ?></th>
 			</tr>
+			<?php $son = ""; ?>
 			<?php foreach ($cmpny_flow_prcss as $key=>$attribute): ?>
 				<tr>
-                    <?php $son = ""; ?>
 					<?php if($son !== $attribute['prcessname']): ?>
 						<td rowspan="<?php echo $cmpny_flow_prcss_count[$attribute['prcessname']]; ?>"><?php echo $attribute['prcessname']; ?></td>
 					<?php endif ?>
 
 					<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
-<!-- 					<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
+<!-- 				<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
 					<td><?php echo $attribute['typ_rate_util']; ?> <?php echo $attribute['typrateu']; ?></td>
 					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td> -->
 					<td><?php echo $attribute['comment']; ?></td>

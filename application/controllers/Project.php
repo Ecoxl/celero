@@ -45,7 +45,7 @@ class Project extends CI_Controller{
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
 		if(!$is_consultant){
 			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you need to be a consultant to create a new project.');
-			redirect('projects', 'refresh');
+			redirect('myprojects', 'refresh');
 		}
 
     $this->load->library('googlemaps');

@@ -19,7 +19,7 @@
   			var planes = <?php echo json_encode($company_array); ?>;
   			var bounds = new L.LatLngBounds(planes);
 
-        var map = L.map('map').setView([41.83683, 19.33594], 4);
+        var map = L.map('map').setView([47.5596, 7.5886], 3);
                 map.fitWorld().zoomIn();
 
 				map.on('resize', function(e) {
@@ -65,6 +65,7 @@
 
 			<div class="well"><?php echo lang("allcompaniesdesc"); ?></div>
 
+			<!-- Cluster functionality currently deactivated
 			<?php echo form_open_multipart('companies'); ?>
 			<div class="well" style="margin-top: 20px;">
 				<label for="cluster"><?php echo lang("selectcluster"); ?></label>
@@ -77,7 +78,7 @@
 				<button type="submit" class="btn btn-primary btn-sm"><?php echo lang("filter"); ?></button>
 			</div>
 			</form>
-			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>"><?php echo lang("addtocluster"); ?></a>
+			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>"><?php echo lang("addtocluster"); ?></a> -->
 
 		</div>
 	</div>

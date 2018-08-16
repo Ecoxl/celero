@@ -363,7 +363,7 @@
                     $tds = $(this).find('td');
                     //position of the UBP column (special case if rowspan=2 is used for input and output flow)
                     var column = 7;
-                    if ($tds.size() == 18) {
+                    if ($tds.length == 18) {
                         column = 6;
                     }
                     value = $tds.eq(column).text();
@@ -376,7 +376,7 @@
             table_trs.each(function (i) {
                 $tds = $(this).find('td');
                 var column = 7;
-                if ($tds.size() == 18) {
+                if ($tds.length == 18) {
                     column = 6;
                 }
                 switch (index) {

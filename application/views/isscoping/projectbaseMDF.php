@@ -5,7 +5,7 @@
 
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
-<script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
+<script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
 <?php if($language == 'turkish') { ?>
     <script src="<?php echo asset_url('is/IS_js/js2_scen_slim2_project_base_mdf_tr.js'); ?>"></script>
 <?php } else { ?>

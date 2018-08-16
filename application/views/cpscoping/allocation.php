@@ -1,36 +1,52 @@
 <script type="text/javascript">
 var pathname = window.location.pathname;
-var prj_id = pathname.split("/")[3];
-var cmpny_id = pathname.split("/")[4];
+var prj_id = pathname.split("/")[2];
+var cmpny_id = pathname.split("/")[3];
 $(document).ready(function() {
     $("#prcss_name").change(function() {
     	var prcss_id = $( "#prcss_name").val();
         $('#flow_name').children().remove();
         $('#flow_type_name').children().remove();
+        //empties all allocation fields when a process is selected
+        $('#allocation_fields').children().find("input[type=text], textarea").val("");
         $.ajax({
             type: "POST",
             dataType:'json',
             url: '<?php echo base_url('cp_allocation_array');?>/'+cmpny_id,
             success: function(data)
             {
-            	$('#flow_name').append('<option value=""><?php echo lang("pleaseselect"); ?></option>');
+            	$('#flow_name').append('<option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>');
            		for(var k = 0 ; k < data.length ; k++){
            			if(data[k].company_process_id == prcss_id){
-                    	$('#flow_name').append('<option value="'+data[k].flow_id+'">'+data[k].flowname+'</option>');
+                    	$('#flow_name').append('<option value="'+data[k].flow_id+'">'+data[k].flowname+" ("+data[k].flow_type_name+')</option>');
                     }
                 }
-                $('#flow_type_name').append('<option value=""><?php echo lang("pleaseselect"); ?></option>');
+                $('#flow_type_name').append('<option value="0" disabled selected><?php echo lang("pleaseselect"); ?></option>');
            		for(var k = 0 ; k < data.length ; k++){
            			if(data[k].company_process_id == prcss_id){
-           					if(!optionExists(data[k].flow_type_id)){
-                    	$('#flow_type_name').append('<option value="'+data[k].flow_type_id+'">'+data[k].flow_type_name+'</option>');
-           					}
+       					if(!optionExists(data[k].flow_type_id)){
+                			$('#flow_type_name').append('<option value="'+data[k].flow_type_id+'">'+data[k].flow_type_name+'</option>');
+       					}
                     }
                 }
             }
         });
     });
+    //when a flow is selected
+    $("#flow_name").change(function() {
+    	//empties all allocation fields
+		$('#allocation_fields').children().find("input[type=text], textarea").val("");
+		//sets flow_type_name accordingly to selected flow_name
+		if ($(this).children("option:selected").text().split("(").pop() == "Input)"){
+        	$('#flow_type_name').val("1").change();
+     	} 
+     	else {
+     		$('#flow_type_name').val("2").change();
+     	} 
+	});
 });
+
+
 
 function optionExists(val) {
   return $("#flow_type_name option[value='" + val + "']").length !== 0;
@@ -108,7 +124,7 @@ function aatf() {
 			<div class="form-group clearfix row">
 				<label for="flow_type_name" class="control-label col-md-12"><?php echo lang("selectflowtype"); ?></label>
 				<div class="col-md-12">
-					<select name="flow_type_name" id="flow_type_name" onchange="aatf()" class="btn-group select select-block">
+					<select name="flow_type_name" id="flow_type_name" onchange="aatf()" class="btn-group select select-block" disabled="true"> 
 						<option value=""><?php echo lang("pleaseselect"); ?></option>
 					</select>
 				</div>
@@ -143,7 +159,7 @@ function aatf() {
 				<?php echo lang("alloheading3"); ?>
 			<?php endif ?>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9" id="allocation_fields">
 			<div><span class="badge">2</span> <?php echo lang("alloheading4"); ?></div>
 			<hr>
 			<div class="form-group clearfix row">
@@ -289,7 +305,7 @@ $('[data-toggle="tooltip"]').tooltip({
 </script>
 <script type="text/javascript">
 $('#flow_type_name').change(function(b){
-	 		var cmpny_id = "<?php echo $this->uri->segment(3); ?>";
+	var cmpny_id = "<?php echo $this->uri->segment(3); ?>";
 
 	var e = document.getElementById("prcss_name");
 	var prcss_name = e.options[e.selectedIndex].value;

@@ -8,14 +8,14 @@
 .tg .tg-yw4l{vertical-align:top;}
 .tg .tg-yw4l input{font-size: 11px; height: 28px;}
 </style>
-<?php //print_r($allocation); ?>
+<?php //print_r($allocation); ?><br><br>
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
 	<?php $i=1; ?>
 	<?php foreach ($allocation as $a): ?>
 		<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
-			<?php $attributes = array('id' => 'form-'.$i); ?>
+		<?php $attributes = array('id' => 'form-'.$i); ?>
 		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
     <table class="tg costtable">
         <tr>
@@ -31,7 +31,7 @@
             <th class="tg-yw4l">Lifetime (yr)</th>
             <th class="tg-yw4l">Investment (<?php echo $a['unit_cost']; ?>)</th>
             <th class="tg-yw4l">Discount rate (%) not for the existing process</th>
-            <th class="tg-yw4l">Yearly CAPEX  (<?php echo $a['unit_cost']; ?>/yr)</th>
+            <th class="tg-yw4l">Yearly CAPEX (<?php echo $a['unit_cost']; ?>/yr)</th>
             <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
             <th class="tg-yw4l">unit</th>
             <th class="tg-yw4l">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
@@ -44,9 +44,9 @@
             <th class="tg-yw4l">Unit</th>
             <th class="tg-yw4l">Reduction OPEX (<?php echo $a['unit_cost']; ?>)</th>
             <th class="tg-yw4l">Economic Benefit (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">Ecological  Benefit (EP)</th>
+            <th class="tg-yw4l">Ecological Benefit (EP)</th>
             <th class="tg-yw4l">Marginal costs (<?php echo $a['unit_cost']; ?>/EP)</th>
-            <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
+            <th class="tg-yw4l">Payback time of Investment (yrs)</th>
             <th class="tg-yw4l">Save</th>
         </tr>
         <tr>
@@ -77,7 +77,7 @@
             <div class="  "><input type="text" name="flow-eipunit-1" id="flow-eipunit-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-1" id="flow-eip-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1']; ?>" placeholder="Fill"  ></div>
+            <div class="  "><input type="text" name="flow-eip-1" id="flow-eip-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['floweip-1']; ?>" placeholder="Fill"  ></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
             <div class="  "><input type="text" name="annual-cost-1" id="annual-cost-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['annual-cost-1']; ?>" placeholder="Fill" ></div>
