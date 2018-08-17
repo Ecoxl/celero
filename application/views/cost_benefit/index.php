@@ -466,7 +466,9 @@
 
     <?php $i++; ?>
 	</form>
-	<script type="text/javascript">	$( document ).ready(calculate);</script>
+	<script type="text/javascript">
+    	//$( document ).ready(calculate);
+    </script>
     <?php endforeach ?>
 <?php endif ?>
 <hr>
@@ -611,7 +613,7 @@
 				</table>
 				<input type="submit" value="<?php echo lang("save"); ?>" class="btn btn-block btn-info" style="margin-top:20px;"/> -->
 				<script type="text/javascript">
-
+                    
 				/*	$('#form-<?php echo $i; ?> input').keydown(function(e){
 						
 						// Allow: backspace, delete, tab, escape, enter and .

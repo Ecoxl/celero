@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="<?php echo asset_url('images/favicon.png'); ?>" >
   <meta charset="utf-8">
   <title>CELERO</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
