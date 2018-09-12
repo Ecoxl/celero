@@ -106,6 +106,8 @@ $lang["thisisconsultant"]     = "This user is a consultant";
 $lang["becomeconsultant"]     = "Become a consultant";
 $lang["projectsasconsultant"] = "Projects as a Consultant";
 $lang["projectsasuser"]       = "Project as a User";
+$lang["notchangable"]         = "(cannot be changed afterwards)";
+
 
 $lang["status"]               = "Status";
 $lang["startdate"]            = "Start Date";

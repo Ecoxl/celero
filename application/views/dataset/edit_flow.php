@@ -38,12 +38,12 @@
 					</div>
 					<div class="col-md-4">
 						<label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span style="color:red;">*</span></label>
-						<select id="quantityUnit" class="info select-block" name="quantityUnit">
-							<?php foreach ($units as $unit): ?>
-								<?php if($flow['qntty_unit_id']==$unit['id']) {$deger = TRUE;}else{$deger=False;} ?>
-								<option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id'], $deger); ?>><?php echo $unit['name']; ?></option>
-							<?php endforeach ?>
-						</select>
+					    <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+		                    <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+		                    <?php foreach ($units as $unit): ?>
+		                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+		                    <?php endforeach ?>
+		                </select>
 					</div>
 				</div>
 			</div>
@@ -163,12 +163,15 @@
 					<?php $x = FALSE; ?>
 					<?php $y = FALSE; ?>
 					<?php $z = FALSE; ?>
+					<?php $w = FALSE; ?>
 					<?php if($flow['state_id']=="1") {$x = TRUE;} ?>
 					<?php if($flow['state_id']=="2") {$y = TRUE;} ?>
 					<?php if($flow['state_id']=="3") {$z = TRUE;} ?>
+					<?php if($flow['state_id']=="4") {$w = TRUE;} ?>
 					<option value="1" <?php echo set_select('state', '1', $x); ?>>Solid</option>
 					<option value="2" <?php echo set_select('state', '2', $y); ?>>Liquid</option>
-					<option value="3" <?php echo set_select('state', '3', $z); ?>>Gas</option>					
+					<option value="3" <?php echo set_select('state', '3', $z); ?>>Gas</option>
+					<option value="4" <?php echo set_select('state', '4', $w); ?>>n/a</option>				
 				</select>
 			</div>
 
@@ -225,3 +228,8 @@
 		</form>
 		<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 		</div>
+<script type="text/javascript">
+    $('#selectize-units').selectize({
+        create: false
+    });
+</script>

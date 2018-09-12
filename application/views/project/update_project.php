@@ -72,8 +72,8 @@
 					</select>
 	 			</div>
 	 			<br>
-				<button type="submit" class="btn col-md-9"><?php echo lang("save"); ?></button>
-    		<a href="<?php echo base_url('project/'.$projects['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
+				<button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("save"); ?></button>
+    			<a href="<?php echo base_url('project/'.$projects['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
 			</div>
 			<div class="col-md-4">
 

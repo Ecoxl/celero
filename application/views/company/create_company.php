@@ -89,7 +89,8 @@
                             
                 <div class="form-group">
                     <label for="country">Country</label>
-					<select id="selectize2" name="country">
+					<select id="selectize" name="country">
+						<option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
 						<!--<option value="">Nothing Selected</option>-->
 						<?php foreach ($countries as $anc): ?>
 							<option value="<?php echo $anc['id']; ?>"><?php echo $anc['country_name']; ?> </option>

@@ -24,7 +24,7 @@
     <?php endif ?>
     <p class="lead"><?php echo lang("addflow"); ?></p>
     <div class="form-group">
-        <label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">*</span></label>
+        <label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
         <select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
             <option value=""><?php echo lang("pleaseselect"); ?></option>
             <?php foreach ($flownames as $flowname): ?>
@@ -33,7 +33,7 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="flowtype"><?php echo lang("flowtype"); ?> <span style="color:red;">*</span></label>
+        <label for="flowtype"><?php echo lang("flowtype"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
         <select id="flowtype" class="info select-block" name="flowtype">
             <?php foreach ($flowtypes as $flowtype): ?>
                 <option value="<?php echo $flowtype['id']; ?>" <?php echo set_select('flowtype', $flowtype['id']); ?>><?php echo $flowtype['name']; ?></option>
@@ -41,7 +41,7 @@
         </select>
     </div>
     <div class="form-group" id="flow-family" style="display:none;">
-        <label for="flowfamily"><?php echo lang("flowfamily"); ?> <span style="color:red;">*</span></label>
+        <label for="flowfamily"><?php echo lang("flowfamily"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
         <select id="flowfamily" class="info select-block" name="flowfamily">
             <option value="">Nothing Selected</option>
             <?php foreach ($flowfamilys as $flowfamily): ?>
@@ -67,10 +67,10 @@
                        value="<?php echo set_value('quantity'); ?>">
             </div>
             <div class="col-md-4">
-                <label for="quantity"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span
+                <label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span
                             style="color:red;">*</span></label>
-                <select id="quantityUnit" class="info select-block" name="quantityUnit">
-                    <option value=""><?php echo lang("pleaseselect"); ?></option>
+                <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+                    <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
                     <?php foreach ($units as $unit): ?>
                         <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
                     <?php endforeach ?>
@@ -183,6 +183,7 @@
             <option value="1" <?php echo set_select('state', '1'); ?>>Solid</option>
             <option value="2" <?php echo set_select('state', '2'); ?>>Liquid</option>
             <option value="3" <?php echo set_select('state', '3'); ?>>Gas</option>
+            <option value="4" <?php echo set_select('state', '4'); ?>>n/a</option>
         </select>
     </div>
 
@@ -312,8 +313,10 @@
                             echo "Solid";
                         } else if ($flow['state_id'] == "2") {
                             echo "Liquid";
-                        } else {
+                        } else if ($flow['state_id'] == "3") {
                             echo "Gas";
+                        } else {
+                            echo "n/a";
                         } ?></td>
                     <td><?php echo $flow['quality']; ?></td>
                     <td><?php echo $flow['output_location']; ?></td>
@@ -337,6 +340,7 @@
         </table>
     </div>
     <script type="text/javascript">
+
         $("#ac").click(function () {
             $("#buyukbas").attr("class", "col-md-8");
             $("#gizle").show("slow");
@@ -417,5 +421,11 @@
                 ;
             });
             index++;
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#selectize-units').selectize({
+            create: false
         });
     </script>

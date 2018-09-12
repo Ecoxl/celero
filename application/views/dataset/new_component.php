@@ -38,12 +38,12 @@
 					</div>
 					<div class="col-md-4">
 						<label for="quantity"><?php echo lang("quantityunit"); ?></label>
-						<select id="quantityUnit" class="info select-block" name="quantityUnit">
-							<option value=""><?php echo lang("pleaseselect"); ?></option>
-							<?php foreach ($units as $unit): ?>
-								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
-							<?php endforeach ?>
-						</select>
+		                <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+		                    <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+		                    <?php foreach ($units as $unit): ?>
+		                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+		                    <?php endforeach ?>
+		                </select>
 					</div>
 				</div>
 			</div>
@@ -56,10 +56,10 @@
 					<div class="col-md-4">
 						<label for="cost"><?php echo lang("supplycostunit"); ?></label>
 						<select id="costUnit" class="info select-block" name="costUnit">
-							<option value="TL">TL</option>
+							<option value="CHF">CHF</option>
 							<option value="Euro">Euro</option>
 							<option value="Dollar">Dollar</option>
-							<option value="CHF">CHF</option>
+							<option value="TL">TL</option>
 						</select>
 					</div>
 				</div>
@@ -74,10 +74,10 @@
 					<div class="col-md-4">
 						<label for="ocostunit"><?php echo lang("outputcostunit"); ?></label>
 						<select id="ocostunit" class="info select-block" name="ocostunit">
-							<option value="TL">TL</option>
+							<option value="CHF">CHF</option>
 							<option value="Euro">Euro</option>
 							<option value="Dollar">Dollar</option>
-							<option value="Dollar">CHF</option>
+							<option value="TL">TL</option>
 						</select>
 					</div>
 				</div>
@@ -140,3 +140,9 @@
 			<?php endforeach ?>
 		</table>
 		</div>
+
+<script type="text/javascript">
+    $('#selectize-units').selectize({
+        create: false
+    });
+</script>

@@ -36,7 +36,7 @@ String.prototype.repeat = function(num) {
     $("select[id='companiess']").selectpicker({style: 'btn-sm btn-inverse'});
     
     //selects all SELECT elements without the ones has seletize id.
-    $("select:not(#selectize)").selectpicker({style: ' btn-inverse'});
+    $("select:not([id^=selectize])").selectpicker({style: ' btn-inverse'});
 
 
     // Tabs

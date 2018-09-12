@@ -106,6 +106,7 @@ $lang["thisisconsultant"]     = "Bu kullanıcı danışmandır";
 $lang["becomeconsultant"]     = "Danışman ol";
 $lang["projectsasconsultant"] = "Danışman olduğu projeler";
 $lang["projectsasuser"]       = "Kullanıcısı olduğu projeler";
+$lang["notchangable"]         = "(cannot be changed afterwards)"; //todo translate
 
 $lang["status"]               = "Durum";
 $lang["startdate"]            = "Başlangıç Tarihi";

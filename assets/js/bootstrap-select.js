@@ -333,7 +333,7 @@
                         var selected = $select.prev('select').find('option').eq(clickedIndex).prop('selected');
 
                         if(selected) {
-                            $select.prev('select').find('option').eq(clickedIndex).removeAttr('selected');
+                            $select.prev('select').find('option').eq(clickedIndex).prop('selected', false).removeAttr('selected');
                         } else {
                             $select.prev('select').find('option').eq(clickedIndex).prop('selected', true).attr('selected', 'selected');
                         }
