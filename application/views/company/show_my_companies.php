@@ -19,8 +19,8 @@
 				var planes = <?php echo json_encode($company_array); ?>;
 				var bounds = new L.LatLngBounds(planes);
 
-				var map = L.map('map').setView([41.83683, 19.33594], 4);
-        map.fitWorld().zoomIn();
+				var map = L.map('map').setView([47.5596, 7.5886], 3);
+        		map.fitWorld().zoomIn();
 
 				map.on('resize', function(e) {
 				    map.fitWorld({reset: true}).zoomIn();
@@ -41,27 +41,32 @@
 			<?php
 			$temp = $this->session->userdata('user_in');
 			if($temp['id'] != null): ?>
-<!-- 	<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a> -->
-			<table class="table-hover" style="clear:both; width: 100%;">
-				<?php foreach ($companies as $com): ?>
-					<tr>
-					<td style="padding: 10px 15px;">
-						<a href="<?php echo base_url('company/'.$com['id']) ?>">
-						<div class="row">
-							<div class="col-md-9">
-								<div><b><?php echo $com['name'] ?></b></div>
-								<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
-							</div>
-							<div class="col-md-3">
-								<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
-								<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
-							</div>
-						</div>
-						</a>
-					</td>
-					</tr>
-				<?php endforeach ?>
-			</table>
+<!-- 			<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a> -->
+				<table class="table-hover" style="clear:both; width: 100%;">
+					<?php if(!empty($companies)): ?>
+						<?php foreach ($companies as $com): ?>
+							<tr>
+							<td style="padding: 10px 15px;">
+								<a href="<?php echo base_url('company/'.$com['id']) ?>">
+								<div class="row">
+									<div class="col-md-9">
+										<div><b><?php echo $com['name'] ?></b></div>
+										<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+									</div>
+									<div class="col-md-3">
+										<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
+										<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
+									</div>
+								</div>
+								</a>
+							</td>
+							</tr>
+						<?php endforeach ?>	
+					<?php else: ?>
+						<?php echo lang("nocompany"); ?>
+						<a class="btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
+					<?php endif ?>			
+				</table>
 			<?php endif	?>
 		</div>
 		<div class="col-md-4">

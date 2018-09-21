@@ -31,12 +31,12 @@
 					</div>
 					<div class="col-md-4">
 						<label for="quantity"><?php echo lang("quantityunit"); ?></label>
-						<select id="quantityUnit" class="info select-block" name="quantityUnit">
-							<?php foreach ($units as $unit): ?>
-								<?php if($component['qntty_unit_id']==$unit['id']) {$deger = TRUE;}else{$deger=False;} ?>
-								<option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id'], $deger); ?>><?php echo $unit['name']; ?></option>
-							<?php endforeach ?>
-						</select>
+				        <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+		                    <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+		                    <?php foreach ($units as $unit): ?>
+		                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+		                    <?php endforeach ?>
+		                </select>
 					</div>
 				</div>
 			</div>
@@ -110,5 +110,9 @@
 		  <button type="submit" class="btn btn-info"><?php echo lang("savedata"); ?></button>
 		</form>
 		<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
-
 </div>
+<script type="text/javascript">
+    $('#selectize-units').selectize({
+        create: false
+    });
+</script>

@@ -219,4 +219,3 @@ class Password extends CI_Controller{
 	}
 }
 ?>
-

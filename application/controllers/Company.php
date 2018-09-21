@@ -12,7 +12,7 @@ class Company extends CI_Controller{
 		$this->load->model('equipment_model');
 		$this->load->model('product_model');
 		$this->load->library('form_validation');
-				$this->config->set_item('language', $this->session->userdata('site_lang'));
+		$this->config->set_item('language', $this->session->userdata('site_lang'));
 
 	}
 
@@ -140,6 +140,13 @@ class Company extends CI_Controller{
 	}
 
 	public function show_all_companies(){
+		//permission site /companies only for logged in users viewable
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
+
+
 		$cluster_id = $this->input->post('cluster');
 		$data['help'] = "1";
 		if($this->create_company_control() == FALSE){
@@ -223,7 +230,7 @@ class Company extends CI_Controller{
 		}else{
 			$data['valid'] = "1";
 		}
-		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);;
+		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);
 		$data['company_prcss'] = $this->process_model->get_cmpny_flow_prcss($term);
 		$data['company_component'] = $this->component_model->get_cmpnnt($term);
 		$data['company_equipment'] = $this->equipment_model->all_information_of_equipment($term);

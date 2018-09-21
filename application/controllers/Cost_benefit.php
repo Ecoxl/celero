@@ -13,7 +13,7 @@ class Cost_benefit extends CI_Controller {
 		if($this->cpscoping_model->can_consultant_prjct($c_user['id']) == false){
 			redirect('','refresh');
 		}
-				$this->config->set_item('language', $this->session->userdata('site_lang'));
+		$this->config->set_item('language', $this->session->userdata('site_lang'));
 
 	}
 

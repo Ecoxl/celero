@@ -366,12 +366,12 @@ td {
     cursor: default;
 }
 
-#l1,#l2,#l3,#l4,#l5,#l6{
+#l0,#l1,#l2,#l3,#l4,#l5,#l6{
     color: white;
     text-decoration: none;
 }
 #profiles{
-    background-color: #C85A1F;
+    background-color: #901F0F;
     color:white;
     width: 100%;
 }
@@ -392,6 +392,14 @@ td {
     width: 100%;
 }
 #projects a{
+    color:white;
+}
+#cases{
+    background-color: #15474A;
+    color:white;
+    width: 100%;
+}
+#cases a{
     color:white;
 }
 #reporting{
@@ -476,3 +484,11 @@ pre p{
     text-align: right; 
     padding-left: 2px !important;
 }
+<<<<<<< HEAD
+=======
+
+#subtitle {
+    color: white;
+    font-size: 12px;
+}
+>>>>>>> db6fbcfbcb618068e048bc52b550a7559602ab5a

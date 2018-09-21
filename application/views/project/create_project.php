@@ -129,9 +129,9 @@
     $('#myModal2').on('shown.bs.modal', function (e) {
         google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 
-        map.setZoom(6);
+        map.setZoom(1);
         if(!marker)
-            map.setCenter(new google.maps.LatLng(47.3250690187567,18.52065861225128));
+            map.setCenter(new google.maps.LatLng(47.28833892581006,8.500927700381794));
         else
             map.setCenter(marker.getPosition());
 

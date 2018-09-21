@@ -1,17 +1,24 @@
 <?php
 $lang["profiles"]             = "Profiller";
+$lang["account"]              = "My Account";
 $lang["companies"]            = "Firmalar";
 $lang["projectcompanies"]     = "Projedeki Firmalar";
 $lang["projects"]             = "Projeler";
 $lang["analysis"]             = "Analizler";
+$lang["services"]             = "Services"; //todo translate
+$lang["cases"]            	  = "Cases"; //todo translate
 $lang["search"]               = "Ara";
 $lang["whoarewe"]             = "Biz kimiz?";
 $lang["whatwedo"]             = "Ne yapıyoruz?";
 $lang["functionalities"]      = "Sistem Özellikleri";
 $lang["consultants"]          = "Danışmanlar";
 $lang["reporting"]            = "Raporlama";
+$lang["about"]          	  = "About"; //todo translate
+$lang["legal"]          	  = "Legal disclaimer"; //todo translate
 $lang["help"]            	  = "Yardım";
+$lang["faq"]           	  	  = "Frequently asked questions"; //todo translate
 $lang["usermanual"]           = "Yardım Kitapcığını İndir";
+$lang["dl-usermanual"]        = "Download user manual here"; //todo translate
 
 $lang["createreport"]         = "Rapor Oluştur";
 $lang["allreports"]           = "Tüm Raporlar";
@@ -24,6 +31,7 @@ $lang["logout"]               = "Çıkış";
 $lang["allcompanies"]         = "Tüm Firmalar";
 $lang["mycompanies"]          = "Firmalarım";
 $lang["createcompany"]        = "Firma Oluştur";
+$lang["add"]				  = "Add"; //todo translate
 
 $lang["allprojects"]          = "Tüm Projeler";
 $lang["myprojects"]           = "Projelerim";
@@ -38,9 +46,11 @@ $lang["costbenefitanalysis"]  = "Fayda - Maliyet Analizi";
 $lang["ecotracking"]          = "Firma Takibi";
 $lang["closeproject"]         = "Projeyi Kapat";
 
-$lang['slogan']               = "Temiz üretim ve Endüstriyel Simbiyoz için ücretsiz web-tabanlı karar destek yazılımı";
+$lang['slogan']               = "Optimize resources and identify industrial synergies"; //todo translate
+$lang['celerodescription']    = "Temiz üretim ve Endüstriyel Simbiyoz için ücretsiz web-tabanlı karar destek yazılımı";
+$lang['startusing']			  = "Start using CELERO";
 $lang['username']             = "Kullanıcı Adı";
-$lang['validcharacters']	  = "(Valid characters are a-z and 0-9)"; #todo pleas translate
+$lang['validcharacters']	  = "(Valid characters are a-z and 0-9)"; #todo please translate
 $lang['password']             = "Şifre";
 $lang['forgotyourpassword']   = "Şifrenizi mi unuttunuz?";
 $lang['userlogin']            = "Kullanıcı Girişi";
@@ -62,6 +72,7 @@ $lang["description"]          = "Açıklama";
 $lang["consultantsdesc"]      = "Sistemdeki tüm danışmaları görmektesiniz. Profillerine tıklayarak iletişim kurabilirsiniz";
 $lang["mycompanydesc"]        = "Bu sayfada sizin tarafınızdan oluşturulmuş ya da kullanıcısı olduğunuz firmalar listelenir";
 $lang["allcompaniesdesc"]     = "Sisteme kayıtlı tüm firmaları görüyorsunuz. Firma yönetim sayfalarına izniniz dahilinde giriş yapabilirsiniz.";
+$lang["nocompany"]			  = "You dont have a company yet."; //todo translate
 $lang["editcompanydata"]      = "Firma Verisini Düzenle";
 $lang["editcompanyinfo"]      = "Firma Bilgisini Düzenle";
 
@@ -76,15 +87,15 @@ $lang["allprojectsinfo"]      ="Sistemdeki tüm projeleri görmektesiniz. İznin
 
 $lang["companyname"]          = "Firma İsmi";
 $lang["nacecode"]             = "NACE Kodu";
-$lang["selectnace"]           = "Select a NACE Code"; #todo please translate
+$lang["selectnace"]           = "Select a NACE Code"; //todo please translate
 $lang["selectlevel4nace"]     = "Select a level 4 NACE Code"; #todo please translate
 $lang["coordinates"]          = "Kordinatlar";
 $lang["address"]              = "Adres";
 $lang["companydescription"]   = "Firma Hakkında Açıklama";
 $lang["selectonmap"]          = "Harite Üzerinde Seç";
-$lang["done"]          		  = "Done"; #todo please translate
+$lang["done"]          		  = "Done"; //todo please translate
 $lang["createcompanyinfo"]    = "Yazmaya başlarayak kod arayabilirsiniz.";
-$lang["createcompanyinfo2"]   = "Logo/Fax No. hariç tüm bölümler zorunludur."; #todo I improvised the "and fax not mandatory", please correct
+$lang["createcompanyinfo2"]   = "Logo/Fax No. hariç tüm bölümler zorunludur."; //todo I improvised the "and fax not mandatory", please correct
 $lang["lat"]                  = "Enlem";
 $lang["long"]                 = "Boylam";
 
@@ -95,6 +106,7 @@ $lang["thisisconsultant"]     = "Bu kullanıcı danışmandır";
 $lang["becomeconsultant"]     = "Danışman ol";
 $lang["projectsasconsultant"] = "Danışman olduğu projeler";
 $lang["projectsasuser"]       = "Kullanıcısı olduğu projeler";
+$lang["notchangable"]         = "(cannot be changed afterwards)"; //todo translate
 
 $lang["status"]               = "Durum";
 $lang["startdate"]            = "Başlangıç Tarihi";

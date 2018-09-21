@@ -725,7 +725,7 @@ a.thumbnail.active {
 .btn[disabled],
 fieldset[disabled] .btn {
   background-color: #bdc3c7;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.60);
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
@@ -1022,7 +1022,7 @@ fieldset[disabled] .btn-warning.active {
 .btn-inverse:active,
 .btn-inverse.active,
 .open .dropdown-toggle.btn-inverse {
-  color: #ffffff;
+  color: rgba(0, 0, 0, 0.75);
   background-color: #415b76;
   border-color: #415b76;
 }
@@ -3748,6 +3748,12 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   color: #cccccc;
   padding: 4px 0 6px;
 }
+
+.dropdown-red {
+  background-color: #901F0F !important;
+  color: #cccccc;
+  padding: 4px 0 6px;
+}
 .dropdown-inverse li {
   margin: 0 4px -2px;
 }
@@ -5056,7 +5062,7 @@ select[multiple].navbar-form .btn {
 .navbar-default .navbar-form .input-group.focus .form-control,
 .navbar-default .navbar-form .input-group.focus .input-group-btn .btn {
   border-color: #1abc9c;
-  color: #1abc9c;
+  color: #34495e;
 }
 .navbar-default .navbar-text {
   color: #34495e;

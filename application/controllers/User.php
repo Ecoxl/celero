@@ -205,6 +205,12 @@ class User extends CI_Controller {
 	}
 
 	public function user_profile($username){
+		//permission site /user/'username' only for logged in users viewable
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
+
 		$data['userInfo']=$this->user_model->get_userinfo_by_username($username);
 		$data['projectsAsWorker'] = $this->user_model->get_worker_projects_from_userid($data['userInfo']['id']);
 		$data['projectsAsConsultant'] = $this->user_model->get_consultant_projects_from_userid($data['userInfo']['id']);
@@ -365,6 +371,12 @@ class User extends CI_Controller {
 	}
 
 	public function show_all_users(){
+		//permission: site /user only for logged in users viewable
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
+
 		$data['users']=$this->user_model->get_consultants();
 
 		$this->load->view('template/header');

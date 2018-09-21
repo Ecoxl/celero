@@ -45,7 +45,7 @@ class Project extends CI_Controller{
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
 		if(!$is_consultant){
 			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you need to be a consultant to create a new project.');
-			redirect('projects', 'refresh');
+			redirect('myprojects', 'refresh');
 		}
 
     $this->load->library('googlemaps');
@@ -311,8 +311,8 @@ class Project extends CI_Controller{
 
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|max_length[200]|mb_strtolower|xss_clean'.$is_unique); // buraya isunique kontrolü
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[200]|xss_clean');
-		$this->form_validation->set_rules('assignCompany','Assign Company','required');
-		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
+		$this->form_validation->set_rules('assignCompany','Assign Company','callback_check_default2');
+		$this->form_validation->set_rules('assignConsultant','Assign Consultant','callback_check_default');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
