@@ -6,9 +6,38 @@ class User extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('company_model');
 		$this->load->library('form_validation');
-				$this->config->set_item('language', $this->session->userdata('site_lang'));
-
+		$this->config->set_item('language', $this->session->userdata('site_lang'));
 	}
+
+    public function uploadExcel(){
+
+        $user = $this->session->userdata('user_in');
+        $config['upload_path']          = './assets/excels/';
+        $config['allowed_types']        = 'xlsx|xls';
+        $config['max_size']             = 100;
+        $config['overwrite'] = TRUE;
+        $config['file_name']            = $user['username'];
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('excelFile'))
+        {
+            $data = array('error' => $this->upload->display_errors());
+            $data['id']=$user['id'];
+
+            $this->load->view('template/header');
+            $this->load->view('dataset/uploadexcel',$data);
+            $this->load->view('template/footer');
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $data['id']=$user['id'];
+
+            $this->load->view('template/header');
+            $this->load->view('dataset/uploadexcel',$data);
+            $this->load->view('template/footer');
+        }
+    }
 
 	public function user_register(){
 
