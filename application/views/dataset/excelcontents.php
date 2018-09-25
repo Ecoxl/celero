@@ -1,4 +1,5 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="container">
+    <a href="<?php echo site_url('uploadExcel') ?>">Upload Excel</a>
 	<?php if(validation_errors() != NULL ): ?>
 	    <div class="alert alert-danger">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -11,17 +12,17 @@
     <table>
     	<th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Add EP to your list</th>
     <?php foreach ($excelcontents as $ec): ?>
-    		<?php echo form_open_multipart('datasetexcel/'.$companyID); ?>
-            <?php //print_r($ec); ?>
-            	<tr>
-            	<td>
-            		<div class="form-group">
-						<input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>">
+        <?php echo form_open_multipart('datasetexcel/'.$companyID); ?>
+        <?php //print_r($ec); ?>
+            <tr>
+            <td>
+                <div class="form-group">
+                    <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>">
 					</div>
 				</td>
             	<td>            		
             		<div class="form-group">
-						<input class="form-control" id="epvalue" name="epvalue" value="<?php echo $ec[1]; ?>">
+                        <input class="form-control" id="epvalue" name="epvalue" value="<?php echo $ec[1]; ?>">
 					</div>
 				</td>
             	<td>EP</td>
