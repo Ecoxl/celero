@@ -9,10 +9,15 @@ $app->get('/hello/:name', function ($name) {
     echo "Hello, $name";
 });
 
-
-$pdo = new PDO('pgsql:dbname=ecoman_01_10;host=88.249.18.205;user=postgres;password=1q2w3e4r');
+try{
+    $pdo = new PDO('pgsql:dbname=ecoman_01_10;host=celerodb;port=5432;user=postgres;password=');
+    if($pdo){
+        //echo "Connected to the database successfully!";
+    }
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
 $db = new NotORM($pdo);
-
 
 /**
  * zeynel dağlı

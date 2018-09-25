@@ -10,7 +10,14 @@ $app->get('/hello/:name', function ($name) {
 });
 
 
-$pdo = new PDO('pgsql:dbname=ecoman_01_10;host=88.249.18.205;user=postgres;password=1q2w3e4r');
+try{
+    $pdo = new PDO('pgsql:dbname=ecoman_01_10;host=celerodb;port=5432;user=postgres;password=');
+    if($pdo){
+        //echo "Connected to the database successfully!";
+    }
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
 $db = new NotORM($pdo);
 
 
@@ -19,7 +26,6 @@ $db = new NotORM($pdo);
  * @since 27-01-2015
  */
 $app->get("/getCompanyCountryID_cmpny", function () use ($app, $pdo) {
-    
 
     if(isset($_GET['lat']) && $_GET['lat']!="" && isset($_GET['long']) && $_GET['long']!="") {
         $longArr = split(':', TRIM($_GET['long']));

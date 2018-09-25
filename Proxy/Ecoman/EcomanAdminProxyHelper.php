@@ -99,22 +99,22 @@ class EcomanAdminProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
      */
     public function redirect() {
         $execFunction = $this->resolveRedirectMap();
-        $this->setEndPointByClosure();  
+        $this->setEndPointByClosure();
         echo $this->$execFunction();
     }
     
     public function setEndPointByClosure(Array $EndPointClosure=null) {
         $endPointFunction = $this->getEndPointFunction();
         if (stripos($endPointFunction, "prj")>0) {
-            $this->setEndPointUrl("http://88.249.18.205:8090/slim2_ecoman/prj.php/");
+            $this->setEndPointUrl("http://localhost:80/slim2_ecoman/prj.php/");
         }
         
         if (stripos($endPointFunction, "manual")>0) {  
-            $this->setEndPointUrl("http://88.249.18.205:8090/slim2_ecoman/manual.php/");
+            $this->setEndPointUrl("http://localhost:80/slim2_ecoman/manual.php/");
         }
         
         if (stripos($endPointFunction, "_rpt")>0) {
-            $this->setEndPointUrl("http://88.249.18.205:8090/slim2_ecoman_admin/report.php/");
+            $this->setEndPointUrl("http://localhost:80/slim2_ecoman_admin/report.php/");
         }
     }
     

@@ -8,12 +8,12 @@
  * @author Zeynel Dağlı
  * @version 0.0.1
  */
-require_once 'Proxy\AbstractProxy.php';
-require_once 'Proxy\AbstractProxyHelper.php';
-require_once 'Slim\SlimProxyClass.php';
-require_once 'Ecoman\EcomanAdminProxyHelper.php';
+require_once 'Proxy/AbstractProxy.php';
+require_once 'Proxy/AbstractProxyHelper.php';
+require_once 'Slim/SlimProxyClass.php';
+require_once 'Ecoman/EcomanAdminProxyHelper.php';
 
 $proxyClass = new \Proxy\Slim\SlimProxyClass();
 $ecoman = new \Proxy\Ecoman\EcomanAdminProxyHelper($proxyClass);
-$ecoman->setEndPointUrl('http://88.249.18.205:8090/slim2_ecoman_admin/index.php/');
+$ecoman->setEndPointUrl('http://localhost:80/slim2_ecoman_admin/index.php/');
 echo $ecoman->redirect();
