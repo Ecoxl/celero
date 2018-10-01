@@ -5,7 +5,9 @@ class Isscoping extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('company_model');
         $this->config->set_item('language', $this->session->userdata('site_lang'));
+
     }
 
     public function index()
@@ -90,6 +92,9 @@ class Isscoping extends CI_Controller
             redirect(base_url('company'), 'refresh');
         }
 
+        $project_id = $this->session->userdata('project_id');
+
+        $data['companies'] = $this->company_model->get_project_companies($project_id);
         $data['userID']     = $this->session->userdata['user_in']['id'];
         $data['project_id'] = $this->session->userdata['project_id'];
         $data['language']   = $this->session->userdata('site_lang');
@@ -201,6 +206,10 @@ class Isscoping extends CI_Controller
             redirect(base_url('company'), 'refresh');
         }
 
+
+        $project_id = $this->session->userdata('project_id');
+
+        $data['companies'] = $this->company_model->get_project_companies($project_id);
         $data['userID']     = $this->session->userdata['user_in']['id'];
         $data['project_id'] = $this->session->userdata['project_id'];
         $data['language']   = $this->session->userdata('site_lang');
@@ -289,6 +298,10 @@ class Isscoping extends CI_Controller
             redirect(base_url('company'), 'refresh');
         }
 
+
+        $project_id = $this->session->userdata('project_id');
+
+        $data['companies'] = $this->company_model->get_project_companies($project_id);
         $data['userID']     = $this->session->userdata['user_in']['id'];
         $data['project_id'] = $this->session->userdata['project_id'];
         $data['language']   = $this->session->userdata('site_lang');
@@ -327,6 +340,10 @@ class Isscoping extends CI_Controller
             redirect(base_url('company'), 'refresh');
         }
 
+        
+        $project_id = $this->session->userdata('project_id');
+
+        $data['companies'] = $this->company_model->get_project_companies($project_id);
         $data['userID']     = $this->session->userdata['user_in']['id'];
         $data['project_id'] = $this->session->userdata['project_id'];
         $data['language']   = $this->session->userdata('site_lang');
@@ -334,4 +351,5 @@ class Isscoping extends CI_Controller
         $this->load->view('isscoping/isscenariosCns', $data);
         $this->load->view('template/footer');
     }
+
 }

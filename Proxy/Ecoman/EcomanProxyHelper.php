@@ -132,12 +132,13 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 60); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
- 
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+
         $response = curl_exec($ch);
         if ($response == false) {
             die("curl_exec() failed. Error: " . curl_error($ch). curl_errno($ch));
         }
- 
+        
         return $response;
         
     }
@@ -161,6 +162,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -188,6 +190,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -215,6 +218,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -242,6 +246,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -270,6 +275,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -298,6 +304,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -325,6 +332,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -355,6 +363,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
 
  
         $response = curl_exec($ch);
@@ -388,6 +397,7 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         //curl_setopt($ch, CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
         
         
         $client_id = 'rerwrrwre';

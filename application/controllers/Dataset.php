@@ -380,20 +380,19 @@ class Dataset extends CI_Controller {
 		$flowID = $this->input->post('flowname');
 		$flowtypeID = $this->input->post('flowtype');
 		$companyID = $this->uri->segment(2);
-		//print_r($companyID);
 		if(is_numeric($flowID)){
 			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
 				$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
-	      return false;
-	      //echo "1";
+		    return false;
 			}
 			else{
-				//echo "s";
 				return true;
 			}
 		}
-		//echo "s";
-		//return false;
+		else{
+			return true;
+		}
+
 	}
 
 	function alpha_dash_space($str)

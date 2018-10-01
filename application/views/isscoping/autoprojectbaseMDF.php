@@ -44,14 +44,39 @@
 				}]" style="margin: auto 0;height:400px">  -->
                           <div id="p" class="easyui-panel" title="IS Companies Location" 
                                data-options="iconCls:'icon-ok',tools:'#tt',toolbar:'#tbclosemap'" style="margin: auto 0;height:400px">
-                          
-                          
-                          <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
-                                height="100%" 
-                                marginheight="0" 
-                                align="middle" 
-                                scrolling="auto">
-                            </iframe>
+                            <?php
+                                $company_array = array();
+                                foreach ($companies as $com => $k) {
+                                    $company_array[$com][0] = $k['latitude'];
+                                    $company_array[$com][1] = $k['longitude'];
+                                    $company_array[$com][2] = "<a href='".base_url('company/'.$k['id'])."'>".$k['name']."</a>";
+                            } ?>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+                            <div id="map"></div>
+                            <script type="text/javascript">
+
+                            var planes = <?php echo json_encode($company_array); ?>;
+                            var bounds = new L.LatLngBounds(planes);
+
+                            var map = L.map('map').setView([47.5596, 7.5886], 4);
+                            map.fitWorld().zoomIn();
+
+                            map.on('resize', function(e) {
+                                map.fitWorld({reset: true}).zoomIn();
+                            });
+                            mapLink =
+                                '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            }).addTo(map);
+
+                            for (var i = 0; i < planes.length; i++) {
+                                marker = new L.marker([planes[i][0],planes[i][1]])
+                                    .bindPopup(planes[i][2])
+                                    .addTo(map);
+                            }
+                            </script>
                             <div id="tt">
                                 <a href="javascript:void(0)" onclick="event.preventDefault();closeMapPanel()" 
                                    class="icon-remove" ></a>
