@@ -38,8 +38,8 @@
                                     $company_array[$com][1] = $k['longitude'];
                                     $company_array[$com][2] = "<a href='".base_url('company/'.$k['id'])."'>".$k['name']."</a>";
                             } ?>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
                             <div id="map"></div>
                             <script type="text/javascript">
 
@@ -53,7 +53,7 @@
                                 map.fitWorld({reset: true}).zoomIn();
                             });
                             mapLink =
-                                '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                                '<a href="https://openstreetmap.org">OpenStreetMap</a>';
                             L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                             }).addTo(map);

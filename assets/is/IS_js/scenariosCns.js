@@ -312,7 +312,7 @@
         
         
         
-        
+        /* requests /slim2_ecoman directly, which throws an error. Therefore commented atm
         $('#tt_grid_scenarios_details').datagrid({
                 singleSelect:true,
                 //url:'../../../Proxy/SlimProxy.php',
@@ -332,12 +332,12 @@
                             //{field: 'ck',title: 'From Company',checkbox:true},
                             //{field: 'IS Scenario',title: 'IS Scenario'},
                             {field: 'company',title: 'From Company'},
-                            {field: 'flow',title: 'Flow'/*,sortable:true*/},
+                            {field: 'flow',title: 'Flow'},
                             {field: 'qntty',title: 'Quantity'},
                             {field: 'qnttyunit',title: 'Unit'},
                             {field: 'fromflowtype',title: 'Flow Type'},
                             {field: 'tocompany',title: ' To Company'},
-                            {field: 'flowto',title: 'Flow'/*,sortable:true*/},
+                            {field: 'flowto',title: 'Flow'},
                             {field: 'qntty2',title: 'Quantity'},
                             {field: 'qntty2unit',title: 'Unit'},
                             {field: 'toflowtype',title: 'Flow Type'},
@@ -361,7 +361,7 @@
                             });
                         }, 
                
-        });
+        });*/
         
         var products = [
 		    {id:'FI-SW-01',name:''},

@@ -472,7 +472,7 @@ function showMapPanelExpand() {
                             }
                     },
                     onClick: function(node){
-                    alert('on click  test');
+                    //alert('on click  test');
                     $("#tt_tree").tree('expand', node.target);
                     var parentnode=$("#tt_tree").tree("getParent", node.target);
                     var roots=$("#tt_tree").tree("getRoots");
