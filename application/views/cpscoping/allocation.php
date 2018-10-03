@@ -36,6 +36,7 @@ $(document).ready(function() {
     $("#flow_name").change(function() {
     	//empties all allocation fields
 		$('#allocation_fields').children().find("input[type=text], textarea").val("");
+		$('#allocation_fields').children().find("#unit_env_impact").val("EP");
 		//sets flow_type_name accordingly to selected flow_name
 		if ($(this).children("option:selected").text().split("(").pop() == "Input)"){
         	$('#flow_type_name').val("1").change();
@@ -45,8 +46,10 @@ $(document).ready(function() {
      	} 
 	});
 });
-
-
+$(document).on("submit", "form", function (e) {
+	 //removes the disabled from the flow_tap_name select form for submission
+	 $('#flow_type_name').removeAttr('disabled');
+});
 
 function optionExists(val) {
   return $("#flow_type_name option[value='" + val + "']").length !== 0;
@@ -125,7 +128,7 @@ function aatf() {
 				<label for="flow_type_name" class="control-label col-md-12"><?php echo lang("selectflowtype"); ?></label>
 				<div class="col-md-12">
 					<select name="flow_type_name" id="flow_type_name" onchange="aatf()" class="btn-group select select-block" disabled="true"> 
-						<option value=""><?php echo lang("pleaseselect"); ?></option>
+						<option><?php echo lang("pleaseselect"); ?></option>
 					</select>
 				</div>
 			</div>
@@ -221,7 +224,7 @@ function aatf() {
 					<input type="text" class="form-control" value="<?php echo set_value('env_impact'); ?>" id="env_impact" placeholder="<?php echo lang("number"); ?>" name="env_impact">
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" id="unit_env_impact" value="EP" name="unit_env_impact" readonly>
+					<input type="text" class="form-control" id="unit_env_impact" placeholde="EP" value="EP" name="unit_env_impact" readonly>
 				</div>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('allocation_env_impact'); ?>" id="allocation_env_impact" placeholder="<?php echo lang("percentage"); ?>" name="allocation_env_impact">
