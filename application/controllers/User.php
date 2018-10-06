@@ -9,6 +9,62 @@ class User extends CI_Controller {
 		$this->config->set_item('language', $this->session->userdata('site_lang'));
 	}
 
+    public function dataFromExcel(){
+        $this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|xss_clean');
+        $kullanici = $this->session->userdata('user_in');
+
+        if($this->form_validation->run() !== FALSE) {
+            $epArray = array(
+                    'user_id' => $kullanici['id'],
+                    'flow_name' => $this->input->post('flowname'),
+                    'ep_value' => $this->sifirla($this->input->post('epvalue')),
+                );
+            $this->flow_model->set_userep($epArray);
+        }
+
+        $this->load->view('template/header');
+        //echo "data from excel form";
+        //echo $companyId;
+
+        include APPPATH . 'libraries/Excel.php';
+        $inputFileName = './assets/excels/test.xlsx';
+
+        //  Read your Excel workbook
+        try {
+            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+            $objPHPExcel = $objReader->load($inputFileName);
+        } catch(Exception $e) {
+            die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+        }
+
+        //  Get worksheet dimensions
+        $sheet = $objPHPExcel->getSheet(0);
+        $highestRow = $sheet->getHighestRow();
+        $highestColumn = $sheet->getHighestColumn();
+
+        $excelcontents = [];
+        //  Loop through each row of the worksheet in turn
+        for ($row = 1; $row <= $highestRow; $row++){
+
+            //  Read a row of data into an array
+            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+                                            NULL,
+                                            TRUE,
+                                            FALSE);
+            //  Insert row data array into your database of choice here
+            //print_r($rowData[0]);
+            $excelcontents[] = $rowData[0];
+        }
+        //echo "------";
+        //print_r($excelcontents);
+        $data['excelcontents'] = $excelcontents;
+
+        $this->load->view('dataset/excelcontents',$data);
+        $this->load->view('template/footer');
+    }
+
     public function uploadExcel(){
 
         $user = $this->session->userdata('user_in');

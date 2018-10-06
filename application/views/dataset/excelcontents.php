@@ -12,7 +12,7 @@
     <table>
     	<th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Add EP to your list</th>
     <?php foreach ($excelcontents as $ec): ?>
-        <?php echo form_open_multipart('datasetexcel/'.$companyID); ?>
+        <?php echo form_open_multipart('datasetexcel'); ?>
         <?php //print_r($ec); ?>
             <tr>
             <td>

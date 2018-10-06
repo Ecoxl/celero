@@ -182,8 +182,8 @@ $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";
 
 // Dataset
+$route['datasetexcel'] = "user/dataFromExcel";
 $route['uploadExcel'] = "user/uploadExcel";
-$route['datasetexcel/(:any)'] = "dataset/dataFromExcel/$1";
 $route['flow_and_component'] = "dataset/flow_and_component";
 $route['allocationlist/(:any)/(:any)'] = "cpscoping/allocationlist/$1/$2";
 $route['new_flow/(:any)'] = "dataset/new_flow/$1";
