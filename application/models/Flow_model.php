@@ -118,4 +118,12 @@ class Flow_model extends CI_Model {
 		$this->db->insert('t_user_ep_values',$data);
 	}
 
+	public function get_userep($userid){
+        $this->db->select("*");
+        $this->db->from("t_user_ep_values");
+        $this->db->where('user_id',$userid);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

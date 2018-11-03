@@ -4,16 +4,22 @@ class User extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('user_model');
-		$this->load->model('company_model');
+        $this->load->model('company_model');
+        $this->load->model('flow_model');
 		$this->load->library('form_validation');
 		$this->config->set_item('language', $this->session->userdata('site_lang'));
 	}
+
+    function sifirla($data){
+        if(empty($data)) return 0;
+        else return $data;
+    }
 
     public function dataFromExcel(){
         $this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|xss_clean');
         $kullanici = $this->session->userdata('user_in');
-
+        //print_r($kullanici);
         if($this->form_validation->run() !== FALSE) {
             $epArray = array(
                     'user_id' => $kullanici['id'],
@@ -28,7 +34,7 @@ class User extends CI_Controller {
         //echo $companyId;
 
         include APPPATH . 'libraries/Excel.php';
-        $inputFileName = './assets/excels/test.xlsx';
+        $inputFileName = './assets/excels/'.$kullanici['username'].'.xlsx';
 
         //  Read your Excel workbook
         try {
@@ -60,6 +66,7 @@ class User extends CI_Controller {
         //echo "------";
         //print_r($excelcontents);
         $data['excelcontents'] = $excelcontents;
+        $data['userepvalues']=$this->flow_model->get_userep($kullanici['id']);
 
         $this->load->view('dataset/excelcontents',$data);
         $this->load->view('template/footer');

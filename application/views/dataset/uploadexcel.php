@@ -17,7 +17,7 @@
         <input type="submit" value="Upload Data" style="float:right;" class="btn btn-info" />
         </form>
     </div>
-    <a href="<?php echo site_url('datasetexcel/'.$id) ?>" class="btn btn-default"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <a href="<?php echo site_url('datasetexcel') ?>" class="btn btn-default"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         Return to Excel values management page</a>
 
 </div>
