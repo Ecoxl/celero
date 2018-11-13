@@ -50,15 +50,6 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="charactertype"><?php echo lang("charactertype"); ?></label>
-        <select id="charactertype" class="info select-block" name="charactertype">
-            <option value="" <?php echo set_select('charactertype', ''); ?>><?php echo lang("pleaseselect"); ?></option>
-            <option value="Recycling" <?php echo set_select('charactertype', 'Recycling'); ?>><?php echo lang("recycling"); ?></option>
-            <option value="Emission" <?php echo set_select('charactertype', 'Emission'); ?>><?php echo lang("emission"); ?></option>
-            <option value="Waste" <?php echo set_select('charactertype', 'Waste'); ?>><?php echo lang("waste"); ?></option>
-        </select>
-    </div>
-    <div class="form-group">
         <div class="row">
             <div class="col-md-8">
                 <label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span
@@ -261,7 +252,7 @@
                 <th><?php echo lang("flowname"); ?></th>
                 <th><?php echo lang("flowtype"); ?></th>
                 <th><?php echo lang("flowfamily"); ?></th>
-                <th><?php echo lang("charactertype"); ?></th>
+                
                 <th colspan="2"><?php echo lang("quantity"); ?></th>
                 <th><?php
                     if (empty($company_flows)) {
@@ -298,7 +289,7 @@
 
                     <td><?php echo $flow['flowtype']; ?></td>
                     <td><?php echo $flow['flowfamily']; ?></td>
-                    <td><?php echo $flow['character_type']; ?></td>
+                    
                     <td class="table-numbers"><?php echo number_format($flow['qntty'], 2, ".", "'"); ?></td>
                     <td class="table-units"><?php echo $flow['qntty_unit_name']; ?></td>
 
@@ -357,8 +348,7 @@
         $("#prefix").click(function () {
             if (index > 3) {
                 index = 0;
-            }
-            ;
+            };
 
             //creates arr_values with the the column values
             var table_trs = $(".table").find('tr');
@@ -366,22 +356,21 @@
                 table_trs.each(function (i) {
                     $tds = $(this).find('td');
                     //position of the UBP column (special case if rowspan=2 is used for input and output flow)
-                    var column = 7;
-                    if ($tds.length == 18) {
-                        column = 6;
+                    var column = 6;
+                    if ($tds.length == 17) {
+                        column = 5;
                     }
                     value = $tds.eq(column).text();
                     arr_values.push(value);
                 });
-            }
-            ;
+            };
 
             //calculates and formats the kilo, Mega and Giga values
             table_trs.each(function (i) {
                 $tds = $(this).find('td');
-                var column = 7;
-                if ($tds.length == 18) {
-                    column = 6;
+                var column = 6;
+                if ($tds.length == 17) {
+                    column = 5;
                 }
                 switch (index) {
                     case 0:
@@ -417,8 +406,7 @@
                         break;
                     default:
                     //alert("default");
-                }
-                ;
+                };
             });
             index++;
         });

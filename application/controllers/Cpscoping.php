@@ -543,7 +543,10 @@ class Cpscoping extends CI_Controller {
 			//print_r($array[$index]);
 			if(!empty($array[$index]['prcss_id'])){
 				if($array[$index]['prcss_id'] == $prcss_id){
-					$doviz_array = $this->dolar_euro_parse();
+					//dollar euro parse is not working, because the simple_html_dom is missing 
+					// and the "doviz" page changed(nov. 2018)
+					//$doviz_array = $this->dolar_euro_parse();
+					$doviz_array = array("dollar" => 1, "euro" => 0.9);
 					$unit = $array[$index]['unit_cost'];
 					$error_cost = 100-$array[$index]['error_cost'];
 					$error_amount = 100-$array[$index]['error_amount'];

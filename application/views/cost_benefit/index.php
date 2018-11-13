@@ -1,4 +1,4 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <div class="col-md-12">
 	<div class="lead"><?php echo $company['name']; ?></div>
 <style type="text/css">
@@ -14,7 +14,9 @@
 	<?php if (!empty($allocation)): ?>
 	<?php $i=1; ?>
 	<?php foreach ($allocation as $a): ?>
-		<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+        <?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+        <!-- if no unit_cost is defined a "-" is placed!-->
+		<?php if(empty($a['unit_cost'])){$a['unit_cost']="-";} ?>
 		<?php $attributes = array('id' => 'form-'.$i); ?>
 		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
     <table class="tg costtable">
@@ -865,6 +867,7 @@
 	//array defining
 	$t=0;
 	$toplameco=0;
+    print_r($allocation);
 	foreach ($allocation as $a) {
 		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from ".$a['cmpny_from_name']; }
 		

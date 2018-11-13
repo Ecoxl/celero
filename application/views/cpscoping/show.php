@@ -12,7 +12,7 @@
 print_r($allocation[0]);*/
 ?>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
 
 	var temp_array = new Array();
