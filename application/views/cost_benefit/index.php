@@ -867,7 +867,6 @@
 	//array defining
 	$t=0;
 	$toplameco=0;
-    print_r($allocation);
 	foreach ($allocation as $a) {
 		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from ".$a['cmpny_from_name']; }
 		
