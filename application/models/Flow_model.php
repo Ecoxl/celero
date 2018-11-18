@@ -118,12 +118,23 @@ class Flow_model extends CI_Model {
 		$this->db->insert('t_user_ep_values',$data);
 	}
 
+	// gets flow ep values from excel imported data based on given userid.
 	public function get_userep($userid){
         $this->db->select("*");
         $this->db->from("t_user_ep_values");
         $this->db->where('user_id',$userid);
         $query = $this->db->get();
         return $query->result_array();
-    }
+	}
+	
+	// gets flow ep values from excel imported data based on given flowname and userid.
+	public function get_My_Ep_Values($flowname,$userid){
+		$this->db->select("*");
+        $this->db->from("t_user_ep_values");
+        $this->db->where('user_id',$userid);
+        $this->db->where('flow_name',$flowname);
+        $query = $this->db->get();
+        return $query->result_array();
+	}
 
 }

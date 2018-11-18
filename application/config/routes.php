@@ -202,7 +202,7 @@ $route['edit_process/(:any)/(:any)'] = "dataset/edit_process/$1/$2";
 $route['new_process/(:any)'] = "dataset/new_process/$1";
 $route['delete_process/(:any)/(:any)/(:any)'] = "dataset/delete_process/$1/$2/$3";
 $route['get_sub_process'] = "dataset/get_sub_process";
-
+$route['my_ep_values/(:any)/(:any)'] = "dataset/my_ep_values/$1/$2";
 $route['new_equipment/(:any)'] = "dataset/new_equipment/$1";
 $route['get_equipment_type'] = "dataset/get_equipment_type";
 $route['get_equipment_attribute'] = "dataset/get_equipment_attribute";

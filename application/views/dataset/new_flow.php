@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    function getFlowId() {
+    function getFlowId(userid) {
         var id = $('.selectize-input .item').html();
         var isnum = /^\d+$/.test(id);
         //alert(isnum);
@@ -13,6 +13,7 @@
         if (!newisnum && newid != "") {
             $('#flow-family').show("slow");
         }
+        getEPValues(id,userid);
     }
 </script>
 <div class="col-md-4 borderli" <?php if (validation_errors() == NULL) {
@@ -25,7 +26,7 @@
     <p class="lead"><?php echo lang("addflow"); ?></p>
     <div class="form-group">
         <label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
-        <select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
+        <select id="selectize" onchange="getFlowId('<?php echo $user['id']; ?>')" class="info select-block" name="flowname">
             <option value=""><?php echo lang("pleaseselect"); ?></option>
             <?php foreach ($flownames as $flowname): ?>
                 <option value="<?php echo $flowname['id']; ?>" <?php echo set_select('flowname', $flowname['id']); ?>><?php echo $flowname['name']; ?></option>
@@ -416,4 +417,23 @@
         $('#selectize-units').selectize({
             create: false
         });
+    </script>
+
+    <script type="text/javascript">
+        function getEPValues( flowname, userid )
+        {
+            jQuery.ajax({
+                url: '<?php echo base_url('my_ep_values');?>/'+flowname+'/'+userid,
+                type: 'get',
+                dataType: "json",
+                success:function(data)
+                {
+                    console.log(data[0]['ep_value']);
+                    if (typeof data[0]['ep_value'] != 'undefined'){
+                        $('#ep').val(data[0]['ep_value']);
+                        alert("EP value for this flow automatically set from excel imported user data.")
+                    }
+                } 
+            });
+        }
     </script>

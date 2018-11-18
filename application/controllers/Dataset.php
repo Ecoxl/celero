@@ -15,9 +15,10 @@ class Dataset extends CI_Controller {
 		$this->config->set_item('language', $this->session->userdata('site_lang'));
 
 		$kullanici = $this->session->userdata('user_in');
-		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"&& $this->uri->segment(1) != "get_sub_process"){
+		//TO-DO: blocking ajax to work.
+		/*if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"&& $this->uri->segment(1) != "get_sub_process"){
 			redirect(base_url(''), 'refresh');
-		}
+		}*/
 	}
 
 	function sifirla($data){
@@ -203,6 +204,7 @@ class Dataset extends CI_Controller {
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
 		$data['units'] = $this->flow_model->get_unit_list();
+		$data['user'] = $this->session->userdata('user_in');
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -610,6 +612,12 @@ class Dataset extends CI_Controller {
 		$processID = $this->input->post('processID');
 		$process_list = $this->process_model->get_process_from_motherID($processID);
 		echo json_encode($process_list);
+	}
+
+	// returns flowname user matchup for ajax.
+	public function my_ep_values($flowname,$userid){
+		$epvalue=$this->flow_model->get_My_Ep_Values($flowname,$userid);
+		echo json_encode($epvalue);
 	}
 
 	public function delete_process($companyID,$company_process_id,$company_flow_id){
