@@ -75,8 +75,7 @@
             <div class="col-md-8">
                 <label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span
                             style="color:red;">*</span></label>
-                <input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>"
-                       value="<?php echo set_value('cost'); ?>">
+                <input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost'); ?>" onchange="getFlowId('<?php echo $user['id']; ?>')">
             </div>
             <div class="col-md-4">
                 <label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
@@ -429,8 +428,11 @@
                 success:function(data)
                 {
                     console.log(data[0]['ep_value']);
-                    if (typeof data[0]['ep_value'] != 'undefined'){
-                        $('#ep').val(data[0]['ep_value']);
+                    var value = document.getElementById("cost").value;
+                    if (typeof data[0]['ep_value'] != 'undefined' && value != ""){
+                        $('#ep').val(data[0]['ep_value']*value);
+                        $('#epUnit').val("EP/"+document.getElementById("costUnit").value);
+                        
                         alert("EP value for this flow automatically set from excel imported user data.")
                     }
                 } 
