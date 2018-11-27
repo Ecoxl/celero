@@ -33,8 +33,12 @@ class User extends CI_Controller {
         //echo "data from excel form";
         //echo $companyId;
 
-        include APPPATH . 'libraries/Excel.php';
-        $inputFileName = './assets/excels/'.$kullanici['username'].'.xlsx';
+		include APPPATH . 'libraries/Excel.php';
+		if(file_exists('./assets/excels/'.$kullanici['username'].'.xlsx')){
+			$inputFileName = './assets/excels/'.$kullanici['username'].'.xlsx';
+		}else{
+			$inputFileName = './assets/excels/default.xlsx';
+		}
 
         //  Read your Excel workbook
         try {
