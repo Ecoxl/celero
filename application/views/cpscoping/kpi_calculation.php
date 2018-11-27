@@ -226,7 +226,7 @@
 				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:{type:'numberbox',options:{precision:5}}"><?php echo lang("benchmark"); ?></th>
 				        <th data-options="field:'unit_kpi',align:'center',width:100"><?php echo lang("kpiunit"); ?></th>
 				        <th data-options="field:'kpidef',align:'center',width:130"><?php echo lang("kpidef"); ?></th>
-				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'"><?php echo lang("comments"); ?></th>
+				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'"><?php echo lang("CBoptionname"); ?> <span style="color:red;">*</th>
 				        <th data-options="field:'option',width:80,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}" formatter="formatOption"><?php echo lang("isoption"); ?>?</th>
 				        <th data-options="field:'allocation_id',width:100,align:'center'" formatter="formatDetail"><?php echo lang("editallocation"); ?></th>
 				    </tr>

@@ -2,11 +2,14 @@
 <div class="col-md-12">
 	<div class="lead"><?php echo $company['name']; ?></div>
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0; width: 100%;}
-.tg td{font-family:Arial, sans-serif;font-size:11px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#999;}
-.tg th{font-family:Arial, sans-serif;font-size:11px;font-weight:700;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#000;}
+.tg  {border-collapse:collapse; border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:11px; padding:5px 5px; border-style:solid; border-width:1px; overflow:hidden;word-break:normal; color:#999;}
+.tg th{font-family:Arial, sans-serif; text-align: right; font-size:11px; font-weight:700; padding:5px 5px; border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#000;}
 .tg .tg-yw4l{vertical-align:top;}
-.tg .tg-yw4l input{font-size: 11px; height: 28px;}
+.tg .tg-yw4l input{font-size: 11px; height: 25px; text-align: right;}
+.title_cb {border-collapse:collapse; border-spacing:0; width: 100%;}
+.title_cb_th {text-align: center;}
+.th-yw4l .option-start { }
 </style>
 <?php //print_r($allocation); ?><br><br>
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
@@ -14,42 +17,48 @@
 	<?php if (!empty($allocation)): ?>
 	<?php $i=1; ?>
 	<?php foreach ($allocation as $a): ?>
-        <?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+        <!-- cp_or_is variable set based on available/empty $a['cp_id'] -->
+        <?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";  $cp_or_is="cp";}else{$iid=$a['is_id'];$tip="is";  
+            $cp_or_is="is";} ?>
         <!-- if no unit_cost is defined a "-" is placed!-->
 		<?php if(empty($a['unit_cost'])){$a['unit_cost']="-";} ?>
 		<?php $attributes = array('id' => 'form-'.$i); ?>
 		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
     <table class="tg costtable">
         <tr>
-            <th class="tg-yw4l"><div style="width: 100px;">Option</div></th>
-            <th class="tg-yw4l">Yearly CAPEX / rest value (<?php echo $a['unit_cost']; ?>/yr)</th>
-            <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
-            <th class="tg-yw4l">unit</th>
-            <th class="tg-yw4l">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
-            <th class="tg-yw4l">OPEX (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">EP/ Unit</th>
-            <th class="tg-yw4l">EP</th>
-            <th class="tg-yw4l">Annual costs (<?php echo $a['unit_cost']; ?>/yr)</th>
-            <th class="tg-yw4l">Lifetime (yr)</th>
-            <th class="tg-yw4l">Investment (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">Discount rate (%) not for the existing process</th>
-            <th class="tg-yw4l">Yearly CAPEX (<?php echo $a['unit_cost']; ?>/yr)</th>
-            <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
-            <th class="tg-yw4l">unit</th>
-            <th class="tg-yw4l">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
-            <th class="tg-yw4l">OPEX (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">EP/ Unit</th>
-            <th class="tg-yw4l">EP</th>
-            <th class="tg-yw4l">Annual costs (<?php echo $a['unit_cost']; ?>/yr)</th>
-            <th class="tg-yw4l">Flow Name</th>
-            <th class="tg-yw4l">Differences of energy and material flows</th>
-            <th class="tg-yw4l">Unit</th>
-            <th class="tg-yw4l">Reduction OPEX (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">Economic Benefit (<?php echo $a['unit_cost']; ?>)</th>
-            <th class="tg-yw4l">Ecological Benefit (EP)</th>
-            <th class="tg-yw4l">Marginal costs (<?php echo $a['unit_cost']; ?>/EP)</th>
-            <th class="tg-yw4l">Payback time of Investment (yrs)</th>
-            <th class="tg-yw4l">Save</th>
+            <th class="title_cb_th" colspan="10" style="font-size: 12px; text-align: center;">Baseline</th>
+            <th class="title_cb_th" colspan="20" style="font-size: 12px; border-left:2px solid grey; text-align: center;">Option</th>
+        </tr>
+        <tr>
+            <th class="th-yw4l" bgcolor="#fefefc"><div style="width: 100px;">Option</div></th>
+            <th class="th-yw4l" bgcolor="#fefefc"> CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
+            <th class="th-yw4l" bgcolor="#fefefc" colspan="2">Annual energy and material flows</th>
+            <th class="th-yw4l" bgcolor="#fefefc">unit</th>
+            <th class="th-yw4l" bgcolor="#fefefc">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
+            <th class="th-yw4l" bgcolor="#fefefc">OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="th-yw4l" bgcolor="#fefefc">EP/ Unit</th>
+            <th class="th-yw4l" bgcolor="#fefefc">EP</th>
+            <th class="th-yw4l" bgcolor="#fefefc">Annual costs (<?php echo $a['unit_cost']; ?>/a)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff" style="border-left:2px solid grey;">Lifetime (a)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Investment (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Discount rate (%) </th>
+            <th class="th-yw4l" bgcolor="#fdfdff">CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff" colspan="2">Annual energy and material flows</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">unit</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">EP/ Unit</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">EP</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Annual costs (<?php echo $a['unit_cost']; ?>/a)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Flow Name</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Differences of flows</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Unit</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Reduction OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Economic Benefit (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Ecological Benefit (EP)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Marginal costs (<?php echo $a['unit_cost']; ?>/EP)</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">Payback time (a)</th>
+            <th class="th-yw4l" style=" text-align: center;">Save</th>
         </tr>
         <tr>
         <td class="tg-yw4l" rowspan="7">							
@@ -67,7 +76,7 @@
             <div class="  "><input type="text" name="flow-value-1" id="flow-value-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-unit-1" id="flow-unit-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-unit-1" id="flow-unit-1-<?php echo $i; ?>" class="form-control " value="<?php echo $a['flow-unit-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-specost-1" id="flow-specost-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1']; ?>" placeholder="Fill"></div>
@@ -84,7 +93,7 @@
         <td class="tg-yw4l" rowspan="7">
             <div class="  "><input type="text" name="annual-cost-1" id="annual-cost-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['annual-cost-1']; ?>" placeholder="Fill" ></div>
         </td>
-        <td class="tg-yw4l" rowspan="7">
+        <td class="tg-yw4l" rowspan="7" style="border-left:2px solid grey; ">
         	<div class="  "><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
@@ -144,8 +153,10 @@
         <td class="tg-yw4l" rowspan="7">
             <div class="  "><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1" ></div>
         </td>
-        <td class="tg-yw4l" rowspan="7">
-            <input type="submit" value="Save" class="btn btn-block btn-info" style="width: 100px;">
+        <td class="tg-yw4l" rowspan="7" style="vertical-align: middle;">
+            <input type="submit" value="Save" class="btn btn-block btn-info" style="width: 100px; text-align: center;">
+            <!-- cp_or_is variable posted hidden -->
+            <input type="hidden" name="cp_or_is" value="<?php $cp_or_is ?>" >
         </td>
     </tr>
     <tr>
@@ -465,6 +476,7 @@
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-2" id="sum-3-2-<?php echo $i; ?>"  value="<?php echo $a['sum-3-2']; ?>" class="form-control" placeholder="sum-3-2" ></div></td>
     </tr>
 </table>
+</br>
 
     <?php $i++; ?>
 	</form>
@@ -472,7 +484,9 @@
     	//$( document ).ready(calculate);
     </script>
     <?php endforeach ?>
-<?php endif ?>
+<?php else: ?>
+    No Cost - Benefit option active, check the  <a href="<?php echo base_url('cpscoping'); ?>">allocations and KPI calculation page </a> (comment is mandatory and "Is option" needs to be set)
+<?php endif; ?>
 <hr>
 </div>
 

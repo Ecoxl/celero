@@ -179,6 +179,7 @@ $lang["upperepvalue"]         = "Upper EP value";
 $lang["lowercostvalue"]       = "Lower cost value";
 $lang["uppercostvalue"]       = "Upper cost value";
 $lang["comments"]             = "Comments";
+$lang["CBoptionname"]         = "Cost Benefit option name";
 $lang["saveallchanges"]       = "Save all changes";
 $lang["cancelallchanges"]     = "Cancel all changes";
 $lang["seechanges"]           = "See changes";

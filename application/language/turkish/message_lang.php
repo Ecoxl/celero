@@ -178,6 +178,7 @@ $lang["upperepvalue"]         = "En yüksek EP";
 $lang["lowercostvalue"]       = "En düşük maliyet";
 $lang["uppercostvalue"]       = "En yüksek maliyet";
 $lang["comments"]             = "Yorumlar";
+$lang["CBoptionname"]         = "Cost Benefit option name"; #todo translate
 $lang["saveallchanges"]       = "Tümünü kaydet";
 $lang["cancelallchanges"]     = "Tümünü iptal et";
 $lang["seechanges"]           = "Değişiklikler";

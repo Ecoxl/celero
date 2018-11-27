@@ -234,7 +234,7 @@ td {
 
 .costtable input {
     border: none !important;
-    margin: -3px -10px;
+    margin: -5px -10px;
 }
 /*d3.js styling*/
 
@@ -484,11 +484,9 @@ pre p{
     text-align: right; 
     padding-left: 2px !important;
 }
-<<<<<<< HEAD
-=======
 
 #subtitle {
     color: white;
     font-size: 12px;
 }
->>>>>>> db6fbcfbcb618068e048bc52b550a7559602ab5a
+
