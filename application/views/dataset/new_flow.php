@@ -55,13 +55,13 @@
             <div class="col-md-8">
                 <label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span
                             style="color:red;">*</span></label>
-                <input class="form-control" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>"
+                <input class="form-control" onchange="getFlowId('<?php echo $user['id']; ?>')" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>"
                        value="<?php echo set_value('quantity'); ?>">
             </div>
             <div class="col-md-4">
                 <label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span
                             style="color:red;">*</span></label>
-                <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+                <select onchange="getFlowId('<?php echo $user['id']; ?>')" id="selectize-units" class="info select-block" name="quantityUnit"> 
                     <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
                     <?php foreach ($units as $unit): ?>
                         <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
@@ -75,7 +75,7 @@
             <div class="col-md-8">
                 <label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span
                             style="color:red;">*</span></label>
-                <input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost'); ?>" onchange="getFlowId('<?php echo $user['id']; ?>')">
+                <input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost'); ?>" >
             </div>
             <div class="col-md-4">
                 <label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
@@ -419,6 +419,14 @@
     </script>
 
     <script type="text/javascript">
+        function getSelectedText(elementId) {
+            var elt = document.getElementById(elementId);
+
+            if (elt.selectedIndex == -1)
+                return null;
+
+            return elt.options[elt.selectedIndex].text;
+        }
         function getEPValues( flowname, userid )
         {
             jQuery.ajax({
@@ -428,11 +436,11 @@
                 success:function(data)
                 {
                     console.log(data[0]['ep_value']);
-                    var value = document.getElementById("cost").value;
-                    if (typeof data[0]['ep_value'] != 'undefined' && value != ""){
+                    var value = document.getElementById("quantity").value;
+                    var value1 = getSelectedText('selectize-units');
+                    if (typeof data[0]['ep_value'] != 'undefined' && value != "" && value1 != ""){
                         $('#ep').val(data[0]['ep_value']*value);
-                        $('#epUnit').val("EP/"+document.getElementById("costUnit").value);
-                        
+                        $('#epUnit').val("EP/"+value1);
                         alert("EP value for this flow automatically set from excel imported user data.")
                     }
                 } 
