@@ -82,7 +82,7 @@ class Flow_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from("t_unit");
 		$this->db->where('active',1);
-		$this->db->order_by("name", "asc");
+		$this->db->order_by("id", "asc");
 		$query = $this->db->get();
 		return $query->result_array();
 	}
