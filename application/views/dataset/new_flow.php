@@ -446,4 +446,11 @@
                 } 
             });
         }
+
+        $('#gizle > form').submit(function() {
+            if($('#flowfamily').val() == "" && $('#flow-family').is(':visible')){
+                alert("Please select a flow family");
+                return false;
+            } 
+        });
     </script>
