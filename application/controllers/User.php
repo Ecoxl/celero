@@ -245,7 +245,7 @@ class User extends CI_Controller {
 				'id' => $userInfo['id'],
 				'username' => mb_strtolower($userInfo['user_name']),
 				'email' => $userInfo['email'],
-                                'role_id' => $userInfo['role_id']
+                'role_id' => $userInfo['role_id']
 				);
 			$this->session->set_userdata('user_in',$session_array);
 
@@ -362,12 +362,14 @@ class User extends CI_Controller {
 
 			$this->user_model->update_user($update);
 
+
 			//session ayaları ve atama
 			//username ve email degistigi icin session tekrar olusturuluyor.
 			$session_array= array(
 				'id' => $data['id'],
 				'username' => $update['user_name'],
-				'email' => $update['email']
+				'email' => $update['email'],
+				'role_id' => $data['role_id']
 				);
 			$this->session->set_userdata('user_in',$session_array);
 
