@@ -13,6 +13,8 @@
 				if(!newisnum && newid !=""){
 					$('#process-family').show("slow");
 				}
+
+			
 		}
 	</script>
 
@@ -124,7 +126,9 @@
 <!-- 				<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
 					<td><?php echo $attribute['typ_rate_util']; ?> <?php echo $attribute['typrateu']; ?></td>
 					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td> -->
-					<td><?php echo $attribute['comment']; ?></td>
+					<?php if($son !== $attribute['prcessname']): ?>
+						<td rowspan="<?php echo $cmpny_flow_prcss_count[$attribute['prcessname']]; ?>"><?php echo $attribute['comment']; ?> </td>
+					<?php endif ?>
 					<td>
 						<a href="<?php echo base_url('edit_process/'.$companyID.'/'.$attribute['company_process_id']);?>" class="label label-warning" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-edit"></span> <?php echo lang("edit"); ?></button>
 						<a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button>
