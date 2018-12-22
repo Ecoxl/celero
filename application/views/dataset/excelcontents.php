@@ -46,7 +46,7 @@
     <div class="col-md-6">
         <h6>Your EP Data</h6>
         <table class="table">
-            <th>Flow Name</th><th>Flow Value</th>
+            <th>Flow Name</th><th>Flow Value</th><th>Delete</th>
             <?php foreach ($userepvalues as $uep): ?>
                 <?php //print_r($ec); ?>
                 <tr>
@@ -55,6 +55,9 @@
                     </td>
                     <td>
                         <?php echo $uep['ep_value']; ?>
+                    </td>
+                    <td>
+                    <a href="<?php echo base_url('deleteuserep/'.$uep['flow_name'].'/'.$uep['ep_value']); ?>" class="label label-info">Delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>

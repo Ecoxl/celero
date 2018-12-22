@@ -182,6 +182,7 @@ $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";
 
 // Dataset
+$route['deleteuserep/(:any)/(:any)'] = "user/deleteUserEp/$1/$2";
 $route['datasetexcel'] = "user/dataFromExcel";
 $route['uploadExcel'] = "user/uploadExcel";
 $route['flow_and_component'] = "dataset/flow_and_component";

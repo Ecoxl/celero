@@ -122,7 +122,8 @@ class Dataset extends CI_Controller {
 
 		if($this->form_validation->run() !== FALSE) {
 
-			$flowID = $this->input->post('flowname');
+			$flowID = str_replace(' ', '_', $this->input->post('flowname'));
+			$flowID = strtolower($flowID);
 			$charactertype = $this->input->post('charactertype');
 			$flowtypeID = $this->input->post('flowtype');
 			$flowfamilyID = $this->input->post('flowfamily');

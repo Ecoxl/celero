@@ -74,7 +74,13 @@ class User extends CI_Controller {
 
         $this->load->view('dataset/excelcontents',$data);
         $this->load->view('template/footer');
-    }
+	}
+	
+	public function deleteUserEp($flow_name,$ep_value){
+		$kullanici = $this->session->userdata('user_in');
+		$this->flow_model->delete_userep($flow_name,$ep_value,$kullanici['id']);
+		redirect('datasetexcel', 'refresh');
+	}
 
     public function uploadExcel(){
 
