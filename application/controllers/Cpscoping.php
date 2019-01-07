@@ -217,11 +217,11 @@ class Cpscoping extends CI_Controller {
 				$data['allocationveri'][$prcss_name] = $ilkveri;
 				$prcss_total = $ilkveri['flow_id'].'-0-'.$ilkveri['flow_type_id'];
 				if(!isset($data['allocationveri'][$prcss_total]['amount'])){
-					$data['allocationveri'][$prcss_total]['amount'] = '';
+					$data['allocationveri'][$prcss_total]['amount'] = '0';
 					$data['allocationveri'][$prcss_total]['unit_amount'] = '';
-					$data['allocationveri'][$prcss_total]['cost'] = '';
+					$data['allocationveri'][$prcss_total]['cost'] = '0';
 					$data['allocationveri'][$prcss_total]['unit_cost'] = '';
-					$data['allocationveri'][$prcss_total]['env_impact'] = '';
+					$data['allocationveri'][$prcss_total]['env_impact'] = '0';
 					$data['allocationveri'][$prcss_total]['unit_env_impact'] = '';
 				}
 				$data['allocationveri'][$prcss_total]['amount'] += $ilkveri['amount'];
