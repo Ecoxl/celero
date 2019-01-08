@@ -133,6 +133,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 60); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+        
 
         $response = curl_exec($ch);
         if ($response == false) {
@@ -163,6 +166,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+  
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -191,6 +197,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -219,6 +228,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -247,6 +259,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -276,6 +291,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -305,6 +323,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -333,6 +354,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
  
         $response = curl_exec($ch);
         if ($response == false) {
@@ -364,6 +388,9 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
 
  
         $response = curl_exec($ch);
@@ -398,14 +425,17 @@ class EcomanProxyHelper extends \Proxy\Proxy\AbstractProxyHelper {
         //curl_setopt($ch, CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
         curl_setopt($ch, CURLOPT_HEADER, 0); // we don’t want also to get the header information that we receive.
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); //needed for HTTPS site (otherwise returns 302)
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); //needed for basic HTTP auth (otherwise "unauthorized")
+        curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['PHP_AUTH_USER'] . ":" . $_SERVER['PHP_AUTH_PW']);
+
         
         
-        $client_id = 'rerwrrwre';
-        $client_secret = 'ggggg';
+        //$client_id = 'rerwrrwre';
+        //$client_secret = 'ggggg';
         // Add client ID and client secret to the headers.
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array (
-            "Authorization: Basic " . base64_encode($client_id . ":" . $client_secret),
-        ));       
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array (
+        //    "Authorization: Basic " . base64_encode($client_id . ":" . $client_secret),
+        //));       
  
         // Assemble POST parameters for the request.
         //$post_fields = "code=" . urlencode($auth_code) . "&grant_type=authorization_code";
