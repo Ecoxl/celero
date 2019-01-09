@@ -516,8 +516,8 @@
                         echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; 
                     } ?>
                     </td>
-                    <td><?php echo number_format((float)$a['marcos-1'], 2, '.', ''); ?></td>
-                    <td><?php echo number_format((float)$a['sum-3-2'], 4, '.', ''); ?></td></tr>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', ''); ?></td>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 2, '.', ''); ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>
@@ -881,7 +881,14 @@
 	//array defining
 	$t=0;
 	$toplameco=0;
-	foreach ($allocation as $a) {
+    $alloc = $allocation;
+
+    #sorts the allocation by marcos-1 ascending (lowest value first)
+    usort($alloc, function($a, $b) {
+        return $a['marcos-1'] <=> $b['marcos-1'];
+    });
+
+	foreach ($alloc as $a) {
 		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from ".$a['cmpny_from_name']; }
 		
 		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
@@ -911,7 +918,7 @@
 ?>
 <script type="text/javascript">
 	setTimeout(function()
-	{
+	{  
 		tuna_graph();
 	}, 1000);
 
@@ -919,7 +926,6 @@
 	//console.log(list);
 	//Tuna Graph
 	var data = <?php echo json_encode($tuna_array); ?>;
-	//console.log(data);
 	var margin = {
 	            "top": 10,
 	            "right": 30,
