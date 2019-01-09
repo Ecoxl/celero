@@ -435,13 +435,16 @@
                 dataType: "json",
                 success:function(data)
                 {
-                    console.log(data[0]['ep_value']);
-                    var value = document.getElementById("quantity").value;
-                    var value1 = getSelectedText('selectize-units');
-                    if (typeof data[0]['ep_value'] != 'undefined' && value != "" && value1 != ""){
-                        $('#ep').val(data[0]['ep_value']*value);
-                        $('#epUnit').val("EP/"+value1);
-                        alert("EP value for this flow automatically set from excel imported user data.")
+                    //checks if data is empty/blank
+                    if($.trim(data)){
+                        console.log(data[0]['ep_value']);
+                        var value = document.getElementById("quantity").value;
+                        var value1 = getSelectedText('selectize-units');
+                        if (typeof data[0]['ep_value'] != 'undefined' && value != "" && value1 != ""){
+                            $('#ep').val(data[0]['ep_value']*value);
+                            //$('#epUnit').val("EP/"+value1);
+                            alert("EP value for this flow automatically set from excel imported user data.")
+                        }
                     }
                 } 
             });
