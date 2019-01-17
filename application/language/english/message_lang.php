@@ -46,7 +46,7 @@ $lang["costbenefitanalysis"]  = "Cost - Benefit Analysis";
 $lang["ecotracking"]          = "Eco Tracking";
 $lang["closeproject"]         = "Close Project";
 
-$lang['slogan']               = "Optimize resources and identify industrial synergies";
+$lang['slogan']               = "Improve Resource Efficiency with Cleaner Production and Industrial Symbiosis";
 $lang['celerodescription']    = "License-free web app for Cleaner Production and Industrial Symbiosis";
 $lang['startusing']			  = "Start using CELERO";
 $lang['username']             = "Username";
