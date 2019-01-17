@@ -12,7 +12,8 @@
 		<div class="row">
 
 			<div class="col-md-6 col-md-offset-3 swissbox">
-			<p class="lead"><?php echo lang("userregister"); ?></p>
+			<p class="lead"><?php echo lang("userregister"); ?> 
+			<small><small> or <a href="<?php echo base_url('login'); ?>">login here</a></small></small></p>
 
 				<div class="form-group">
 						<label for="username"><?php echo lang("username")?></label> 

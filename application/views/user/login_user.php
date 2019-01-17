@@ -21,7 +21,7 @@
 
 				<button type="submit" class="btn btn-primary"><?php echo lang("login"); ?></button>
 				<hr>
-				<a href="<?php echo base_url('new_password_email');?>"><?php echo lang("forgotyourpassword"); ?></a>
+				<!-- <a href="<?php echo base_url('new_password_email');?>"><?php echo lang("forgotyourpassword"); ?></a> -->
 		    </form>
 		</div>
 	</div>
