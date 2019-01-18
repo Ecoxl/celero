@@ -1,5 +1,5 @@
     <div class="clearfix"></div>
-    <div class="footer">© 2013-2018 CELERO
+    <div class="footer">© 2013-2019 CELERO
       <div class="footer-right">
         <!-- Language selection, underlines the selected language-->
         <?php if($this->session->userdata('site_lang')==null || $this->session->userdata('site_lang')=='') { ?>
