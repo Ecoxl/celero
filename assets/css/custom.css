@@ -490,3 +490,8 @@ pre p{
     font-size: 12px;
 }
 
+.indented {
+  padding-left: 50pt;
+  padding-right: 0pt;
+}
+

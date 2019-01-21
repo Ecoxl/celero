@@ -3,7 +3,7 @@
 ?>
 <div class="container">
 	<div class="well">
-		<p><b>Legal disclaimer</b></p>
+		<h><b>Legal disclaimer</h></p>
 		<br>
 		<br>
 		<br>

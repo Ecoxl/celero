@@ -2,26 +2,41 @@
 	$this->load->view('template/header');
 ?>
 <div class="container" >
-<div><img src="<?php echo asset_url('images/anasayfa.png'); ?>" alt="" style="width:100%;border:1px solid #d0d0d0;"></div>
-
-<div style="margin-top:20px;"><b>Christoph Hugi, </b><a href="mailto:christoph.hugi@fhnw.chh">christoph.hugi@fhnw.chh</a>, University of Applied Sciences and Arts Northwestern Switzerland</i></div>
-
-<div><b>Sadık Engin Kılıç</b>, <a href="mailto:engin.kilic@atilim.edu.tr">engin.kilic@atilim.edu.tr</a> , Atılım University, 06830, Ankara, Turkey</div>
-
-<div><b>Hakkı Özgür Ünver,</b> <a href="mailto:hounver@etu.edu.tr">hounver@etu.edu.tr</a>,TOBB University of Economics and Technology, 06560, Ankara, Turkey</div>
-
-<div><b>Dirk Hengevoss</b>, <a href="mailto:dirk.hengevoss@fhnw.ch">dirk.hengevoss@fhnw.ch</a>, University of Applied Sciences and Arts Northwestern Switzerland</div>
-
-<div><b>Guillaume Massard,</b> <a href="mailto:guillaume.massard@unil.ch">guillaume.massard@unil.ch</a>, Université de Lausanne, Switzerland</div>
-
-<div><b>Murat Özbayoğlu,</b> <a href="mailto:mozbayoglu@etu.edu.tr">mozbayoglu@etu.edu.tr</a>,TOBB University of Economics and Technology, 06560, Ankara, Turkey</div>
-
-<div><b>Tuna Çağlar Gümüş,</b> <a href="mailto:tunacaglargumus@gmail.tr">tgumus@etu.edu.tr</a>, TOBB University of Economics and Technology, 06560, Ankara, Turkey</div>
-
-<div><b>Ostim Teknoloji</b> <a href="mailto:ostimteknoloji@ostim.com.tr ">ostimteknoloji@ostim.com.tr</a>, Ostim Technology Co., Ankara, Turkey</div>
-
-
-
+		<b><h>The CELERO Project REF-1011-07300 was co-funded by the Technology Fund of the Federal Office for Environment FOEN, Switzerland. <br>
+		The project partners are:</h></b><br><br>
+		<table width="100%">
+			<tr>
+				<td style="text-align: center; width: 30%;" width="20%"><img src="<?php echo asset_url('images/nw.png'); ?>" alt="" style="width:45%;"></td>
+				<td>
+					<p>University of Applied Sciences and Arts Northwestern Switzerland  (FHNW) <br>
+					Gründenstrasse 40 <br>
+					CH-4132 MUTTENZ SWITZERLAND <br>
+					<a href="https://www.fhnw.ch/de/die-fhnw/hochschulen/lifesciences" target="_blank">www.fhnw.ch/de/die-fhnw/hochschulen/lifesciences</a> <br>
+					<a href="mailto:dirk.hengevoss@fhnw.ch">dirk.hengevoss@fhnw.ch</a> <br>
+					<a href="mailto:basil.gisi@fhnw.ch">basil.gisi@fhnw.ch</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center; width: 30%;"><img src="<?php echo asset_url('images/bg.png'); ?>" alt="" style="width:30%;"></td>
+				<td>
+					<p> BG Ingénieurs Conseils  <br>
+					Avenue de Cour 61, CP 241 <br>
+					CH-1001 LAUSANNE SWITZERLAND <br>
+					<a href="https://www.bg-21.com" target="_blank">www.bg-21.com</a> <br>
+					<a href="mailto:guillaume.massard@bg-21.com">guillaume.massard@bg-21.com</a></p>		
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center; width: 30%;" ><img src="<?php echo asset_url('images/sofies.png'); ?>" alt="" style="width:45%;"></td>
+				<td>
+					<p> SOFIES SA <br> 
+					rue du Vuache 1, CP 2091 <br>
+					CH-1211 GENEVA 1 SWITZERLAND <br>
+					<a href="https://www.sofiesgroup.com" target="_blank">www.sofiesgroup.com</a> <br>
+					<a href="mailto:benoit.charriere@sofiesgroup.com">benoit.charriere@sofiesgroup.com</a></p>
+				</td>
+			</tr>
+		</table>
 </div>
 <?php
 	$this->load->view('template/footer'); 
