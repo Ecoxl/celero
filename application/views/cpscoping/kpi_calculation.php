@@ -222,9 +222,9 @@
 				        <th data-options="field:'allocation_name',align:'left',width:250"><?php echo lang("allocation"); ?></th>
 <!-- 				    <th data-options="field:'flow_name',align:'center',width:110">Flow</th>
 				        <th data-options="field:'flow_type_name',align:'center',width:80">Flow Type</th> -->
-				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
-				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:{type:'numberbox',options:{precision:5}}"><?php echo lang("benchmark"); ?></th>
-				        <th data-options="field:'unit_kpi',align:'center',width:100"><?php echo lang("kpiunit"); ?></th>
+				        <th data-options="field:'kpi',align:'right',width:100">KPI</th>
+				        <th data-options="field:'benchmark_kpi',width:100,align:'right',editor:{type:'numberbox',options:{precision:5}}"><?php echo lang("benchmark"); ?></th>
+				        <th data-options="field:'unit_kpi',align:'right',width:100"><?php echo lang("kpiunit"); ?></th>
 				        <th data-options="field:'kpidef',align:'center',width:130"><?php echo lang("kpidef"); ?></th>
 				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'"><?php echo lang("CBoptionname"); ?> <span style="color:red;">*</th>
 				        <th data-options="field:'option',width:80,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}" formatter="formatOption"><?php echo lang("isoption"); ?>?</th>

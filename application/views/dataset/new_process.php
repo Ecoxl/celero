@@ -13,8 +13,6 @@
 				if(!newisnum && newid !=""){
 					$('#process-family').show("slow");
 				}
-
-			
 		}
 	</script>
 

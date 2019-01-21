@@ -501,7 +501,9 @@
             <?php //print_r($allocation); ?>
             <table class="table" style="font-size:12px;">
                 <tr>
-                    <th><?php echo lang("optionandprocess"); ?></th><th><?php echo lang("marginalcost"); ?></th><th><?php echo lang("ecologicalbenefit"); ?></th>
+                    <th><?php echo lang("optionandprocess"); ?></th>
+                    <th><?php echo lang("marginalcost"); ?></th>
+                    <th><?php echo lang("ecologicalbenefit"); ?></th>
                 </tr>
             <?php foreach ($allocation as $a): ?>
                 <tr>
@@ -517,7 +519,7 @@
                     } ?>
                     </td>
                     <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', ''); ?></td>
-                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 2, '.', ''); ?></td></tr>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 0, '.', ''); ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>

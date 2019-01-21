@@ -111,7 +111,7 @@ print_r($allocation[0]);*/
 			<table class="table table-bordered">
 			<tr>
 			<th style="width:150px;"><?php echo lang("inputflows"); ?></th>
-			<th style="width:150px;"><?php echo lang("total"); ?></th>
+			<th style="width:150px;text-align:center;"><?php echo lang("total"); ?></th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -127,7 +127,7 @@ print_r($allocation[0]);*/
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;text-align:center;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id'];
 				}
 			}
@@ -151,7 +151,7 @@ print_r($allocation[0]);*/
 
 					if($degisken == 1 && $a['flow_type_id'] == 1): ?>
 					<tr>
-						<td>
+						<td style="width:200px;">
 							<b><?php echo $a['flow_name']; ?></b>
 							<?php if ($active[$a['allocation_id']] == 0): ?>
 								<button class="btn btn-default btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">
@@ -174,16 +174,34 @@ print_r($allocation[0]);*/
 										if(!empty($allocationveri[$bak])):
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
-											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+											<table style="font-size:11px;width:100%;text-align:center;" frame="void">
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?>
+												</td>
+												<td style="text-align:right;">
+												 <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?>
+												</td>
+												<td style="text-align:right;">
+												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?>
+												</td>
+												<td style="text-align:right;">
+												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['amount']; ?> 
+												</td>
+												<td style="text-align:right;">
+												<?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['cost']; ?> 
+												</td>
+												<td style="text-align:right;">
+												<?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['env_impact']; ?> 
+												</td>
+												<td style="text-align:right;">
+												<?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
 											</table>
 										<?php endif ?>
 										<?php //print_r($allocationveri[$bak]); ?>
@@ -204,7 +222,7 @@ print_r($allocation[0]);*/
 			<table class="table table-bordered">
 			<tr>
 			<th style="width:150px;"><?php echo lang("outputflows"); ?></th>
-			<th style="width:150px;"><?php echo lang("total"); ?></th>
+			<th style="width:150px;text-align: center;"><?php echo lang("total"); ?></th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -220,7 +238,7 @@ print_r($allocation[0]);*/
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;text-align:center;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id'];
 				}
 			}
@@ -253,7 +271,7 @@ print_r($allocation[0]);*/
 
 							?>
 					<tr>
-						<td>
+						<td style="width:200px;">
 							<b><?php echo $a['flow_name']; ?></b>
 							<?php
 							if($id != 0){
@@ -280,15 +298,24 @@ print_r($allocation[0]);*/
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<td style="text-align:right">
+												<?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<td style="text-align:right">
+												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info">	<?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<td style="text-align:right">
+												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+												<tr><td class="table-numbers" style="width:85%"> <?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<td style="text-align:right;"><?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
 											</table>
 										<?php endif ?>
 										<?php //print_r($allocationveri[$bak]); ?>
@@ -325,12 +352,12 @@ print_r($allocation[0]);*/
 				<thead>
 				    <tr>
 				        <th data-options="field:'prcss_name',align:'center',width:150"><?php echo lang("process"); ?></th>
-				        <th data-options="field:'ep_def_value',align:'center',width:80" formatter="formatPrice"><?php echo lang("ep"); ?></th>
-				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice"><?php echo lang("lowerepvalue"); ?></th>
-				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice"><?php echo lang("upperepvalue"); ?></th>
-				        <th data-options="field:'cost_def_value',align:'center',width:100" formatter="formatPrice"><?php echo lang("cost"); ?></th>
-				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice"><?php echo lang("lowercostvalue"); ?></th>
-				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice"><?php echo lang("uppercostvalue"); ?></th>
+				        <th data-options="field:'ep_def_value',align:'right',width:80" formatter="formatPrice"><?php echo lang("ep"); ?></th>
+				        <th data-options="field:'ep_value_alt',align:'right',width:100" formatter="formatPrice"><?php echo lang("lowerepvalue"); ?></th>
+				        <th data-options="field:'ep_value_ust',align:'right',width:100" formatter="formatPrice"><?php echo lang("upperepvalue"); ?></th>
+				        <th data-options="field:'cost_def_value',align:'right',width:100" formatter="formatPrice"><?php echo lang("cost"); ?></th>
+				        <th data-options="field:'cost_value_alt',align:'right',width:110" formatter="formatPrice"><?php echo lang("lowercostvalue"); ?></th>
+				        <th data-options="field:'cost_value_ust',align:'right',width:110" formatter="formatPrice"><?php echo lang("uppercostvalue"); ?></th>
 				        <th data-options="field:'comment',width:200,align:'center',editor:'text'"><?php echo lang("comments"); ?></th>
 				    </tr>
 				</thead>

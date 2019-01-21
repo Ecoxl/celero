@@ -111,9 +111,9 @@
 				<th><?php echo lang("componentname"); ?></th>
 				<th><?php echo lang("componenttype"); ?></th>
 				<th><?php echo lang("description"); ?></th>
-				<th><?php echo lang("quantity"); ?></th>
-				<th><?php echo lang("supplycost"); ?></th>
-				<th><?php echo lang("outputcost"); ?></th>
+				<th colspan="2"><?php echo lang("quantity"); ?></th>
+				<th colspan="2"><?php echo lang("supplycost"); ?></th>
+				<th colspan="2"><?php echo lang("outputcost"); ?></th>
 				<th><?php echo lang("quality"); ?></th>
 				<th><?php echo lang("substitute_potential"); ?></th>
 				<th><?php echo lang("comments"); ?></th>
@@ -125,9 +125,12 @@
 					<td><?php echo $component['component_name']; ?></td>
 					<td><?php echo $component['type_name']; ?></td>
 					<td><?php echo $component['description']; ?></td>
-					<td><?php echo $component['qntty']; ?> <?php echo $component['qntty_name']; ?></td>
-					<td><?php echo $component['supply_cost']; ?> <?php echo $component['supply_cost_unit']; ?></td>
-					<td><?php echo $component['output_cost']; ?> <?php echo $component['output_cost_unit']; ?></td>
+					<td class="table-numbers"><?php echo $component['qntty']; ?> </td>
+					<td class="table-units"><?php echo $component['qntty_name']; ?></td>
+					<td class="table-numbers"><?php echo $component['supply_cost']; ?> </td>
+					<td class="table-units"><?php echo $component['supply_cost_unit']; ?></td>
+					<td class="table-numbers"><?php echo $component['output_cost']; ?> </td>
+					<td><?php echo $component['output_cost_unit']; ?></td>
 					<td><?php echo $component['data_quality']; ?></td>
 					<td><?php echo $component['substitute_potential']; ?></td>
 					<td><?php echo $component['comment']; ?></td>

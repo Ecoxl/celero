@@ -128,22 +128,24 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th colspan="5"><?php echo lang("companyflows"); ?></th>
+						<th colspan="7"><?php echo lang("companyflows"); ?></th>
 					</tr>
 					<tr>
 						<th><?php echo lang("name"); ?></th>
 						<th><?php echo lang("flowtype"); ?></th>
-						<th><?php echo lang("quantity"); ?></th>
-						<th><?php echo lang("cost"); ?></th>
-						<th><?php echo lang("ep"); ?></th>
+						<th colspan="2" style="text-align: center;"><?php echo lang("quantity"); ?></th>
+						<th colspan="2" style="text-align: center;"><?php echo lang("cost"); ?></th>
+						<th style="text-align: center;"><?php echo lang("ep"); ?></th>
 					</tr>
 					<?php foreach ($company_flows as $flows): ?>
 						<tr>
 							<td><?php echo $flows['flowname']; ?></td>
 							<td><?php echo $flows['flowtype']; ?></td>
-							<td><?php echo $flows['qntty'].' '.$flows['qntty_unit_name']; ?></td>
-							<td><?php echo $flows['cost'].' '.$flows['cost_unit']; ?></td>
-							<td><?php echo $flows['ep'].' EP'?></td>
+							<td class="table-numbers"><?php echo $flows['qntty']; ?></td>
+							<td class="table-units"><?php echo $flows['qntty_unit_name']; ?></td>
+							<td class="table-numbers"><?php echo $flows['cost']; ?></td>
+							<td class="table-units"><?php echo $flows['cost_unit']; ?></td>
+							<td style="text-align: right"><?php echo $flows['ep']; ?></td>
 						</tr>
 					<?php endforeach ?>
 				</table>

@@ -61,17 +61,19 @@
 			<table class="table table-striped table-bordered">
 			<tr>
 				<th><?php echo lang("product"); ?></th>
-				<th><?php echo lang("quantities"); ?></th>
-				<th><?php echo lang("unitcost"); ?></th>
-				<th><?php echo lang("timeperiod"); ?></th>
+				<th colspan="2" style="text-align: center;"><?php echo lang("quantities"); ?></th>
+				<th colspan="2" style="text-align: center;"><?php echo lang("unitcost"); ?></th>
+				<th style="text-align: center;"><?php echo lang("timeperiod"); ?></th>
 				<th style="width:100px;"><?php echo lang("manage"); ?></th>
 			</tr>
 			<?php foreach ($product as $pro): ?>
 			<tr>	
 				<td><?php echo $pro['name']; ?></td>
-				<td><?php if(empty($pro['quantities']) or $pro['quantities'] == 0){echo "";} else {echo $pro['quantities'].' '.$pro['qunit']; } ?></td>
-				<td><?php if(empty($pro['ucost']) or $pro['ucost'] == 0){echo "";} else {echo $pro['ucost'].' '.$pro['ucostu']; } ?></td>
-				<td><?php echo $pro['tper']; ?></td>
+				<td class="table-numbers"><?php if(empty($pro['quantities']) or $pro['quantities'] == 0){echo "";} else {echo $pro['quantities'].' </td>
+					<td class="table-units" style="width: 4%"> '.$pro['qunit']; } ?></td>
+				<td class="table-numbers"><?php if(empty($pro['ucost']) or $pro['ucost'] == 0){echo "";} else {echo $pro['ucost'].' </td>
+					<td class="table-units" style="width: 4%"> '.$pro['ucostu']; } ?></td>
+				<td style="text-align: center;"><?php echo $pro['tper']; ?></td>
 				<td>
 				<a href="<?php echo base_url('edit_product/'.$companyID.'/'.$pro['id']);?>" class="label label-warning"><span class="fa fa-edit"></span> <?php echo lang("edit"); ?></button>
 				<a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="label label-danger"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button></td>

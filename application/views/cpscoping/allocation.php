@@ -138,10 +138,18 @@ function aatf() {
 			<?php if(!empty($company_flows)): ?>
 				<table class="table" style="font-size:12px;">
 					<tr>
-						<th><?php echo lang("name"); ?></th><th><?php echo lang("amount"); ?></th><th><?php echo lang("cost"); ?></th>
+						<th><?php echo lang("name"); ?></th>
+						<th colspan="2" style="text-align: center;"><?php echo lang("amount"); ?></th>
+						<th colspan="2" style="text-align: center;"><?php echo lang("cost"); ?></th>
 					</tr>
 				<?php foreach ($company_flows as $f ): ?>
-					<tr><td><?php echo $f['flowname']; ?></td><td><?php echo $f['qntty']; ?> <?php echo $f['qntty_unit_name']; ?></td><td><?php echo $f['cost']; ?> <?php echo $f['cost_unit']; ?></td></tr>
+					<tr>
+						<td><?php echo $f['flowname']; ?></td>
+						<td class="table-numbers"><?php echo $f['qntty']; ?> </td>
+						<td class="table-units"><?php echo $f['qntty_unit_name']; ?></td>
+						<td class="table-numbers"><?php echo $f['cost']; ?> </td>
+						<td class="table-units"><?php echo $f['cost_unit']; ?></td>
+					</tr>
 				<?php endforeach ?>
 				</table>
 			<?php else: ?>
@@ -152,10 +160,20 @@ function aatf() {
 			<?php if(!empty($product)): ?>
 				<table class="table" style="font-size:12px;">
 					<tr>
-						<th><?php echo lang("name"); ?></th><th><?php echo lang("quantity"); ?></th><th><?php echo lang("cost"); ?></th><th><?php echo lang("period"); ?></th>
+						<th><?php echo lang("name"); ?></th>
+						<th colspan="2" style="text-align: center"><?php echo lang("quantity"); ?></th>
+						<th colspan="2" style="text-align: center"><?php echo lang("cost"); ?></th>
+						<th><?php echo lang("period"); ?></th>
 					</tr>
 				<?php foreach ($product as $p ): ?>
-					<tr><td><?php echo $p['name']; ?></td><td><?php echo $p['quantities']; ?> <?php echo $p['qunit']; ?></td><td><?php echo $p['ucost']; ?> <?php echo $p['ucostu']; ?></td><td><?php echo $p['tper']; ?></td></tr>
+					<tr>
+						<td><?php echo $p['name']; ?></td>
+						<td class="table-numbers"><?php echo $p['quantities']; ?> </td>
+						<td class="table-units"><?php echo $p['qunit']; ?></td>
+						<td class="table-numbers"><?php echo $p['ucost']; ?></td>
+						<td class="table-units"><?php echo $p['ucostu']; ?></td>
+						<td style="text-align: center"><?php echo $p['tper']; ?></td>
+					</tr>
 				<?php endforeach ?>
 				</table>
 			<?php else: ?>
