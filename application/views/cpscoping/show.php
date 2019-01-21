@@ -175,30 +175,30 @@ print_r($allocation[0]);*/
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
 											<table style="font-size:11px;width:100%;text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['amount']; ?>
 												</td>
 												<td style="text-align:right;">
 												 <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['cost']; ?>
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['env_impact']; ?>
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['amount']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['cost']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['env_impact']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
@@ -298,23 +298,23 @@ print_r($allocation[0]);*/
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['amount']; ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info">	<?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:85%"> <?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"> <?php echo $allocationveri[$bak]['amount']; ?> </td>
 												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
 												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td class="table-numbers" style="width:85%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
 												<td style="text-align:right;"><?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
 											</table>
 										<?php endif ?>
