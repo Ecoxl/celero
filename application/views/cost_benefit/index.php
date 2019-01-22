@@ -156,7 +156,7 @@
         <td class="tg-yw4l" rowspan="7" style="vertical-align: middle;">
             <input type="submit" value="Save" class="btn btn-block btn-info" style="width: 100px; text-align: center;">
             <!-- cp_or_is variable posted hidden -->
-            <input type="hidden" name="cp_or_is" value="<?php $cp_or_is ?>" >
+            <input type="hidden" name="cp_or_is" value="<?php echo $cp_or_is ?>" >
         </td>
     </tr>
     <tr>
@@ -493,7 +493,6 @@
 
 
 <div class="col-md-6">
-<?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<?php // echo lang("cbaheading"); ?>
     <p><?php echo lang("cbaheading2"); ?></p>
     <?php //print_r($allocation); ?>
