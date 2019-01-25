@@ -413,7 +413,8 @@ class Company extends CI_Controller{
 	public function create_company_control(){
 		$temp = $this->session->userdata('user_in');
 		$cmpny = $this->user_model->cmpny_prsnl($temp['id']);
-		if(count($cmpny) == 0){
+
+		if(empty($cmpny)){
 			return TRUE;
 		}
 		else{
