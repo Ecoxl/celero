@@ -36,6 +36,19 @@
 					<a href="mailto:benoit.charriere@sofiesgroup.com">benoit.charriere@sofiesgroup.com</a></p>
 				</td>
 			</tr>
+			<tr>
+				<td style="text-align: center; width: 30%;" >
+					<i class="fa fa-trophy fa-4x" style="color: #2D8B42;"></i>
+					
+				</td>
+				<td>
+					
+					<p> Private Contributor:<br> 
+					Tuna Çağlar Gümüş (Developer)</p>
+					<br>
+					<br>
+				</td>
+			</tr>
 		</table>
 </div>
 <?php
