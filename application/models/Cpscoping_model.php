@@ -111,7 +111,8 @@ class Cpscoping_model extends CI_Model {
         t_unit.name as qntty_unit,
         t_cmpny_flow.cost as cost,
         t_cmpny_flow.ep as ep,
-        t_cp_allocation.id as allocation_id,t_prcss.name as prcss_name,
+        t_cp_allocation.id as allocation_id,
+        t_prcss.name as prcss_name,
         t_cp_allocation.reference as reference,
         t_cp_allocation.unit_reference as unit_reference,
         t_flow.name as flow_name,
@@ -141,7 +142,7 @@ class Cpscoping_model extends CI_Model {
   }
 
   public function get_cost_benefit_info_is($cmpny_id,$prjct_id){
-    $this->db->select('*,
+    $this->db->select('DISTINCT on ("t_is_prj_details"."id") *,
         t_is_prj_details.id as is_id,
         t_cmpny_flow.qntty as qntty,
         t_unit.name as qntty_unit,
@@ -158,6 +159,7 @@ class Cpscoping_model extends CI_Model {
     $this->db->join('t_costbenefit_temp','t_costbenefit_temp.is_id = t_is_prj_details.id', 'left');
     $this->db->where('t_is_prj_details.cmpny_to_id',$cmpny_id);
     $data = $this->db->get()->result_array();
+    //print_r($this->db->last_query());
     //print_r($data);
     return $data;
   }
