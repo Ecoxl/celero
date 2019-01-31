@@ -127,7 +127,7 @@
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
-                    <a href="#" name="del" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("isscenariodetails"); ?></a>
+                    <a href="#" name="del" onclick="showScnDetailsButton();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("isscenariodetails"); ?></a>
                     <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true"><?php echo lang("gotoismanualpage"); ?></a>
                     <a href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true"><?php echo lang("gotoisautopage"); ?></a>
                     <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("closemap"); ?></a>

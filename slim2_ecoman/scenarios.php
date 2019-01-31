@@ -28,8 +28,8 @@ $app->get("/getScenarioDetailsCns_scn", function () use ($app, $pdo) {
     $sorguStr = null;
     if(isset($_GET['id']) && $_GET['id']!="" ) {
         $id = $_GET['id'];
-       
-        $sorguStr = "WHERE pd.is_prj_id=".$_GET['id']."  ";
+        
+        $sorguStr = "WHERE pd.is_prj_id=".$_GET['id'];
         //WHERE (cmpny_id=15 OR cmpny_id=13) AND flow_id=10
     } else {
         $sorguStr = "WHERE pd.is_prj_id IN (SELECT id FROM t_is_prj WHERE consultant_id=".$_GET['consultant_id']." ) ";
@@ -62,7 +62,7 @@ $app->get("/getScenarioDetailsCns_scn", function () use ($app, $pdo) {
                                     FROM t_is_prj_details pd
                                  
                                 '.$sorguStr.'');*/
-        $res = $pdo->query('
+        $res = $pdo->query("
                             SELECT pd.id, 
                                     pd.cmpny_from_id as id, 
                                     pd.cmpny_to_id as tocompanyid, 
@@ -79,17 +79,16 @@ $app->get("/getScenarioDetailsCns_scn", function () use ($app, $pdo) {
                                     WHERE flow_id=pd.flow_id AND cmpny_id=pd.cmpny_from_id LIMIT 1) as from_flow_type,
                                     (SELECT name from t_cmpny_flow cf
                                          INNER JOIN t_flow_type ft ON cf.flow_type_id=ft.id
-                                    WHERE flow_id=pd.flow_to_id AND cmpny_id=pd.cmpny_to_id LIMIT 1) as to_flow_type ,
+                                    WHERE flow_id=pd.flow_id_to AND cmpny_id=pd.cmpny_to_id LIMIT 1) as to_flow_type ,
                                      (SELECT ft.name from t_cmpny_flow cf
                                             INNER JOIN t_unit ft ON cf.qntty_unit_id=ft.id
                                        WHERE flow_id=pd.flow_id AND cmpny_id=pd.cmpny_to_id LIMIT 1) as to_unit,
                                        (SELECT ft.name from t_cmpny_flow cf
                                             INNER JOIN t_unit ft ON cf.qntty_unit_id=ft.id
-                                       WHERE flow_id=pd.flow_to_id AND cmpny_id=pd.cmpny_from_id LIMIT 1) as from_unit  
-                                    FROM t_is_prj_details pd
+                                       WHERE flow_id=pd.flow_id_to AND cmpny_id=pd.cmpny_from_id LIMIT 1) as from_unit  
+                                    FROM t_is_prj_details as pd
                                  
-                                '.$sorguStr.';
-                                ')->fetchAll(PDO::FETCH_ASSOC);
+                                ".$sorguStr.";")->fetchAll(PDO::FETCH_ASSOC);
     
     
    $companies = array();
