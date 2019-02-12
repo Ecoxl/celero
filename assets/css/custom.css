@@ -494,4 +494,8 @@ pre p{
   padding-left: 50pt;
   padding-right: 0pt;
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
