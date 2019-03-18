@@ -501,8 +501,8 @@
             <table class="table" style="font-size:12px;">
                 <tr>
                     <th><?php echo lang("optionandprocess"); ?></th>
-                    <th><?php echo lang("marginalcost"); ?></th>
-                    <th><?php echo lang("ecologicalbenefit"); ?></th>
+                   <th style="text-align: right;"><?php echo lang("marginalcost"); ?> (<?php echo $allocation[0]['unit_cost']; ?>/EP)</th>
+                    <th style="text-align: right;"><?php echo lang("ecologicalbenefit"); ?> (EP)</th>
                 </tr>
             <?php foreach ($allocation as $a): ?>
                 <tr>
@@ -517,8 +517,8 @@
                         echo $a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; 
                     } ?>
                     </td>
-                    <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', ''); ?></td>
-                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 0, '.', ''); ?></td></tr>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', "'"); ?></td>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 0, '.', "'"); ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>
@@ -968,7 +968,7 @@
 	svg.append("text")
 		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 305) + ")")
 		.style("text-anchor", "middle")
-		.text("<?php echo lang('ecologicalbenefit'); ?>");
+		.text("<?php echo lang('ecologicalbenefit'); ?> (EP)");
 
 	//y axis label
 	svg.append("text")
@@ -977,7 +977,7 @@
 		.attr("x", 0 - (height / 2))
 		.attr("dy", "1em")
 		.style("text-anchor", "middle")
-		.text("<?php echo lang('marginalcost'); ?>");
+		.text("<?php echo lang('marginalcost'); ?> (<?php echo $allocation[0]['unit_cost']; ?>/EP)");
 
 	svg.selectAll("rect").
 		data(data).
