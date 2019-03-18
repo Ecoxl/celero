@@ -491,7 +491,7 @@
 </div>
 
 
-
+<?php if(empty($allocation[0]['unit_cost'])){$allocation[0]['unit_cost']="-";} ?>
 <div class="col-md-6">
 	<?php // echo lang("cbaheading"); ?>
     <p><?php echo lang("cbaheading2"); ?></p>
