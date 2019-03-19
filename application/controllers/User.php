@@ -301,6 +301,11 @@ class User extends CI_Controller {
 	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
 	public function user_profile_update(){
 		$data = $this->user_model->get_session_user();
+
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
 		//$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
 		//print_r($userbilgisi);
 		//form kontroller
