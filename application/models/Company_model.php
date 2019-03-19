@@ -74,7 +74,6 @@ class Company_model extends CI_Model {
     $this->db->order_by("t_cmpny.name", "asc");
 
     $query = $this->db->get();
-    print_r($this->db->last_query());
     return $query->result_array();
   }
 
