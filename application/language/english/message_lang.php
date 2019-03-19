@@ -70,7 +70,7 @@ $lang["job"]                  = "Job";
 $lang["description"]          = "Description";
 
 $lang["consultantsdesc"]      = "You are seeing all the consultants of the system. You can access their profile and contact with them";
-$lang["mycompanydesc"]        = "Here can you see the companies created by yourself and the companies that you belong too as a user.";
+$lang["mycompanydesc"]        = "Here can you see the companies created by yourself and the companies that you belong to as a user.";
 $lang["nocompany"]			  = "You dont have a company yet.";
 $lang["allcompaniesdesc"]     = "You are seeing all companies in the system. You can access management pages if you have permission for the company.";
 $lang["editcompanydata"]      = "Edit Company Data";

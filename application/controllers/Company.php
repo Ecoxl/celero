@@ -204,13 +204,8 @@ class Company extends CI_Controller{
 	public function show_my_companies(){
 		$kullanici = $this->session->userdata('user_in');
 		
-		//gets all my created companies and all that are added to myprojects or where the user is assigned as consultant
-		$b = $this->company_model->get_my_companies($kullanici['id']);
-		$a = $this->company_model->get_all_companies_i_have_rights($kullanici['id']);
+		$data['companies'] = $this->company_model->get_all_companies_i_have_rights($kullanici['id']);
 		
-		$data['companies'] = array_merge($a, $b); 
-
-		//print_r($data['companies']);
 		$this->load->view('template/header');
 		$this->load->view('company/show_my_companies',$data);
 		$this->load->view('template/footer');

@@ -63,10 +63,10 @@ class Company_model extends CI_Model {
   public function get_all_companies_i_have_rights($user_id){
     $this->db->select('DISTINCT ON (t_cmpny.name) *',False);
     $this->db->from('t_cmpny');
-    $this->db->join('t_cmpny_prsnl', 't_cmpny_prsnl.cmpny_id = t_cmpny.id');
+    $this->db->join('t_cmpny_prsnl', 't_cmpny_prsnl.cmpny_id = t_cmpny.id', 'left');
    
-    $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
-    $this->db->join('t_prj_cnsltnt', 't_prj_cnsltnt.prj_id = t_prj_cmpny.prj_id');
+    $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id', 'left');
+    $this->db->join('t_prj_cnsltnt', 't_prj_cnsltnt.prj_id = t_prj_cmpny.prj_id', 'left');
 
     $this->db->where('t_cmpny_prsnl.user_id', $user_id);
     $this->db->or_where('t_prj_cnsltnt.cnsltnt_id', $user_id);
@@ -74,6 +74,7 @@ class Company_model extends CI_Model {
     $this->db->order_by("t_cmpny.name", "asc");
 
     $query = $this->db->get();
+    print_r($this->db->last_query());
     return $query->result_array();
   }
 
