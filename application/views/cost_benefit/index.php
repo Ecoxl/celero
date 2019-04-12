@@ -4,11 +4,11 @@
 <style type="text/css">
 .tg  {border-collapse:collapse; border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:11px; padding:5px 5px; border-style:solid; border-width:1px; overflow:hidden;word-break:normal; color:#999;}
-.tg th{font-family:Arial, sans-serif; text-align: right; font-size:11px; font-weight:700; padding:5px 5px; border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#000;}
+.tg th{font-family:Arial, sans-serif; text-align: right; font-size:11px; padding:5px 5px; border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#000;font-weight: normal}
+.tg .th-yw4l{font-weight: bold}
 .tg .tg-yw4l{vertical-align:top;}
 .tg .tg-yw4l input{font-size: 11px; height: 25px; text-align: right;}
 .title_cb {border-collapse:collapse; border-spacing:0; width: 100%;}
-.title_cb_th {text-align: center;}
 .th-yw4l .option-start { }
 </style>
 <?php //print_r($allocation); ?><br><br>
@@ -26,11 +26,14 @@
 		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
     <table class="tg costtable">
         <tr>
-            <th class="title_cb_th" colspan="10" style="font-size: 12px; text-align: center;">Baseline</th>
-            <th class="title_cb_th" colspan="20" style="font-size: 12px; border-left:2px solid grey; text-align: center;">Option</th>
+            <th colspan="9" style="font-size: 12px; text-align: left;">
+                <b>
+            <?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; } ?>:
+                </b> Baseline</th>
+            <th colspan="19" style="font-size: 12px; border-left:2px solid grey; text-align: left;">Option</th>
         </tr>
         <tr>
-            <th class="th-yw4l" bgcolor="#fefefc"><div style="width: 100px;">Option</div></th>
+            <!--<th class="th-yw4l" bgcolor="#fefefc"><div style="width: 100px;">Option</div></th>-->
             <th class="th-yw4l" bgcolor="#fefefc"> CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
             <th class="th-yw4l" bgcolor="#fefefc" colspan="2">Annual energy and material flows</th>
             <th class="th-yw4l" bgcolor="#fefefc">unit</th>
@@ -61,11 +64,11 @@
             <th class="th-yw4l" style=" text-align: center;">Save</th>
         </tr>
         <tr>
-        <td class="tg-yw4l" rowspan="7">							
+        <!--<td class="tg-yw4l" rowspan="7">							
         <span class="text-info" style="font-weight: 600;">
         	<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; } ?>
         </span>
-        </td>
+        </td>-->
         <td class="tg-yw4l" rowspan="7">
         	<div class="  "><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div>
         </td>
@@ -490,14 +493,11 @@
 <hr>
 </div>
 
-
-<?php if(empty($allocation[0]['unit_cost'])){$allocation[0]['unit_cost']="-";} ?>
+<!-- bottom part of the page with summary table starts here-->
 <div class="col-md-6">
-	<?php // echo lang("cbaheading"); ?>
     <p><?php echo lang("cbaheading2"); ?></p>
-    <?php //print_r($allocation); ?>
         <?php if (!empty($allocation)): ?>
-            <?php //print_r($allocation); ?>
+            <?php if(empty($allocation[0]['unit_cost'])){$allocation[0]['unit_cost']="-";} ?>
             <table class="table" style="font-size:12px;">
                 <tr>
                     <th><?php echo lang("optionandprocess"); ?></th>
