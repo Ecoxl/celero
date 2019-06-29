@@ -19,7 +19,7 @@
     <div class="col-md-6">
         <h6>Excel Content</h6>
         <table class="table">
-            <th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Add EP to your list</th>
+            <th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Resource Unit</th><th>Add EP to your list</th>
         <?php foreach ($excelcontents as $ec): ?>
             <?php echo form_open_multipart('datasetexcel'); ?>
             <?php //print_r($ec); ?>
@@ -35,6 +35,16 @@
                         </div>
                     </td>
                     <td>EP</td>
+                    <td>
+                        <div class="form-group">
+                            <select style="width:70px;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
+                                <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+                                <?php foreach ($units as $unit): ?>
+                                    <option value="<?php echo $unit['id']; ?>" <?php echo set_select('epQuantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </td>
                     <td>
                         <button type="submit" class="btn btn-info">Add EP</button>
                     </td>

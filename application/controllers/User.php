@@ -18,7 +18,8 @@ class User extends CI_Controller {
     public function dataFromExcel(){
         $this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|xss_clean');
-        $kullanici = $this->session->userdata('user_in');
+		$kullanici = $this->session->userdata('user_in');
+		
         //print_r($kullanici);
         if($this->form_validation->run() !== FALSE) {
             $epArray = array(
@@ -71,6 +72,7 @@ class User extends CI_Controller {
         //print_r($excelcontents);
         $data['excelcontents'] = $excelcontents;
         $data['userepvalues']=$this->flow_model->get_userep($kullanici['id']);
+		$data['units'] = $this->flow_model->get_unit_list();
 
         $this->load->view('dataset/excelcontents',$data);
         $this->load->view('template/footer');

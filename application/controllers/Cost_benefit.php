@@ -51,7 +51,7 @@ class Cost_benefit extends CI_Controller
     //cost-benefit analysis form saving
     public function save($prjct_id, $cmpny_id, $id, $cp_or_is)
     {
-
+        //TODO: Maybe we can find a better way to do it :)
         $capexold         = $this->input->post('capexold');
         $flow_name_1      = $this->input->post('flow-name-1');
         $flow_value_1     = $this->input->post('flow-value-1');
