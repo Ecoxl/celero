@@ -317,7 +317,7 @@ $lang["kpidef"]               = "KPI definition";
 
 // IS 
 $lang["selectfromselectedcompany"] = 'Select flow from selected company';
-$lang["specificflow"] = 'Specific Flow'; 
+$lang["specificflow"] = 'Match a specific flow'; 
 $lang["ispotentialssettings"] = 'Industrial Symbiosis Potentials Analysis Settings'; 
 $lang["manualispotentialssettings"] = 'Manual IS Potential Detection'; 
 $lang["selectcompanyflowmatching"] = 'Select a company for which flow matching is required'; 

@@ -26,7 +26,14 @@
 					    <select id="selectize-units" class="info select-block" name="quantityUnit"> 
 		                    <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
 		                    <?php foreach ($units as $unit): ?>
-		                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+		                    	<!-- sets the "qntty unit" in the dropdown by setting set_flow_unit to TRUE if id equals -->
+		                    	<?php 
+		                    		$set_flow_unit = FALSE;
+		                    		if ($flow['qntty_unit_id'] == $unit['id']) {
+		                    			$set_flow_unit = TRUE;
+		                    		}
+		                    	?>
+		                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id'], $set_flow_unit); ?>><?php echo $unit['name']; ?></option>
 		                    <?php endforeach ?>
 		                </select>
 					</div>
