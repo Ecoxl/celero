@@ -194,9 +194,9 @@ $(function() {
         remoteSort: false,
         multiSort: false,
         rownumbers: "true",
-        pagination: "true",
+        pagination: true,
         fit: true,
-        pagePosition: "both",
+        pagePosition: "bottom",
         columns: [
             [{
                     field: 'prj_name',

@@ -8,7 +8,6 @@
 <?php }  ?>
 <!--<script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>-->
 
-<script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
 
@@ -133,21 +132,21 @@
             
         </div>
         <!--<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>-->
-        <div data-options="region:'west',split:true" title="Step 1: <?php echo lang("flows"); ?>" style="width:150px;">
+        <div data-options="region:'west',split:true" title="<span title='Start here by selecting a flow category or at least one single flow' >Step 1: <?php echo lang("flows"); ?></span>" style="width:150px;">
             <ul id="tt_tree" class="easyui-tree" ></ul>
             
         </div>
-        <div data-options="region:'center',title:'<?php echo lang("ispotentialssettings"); ?>',iconCls:'icon-ok'">
+        <!-- <div data-options="region:'center',title:'<?php echo lang("ispotentialssettings"); ?>',iconCls:'icon-ok'"> -->
             
             <div id="p" class="easyui-panel" title="<?php echo lang("companyflowpanel"); ?>" style="margin: auto 0;"
-                 data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
+                 data-options="region:'center', iconCls:'icon-tip',collapsible:true,closable:false">
                      <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Step 2: <?php echo lang("selectcompanycalculate"); ?>" 
                             style="height:440px" 
                            accesskey=""></table>
                 
             </div>
             
-        </div>
+        <!--</div>-->
     </div>
 
 
@@ -155,19 +154,16 @@
     <div id="tb" style="padding:5px;height:auto">                   
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
-                    <a href="#add" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("calculateispotentials"); ?></a>
-                    <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true"><?php echo lang("savetable"); ?></a>
+                    <a href="#" id="matchbutton" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true" title="Click on this button to start the matching after you have selected at least one company and a flow on the left"><?php echo lang("calculateispotentials"); ?></a>
+                    <!--<a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true"><?php echo lang("savetable"); ?></a>-->
                     
-                    <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("selectallcompanies"); ?></a>
-                    <a href="#" onclick="event.preventDefault();unselectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("unselectallcompanies"); ?></a>
-                    <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
-                    <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
-
+                    <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true" title="Select all companies visible in the list below"><?php echo lang("selectallcompanies"); ?></a>
+                    <a href="#" onclick="event.preventDefault();unselectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true" title="Unselect all companies"><?php echo lang("unselectallcompanies"); ?></a>
                 </div>     
                     
                  
                  <div>
-                    <label style="margin-right:7px;"><?php echo lang("isscenariotype"); ?>:</label>
+                    <label style="margin-right:7px;font-size:13px;" title="<?php echo lang("isscenariotooltip"); ?>"><?php echo lang("isscenariotype"); ?>:</label>
                     <input class="easyui-combobox" 
                        name="IS_search" id="IS_search"
                        data-options="
@@ -175,10 +171,7 @@
                                method:'get',
                                valueField:'id',
                                textField:'text',
-                               panelHeight:'auto',
-                               icons:[{
-                                   iconCls:'icon-add'
-                               }]
+                               panelHeight:'auto'
                        ">
                      <!--<span>Company Name:</span>
                     <input id="company" style="line-height:26px;border:1px solid #ccc">
@@ -208,8 +201,6 @@
 
             <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true"><?php echo lang("addpotentialis"); ?></a>
             <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("clearall"); ?></a>
-            <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
-
         </div>
     </div>
     
@@ -240,10 +231,7 @@
                                     method:'get',
                                     valueField:'id',
                                     textField:'text',
-                                    panelHeight:'auto',
-                                    icons:[{
-                                        iconCls:'icon-add'
-                                    }]
+                                    panelHeight:'auto'
                             ">
                     </div>
                     <div style="margin-left:-8px;">
@@ -259,9 +247,6 @@
                                     valueField:'id',
                                     textField:'text',
                                     panelHeight:'auto',
-                                    icons:[{
-                                        iconCls:'icon-add'
-                                    }],
                                     required:true,
                             ">
                     </div>
@@ -285,11 +270,9 @@
     
     <div id="tb6" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
-            <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
             <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true"><?php echo lang("savetable"); ?></a>
             <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("closemap"); ?></a>
             <a href="#" onclick="event.preventDefault();deleteAllISPotentialAuto();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("clearall"); ?></a>
-            <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
         </div>
     </div>
 

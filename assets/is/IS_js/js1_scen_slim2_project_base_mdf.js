@@ -235,7 +235,7 @@ function addRowAuto() {
 
 function savePotentialsAuto() {
     if ($('#tt_grid_dynamic5').datagrid('getRows').length == 0) {
-        $.messager.alert('Fill IS Potentials', 'Please fill IS Potentials table', 'warning');
+        $.messager.alert('Fill IS Potentials', 'Please add at least one IS Potential to the list', 'warning');
     } else if ($('#tt_grid_dynamic5').datagrid('getRows').length > 0) {
         rowArray = $('#tt_grid_dynamic5').datagrid('getRows');
         $.each(rowArray, function(index, obj) {
@@ -262,6 +262,7 @@ function saveAutoPotentials() {
         $('#IS').combobox('setValue', IS_search);
         $.each(rowArray, function(index, obj) {
             console.warn(obj);
+            window.scrollTo(0, 0);
             $('#saveWindowAuto').window('open');
         });
     }
@@ -350,12 +351,16 @@ function getCompaniesISPotentials() {
     console.warn(checkedArray.length);
     console.warn(gridCheckedArray.length);
     if (gridCheckedArray.length == 0 && checkedArray.length == 0) {
-        $.messager.alert('Pick flow and company ', 'Please select sub flow and company !', 'warning');
+        $.messager.alert('Pick flow and company ', 'Please select at least one flow on the left and a company flow!', 'warning');
+        $('#matchbutton').attr("href", "#");
     } else if (gridCheckedArray.length == 0) {
-        $.messager.alert('Pick company ', 'Please select  company !', 'warning');
+        $.messager.alert('Pick company ', 'Please select at least one company flow!', 'warning');
+        $('#matchbutton').attr("href", "#");
     } else if (checkedArray.length == 0) {
-        $.messager.alert('Pick flow ', 'Please select sub flow!', 'warning');
+        $.messager.alert('Pick flow ', 'Please select at least one sub flow on the left!', 'warning');
+        $('#matchbutton').attr("href", "#");
     } else if (checkedArray.length > 0 && gridCheckedArray.length > 0) {
+        $('#matchbutton').attr("href", "#add");
         var flowStr = "";
         var companyStr = "";
         $.each(checkedArray, function(index, obj) {
@@ -418,7 +423,7 @@ function getCompaniesISPotentials() {
                     /*$('#tt_grid_dynamic').datagrid({
                         loadMsg:'No symbiosis detected'
                     });*/
-                    $('#tt_grid_dynamic').datagrid('loading');
+                    $('#tt_grid_dynamic').datagrid('reload');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -879,6 +884,7 @@ $(function() {
         pagination: "true",
         remoteSort: true,
         multiSort: true,
+        nowrap: false,
         columns: [
             [{
                     field: 'company',
@@ -923,41 +929,16 @@ $(function() {
                         }
                     }
                 }, {
-                    field: 'availability',
-                    title: 'Availability',
-                    width: 100
-                }, {
-                    field: 'quality',
-                    title: 'Quality',
-                    width: 100,
-                    editor: {
-                        type: 'textbox'
-                    }
-                }, {
-                    field: 'output_location',
-                    title: 'Output Location',
-                    width: 100,
-                    editor: {
-                        type: 'textbox'
-                    }
-                }, {
-                    field: 'substitute_potential',
-                    title: 'Substitute Potential',
-                    width: 100,
-                    editor: {
-                        type: 'textbox'
-                    }
-                }, {
                     field: 'description',
                     title: 'Description',
-                    width: 100,
+                    width: 600,
                     editor: {
                         type: 'textbox'
                     }
                 }, {
                     field: 'action',
                     title: 'Action',
-                    width: 80,
+                    width: 150,
                     align: 'center',
                     formatter: function(value, row, index) {
                         var link = '<a href="#" onclick="event.preventDefault();window.open(\'edit_flow/' + row.id + '/' + row.flowID + '/' + row.flowTypeID + '\', \'_blank\')" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
@@ -1146,13 +1127,8 @@ $(function() {
             console.warn(rowData);
         }
     });
-    $('#printTest').click(function() {
-        $.print("#zeyn");
-    });
-    $('#printGrid').click(function() {
-        $.print("#tt_grid_div");
-    });
-    $('#printGridPotentials').click(function() {
-        $.print("#tt_grid_dynamic5_div");
-    });
 });
+
+function windowManualISQuitWithoutSaving() {
+    $('#saveWindowAuto').window('close');
+}

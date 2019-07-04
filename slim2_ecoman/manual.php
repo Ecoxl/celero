@@ -1152,6 +1152,7 @@ $app->get("/flowsAndCompanies_json_test_MDF_manual", function () use ($app, $db,
             "quality" => $flow["quality"],
             "flowtype" => $flow["flowtype"],
             "flow" => strtolower($flow["flow"]),
+            "description" => $flow["description"],
         );
     }
     
