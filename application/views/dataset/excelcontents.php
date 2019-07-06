@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row">
 
-
     <div class="col-md-12" style=" background-color: aliceblue;padding: 15px 20px 25px 15px;">
         <h6>Upload/Update Excel</h6>
         <a class="btn btn-info" href="<?php echo site_url('uploadExcel') ?>">Upload Excel</a>
@@ -48,15 +47,15 @@
                     <td>
                         <button type="submit" class="btn btn-info">Add EP</button>
                     </td>
-                    </tr>
-                    </form>
+                </tr>
+            </form>
         <?php endforeach ?>
         </table>
     </div>
     <div class="col-md-6">
         <h6>Your EP Data</h6>
         <table class="table">
-            <th>Flow Name</th><th>Flow Value</th><th>Delete</th>
+            <th>Flow Name</th><th>Flow Value</th><th>Flow Unit</th><th>Delete</th>
             <?php foreach ($userepvalues as $uep): ?>
                 <?php //print_r($ec); ?>
                 <tr>
@@ -65,6 +64,9 @@
                     </td>
                     <td>
                         <?php echo $uep['ep_value']; ?>
+                    </td>
+                    <td>
+                        <?php echo $uep['ep_q_unit']; ?>
                     </td>
                     <td>
                     <a href="<?php echo base_url('deleteuserep/'.$uep['flow_name'].'/'.$uep['ep_value']); ?>" class="label label-info">Delete</a>

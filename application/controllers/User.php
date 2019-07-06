@@ -17,7 +17,8 @@ class User extends CI_Controller {
 
     public function dataFromExcel(){
         $this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|xss_clean');
+        $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|required|xss_clean');
+        $this->form_validation->set_rules('epQuantityUnit', 'EP Quantity Value', 'trim|required|xss_clean');
 		$kullanici = $this->session->userdata('user_in');
 		
         //print_r($kullanici);
@@ -25,6 +26,7 @@ class User extends CI_Controller {
             $epArray = array(
                     'user_id' => $kullanici['id'],
                     'flow_name' => $this->input->post('flowname'),
+                    'ep_q_unit' => $this->input->post('epQuantityUnit'),
                     'ep_value' => $this->sifirla($this->input->post('epvalue')),
                 );
             $this->flow_model->set_userep($epArray);

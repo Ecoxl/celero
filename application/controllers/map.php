@@ -1,3 +1,5 @@
+//TODO: naming of this file should be Map. 
+
 <?php
 class Map extends CI_Controller {
 
