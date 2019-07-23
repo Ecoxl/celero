@@ -165,7 +165,9 @@ $lang["number"]               = "Sayı";
 $lang["percentage"]           = "Oran";
 $lang["process"]              = "İşlem";
 $lang["accuratei"]            = "Örnek: </br> Miktar=10kg </br> Doğruluk oranı=90% </br> ise +/- 5% oranında miktardan sapma olur demektir, </br> yani değer  9.5kg ile 10.5kg arasındadır";
+$lang["reference-ttip"]       = "Example: </br> Amount= Product or material (e.g. 10kg) </br> Reference= Amount inputs used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg product/kWh electricity"; #todo please translate
 $lang["savedata"]             = "Veriyi kaydet";
+$lang["cancel"]               = "Cancel";
 
 //cpscoping paylaştırma gösterim sayfası
 $lang["gotokpi"]              = "KPI hesaplama sayfasına git";

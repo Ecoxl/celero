@@ -55,10 +55,11 @@
 			<div><?php echo lang("editallocation"); ?></div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-3"><?php echo lang("amount"); ?></label>
+				<label class="control-label col-md-3 tooltip-amo" data-toggle="tooltip">
+					<?php echo lang("amount"); ?> <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<label class="control-label col-md-3"><?php echo lang("amountunit"); ?></label>
-				<label class="control-label col-md-3"><?php echo lang("allocation"); ?> (%)</label>
-				<label class="control-label col-md-3"  data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-allo" data-toggle="tooltip">
+					<?php echo lang("allocation"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>				<label class="control-label col-md-3 tooltip-acc"  data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('amount',$allocation['amount']); ?>" id="amount" placeholder="<?php echo lang("number"); ?>" name="amount">
 				</div>
@@ -84,8 +85,9 @@
 			<div class="form-group clearfix row">
 				<label class="control-label col-md-3"><?php echo lang("cost"); ?></label>
 				<label class="control-label col-md-3"><?php echo lang("costunit"); ?></label>
-				<label class="control-label col-md-3"><?php echo lang("allocation"); ?> (%)</label>
-				<label class="control-label col-md-3" data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-allo" data-toggle="tooltip">
+					<?php echo lang("allocation"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-acc" data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('cost',$allocation['cost']); ?>" id="cost" placeholder="<?php echo lang("number"); ?>" name="cost">
 				</div>
@@ -117,13 +119,14 @@
 			<div class="form-group clearfix row">
 				<label class="control-label col-md-3"><?php echo lang("environmentalimpact"); ?></label>
 				<label class="control-label col-md-3">EP</label>
-				<label class="control-label col-md-3"><?php echo lang("allocation"); ?> (%)</label>
-				<label class="control-label col-md-3" data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-allo" data-toggle="tooltip">
+					<?php echo lang("allocation"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-acc" data-toggle="tooltip"><?php echo lang("accuracyrate"); ?> (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('env_impact',$allocation['env_impact']); ?>" id="env_impact" placeholder="<?php echo lang("number"); ?>" name="env_impact">
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" id="unit_env_impact" value="EP" name="unit_env_impact" readonly>
+					<input class="form-control" id="unit_env_impact" value="EP" name="unit_env_impact" readonly>
 				</div>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('allocation_env_impact',$allocation['allocation_env_impact']); ?>" id="allocation_env_impact" placeholder="<?php echo lang("percentage"); ?>" name="allocation_env_impact">
@@ -134,7 +137,8 @@
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-3"><?php echo lang("reference"); ?></label>
+				<label class="control-label col-md-3 tooltip-ref" data-toggle="tooltip">
+					<?php echo lang("reference"); ?> <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<label class="control-label col-md-3"><?php echo lang("unit"); ?></label>
 				<label class="control-label col-md-6"><?php echo lang("nameofref"); ?></label>
 				<div class="col-md-3">
@@ -160,17 +164,20 @@
 				<label class="control-label col-md-3">KPI <?php echo lang("unit"); ?></label>
 				<label class="control-label col-md-6"><?php echo lang("kpidef"); ?></label>
 				<div class="col-md-3">
-					<input type="text" class="form-control" id="kpi" placeholder="" name="kpi" readonly>
+					<input class="form-control" id="kpi" placeholder="" name="kpi" readonly>
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
+					<input class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
 				</div>
 				<div class="col-md-6">
 					<input type="text" value="<?php echo set_value('kpidef',$allocation['kpidef']); ?>" class="form-control" id="kpidef" placeholder="<?php echo lang("kpidef"); ?>" name="kpidef">
 				</div>
 				
 			</div>
-			<div><button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> <?php echo lang("savedata"); ?></button></div>
+			<div>
+				<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> <?php echo lang("savedata"); ?></button>
+				<a href="<?php echo base_url('cpscoping'); ?>" class="btn btn-default" style="float: right;"><i class="fa fa-ban" ></i> <?php echo lang("cancel"); ?></a>
+			</div>
 			<div style="margin-top:30px;"><?php echo lang("alloheading5"); ?></div>
 			<hr>
 			<div id="aallocated" class="row">
@@ -196,7 +203,8 @@
 </script>
 <script type="text/javascript">	$( document ).ready(aatf); $( document ).ready(unit_hesapla); $( document ).ready(hesapla);</script>
 <script type="text/javascript">
-$('[data-toggle="tooltip"]').tooltip({
+//tooltip accuracy field
+$('.tooltip-acc').tooltip({
     position: 'top',
     content: '<span style="color:#fff"><?php echo lang("accuratei"); ?></span>',
     onShow: function(){
@@ -204,6 +212,125 @@ $('[data-toggle="tooltip"]').tooltip({
             backgroundColor: '#999',
             borderColor: '#999'
         });
+    }
+});
+//tooltip reference field
+$('.tooltip-ref').tooltip({
+    position: 'top',
+    content: '<span style="color:#fff"><?php echo lang("reference-ttip"); ?></span>',
+    onShow: function(){
+        $(this).tooltip('tip').css({
+            backgroundColor: '#999',
+            borderColor: '#999'
+        });
+    }
+});
+//tooltip amount field
+$('.tooltip-amo').tooltip({
+    position: 'top',
+    content: '<span style="color:#fff"><?php echo lang("amount-ttip"); ?></span>',
+    onShow: function(){
+        $(this).tooltip('tip').css({
+            backgroundColor: '#999',
+            borderColor: '#999'
+        });
+    }
+});
+//tooltip allocation field
+$('.tooltip-allo').tooltip({
+    position: 'top',
+    content: '<span style="color:#fff"><?php echo lang("allocation-ttip"); ?></span>',
+    onShow: function(){
+        $(this).tooltip('tip').css({
+            backgroundColor: '#999',
+            borderColor: '#999'
+        });
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(b){
+	var cmpny_id = "<?php echo $allocation['cmpny_id']; ?>";
+
+	var prcss_name = "<?php echo $allocation['prcss_id']; ?>";
+	var flow_type_name = "<?php echo $allocation['flow_type_id'];?>";
+	var flow_name = "<?php echo $allocation['flow_id'];?>";
+
+	//get other allocation data for a selected flow and flow type
+	$.ajax({
+		type: "POST",
+		dataType:'json',
+		url: '<?php echo base_url('cpscoping/full_get'); ?>/'+flow_name+'/'+flow_type_name+'/'+cmpny_id+'/'+prcss_name,
+		success: function(data)
+		{
+			var old_aa = $('#allocation_amount').val();
+			var old_aa2 = $('#amount').val();
+
+			var old_cc = $('#allocation_cost').val();
+			var old_cc2 = $('#cost').val();
+
+			var old_ee = $('#allocation_env_impact').val();
+			var old_ee2 = $('#env_impact').val();
+
+			$( "#allocation_amount" ).change(function() {
+				var oran1=$('#allocation_amount').val()/old_aa;
+			  	if ($('#allocation_amount').val() > 100) {
+			  		alert("A allocation value > 100% is not possible");
+			  		$('#allocation_amount').val(100);
+			  	}
+			  	else {
+			  		$('#amount').val((old_aa2*oran1).toFixed(2));
+			  	}
+			});
+
+			$( "#amount" ).change(function() {
+			  	var oran2=$('#amount').val()/old_aa2;
+			  	$('#allocation_amount').val((old_aa*oran2).toFixed(2));
+			});
+
+			$( "#allocation_cost" ).change(function() {
+			 	if ($('#allocation_cost').val() > 100) {
+			  		alert("A allocation value > 100% is not possible");
+			  		$('#allocation_cost').val(100);
+			  	}
+			  	else {
+			  		var oran3=$('#allocation_cost').val()/old_cc;
+			    	$('#cost').val((old_cc2*oran3).toFixed(2));
+			  	}
+			});
+
+			$( "#cost" ).change(function() {
+			  	var oran4=$('#cost').val()/old_cc2;
+			  	$('#allocation_cost').val((old_cc*oran4).toFixed(2));
+			});
+
+			$( "#allocation_env_impact" ).change(function() {
+				if ($('#allocation_env_impact').val() > 100) {
+					alert("A allocation value > 100% is not possible");
+					$('#allocation_env_impact').val(100);
+				}
+			  	else {
+			  		var oran5=$('#allocation_env_impact').val()/old_ee;
+			  		$('#env_impact').val((old_ee2*oran5).toFixed(2));
+			  	}
+			});
+
+			$( "#env_impact" ).change(function() {
+			  var oran6=$('#env_impact').val()/old_ee2;
+			  $('#allocation_env_impact').val((old_ee*oran6).toFixed(2));
+			});
+		}
+	});
+});
+
+//prevents the dropdown field from opening when enter is pressed on a input field and focuses the next text input field
+$(".col-md-9>.form-group").keydown(function(e){
+    if(e.keyCode == 13) {
+        e.preventDefault();
+        current_focus = $(this).parent().find("input[type=text]").index($(':focus'));
+		$(':focus').parents().eq(2).find("input[type=text]").eq(current_focus+1).focus();
     }
 });
 </script>
