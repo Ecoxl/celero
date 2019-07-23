@@ -128,7 +128,7 @@ function aatf() {
 		});
 	}
 </script>
-<?php if (validation_errors() != null): ?>
+<?php if (validation_errors() != NULL): ?>
     <div class="alert alert-danger">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<div>Form couldn't be saved. Please fix the errors.</div>
