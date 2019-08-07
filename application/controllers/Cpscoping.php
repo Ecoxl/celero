@@ -735,6 +735,7 @@ class Cpscoping extends CI_Controller {
 		foreach ($allocation_ids as $a => $key) {
 			//echo $a.'.';
 					$data['kpi_values'][$a] = $this->cpscoping_model->get_allocation_from_allocation_id($key['allocation_id']);
+					//print_r($data['kpi_values'][$a]['option']);
 					$data['kpi_values'][$a]['allocation_name']=$data['kpi_values'][$a]['prcss_name']." - ".$data['kpi_values'][$a]['flow_name']." - ".$data['kpi_values'][$a]['flow_type_name'];
 					if($data['kpi_values'][$a]['option']==1){
 						$data['kpi_values'][$a]['option']="Option";
@@ -747,77 +748,42 @@ class Cpscoping extends CI_Controller {
 		//print_r($this->cpscoping_model->get_allocation_from_allocation_id('76'));
 	}
 
-	/*
-	public function kpi_insert($prjct_id,$cmpny_id,$flow_id,$flow_type_id,$prcss_id){
-		$this->form_validation->set_rules('benchmark_kpi', 'Benchmark Kpi', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('best_practice', 'Best Practice', 'trim|xss_clean');
-
-		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
-
-		if ($this->form_validation->run() !== FALSE){
-			$benchmark_kpi = $this->input->post('benchmark_kpi');
-			$best_practice = $this->input->post('best_practice');
-
-			foreach ($allocation_ids as $allo_id) {
-				$query = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
-				if(!empty($query['flow_id'])){
-					if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
-						$insert_array = array(
-					      'benchmark_kpi' => $benchmark_kpi,
-					      'best_practice' => $best_practice
-					    );
-					    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
-					}
-				}
-			}
-		}
-
-		foreach ($allocation_ids as $allocation_id) {
-			$data['kpi_values'][] = $this->cpscoping_model->get_allocation_from_allocation_id($allocation_id['allocation_id']);
-		}
-		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($prjct_id,$cmpny_id);
-
-		$this->load->view('template/header');
-		$this->load->view('cpscoping/kpi_calculation',$data);
-		$this->load->view('template/footer');
-	}
-	*/
-
-	public function kpi_insert($prjct_id,$cmpny_id,$flow_id,$flow_type_id,$prcss_id){
+	public function kpi_insert($prjct_id,$cmpny_id,$flow_id,$flow_type_id,$prcss_id,$allocation_id){
 
 		//$return = $_POST;
 		
 		//$flag= is_numeric($return['benchmark_kpi']);
-		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_error_delimiters("<span style='color:red; font-size:13px;'>"," Invalid row, please check...</span></br>");
 
 		$this->form_validation->set_rules('benchmark_kpi', 'Benchmark Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('best_practice', 'Best Practice', 'trim|xss_clean');
+		$this->form_validation->set_rules('description', 'Description', 'trim|xss_clean|max_length[500]');
 
-		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+		//$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
 
 		if ($this->form_validation->run() !== FALSE){
 			$benchmark_kpi = $_POST['benchmark_kpi'];
 			$best_practice = $_POST['best_practice'];
 			$option = $_POST['option'];
+			$description = $_POST['description'];
 			if($option=="Option"){$option=1;}else{$option=0;}
-
-			foreach ($allocation_ids as $allo_id) {
-				$query = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
-				if(!empty($query['flow_id'])){
-					if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
-						$insert_array = array(
-					      'benchmark_kpi' => $benchmark_kpi,
-					      'best_practice' => $best_practice,
-					      'option' => $option
-					    );
-					    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
-					   	$return = $query['prcss_name']." ".$query['flow_name']." ".$query['flow_type_name']."'s new data has been saved to database.</br>";
-					}
+				
+			$query = $this->cpscoping_model->get_allocation_from_allocation_id($allocation_id);
+			if(!empty($query['flow_id'])){
+				if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
+					$insert_array = array(
+				      'benchmark_kpi' => $benchmark_kpi,
+				      'best_practice' => $best_practice,
+				      'option' => $option,
+				      'description' => $description
+				    );
+				    $this->cpscoping_model->kpi_insert($insert_array,$allocation_id);
+				   	$return = $query['prcss_name']." ".$query['flow_name']." ".$query['flow_type_name']."'s new data has been saved to database.</br>";
 				}
 			}
 		}
 		else{
-			$return = "<span style='color:red; font-size:13px;'>".validation_errors()."</span>";
+			$return = validation_errors();
 		}
 		echo json_encode($return);
 

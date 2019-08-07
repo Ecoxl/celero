@@ -117,7 +117,7 @@ $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 //KPI
 $route['kpi_json/(:any)/(:any)'] = "cpscoping/kpi_json/$1/$2";
 $route['kpi_calculation_chart/(:any)/(:any)'] = "cpscoping/kpi_calculation_chart/$1/$2";
-$route['kpi_insert/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/kpi_insert/$1/$2/$3/$4/$5";
+$route['kpi_insert/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/kpi_insert/$1/$2/$3/$4/$5/$6";
 $route['kpi_calculation/(:any)/(:any)'] = "cpscoping/kpi_calculation/$1/$2";
 $route['search_result/(:any)/(:any)'] = "cpscoping/search_result/$1/$2";
 
