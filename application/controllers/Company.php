@@ -257,6 +257,21 @@ class Company extends CI_Controller{
 		$kullanici = $this->session->userdata('user_in');
 		$data['have_permission'] = $this->user_model->can_edit_company($kullanici['id'],$term);
 
+		//checks if the company is created/owned by this user, only users that created the company can see the delete button
+		$owned_cmpnys = array_column($this->company_model->get_my_companies($temp['id']), 'cmpny_id');
+		if(in_array($data['companies']['id'], $owned_cmpnys)){
+			$data['canDelete'] = "1";
+		}else{
+			$data['canDelete'] = "0";
+		}		
+
+		//checks if the company is editable by this user, only users that created the company can see the edit buttons
+		if($this->user_model->can_edit_company($kullanici['id'],$term)){
+			$data['canEdit'] = "1";
+		}else{
+			$data['canEdit'] = "0";
+		}
+
 		$this->load->view('template/header');
 		$this->load->view('company/company_show_detailed',$data);
 		$this->load->view('template/footer');
@@ -284,9 +299,9 @@ class Company extends CI_Controller{
 		{
 			$user = array(
 				'user_id' => $this->input->post('users'),
-      	'cmpny_id' => $term,
-      	'is_contact' => 0
-    	);
+      			'cmpny_id' => $term,
+      			'is_contact' => 0
+    		);
     	$this->company_model->add_worker_to_company($user);
 		}
 
@@ -434,5 +449,16 @@ class Company extends CI_Controller{
 		echo json_encode($data);
 	}
 
+	//delet company (if user is owner/creator of company)
+	public function delete_company($cmpny_id){
+		$temp = $this->session->userdata('user_in');
+		$owned_cmpnys = array_column($this->company_model->get_my_companies($temp['id']), 'cmpny_id');
+		if(in_array($cmpny_id, $owned_cmpnys)){
+			$this->company_model->delete_company($cmpny_id);
+			redirect(base_url('mycompanies'),'refresh');
+		}else{
+			redirect(base_url(''),'refresh');
+		}	
+	}
 }
 ?>

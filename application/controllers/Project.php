@@ -5,7 +5,11 @@ class Project extends CI_Controller{
 		parent::__construct();
 		$this->load->model('project_model');
 		$this->load->model('company_model');
-		$this->load->model('user_model');		
+		$this->load->model('user_model');
+		$temp = $this->session->userdata('user_in');
+		if(empty($temp)){
+			redirect(base_url('login'),'refresh');
+		}		
 				$this->config->set_item('language', $this->session->userdata('site_lang'));
 
 	}
@@ -383,5 +387,16 @@ class Project extends CI_Controller{
 		}
 	}
 
+	//delets project (if user has permission to edit/update project and is consultant)
+	public function delete_project($project_id){
+		$c_user = $this->user_model->get_session_user();
+		if($this->project_model->can_update_project_information($c_user['id'], $project_id) == true && $this->user_model->is_user_consultant($c_user['id']) == true){
+			$this->session->unset_userdata('project_id');
+			$this->project_model->delete_project($project_id);
+			redirect(base_url('myprojects'),'refresh');
+		}else{
+			redirect(base_url(''),'refresh');
+		}	
+	}
 }
 ?>

@@ -827,10 +827,15 @@ class Cpscoping extends CI_Controller {
 		*/
 	}
 
-	//to delete allocation
+	//to delete allocation (if the has rights to edit/update the project)
 	public function delete_allocation($allocation_id,$project_id,$company_id){
-		$this->cpscoping_model->delete_allocation($allocation_id,$project_id,$company_id);
-		redirect(base_url('cpscoping'),'refresh');
+		$c_user = $this->user_model->get_session_user();
+		if($this->project_model->can_update_project_information($c_user['id'], $project_id) == false){
+			redirect(base_url(''),'refresh');
+		}else{
+			$this->cpscoping_model->delete_allocation($allocation_id,$project_id,$company_id);
+			redirect(base_url('cpscoping'),'refresh');
+		}
 	}
 
 	public function comment_save($cmpny_id,$prcss_id){

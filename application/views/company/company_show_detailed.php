@@ -11,28 +11,31 @@
 					<img style="width:100%;" class="thumbnail" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
 				<?php endif ?>
 			</div>
-			<?php if($have_permission): ?>
-			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("new_flow/".$companies['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
-			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("update_company/".$companies['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
-			<button class="btn btn-block btn-inverse" style="width:100%; margin-bottom: 10px;" onclick="$('#target').toggle();">Add New User</button>
 
-			<div id="target" class="well" style="display: none">
-				<p>
-					Select user to add
-				</p>
-				<div class="content">
-					<?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
+			<?php if($this->session->userdata('user_in')['id']): ?>
+				<?php if($canEdit=='1'): ?>
+					<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("new_flow/".$companies['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
+					<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("update_company/".$companies['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
+					<button class="btn btn-block btn-inverse" style="width:100%; margin-bottom: 10px;" onclick="$('#target').toggle();">Add New User</button>
+
+					<div id="target" class="well" style="display: none">
 						<p>
-							<select id="users" class="info select-block" name="users">
-							<?php foreach ($users_without_company as $users): ?>
-								<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
-								<?php endforeach ?>
-							</select>
-							<button type="submit" class="btn btn-primary">Add</button>
-						</form>
-					</p>
-				</div>
-			</div>
+							Select user to add
+						</p>
+						<div class="content">
+							<p>
+								<?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
+									<select id="users" class="info select-block" name="users">
+									<?php foreach ($users_without_company as $users): ?>
+										<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
+										<?php endforeach ?>
+									</select>
+									<button type="submit" class="btn btn-primary">Add</button>
+								</form>
+							</p>
+						</div>
+					</div>
+				<?php endif ?>
 			<?php endif ?>
 			<div class="form-group" style="margin-bottom:20px;">
 				<div class="swissheader" style="font-size:15px;"><?php echo lang("companyprojects"); ?></div>
@@ -51,6 +54,9 @@
 				<?php endforeach ?>
 				</ul>
 			</div>
+			<?php if($canDelete=='1'): ?>
+				<a style="margin-top: 10px;" class="btn btn-danger btn-block" href="<?php echo base_url("deletecompany/".$companies['id']); ?>" onclick="return confirm('Are you sure you want to delete the company <?php echo $companies['name']; ?>? \r\n \r\nWarning: The company will be deleted permanently and cannot be restored!');"><i class="fa fa-trash" ></i> <?php echo lang("deletecompany"); ?></a>
+			<?php endif ?>
 		</div>
 		<div class="col-md-8">
 			<div class="swissheader"><?php echo $companies['name']; ?></div>

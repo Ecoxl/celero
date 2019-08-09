@@ -31,6 +31,7 @@ $lang["logout"]               = "Logout";
 $lang["allcompanies"]         = "All Companies";
 $lang["mycompanies"]          = "My Companies";
 $lang["createcompany"]        = "Create Company";
+$lang["deletecompany"]        = "Delete this company";
 $lang["add"]				  = "Add";
 
 $lang["allprojects"]          = "All Projects";
@@ -115,7 +116,7 @@ $lang["status"]               = "Status";
 $lang["startdate"]            = "Start Date";
 $lang["projectonmap"]         = "Project on map";
 $lang["projectcompanies"]     = "Project Companies";
-$lang["projectusers"]         = "Project Users";
+$lang["projectcontact"]         = "Contact Person";
 $lang["projectconsultants"]   = "Project Consultants";
 $lang["alreadyopenproject"]   = "You are already working on this project";
 
@@ -262,6 +263,7 @@ $lang["outputlocation"]       = "Output location";
 $lang["substitute_potential"] = "Substitution Potential";
 $lang["addflow"]              = "Add flow";
 $lang["delete"]               = "Delete";
+$lang["deleteproject"]        = "Delete this project";
 $lang["annual"]               = "Annual";
 $lang["labelarereq"]          = "label are required";
 $lang["epunit"]               = "EP unit";

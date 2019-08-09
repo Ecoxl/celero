@@ -31,6 +31,7 @@ $lang["logout"]               = "Çıkış";
 $lang["allcompanies"]         = "Tüm Firmalar";
 $lang["mycompanies"]          = "Firmalarım";
 $lang["createcompany"]        = "Firma Oluştur";
+$lang["deletecompany"]        = "Delete this company"; //todo translate
 $lang["add"]				  = "Add"; //todo translate
 
 $lang["allprojects"]          = "Tüm Projeler";
@@ -114,7 +115,7 @@ $lang["status"]               = "Durum";
 $lang["startdate"]            = "Başlangıç Tarihi";
 $lang["projectonmap"]         = "Harita üzerinde proje";
 $lang["projectcompanies"]     = "Projedeki firmalar";
-$lang["projectusers"]         = "Projedeki kullanıcılar";
+$lang["projectcontact"]       = "Projedeki kullanıcılar"; //todo translate to contact person 
 $lang["projectconsultants"]   = "Projedeki danışmanlar";
 $lang["alreadyopenproject"]   = "Hazırda bu proje üzerinde çalışmaktasınız";
 
@@ -258,6 +259,7 @@ $lang["outputlocation"]       = "Çıktı yeri";
 $lang["substitute_potential"] = "Yedek potansiyel";
 $lang["addflow"]              = "Akış ekle";
 $lang["delete"]               = "Sil";
+$lang["deleteproject"]        = "Delete this project"; //todo translate 
 $lang["annual"]               = "Yıllık";
 $lang["labelarereq"]          = "kısımlar girilmesi zorunludur";
 $lang["epunit"]               = "EP birimi";

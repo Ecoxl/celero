@@ -68,9 +68,9 @@ $(document).ready(function() {
         </div>
         <table class="table table-striped" style="font-size:12px;">
             <tr>
-                <th><?php echo lang("processname"); ?></th>
-                <th><?php echo lang("flowname"); ?></th>
-                <th><?php echo lang("flowtype"); ?></th>
+                <th style="width: 500px;"><?php echo lang("processname"); ?></th>
+                <th style="width: 400px;"><?php echo lang("flowname"); ?></th>
+                <th style="width: 200px;"><?php echo lang("flowtype"); ?></th>
                 <th><?php echo lang("manage"); ?></th>
             </tr>
         <?php endif ?>
@@ -82,7 +82,8 @@ $(document).ready(function() {
                 <td><?php echo $flow_prcss[$i][$k]['flow_type_name']; ?></td>
                 <td>
                     <a class="label label-info" href="<?php echo base_url('cpscoping/edit_allocation/'.$flow_prcss[$i][$k]['allocation_id']); ?>"><?php echo lang("editallocation"); ?></a>
-                    <a class="label label-danger" href="<?php echo base_url('cpscoping/delete/'.$flow_prcss[$i][$k]['allocation_id'].'/'.$flow_prcss[$i][$k]['project_id'].'/'.$flow_prcss[$i][$k]['company_id']); ?>"><?php echo lang("deleteallocation"); ?></a></td>
+                    <a class="label label-danger" href="<?php echo base_url('cpscoping/delete/'.$flow_prcss[$i][$k]['allocation_id'].'/'.$flow_prcss[$i][$k]['project_id'].'/'.$flow_prcss[$i][$k]['company_id']); ?>" 
+                        onclick="return confirm('Are you sure you want to delete the allocation <?php echo $flow_prcss[$i][$k]['prcss_name']; ?>?');"><?php echo lang("deleteallocation"); ?></a></td>
             </tr>   
         <?php endfor ?>
         </table>

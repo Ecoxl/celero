@@ -68,13 +68,16 @@
 			</div>
 
 			<div class="form-group">
-				<div class="swissheader" style="font-size:15px;"><i class="fa fa-phone"></i> <?php echo lang("projectusers"); ?></div>
+				<div class="swissheader" style="font-size:15px;"><i class="fa fa-phone"></i> <?php echo lang("projectcontact"); ?></div>
 					<ul class="nav nav-list">
 				<?php foreach ($contact as $con): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$con['user_name']); ?>"> <?php echo $con['name'].' '.$con['surname'];?></a></li>
 				<?php endforeach ?>
 				</ul>
 			</div>
+			<?php if($this->session->userdata('user_in')['role_id']=='1'): ?>
+				<a style="margin-top: 10px;" class="btn btn-danger btn-block" href="<?php echo base_url("deleteproject/".$projects['id']); ?>" onclick="return confirm('Are you sure you want to delete the project <?php echo $projects['name']; ?>? \r\n \r\nWarning: The project will be deleted permanently and cannot be restored!');"><i class="fa fa-trash" ></i> <?php echo lang("deleteproject"); ?></a>
+			<?php endif ?>
 		</div>
 
 		<div class="col-md-8">
