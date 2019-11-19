@@ -21,19 +21,15 @@ class Cost_benefit extends CI_Controller
 
     public function new_cost_benefit($prjct_id, $cmpny_id)
     {
-        // $data = array();
-        // $allocation_ids = $this->cost_benefit_model->get_is_candidates();
-        // print_r($allocation_ids);
-        // foreach ($allocation_ids as $allo_id) {
-        //     if($this->cost_benefit_model->get_allocation_ids($allo_id['allocation_id'],$prjct_id,$cmpny_id) == true){
-        //         $data['cost_benefit'][] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
-        //     }
-        // }
-        //print_r('test');
+        $allocation_id_array = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+        $data['allocation'] = array();
+        foreach ($allocation_id_array as $ids) {
+            $data['allocated_flows'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+        }
         $data['company']    = $this->company_model->get_company($cmpny_id);
         $data['allocation'] = $this->cpscoping_model->get_cost_benefit_info($cmpny_id, $prjct_id);
         $data['is']         = $this->cpscoping_model->get_cost_benefit_info_is($cmpny_id, $prjct_id);
-        //print_r($data['allocation']);
+        
         $this->load->view('template/header');
         $this->load->view('cost_benefit/index', $data);
         $this->load->view('template/footer');

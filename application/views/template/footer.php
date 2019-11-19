@@ -28,14 +28,18 @@
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF") : ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/bootstrap-select.js'); ?>"></script>
+    <!-- The cost benefit page doesnt use the bootstrap select box features -->
+    <? if ($this->uri->segment(1) !="cost_benefit"): ?>
+      <script src="<?php echo asset_url('js/bootstrap-select.js'); ?>"></script>
+      <script src="<?php echo asset_url('js/application.js'); ?>"></script>
+    <? endif; ?>
     <script src="<?php echo asset_url('js/bootstrap-switch.js'); ?>"></script>
     <script src="<?php echo asset_url('js/flatui-checkbox.js'); ?>"></script>
     <script src="<?php echo asset_url('js/flatui-radio.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery.tagsinput.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery.placeholder.js'); ?>"></script>
     <script src="<?php echo asset_url('js/holder.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/application.js'); ?>"></script>
+   
 
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/bootstrap/easyui.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">

@@ -10,9 +10,10 @@
 .tg .tg-yw4l input{font-size: 11px; height: 25px; text-align: right;}
 .title_cb {border-collapse:collapse; border-spacing:0; width: 100%;}
 .th-yw4l .option-start { }
+
+.dropdowni {overflow:visible; position:relative;}
 </style>
-<?php //print_r($allocation); ?><br><br>
-<?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
+<?php  $allocation = array_merge($allocation, $is); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
 	<?php $i=1; ?>
@@ -30,11 +31,11 @@
                 <b>
             <?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; } ?>:
                 </b> Baseline</th>
-            <th colspan="19" style="font-size: 12px; border-left:2px solid grey; text-align: left;">Option</th>
+            <th colspan="20" style="font-size: 12px; border-left:2px solid grey; text-align: left;">Option</th>
         </tr>
         <tr>
             <!--<th class="th-yw4l" bgcolor="#fefefc"><div style="width: 100px;">Option</div></th>-->
-            <th class="th-yw4l" bgcolor="#fefefc"> CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
+            <th class="th-yw4l" bgcolor="#fefefc">CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
             <th class="th-yw4l" bgcolor="#fefefc" colspan="2">Annual energy and material flows</th>
             <th class="th-yw4l" bgcolor="#fefefc">unit</th>
             <th class="th-yw4l" bgcolor="#fefefc">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
@@ -164,7 +165,14 @@
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-1-2" id="flow-name-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-2" id="flow-name-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-2']; ?>" placeholder="Fill or ...">
+                <select name="flow_name" id="select-flow-1-2-<?php echo $i; ?>" onchange="insertFlowRow(this)" class="dropdown" style="overflow:visible; position:relative;">
+                    <option value="">select flow</option>
+                    <?php foreach ($allocated_flows as $flowname): ?>
+                        <option value="<?php echo $flowname['allocation_id']; ?>"><?php echo $flowname['prcss_name'] .": ". $flowname['flow_name']; ?> (<?php echo $flowname['flow_type_name']; ?>)</option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-1-2" id="flow-value-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-2']; ?>" placeholder="Fill"></div>
@@ -185,7 +193,8 @@
             <div class="  "><input type="text" name="flow-eip-1-2" id="flow-eip-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-2']; ?>" placeholder="Fill" ></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-2-2" id="flow-name-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-2']; ?>" class="form-control" placeholder="flow-name-2-2"></div>
+            <div class="  "><input type="text" name="flow-name-2-2" id="flow-name-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-2']; ?>" class="form-control" placeholder="flow-name-2-2">
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-2-2" id="flow-value-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-2']; ?>" class="form-control" placeholder="flow-value-2-2"></div>
@@ -223,7 +232,14 @@
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-1-3" id="flow-name-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-3']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-3" id="flow-name-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-3']; ?>" placeholder="Fill or ...">
+                <select name="flow_name" id="select-flow-1-3-<?php echo $i; ?>" onchange="insertFlowRow(this)" class="dropdown" style="overflow:visible; position:relative;">
+                    <option value="">select flow</option>
+                    <?php foreach ($allocated_flows as $flowname): ?>
+                        <option value="<?php echo $flowname['allocation_id']; ?>"><?php echo $flowname['prcss_name'] .": ". $flowname['flow_name']; ?> (<?php echo $flowname['flow_type_name']; ?>)</option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-1-3" id="flow-value-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-3']; ?>" placeholder="Fill"></div>
@@ -282,7 +298,14 @@
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-1-4" id="flow-name-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-4" id="flow-name-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-4']; ?>" placeholder="Fill or ...">
+                <select name="flow_name" id="select-flow-1-4-<?php echo $i; ?>" onchange="insertFlowRow(this)" class="dropdown" style="overflow:visible; position:relative;">
+                    <option value="">select flow</option>
+                    <?php foreach ($allocated_flows as $flowname): ?>
+                        <option value="<?php echo $flowname['allocation_id']; ?>"><?php echo $flowname['prcss_name'] .": ". $flowname['flow_name']; ?> (<?php echo $flowname['flow_type_name']; ?>)</option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-1-4" id="flow-value-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-4']; ?>" placeholder="Fill"></div>
@@ -341,7 +364,14 @@
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-1-5" id="flow-name-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-5']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-5" id="flow-name-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-5']; ?>" placeholder="Fill or ...">
+                <select name="flow_name" id="select-flow-1-5-<?php echo $i; ?>" onchange="insertFlowRow(this)" class="dropdown" style="overflow:visible; position:relative;">
+                    <option value="">select flow</option>
+                    <?php foreach ($allocated_flows as $flowname): ?>
+                        <option value="<?php echo $flowname['allocation_id']; ?>"><?php echo $flowname['prcss_name'] .": ". $flowname['flow_name']; ?> (<?php echo $flowname['flow_type_name']; ?>)</option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-1-5" id="flow-value-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-5']; ?>" placeholder="Fill"></div>
@@ -400,7 +430,14 @@
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-name-1-6" id="flow-name-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-6" id="flow-name-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-6']; ?>" placeholder="Fill or ...">
+                <select name="flow_name" id="select-flow-1-6-<?php echo $i; ?>" onchange="insertFlowRow(this)" class="dropdown" style="overflow:visible; position:relative;">
+                    <option value="">select flow</option>
+                    <?php foreach ($allocated_flows as $flowname): ?>
+                        <option value="<?php echo $flowname['allocation_id']; ?>"><?php echo $flowname['prcss_name'] .": ". $flowname['flow_name']; ?> (<?php echo $flowname['flow_type_name']; ?>)</option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-value-1-6" id="flow-value-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-6']; ?>" placeholder="Fill"></div>
@@ -889,33 +926,33 @@
         return $a['marcos-1'] <=> $b['marcos-1'];
     });
 
-	foreach ($alloc as $a) {
-		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; }
-		
-		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-		if($a['marcos-1']>0){
-			$tuna_array[$t]['ymax']= $a['marcos-1'];
-		}
-		else{
-			$tuna_array[$t]['ymax']= 0;
-		}
+    if(isset($a) && is_numeric($a['sum-3-2'])) {
+    	foreach ($alloc as $a) {
+    		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; }
+    		
+    		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+    		if($a['marcos-1']>0){
+    			$tuna_array[$t]['ymax']= $a['marcos-1'];
+    		}
+    		else{
+    			$tuna_array[$t]['ymax']= 0;
+    		}
 
-		$toplameco+=$a['sum-3-2'];
-		$tuna_array[$t]['xmax']= intval($a['sum-3-2']);
+    		$toplameco+=$a['sum-3-2'];
+    		$tuna_array[$t]['xmax']= intval($a['sum-3-2']);
 
-		$eksieco = $toplameco - $a['sum-3-2'];
-		$tuna_array[$t]['xmin']= $eksieco;
+    		$eksieco = $toplameco - $a['sum-3-2'];
+    		$tuna_array[$t]['xmin']= $eksieco;
 
-		if($a['marcos-1']>0){
-			$tuna_array[$t]['ymin']= "0";
-		}
-		else{
-			$tuna_array[$t]['ymin']= $a['marcos-1'];
-		}
-		$t++;
-	}
-	//print_r($tuna_array);
-	//echo json_encode($tuna_array);
+    		if($a['marcos-1']>0){
+    			$tuna_array[$t]['ymin']= "0";
+    		}
+    		else{
+    			$tuna_array[$t]['ymin']= $a['marcos-1'];
+    		}
+    		$t++;
+    	}
+    }
 ?>
 <script type="text/javascript">
 	setTimeout(function()
@@ -1047,25 +1084,54 @@
 	}
 </script>
 <?php $k=1; ?>
+
 <?php foreach ($allocation as $b): ?>
-<?php // echo $b['flow_name']; ?>
 <script type="text/javascript">
+    //insert the first (predefined) row if it has empty flow name or value. 
+    //Eg. if the user deletes this values they are reentered automatically
     var flownamedef= "<?php echo $b['flow_name']; ?>";
     var qntty_unit= "<?php echo $b['qntty_unit']; ?>";
     var amount= "<?php echo $b['amount']; ?>";
     var cost= "<?php echo $b['cost']; ?>";
     var env_impact= "<?php echo $b['env_impact']; ?>";
     var k= <?php echo $k; ?>;
-    //alert(document.getElementById('flow-name-1-'+k).value);
-    if(document.getElementById('flow-name-1-'+k).value==""){
+    
+    if(document.getElementById('flow-name-1-'+k).value=="" || document.getElementById('flow-value-1-'+k).value==""){
         document.getElementById('flow-name-1-'+k).value = flownamedef;
         document.getElementById('flow-unit-1-'+k).value = qntty_unit;
         document.getElementById('flow-value-1-'+k).value = amount;
         document.getElementById('flow-specost-1-'+k).value = cost/amount;
         document.getElementById('flow-eipunit-1-'+k).value = env_impact/amount;
-        //alert(flownamedef);
-        //alert("flow_name-1-"+k);
     }
+</script>
+
+<script type="text/javascript">
+    function insertFlowRow(selectedObject) {
+        //gives the selected flow_id from the select dropdown
+        var selected_id = selectedObject.value;
+
+        //gets the unique "key" for this table row
+        var table_key = $(selectedObject).attr('id').slice(-5);
+        var form_num = $(selectedObject).attr('id').slice(-1);
+
+        //gets the cmpny flow array as json in JS
+        var flow_array = <?php echo json_encode($allocated_flows); ?>;
+
+        //loops through all flows and gets the one that is selected
+        for (flow in flow_array){
+            if (flow_array[flow]['allocation_id'] == selected_id){
+                //inserts the flow values in the allocation row
+                $('#flow-name-'+table_key).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
+                $('#flow-value-'+table_key).val(flow_array[flow]['amount']);
+                $('#flow-unit-'+table_key).val(flow_array[flow]['unit_amount']);
+                $('#flow-specost-'+table_key).val(flow_array[flow]['cost']);
+                $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']);
+                //inserts the flow values in the allocation row
+                $('#form-'+form_num+' input').change();
+                break;
+            }
+        }
+    } 
 </script>
 <?php $k=$k+1; ?>
 <?php endforeach ?>
