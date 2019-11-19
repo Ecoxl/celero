@@ -1124,8 +1124,8 @@
                 $('#flow-name-'+table_key).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
                 $('#flow-value-'+table_key).val(flow_array[flow]['amount']);
                 $('#flow-unit-'+table_key).val(flow_array[flow]['unit_amount']);
-                $('#flow-specost-'+table_key).val(flow_array[flow]['cost']);
-                $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']);
+                $('#flow-specost-'+table_key).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
+                $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
                 //inserts the flow values in the allocation row
                 $('#form-'+form_num+' input').change();
                 break;
