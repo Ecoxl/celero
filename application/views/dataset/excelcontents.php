@@ -53,9 +53,9 @@
         </table>
     </div>
     <div class="col-md-7">
-        <h6>Your EP Data</h6>
+        <h6>Your EP Data</h6> 
         <table class="table">
-            <th>Flow Name</th><th>Flow Value</th><th>Flow Unit</th><th>Delete</th>
+            <th>Flow Name</th><th>EP Value</th><th>Flow Unit</th><th>Delete</th>
             <?php foreach ($userepvalues as $uep): ?>
                 <?php //print_r($ec); ?>
                 <tr>

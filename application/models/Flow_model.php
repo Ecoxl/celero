@@ -137,8 +137,9 @@ class Flow_model extends CI_Model {
 	
 	// gets flow ep values from excel imported data based on given flowname and userid.
 	public function get_My_Ep_Values($flowname,$userid){
-		$this->db->select("*");
-        $this->db->from("t_user_ep_values");
+		$this->db->select("*,unit1.name as qntty_unit_name");
+		$this->db->from("t_user_ep_values");
+		$this->db->join('t_unit as unit1','unit1.id = t_user_ep_values.ep_q_unit');
         $this->db->where('user_id',$userid);
         $this->db->where('flow_name',$flowname);
         $query = $this->db->get();

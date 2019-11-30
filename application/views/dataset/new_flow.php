@@ -61,7 +61,7 @@
             <div class="col-md-4">
                 <label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span
                             style="color:red;">*</span></label>
-                <select onchange="getFlowId('<?php echo $user['id']; ?>')" id="selectize-units" class="info select-block" name="quantityUnit"> 
+                <select id="selectize-units" class="info select-block" name="quantityUnit"> 
                     <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
                     <?php foreach ($units as $unit): ?>
                         <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
@@ -437,9 +437,18 @@
                 {
                     //checks if data is empty/blank
                     if($.trim(data)){
-                        console.log(data[0]['ep_value']);
+                        //console.log(data[0]);
+                        //console.log(data[0]['ep_value']);
                         var value = document.getElementById("quantity").value;
                         var value1 = getSelectedText('selectize-units');
+                        if (typeof data[0]['ep_value'] != 'undefined'){
+
+                            var $select = $("#selectize-units").selectize();
+                            var selectize = $select[0].selectize;
+                            selectize.setValue(selectize.search(data[0]['qntty_unit_name']).items[0].id);
+
+                            //$('#selectize-units')[0].selectize.disable();
+                        }
                         if (typeof data[0]['ep_value'] != 'undefined' && value != "" && value1 != ""){
                             $('#ep').val(data[0]['ep_value']*value);
                             //$('#epUnit').val("EP/"+value1);
