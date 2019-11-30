@@ -127,8 +127,9 @@ class Flow_model extends CI_Model {
 
 	// gets flow ep values from excel imported data based on given userid.
 	public function get_userep($userid){
-        $this->db->select("*");
-        $this->db->from("t_user_ep_values");
+        $this->db->select("*,unit1.name as qntty_unit_name");
+		$this->db->from("t_user_ep_values");
+		$this->db->join('t_unit as unit1','unit1.id = t_user_ep_values.ep_q_unit');
         $this->db->where('user_id',$userid);
         $query = $this->db->get();
         return $query->result_array();

@@ -66,7 +66,7 @@
                         <?php echo $uep['ep_value']; ?>
                     </td>
                     <td>
-                        <?php echo $uep['ep_q_unit']; ?>
+                        <?php echo $uep['qntty_unit_name']; ?>
                     </td>
                     <td>
                     <a href="<?php echo base_url('deleteuserep/'.$uep['flow_name'].'/'.$uep['ep_value']); ?>" class="label label-info">Delete</a>
