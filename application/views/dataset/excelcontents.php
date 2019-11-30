@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="row">
+<div style="padding:20px;">
+    <div >
 
     <div class="col-md-12" style=" background-color: aliceblue;padding: 15px 20px 25px 15px;">
         <h6>Upload/Update Excel</h6>
@@ -15,7 +15,7 @@
             </div>
         <?php endif ?>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h6>Excel Content</h6>
         <table class="table">
             <th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Resource Unit</th><th>Add EP to your list</th>
@@ -36,7 +36,7 @@
                     <td>EP</td>
                     <td>
                         <div class="form-group">
-                            <select style="width:70px;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
+                            <select style="width:120px;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
                                 <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
                                 <?php foreach ($units as $unit): ?>
                                     <option value="<?php echo $unit['id']; ?>" <?php echo set_select('epQuantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
@@ -52,7 +52,7 @@
         <?php endforeach ?>
         </table>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
         <h6>Your EP Data</h6>
         <table class="table">
             <th>Flow Name</th><th>Flow Value</th><th>Flow Unit</th><th>Delete</th>
