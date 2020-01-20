@@ -1120,13 +1120,30 @@
         //loops through all flows and gets the one that is selected
         for (flow in flow_array){
             if (flow_array[flow]['allocation_id'] == selected_id){
-                //inserts the flow values in the allocation row
+                //inserts the flow values in the row (baseline)
                 $('#flow-name-'+table_key).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
                 $('#flow-value-'+table_key).val(flow_array[flow]['amount']);
                 $('#flow-unit-'+table_key).val(flow_array[flow]['unit_amount']);
                 $('#flow-specost-'+table_key).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
                 $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
-                //inserts the flow values in the allocation row
+
+
+                if (confirm("Values will be inserted as baseline on the left. \nDo you want to use the same values as option on the right side aswell?")) {
+                    //if confirmed same values used as option, inserts the flow values in the row 
+                    $('#flow-name-2'+table_key.slice(-4)).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
+                    $('#flow-value-2'+table_key.slice(-4)).val(flow_array[flow]['amount']);
+                    $('#flow-unit-2'+table_key.slice(-4)).val(flow_array[flow]['unit_amount']);
+                    $('#flow-specost-2'+table_key.slice(-4)).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
+                    $('#flow-eipunit-2'+table_key.slice(-4)).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
+                } else {
+                    //empties the values on the option side
+                    $('#flow-name-2'+table_key.slice(-4)).val("");
+                    $('#flow-value-2'+table_key.slice(-4)).val("");
+                    $('#flow-unit-2'+table_key.slice(-4)).val("");
+                    $('#flow-specost-2'+table_key.slice(-4)).val("");
+                    $('#flow-eipunit-2'+table_key.slice(-4)).val(""); 
+                }
+                //runs a change so that the values are calculated
                 $('#form-'+form_num+' input').change();
                 break;
             }
