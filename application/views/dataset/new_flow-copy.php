@@ -61,7 +61,7 @@
             <div class="col-md-4">
                 <label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span
                             style="color:red;">*</span></label>
-                <select id="selectize-units" class="info select-block" name="quantityUnit"> 
+                <select onchange="getFlowId('<?php echo $user['id']; ?>')" id="selectize-units" class="info select-block" name="quantityUnit"> 
                     <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
                     <?php foreach ($units as $unit): ?>
                         <option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
@@ -102,10 +102,70 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label for="cf"><?php echo lang("chemicalformula"); ?></label>
+        <input class="form-control" id="cf" name="cf" placeholder="<?php echo lang("chemicalformula"); ?>"
+               value="<?php echo set_value('cf'); ?>">
+    </div>
+    <!--
+			<div class="form-group">
+				<label for="availability"><?php echo lang("availability"); ?></label>
+				<select id="availability" class="info select-block" name="availability">
+					<option value="true" <?php echo set_select('availability', 'true'); ?>><?php echo lang("available"); ?></option>
+					<option value="false" <?php echo set_select('availability', 'false'); ?>><?php echo lang("notavailable"); ?></option>
+				</select>
+			</div>
+			-->
     <!--hidden placeholder input (set to "true") for deactivated "availability" selection -->
     <div class="form-group">
         <input class="form-control" id="availability" name="availability" type="hidden"
                value="<?php echo set_value('availability', 'true'); ?>">
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8">
+                <label for="conc"><?php echo lang("concentration"); ?></label>
+                <input class="form-control" id="conc" name="conc" placeholder="<?php echo lang("concentration"); ?>"
+                       value="<?php echo set_value('conc'); ?>">
+            </div>
+            <div class="col-md-4">
+                <label for="concunit"><?php echo lang("concentration"); ?><?php echo lang("unit"); ?></label>
+                <select id="concunit" class="info select-block" name="concunit">
+                    <option value="" <?php echo set_select('concunit', ''); ?>><?php echo lang("pleaseselect"); ?></option>
+                    <option value="%" <?php echo set_select('concunit', '%'); ?>>%</option>
+                    <option value="kg/m3" <?php echo set_select('concunit', 'kg/m3'); ?>>kg/m3</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8">
+                <label for="pres"><?php echo lang("pressure"); ?></label>
+                <input class="form-control" id="pres" name="pres" placeholder="<?php echo lang("pressure"); ?>"
+                       value="<?php echo set_value('pres'); ?>">
+            </div>
+            <div class="col-md-4">
+                <label for="presunit"><?php echo lang("presure"); ?><?php echo lang("unit"); ?></label>
+                <select id="presunit" class="info select-block" name="presunit">
+                    <option value=""><?php echo lang("pleaseselect"); ?></option>
+                    <option value="Pascal (Pa)" <?php echo set_select('presunit', 'Pascal (Pa)'); ?>>Pascal (Pa)
+                    </option>
+                    <option value="bar (Bar)" <?php echo set_select('presunit', 'bar (Bar)'); ?>>bar (Bar)</option>
+                    <option value="Standard atmosphere (atm)" <?php echo set_select('presunit', 'Standard atmosphere (atm)'); ?>>
+                        Standard atmosphere (atm)
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ph"><?php echo lang("ph"); ?></label>
+        <input class="form-control" id="ph" name="ph" placeholder="<?php echo lang("ph"); ?>"
+               value="<?php echo set_value('ph'); ?>">
     </div>
 
     <div class="form-group">
@@ -125,6 +185,37 @@
     </div>
 
     <div class="form-group">
+        <label for="oloc"><?php echo lang("outputlocation"); ?></label>
+        <input class="form-control" id="oloc" name="oloc" placeholder="<?php echo lang("outputlocation"); ?>"
+               value="<?php echo set_value('oloc'); ?>">
+    </div>
+
+    <!--					<div class="form-group">
+                    <label for="odis">Output distance</label>
+                    <input class="form-control" id="odis" name="odis" placeholder="Output distance">
+                </div>
+
+                <div class="form-group">
+                    <label for="otrasmean">Output transport mean</label>
+                    <input class="form-control" id="otrasmean" name="otrasmean" placeholder="Output transport mean">
+                </div>
+
+                <div class="form-group">
+                    <label for="sdis">Supply distance</label>
+                    <input class="form-control" id="sdis" name="sdis" placeholder="Supply distance">
+                </div>
+
+                <div class="form-group">
+                    <label for="strasmean">Supply transport mean</label>
+                    <input class="form-control" id="strasmean" name="strasmean" placeholder="Supply transport mean">
+                </div>
+
+                    <div class="form-group">
+                    <label for="rtech">Recycling technology</label>
+                    <input class="form-control" id="rtech" name="rtech" placeholder="Recycling technology">
+                </div> -->
+
+    <div class="form-group">
         <label for="spot"><?php echo lang("substitute_potential"); ?></label>
         <input class="form-control" id="spot" name="spot" value="<?php echo set_value('spot'); ?>"
                placeholder="<?php echo lang("substitute_potential"); ?>">
@@ -132,7 +223,14 @@
 
     <div class="form-group">
         <label for="desc"><?php echo lang("description"); ?></label>
-            <textarea class="form-control" rows="5" id="desc" name="desc" placeholder="<?php echo lang("description"); ?>"></textarea>
+        <input class="form-control" id="desc" name="desc" value="<?php echo set_value('desc'); ?>"
+               placeholder="<?php echo lang("description"); ?>">
+    </div>
+
+    <div class="form-group">
+        <label for="comment"><?php echo lang("comments"); ?></label>
+        <input class="form-control" id="comment" name="comment" value="<?php echo set_value('comment'); ?>"
+               placeholder="<?php echo lang("comments"); ?>">
     </div>
 
     <button type="submit" class="btn btn-info"><?php echo lang("addflow"); ?></button>
@@ -164,12 +262,18 @@
                     }?>
                 </th>
                 <th><?php echo lang("ep") . " UBP"; ?>
-                    <button id="prefix" class="btn btn-default btn-sm"> pts</button>
+                    <button id="prefix" type="button" class="btn btn-default btn-sm"> pts</button>
                 </th>
+                <th><?php echo lang("chemicalformula"); ?></th>
+                <th><?php echo lang("concentration"); ?></th>
+                <th><?php echo lang("pressure"); ?></th>
+                <th><?php echo lang("ph"); ?></th>
                 <th><?php echo lang("state"); ?></th>
                 <th><?php echo lang("quality"); ?></th>
+                <th><?php echo lang("outputlocation"); ?></th>
                 <th><?php echo lang("substitute_potential"); ?></th>
                 <th><?php echo lang("description"); ?></th>
+                <th><?php echo lang("comments"); ?></th>
                 <th style="width:100px;"><?php echo lang("manage"); ?></th>
             </tr>
             <?php foreach ($company_flows as $key => $flow): ?>
@@ -185,10 +289,17 @@
 
                     <td><?php echo $flow['flowtype']; ?></td>
                     <td><?php echo $flow['flowfamily']; ?></td>
+                    
                     <td class="table-numbers"><?php echo number_format($flow['qntty'], 2, ".", "'"); ?></td>
                     <td class="table-units"><?php echo $flow['qntty_unit_name']; ?></td>
-                    <td align="right"><?php echo number_format($flow['cost'], 0, "", "'"); ?></td>
+
+                    <td align="right"><?php echo number_format($flow['cost'], 0, ".", "'"); ?></td>
+
                     <td align="right"><?php echo number_format($flow['ep'], 0, "", "'"); ?></td>
+                    <td><?php echo $flow['chemical_formula']; ?></td>
+                    <td><?php echo $flow['concentration'] . ' ' . $flow['concunit']; ?></td>
+                    <td><?php echo $flow['pression'] . ' ' . $flow['presunit']; ?></td>
+                    <td><?php echo $flow['ph']; ?></td>
                     <td><?php if ($flow['state_id'] == "1") {
                             echo "Solid";
                         } else if ($flow['state_id'] == "2") {
@@ -199,8 +310,12 @@
                             echo "n/a";
                         } ?></td>
                     <td><?php echo $flow['quality']; ?></td>
+                    <td><?php echo $flow['output_location']; ?></td>
                     <td><?php echo $flow['substitute_potential']; ?></td>
                     <td><?php echo $flow['description']; ?></td>
+                    <td><?php echo $flow['comment']; ?></td>
+
+
                     <td>
                         <a href="<?php echo base_url('edit_flow/' . $companyID . '/' . $flow['flow_id'] . '/' . $flow['flow_type_id']); ?>"
                            class="label label-warning"><span
@@ -218,20 +333,12 @@
     <script type="text/javascript">
 
         $("#ac").click(function () {
-            //collapses the table to 2/3 
             $("#buyukbas").attr("class", "col-md-8");
-            //shows the left "add flow" side panel
             $("#gizle").show("slow");
-            //hides the add flow button
             $("#ac").hide("slow");
         });
         $("#ac-hide").click(function () {
-            //hides left "add flow" side panel
-            $(".borderli").hide( "slow", function() {
-                //expands the table to full size after the side panel is gone
-                $("#buyukbas").attr("class", "col-md-12");
-            });
-            //shows the add flow button
+            $(".borderli").hide("slow");
             $("#ac").show("slow");
         });
 
@@ -330,22 +437,14 @@
                 {
                     //checks if data is empty/blank
                     if($.trim(data)){
-                        //console.log(data[0]);
-                        //console.log(data[0]['ep_value']);
+                        console.log(data[0]['ep_value']);
                         var value = document.getElementById("quantity").value;
                         var value1 = getSelectedText('selectize-units');
-                        if (typeof data[0]['ep_value'] != 'undefined'){
-
-                            var $select = $("#selectize-units").selectize();
-                            var selectize = $select[0].selectize;
-                            selectize.setValue(selectize.search(data[0]['qntty_unit_name']).items[0].id);
-
-                            //$('#selectize-units')[0].selectize.disable();
-                        }
                         if (typeof data[0]['ep_value'] != 'undefined' && value != "" && value1 != ""){
+                            factor = conversion(value1);
                             $('#ep').val(data[0]['ep_value']*value);
                             //$('#epUnit').val("EP/"+value1);
-                            alert("EP value for this flow automatically set from excel imported user data.")
+                            alert("EP value for this flow automatically set from excel imported user data." + factor);
                         }
                     }
                 } 
@@ -358,4 +457,60 @@
                 return false;
             } 
         });
+
+        function conversion(unit){
+            //mg, g, kg, ,t, kJ, MJ, GJ, kWh, MWh, GWh, mm, cm, m, km, mm², cm², m², mm³, cm³, m³, Nm³, l, p  
+            //alert(unit);
+            factor = 1;
+
+            case1000 = ["kg", "MJ", "MWh", "km"];
+            case1000000 = ["t", "GJ", "GWh"];
+
+            case0000000001 = ["mm³"];
+            case0000001  = ["mm²", "cm³"];
+            case00001  = ["cm²"];
+            case0001 = ["mm", "mg"];
+            case01 = ["cm"];
+
+            case1 = ["g", "kJ", "kWh", "m", "m²", "m³"];
+
+            if($.inArray(unit, case1000) > -1){
+                factor = 1000;
+                return factor;
+            }
+            else if($.inArray(unit, case1000000) > -1){
+                factor = 1000000;
+                return factor;
+            }
+            else if($.inArray(unit, case0000000001) > -1){
+                factor = 0.000000001;
+                return factor;
+            }
+            else if($.inArray(unit, case0000001) > -1){
+                factor = 0.000001;
+                return factor;
+            }
+            else if($.inArray(unit, case00001) > -1){
+                factor = 0.0001;
+                return factor;
+            }
+            else if($.inArray(unit, case00001) > -1){
+                factor = 0.0001;
+                return factor;
+            }
+            else if($.inArray(unit, case0001) > -1){
+                factor = 0.001;
+                return factor;
+            }
+            else if($.inArray(unit, case01) > -1){
+                factor = 0.1;
+                return factor;
+            }
+            else{
+                factor = 1;
+                return factor;
+            }
+            return factor;
+        }
+
     </script>
