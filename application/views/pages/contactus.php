@@ -27,16 +27,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: center; width: 30%;" ><img src="<?php echo asset_url('images/sofies.png'); ?>" alt="" style="width:45%;"></td>
-				<td>
-					<p> SOFIES SA <br> 
-					rue du Vuache 1, CP 2091 <br>
-					CH-1211 GENEVA 1 SWITZERLAND <br>
-					<a href="https://www.sofiesgroup.com" target="_blank">www.sofiesgroup.com</a> <br>
-					<a href="mailto:benoit.charriere@sofiesgroup.com">benoit.charriere@sofiesgroup.com</a></p>
-				</td>
-			</tr>
-			<tr>
 				<td style="text-align: center; width: 30%;" >
 					<i class="fa fa-trophy fa-4x" style="color: #2D8B42;"></i>
 					
