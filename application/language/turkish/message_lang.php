@@ -90,6 +90,9 @@ $lang["companyname"]          = "Firma İsmi";
 $lang["nacecode"]             = "NACE Kodu";
 $lang["selectnace"]           = "Select a NACE Code"; //todo please translate
 $lang["selectlevel4nace"]     = "Select a level 4 NACE Code"; #todo please translate
+$lang["epcalc"]               = "Select your flow type and calculate the Env. Impact Points"; //todo please translate
+$lang["epbutton"]             = "Environmental Impact Points Calculator"; //todo please translate
+$lang["selectflowsforep"]     = "Select your flow to calculate the environmental impact"; //todo please translate
 $lang["coordinates"]          = "Kordinatlar";
 $lang["address"]              = "Adres";
 $lang["companydescription"]   = "Firma Hakkında Açıklama";
@@ -171,6 +174,8 @@ $lang["accuratei"]            = "Örnek: </br> Miktar=10kg </br> Doğruluk oran�
 $lang["reference-ttip"]       = "Example: </br> Amount= Product or material (e.g. 10kg) </br> Reference= Amount inputs used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg product/kWh electricity"; #todo please translate
 $lang["savedata"]             = "Veriyi kaydet";
 $lang["cancel"]               = "Cancel";
+
+$lang["unit-ttip"]  	 	  = "Please use the same unit as on the baseline";
 
 //cpscoping paylaştırma gösterim sayfası
 $lang["gotokpi"]              = "KPI hesaplama sayfasına git";

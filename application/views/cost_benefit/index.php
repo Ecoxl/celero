@@ -48,7 +48,11 @@
             <th class="th-yw4l" bgcolor="#fdfdff">Discount rate (%) </th>
             <th class="th-yw4l" bgcolor="#fdfdff">CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
             <th class="th-yw4l" bgcolor="#fdfdff" colspan="2">Annual energy and material flows</th>
-            <th class="th-yw4l" bgcolor="#fdfdff">unit</th>
+            <th class="th-yw4l" bgcolor="#fdfdff">unit 
+                <label class="tooltip-unit" data-toggle="tooltip">
+                    <i style="color:red;" class="fa fa-question-circle"></i>
+                </label>
+            </th>
             <th class="th-yw4l" bgcolor="#fdfdff">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
             <th class="th-yw4l" bgcolor="#fdfdff">OPEX (<?php echo $a['unit_cost']; ?>)</th>
             <th class="th-yw4l" bgcolor="#fdfdff">EP/ Unit</th>
@@ -1106,49 +1110,67 @@
 </script>
 
 <script type="text/javascript">
-    function insertFlowRow(selectedObject) {
-        //gives the selected flow_id from the select dropdown
-        var selected_id = selectedObject.value;
+function insertFlowRow(selectedObject) {
+    //gives the selected flow_id from the select dropdown
+    var selected_id = selectedObject.value;
 
-        //gets the unique "key" for this table row
-        var table_key = $(selectedObject).attr('id').slice(-5);
-        var form_num = $(selectedObject).attr('id').slice(-1);
+    //gets the unique "key" for this table row
+    var table_key = $(selectedObject).attr('id').slice(-5);
+    var form_num = $(selectedObject).attr('id').slice(-1);
 
-        //gets the cmpny flow array as json in JS
-        var flow_array = <?php echo json_encode($allocated_flows); ?>;
+    //gets the cmpny flow array as json in JS
+    var flow_array = <?php echo json_encode($allocated_flows); ?>;
 
-        //loops through all flows and gets the one that is selected
-        for (flow in flow_array){
-            if (flow_array[flow]['allocation_id'] == selected_id){
-                //inserts the flow values in the row (baseline)
-                $('#flow-name-'+table_key).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
-                $('#flow-value-'+table_key).val(flow_array[flow]['amount']);
-                $('#flow-unit-'+table_key).val(flow_array[flow]['unit_amount']);
-                $('#flow-specost-'+table_key).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
-                $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
+    //loops through all flows and gets the one that is selected
+    for (flow in flow_array){
+        if (flow_array[flow]['allocation_id'] == selected_id){
+            //inserts the flow values in the row (baseline)
+            $('#flow-name-'+table_key).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
+            $('#flow-value-'+table_key).val(flow_array[flow]['amount']);
+            $('#flow-unit-'+table_key).val(flow_array[flow]['unit_amount']);
+            $('#flow-specost-'+table_key).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
+            $('#flow-eipunit-'+table_key).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
 
 
-                if (confirm("Values will be inserted as baseline on the left. \nDo you want to use the same values as option on the right side aswell?")) {
-                    //if confirmed same values used as option, inserts the flow values in the row 
-                    $('#flow-name-2'+table_key.slice(-4)).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
-                    $('#flow-value-2'+table_key.slice(-4)).val(flow_array[flow]['amount']);
-                    $('#flow-unit-2'+table_key.slice(-4)).val(flow_array[flow]['unit_amount']);
-                    $('#flow-specost-2'+table_key.slice(-4)).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
-                    $('#flow-eipunit-2'+table_key.slice(-4)).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
-                } else {
-                    //empties the values on the option side
-                    $('#flow-name-2'+table_key.slice(-4)).val("");
-                    $('#flow-value-2'+table_key.slice(-4)).val("");
-                    $('#flow-unit-2'+table_key.slice(-4)).val("");
-                    $('#flow-specost-2'+table_key.slice(-4)).val("");
-                    $('#flow-eipunit-2'+table_key.slice(-4)).val(""); 
-                }
-                //runs a change so that the values are calculated
-                $('#form-'+form_num+' input').change();
-                break;
+            if (confirm("Values will be inserted as baseline on the left. \nDo you want to use the same values as option on the right side aswell? Your are able to change them as you want.")) {
+                //if confirmed same values used as option, inserts the flow values in the row 
+                $('#flow-name-2'+table_key.slice(-4)).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
+                $('#flow-value-2'+table_key.slice(-4)).val(flow_array[flow]['amount']);
+                $('#flow-unit-2'+table_key.slice(-4)).val(flow_array[flow]['unit_amount']);
+                $('#flow-specost-2'+table_key.slice(-4)).val(flow_array[flow]['cost']/flow_array[flow]['amount']);
+                $('#flow-eipunit-2'+table_key.slice(-4)).val(flow_array[flow]['env_impact']/flow_array[flow]['amount']);
+
+                $('#flow-name-3'+table_key.slice(-4)).val(flow_array[flow]['flow_name'] +" ("+ flow_array[flow]['flow_type_name']+")");
+                 $('#flow-unit-3'+table_key.slice(-4)).val(flow_array[flow]['unit_amount']);
+            } else {
+                //empties the values on the option side
+                $('#flow-name-2'+table_key.slice(-4)).val("");
+                $('#flow-value-2'+table_key.slice(-4)).val("");
+                $('#flow-unit-2'+table_key.slice(-4)).val("");
+                $('#flow-specost-2'+table_key.slice(-4)).val("");
+                $('#flow-eipunit-2'+table_key.slice(-4)).val("");
+
+                $('#flow-name-3'+table_key.slice(-4)).val("");
+
             }
+            //runs a change so that the values are calculated
+            $('#form-'+form_num+' input').change();
+            break;
         }
-    } 
+    }
+} 
+
+//tooltip unit column (option side)
+$('.tooltip-unit').tooltip({
+    position: 'top',
+    content: '<span style="color:#fff"><?php echo lang("unit-ttip"); ?></span>',
+    onShow: function(){
+        $(this).tooltip('tip').css({
+            backgroundColor: '#999',
+            borderColor: '#999'
+        });
+    }
+});
 </script>
 <?php $k=$k+1; ?>
 <?php endforeach ?>

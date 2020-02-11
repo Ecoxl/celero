@@ -90,6 +90,9 @@ $lang["companyname"]          = "Company Name";
 $lang["nacecode"]             = "NACE Code";
 $lang["selectnace"]           = "Select a NACE Code";
 $lang["selectlevel4nace"]     = "Select a level 4 NACE Code";
+$lang["epcalc"]               = "Select your flow type and calculate the Env. Impact Points";
+$lang["epbutton"]             = "Environmental Impact Points Calculator";
+$lang["selectflowsforep"]     = "Select your flow to calculate the environmental impact";
 $lang["coordinates"]          = "Coordinates";
 $lang["address"]              = "Address";
 $lang["companydescription"]   = "Company Description";
@@ -170,11 +173,13 @@ $lang["number"]               = "Number";
 $lang["percentage"]           = "Percentage";
 $lang["process"]              = "Process";
 $lang["accuratei"]            = "Example: </br> Amount=10kg </br> Accuracy rate=90% </br> means the amount varies by 10% or +/- 5%, </br> thus between  9.5kg and 10.5kg";
-$lang["reference-ttip"]        = "Example: </br> Amount=Product, material or energy flow (e.g. 100kg steel) </br> Reference=Input used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg steel/kWh electricity)";
+$lang["reference-ttip"]       = "Example: </br> Amount=Product, material or energy flow (e.g. 100kg steel) </br> Reference=Input used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg steel/kWh electricity)";
 $lang["amount-ttip"]          = "Amount: Product, material or energy flow </br> By selecting a process & flow on the left this value is automatically inserted";
-$lang["allocation-ttip"]          = "Allocation: The percentage that can be allocated to this process </br> The field on the left is automatically calculated when an allocation value is entered";
+$lang["allocation-ttip"]      = "Allocation: The percentage that can be allocated to this process </br> The field on the left is automatically calculated when an allocation value is entered";
 $lang["savedata"]             = "Save data";
 $lang["cancel"]               = "Cancel";
+
+$lang["unit-ttip"]  	 	  = "Please use the same unit as on the baseline";
 
 //cpscoping allocation show page
 $lang["gotokpi"]              = "Go to KPI Calculation Page";

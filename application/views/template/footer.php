@@ -1,5 +1,5 @@
     <div class="clearfix"></div>
-    <div class="footer">© 2013-2019 CELERO - This site is optimized for <a href="https://www.google.com/chrome/" > Chrome </a> 
+    <div class="footer">© 2013-2020 CELERO - This site is optimized for <a href="https://www.google.com/chrome/" > Chrome </a> 
       <div class="footer-right">
         <!-- Language selection, underlines the selected language-->
         <?php if($this->session->userdata('site_lang')==null || $this->session->userdata('site_lang')=='') { ?>
