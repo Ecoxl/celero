@@ -160,6 +160,7 @@ $lang["period"]               = "Periyot";
 $lang["allocation"]           = "Paylaştırma";
 $lang["amountunit"]           = "Miktar birimi";
 $lang["accuracyrate"]         = "Doğruluk oranı";
+$lang["allocated"]            = "Allocated"; //to please translate
 $lang["costunit"]             = "Maliyet birimi";
 $lang["environmentalimpact"]  = "Çevre etkisi";
 $lang["ep"]                   = "EP";

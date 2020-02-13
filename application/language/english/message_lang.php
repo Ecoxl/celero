@@ -162,6 +162,7 @@ $lang["period"]               = "Period";
 $lang["allocation"]           = "Allocation";
 $lang["amountunit"]           = "Amount unit";
 $lang["accuracyrate"]         = "Accuracy";
+$lang["allocated"]            = "Allocated";
 $lang["costunit"]             = "Cost unit";
 $lang["environmentalimpact"]  = "Environmental impact";
 $lang["ep"]                   = "EP";
