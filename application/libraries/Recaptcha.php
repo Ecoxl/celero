@@ -221,10 +221,10 @@ class Recaptcha
         );
 
         $answers = explode("\n", $response [1]);
-        $answers_split = explode(":", $answers[1]);
-        $success = explode(",", $answers_split[1]);
+        $str_response = implode("|",$response);
 
-        if (trim($success [0]) == 'true') {
+
+        if (strpos($str_response, '"success": true') !== false) {
             $this->is_valid = true;
         } else {
             $this->is_valid = false;;
