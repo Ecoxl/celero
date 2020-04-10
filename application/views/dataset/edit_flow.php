@@ -18,7 +18,11 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) 
+							<span style="color:red;">*
+								<small><?php echo lang("mandatory"); ?></small>
+							</span>
+						</label>
 						<input class="form-control" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>" value="<?php echo set_value('quantity',$flow['qntty']); ?>">
 					</div>
 					<div class="col-md-4">

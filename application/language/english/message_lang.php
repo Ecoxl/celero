@@ -27,6 +27,7 @@ $lang["login"]                = "Login";
 $lang["register"]             = "Register";
 $lang["updateprofile"]        = "Edit Profile";
 $lang["logout"]               = "Logout";
+$lang["mandatory"]			  = "mandatory fields";
 
 $lang["allcompanies"]         = "All Companies";
 $lang["mycompanies"]          = "My Companies";
@@ -67,7 +68,7 @@ $lang["workphone"]            = "Work Phone";
 $lang["faxnumber"]            = "Fax Number";
 $lang["name"]                 = "Name";
 $lang["surname"]              = "Surname";
-$lang["job"]                  = "Job";
+$lang["job"]                  = "Job Title";
 $lang["description"]          = "Description";
 
 $lang["consultantsdesc"]      = "You are seeing all the consultants of the system. You can access their profile and contact with them";

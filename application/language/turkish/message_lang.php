@@ -27,6 +27,7 @@ $lang["login"]                = "Giriş";
 $lang["register"]             = "Üye Ol";
 $lang["updateprofile"]        = "Profili Güncelle";
 $lang["logout"]               = "Çıkış";
+$lang["mandatory"]			  = "mandatory fields"; //todo translate
 
 $lang["allcompanies"]         = "Tüm Firmalar";
 $lang["mycompanies"]          = "Firmalarım";
@@ -67,7 +68,7 @@ $lang["workphone"]            = "İş No";
 $lang["faxnumber"]            = "Fax No";
 $lang["name"]                 = "İsim";
 $lang["surname"]              = "Soyad";
-$lang["job"]                  = "Görev";
+$lang["job"]                  = "Görev"; //todo "job title"
 $lang["description"]          = "Açıklama";
 
 $lang["consultantsdesc"]      = "Sistemdeki tüm danışmaları görmektesiniz. Profillerine tıklayarak iletişim kurabilirsiniz";

@@ -16,12 +16,18 @@
 			<small><small> or <a href="<?php echo base_url('login'); ?>">login here</a></small></small></p>
 
 				<div class="form-group">
-						<label for="username"><?php echo lang("username")?></label> 
-						<small><?php echo "&nbsp;", lang("validcharacters");?></small>
+						<label for="username"><?php echo lang("username"); ?> 
+								<small>
+									<?php echo "&nbsp;", lang("validcharacters");?>
+								</small>
+								<span style="color:red;">* 
+									<small><?php echo lang("mandatory"); ?></small>
+							 	</span>
+						</label> 
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username'); ?>" placeholder="<?php echo lang("username"); ?>" name="username">
 				</div>
 				<div class="form-group">
-						<label for="password"><?php echo lang("password"); ?></label>
+						<label for="password"><?php echo lang("password"); ?> <span style="color:red;">*</span></label>
 						<input type="password" class="form-control" id="password" placeholder="<?php echo lang("password"); ?>" name="password">
 				</div>
 				<div class="form-group">
@@ -42,7 +48,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-	    			<label for="email"><?php echo lang("email"); ?></label>
+	    			<label for="email"><?php echo lang("email"); ?> <span style="color:red;">*</span></label>
 	    			<input type="text" class="form-control" id="email" placeholder="<?php echo lang("email"); ?>" value="<?php echo set_value('email'); ?>"  name="email">
 	 			</div>
 	 			<div class="form-group">
@@ -58,15 +64,15 @@
 	    			<input type="text" class="form-control" id="fax" value="<?php echo set_value('fax'); ?>" placeholder="<?php echo lang("faxnumber"); ?>" name="fax">
 	 			</div>
 				<div class="form-group">
-						<label for="name"><?php echo lang("name"); ?></label>
+						<label for="name"><?php echo lang("name"); ?> <span style="color:red;">*</span></label>
 						<input type="text" class="form-control" id="name" placeholder="<?php echo lang("name"); ?>" value="<?php echo set_value('name'); ?>" name="name">
 				</div>
 				<div class="form-group">
-						<label for="surname"><?php echo lang("surname"); ?></label>
+						<label for="surname"><?php echo lang("surname"); ?> <span style="color:red;">*</span></label>
 						<input type="text" class="form-control" id="surname" placeholder="<?php echo lang("surname"); ?>" value="<?php echo set_value('surname'); ?>"  name="surname">
 				</div>
 				<div class="form-group">
-						<label for="jobTitle"><?php echo lang("job"); ?></label>
+						<label for="jobTitle"><?php echo lang("job"); ?> <span style="color:red;">*</span></label>
 						<input type="text" class="form-control" id="jobTitle" value="<?php echo set_value('jobTitle'); ?>" placeholder="<?php echo lang("job"); ?>" name="jobTitle">
 				</div>
 				<div class="form-group">
