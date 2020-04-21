@@ -9,7 +9,7 @@ load->view('template/header'); ?>
         </h>
         <br>
         <br>
-        <a href="<?php echo asset_url('CELERO_User_Manual120219.pdf'); ?>">
+        <a href="<?php echo asset_url('CELERO_User_Manual120220.pdf'); ?>">
             <div style="background-color:#2D8B42; color:white; text-align: center;">
                 <?php echo lang("usermanual"); ?>
                 <span class="glyphicon glyphicon-book">
