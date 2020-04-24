@@ -635,31 +635,15 @@ class Cpscoping extends CI_Controller {
 	}
 
 	public function cp_scoping_file_upload($prjct_id,$cmpny_id){
-		
-		//$uzanti = $_FILES['userfile']['name'];
-		//$uzanti = explode('.',$uzanti);
-		
-		//$eklenti = $uzanti[sizeof($uzanti)-1];
-
-		/*$last_file_name = explode(' ',$file_name);
-		$f_name = "";
-		for($i = 0 ; $i < sizeof($last_file_name) ; $i++){
-			if($i == sizeof($last_file_name)-1){
-				$f_name .= $last_file_name[$i];
-			}else{
-				$f_name .= $last_file_name[$i]."_";
-			}
-		}*/
-
-		$user = $this->session->userdata('user_in');
 		$config['upload_path'] 			= './assets/cp_scoping_files/';
 		$config['allowed_types']		= 'pdf|doc|docx';
 		$config['max_size']				= '20000';
 
 		$this->load->library('upload', $config);
-
+		
         if (!$this->upload->do_upload('docuFile'))
-        {
+        {	
+        	//forwards error message to kpi_calculation() 
             $this->session->set_flashdata('error', $this->upload->display_errors());
  			redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
         }
@@ -670,30 +654,12 @@ class Cpscoping extends CI_Controller {
 				'cmpny_id' => $cmpny_id,
 				'file_name' => $this->upload->data('file_name'),
 			);
+
+			//forwards data for successful upload to kpi_calculation()
         	$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
 			$this->session->set_flashdata('success', $this->upload->data());
 			redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
         }
-
-
-	    
-	    //redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
-		// 	//Resmi servera yükleme
-		// 	if (!$this->upload->do_upload('docFile'))
-		// 	{
-		// 		echo $this->upload->display_errors();
-		// 		exit;
-		// 	}else{
-		// 		$cp_scoping_files = array(
-		// 			'prjct_id' => $prjct_id,
-		// 			'cmpny_id' => $cmpny_id,
-		// 			'file_name' => $f_name.'.'.$eklenti
-		// 		);
-		// 		$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
-		// 		redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
-		// 	}
-		// }
-		// redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 	}
 
 	public function file_delete($filename,$prjct_id,$cmpny_id){
