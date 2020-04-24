@@ -12,4 +12,3 @@ University of Applied Sciences and Arts Northwestern Switzerland (FHNW)
 
 BG Ingénieurs Conseils 
 
-SOFIES SA 
