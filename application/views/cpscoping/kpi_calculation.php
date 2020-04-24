@@ -167,28 +167,26 @@
 		<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
 </div>
 <div class="col-md-6">
-		<p><?php echo lang("searchdocument"); ?></p>
-		<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
-		  <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="" name="search">
-	  </form>
-	  <hr>
-	  <p><?php echo lang("documentupload"); ?></p>
-	  <div class="form-group">
-		  	<?php if(validation_errors() != NULL ): ?>
-			    <div class="alert">
-						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<h4>Form couldn't be saved</h4>
-			      	<p>
-			      		<?php echo validation_errors(); ?>
-			      	</p>
-			    </div>
-			<?php endif ?>
-			<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
-			    <input type="text" class="form-control" id="file_name" placeholder="<?php echo lang("filename"); ?>" name="file_name">
-			    <input type="file" name="userfile" id="userfile" size="20" />
-					<br/>
-			    <button type="submit" class="btn btn-info btn-sm"><?php echo lang("savefile"); ?></button>
-		    </form>
+		<p><b><?php echo lang("searchdocument"); ?></b></p>
+			<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
+			 	<input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="" name="search">
+		  	</form>
+		<hr>
+	 	<p><b><?php echo lang("documentupload"); ?></b> <small>(<?php echo lang("allowedfiletypes") ?>)</small></p>
+	 	 	<div class="form-group">
+	 	 		<?php
+		 	 		if(isset($error)) {
+	                    echo "<div style=' color:#E74C3C;margin: 10px 0;padding: 15px;padding-bottom: 0;border: 1px solid;'>Error while uploading, please check file size or document type: ".$error."</div>";
+	                }
+	                elseif($success) {
+	      				echo "<div style=' color:#2eb3e7;margin: 10px 0;padding: 15px;padding-bottom: 20;border: 1px solid;'>You have successfully uploaded a new file.</div>";
+	                }
+                ?>
+				<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
+				    <input type="file" name="docuFile" id="docuFile"> <br/>
+				    <input type="submit" class="btn btn-info btn-sm" value="<?php echo lang("savefile"); ?>">
+		   		</form>
+		   	</div>
 		    <hr>
 		    <p><?php echo lang("uploadeddocument"); ?></p>
 		    <table class="table table-bordered">

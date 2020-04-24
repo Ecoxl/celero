@@ -8,7 +8,7 @@ load->view('template/header'); ?>
             </b>
         </h>
         <br>
-        <br>
+        <br> <!-- file name for the user manual is case sensitive on the server! -->
         <a href="<?php echo asset_url('CELERO_User_Manual120220.pdf'); ?>">
             <div style="background-color:#2D8B42; color:white; text-align: center;">
                 <?php echo lang("usermanual"); ?>

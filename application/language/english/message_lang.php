@@ -213,6 +213,7 @@ $lang["edit"]                 = "Edit";
 $lang["kpiheading1"]          = "KPI View and Edit Table";
 $lang["kpiheading2"]          = "KPIs vs Benchmark KPIs Comparison Graph";
 $lang["documentupload"]       = "Document Upload";
+$lang["allowedfiletypes"]     = "Allowed are PDF and Word Documents up to 20MB";
 $lang["searchdocument"]       = "Search for Documents";
 $lang["uploadeddocument"]     = "Uploaded Documents";
 $lang["savefile"]             = "Save file";

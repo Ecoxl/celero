@@ -209,6 +209,7 @@ $lang["edit"]                 = "Düzenle";
 $lang["kpiheading1"]          = "KPI görüntüleme ve düzenleme tablosu";
 $lang["kpiheading2"]          = "KPI ve Kıyaslama KPI'ı karşılaştırma grafiği";
 $lang["documentupload"]       = "Döküman yükleme";
+$lang["allowedfiletypes"]     = "Allowed are PDF and Word Documents up to 20MB"; #todo translate
 $lang["searchdocument"]       = "Döküman arama";
 $lang["uploadeddocument"]     = "Yüklenmiş dökümanlar";
 $lang["savefile"]             = "Dosyayı kaydet";
