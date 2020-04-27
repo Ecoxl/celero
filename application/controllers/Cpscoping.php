@@ -720,12 +720,16 @@ class Cpscoping extends CI_Controller {
 	public function kpi_json($prjct_id,$cmpny_id){
 		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($prjct_id,$cmpny_id);
 		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
-		//print_r($allocation_ids);
+		
 		foreach ($allocation_ids as $a => $key) {
-			//echo $a.'.';
+			
 					$data['kpi_values'][$a] = $this->cpscoping_model->get_allocation_from_allocation_id($key['allocation_id']);
-					//print_r($data['kpi_values'][$a]['option']);
+					
 					$data['kpi_values'][$a]['allocation_name']=$data['kpi_values'][$a]['prcss_name']." - ".$data['kpi_values'][$a]['flow_name']." - ".$data['kpi_values'][$a]['flow_type_name'];
+					
+					if(!isset($data['kpi_values'][$a]['option'])){
+						$data['kpi_values'][$a]['option']=0;
+					}
 					if($data['kpi_values'][$a]['option']==1){
 						$data['kpi_values'][$a]['option']="Option";
 					}else{
