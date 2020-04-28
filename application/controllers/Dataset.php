@@ -10,6 +10,7 @@ class Dataset extends CI_Controller {
 		$this->load->model('process_model');
 		$this->load->model('equipment_model');
 		$this->load->model('component_model');
+		$this->load->model('cpscoping_model');
 		$this->load->library('form_validation');
 
 		$this->config->set_item('language', $this->session->userdata('site_lang'));
@@ -629,11 +630,9 @@ class Dataset extends CI_Controller {
 		{
 			$this->equipment_model->delete_cmpny_equipment($company_process_id);
 			$this->process_model->delete_cmpny_process($company_process_id);
+			//deletes allocations that are based on this process
+			$this->cpscoping_model->delete_allocation_prcssid($company_process_id);
 		}
-		/*
-			$this->process_model->delete_cmpny_prcss_eqpmnt_type($id['id']);
-		$this->process_model->delete_cmpny_prcss($companyID);
-		$this->process_model->delete_cmpny_eqpmnt($companyID)*/
 		redirect('new_process/'.$companyID);
 	}
 

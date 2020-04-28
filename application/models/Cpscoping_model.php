@@ -317,4 +317,11 @@ class Cpscoping_model extends CI_Model
         $this->db->delete('t_cp_company_project');
     }
 
+    //delete allocation by process id
+    public function delete_allocation_prcssid($process_id)
+    {
+        $this->db->where('prcss_id', $process_id);
+        $this->db->delete('t_cp_allocation');
+    }
+
 }
