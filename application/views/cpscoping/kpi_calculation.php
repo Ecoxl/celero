@@ -251,7 +251,7 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 	function deneme() {
-		google.load("visualization", "1", {packages:["corechart"]});
+		google.charts.load('current', {packages: ['corechart']});
 
 		var prjct_id = <?php echo $this->uri->segment(2); ?>;
 		var cmpny_id = <?php echo $this->uri->segment(3); ?>;
@@ -284,6 +284,7 @@
 							index++;
 						}
 					}
+
 					//console.log(kpi2);
 					var data = new google.visualization.DataTable();
 					//console.log(data);
@@ -339,31 +340,6 @@
 				}
 			}
 		});
-	    /*var data = google.visualization.arrayToDataTable([
-			['API Category', 'Social', 'Error', { role: 'annotation' } ],
-		  	['2011', 98, 53, ''],
-		  	['2012', 151, 34, ''],
-		  	['2013', 69, 27, ''],
-		]);
-
-	    var options = {
-		    width: 1000,
-		    height: 550,
-		    legend: { position: 'top', maxLines: 3, textStyle: {color: 'black', fontSize: 16 } },
-			isStacked: true,
-
-			// Displays tooltip on selection.
-			// tooltip: { trigger: 'selection' }, 
-		 };
-
-	    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-	    chart.draw(data, options);
-
-		// Selects a set point on chart.
-		// chart.setSelection([{row:0,column:1}]) 
-
-		// Renders chart as PNG image 
-		// chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';*/
 	};
 </script>
 <script type="text/javascript">
