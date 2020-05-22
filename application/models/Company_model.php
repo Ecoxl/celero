@@ -105,7 +105,7 @@ class Company_model extends CI_Model
 
     public function get_nace_code($id)
     {
-        $this->db->select('t_nace_code_rev2.code');
+        $this->db->select('t_nace_code_rev2.code, t_nace_code_rev2.name');
         $this->db->from('t_nace_code_rev2');
         $this->db->join('t_cmpny_nace_code', 't_cmpny_nace_code.nace_code_id = t_nace_code_rev2.id', 'left');
         $this->db->join('t_cmpny', 't_cmpny.id = t_cmpny_nace_code.cmpny_id', 'left');

@@ -100,7 +100,7 @@
 					</td>
 					<td>
 					<?php
-							echo $nacecode['code'];
+							echo $nacecode['code'] . " - " . $nacecode['name'];
 					?>
 					</td>
 				</tr>
