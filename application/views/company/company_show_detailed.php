@@ -78,14 +78,6 @@
 					<?php echo $companies['email']; ?>
 					</td>
 				</tr>
-<!-- 				<tr>
-					<td>
-					Phone
-					</td>
-					<td>
-					<?php echo $companies['phone_num_1']; ?>
-					</td>
-				</tr> -->
 				<tr>
 					<td>
 					<?php echo lang("workphone"); ?>
@@ -147,11 +139,11 @@
 						<tr>
 							<td><?php echo $flows['flowname']; ?></td>
 							<td><?php echo $flows['flowtype']; ?></td>
-							<td class="table-numbers"><?php echo $flows['qntty']; ?></td>
+							<td class="table-numbers"><?php echo number_format($flows['qntty'], 0, ".", "'"); ?></td>
 							<td class="table-units"><?php echo $flows['qntty_unit_name']; ?></td>
-							<td class="table-numbers"><?php echo $flows['cost']; ?></td>
+							<td class="table-numbers"><?php echo number_format($flows['cost'], 0, ".", "'"); ?></td>
 							<td class="table-units"><?php echo $flows['cost_unit']; ?></td>
-							<td style="text-align: right"><?php echo $flows['ep']; ?></td>
+							<td style="text-align: right"><?php echo number_format($flows['ep'], 0, ".", "'"); ?></td>
 						</tr>
 					<?php endforeach ?>
 				</table>
@@ -189,26 +181,6 @@
 						</tr>
 					<?php endforeach ?>
 				</table>
-				<!-- equipment deactivated atm 
-				<table class="table table-bordered">
-					<tr class="success">
-						<th colspan="4"><?php echo lang("companyequipment"); ?></th>
-					</tr>
-					<tr>
-						<th><?php echo lang("equipmentname"); ?></th>
-						<th><?php echo lang("equipmenttype"); ?></th>
-						<th><?php echo lang("equipmentattname"); ?></th>
-						<th><?php echo lang("usedprocess"); ?></th>
-					</tr>
-					<?php foreach ($company_equipment as $eqpmnt): ?>
-						<tr>
-							<td><?php echo $eqpmnt['eqpmnt_name']; ?></td>
-							<td><?php echo $eqpmnt['eqpmnt_type_name']; ?></td>
-							<td><?php echo $eqpmnt['eqpmnt_type_attrbt_name']; ?></td>
-							<td><?php echo $eqpmnt['prcss_name']; ?></td>
-						</tr>
-					<?php endforeach ?>
-				</table> -->
 
 				<table class="table table-bordered">
 					<tr class="success">
