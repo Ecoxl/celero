@@ -1,17 +1,4 @@
 <script type="text/javascript" src="<?php echo asset_url('js/easy-ui-1.4.2.js'); ?>"></script>
-<?php
-/*foreach ($allocation as $rows => $row)
-{
-	echo "<table border='1'><tr>";
-	foreach ($row as $col => $cell)
-	{
-		echo "<td>" . $cell . "</td>";
-	}
-  echo "</tr></table>";
-}
-print_r($allocation[0]);*/
-?>
-
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
 
@@ -30,7 +17,6 @@ print_r($allocation[0]);*/
 	var timer = null;
 
 	function cost_ep_value(prcss_id,process_adet){
-		//alert(prcss_id);
 		$.ajax({
 			type: "GET",
 			dataType: 'json',
@@ -52,9 +38,6 @@ print_r($allocation[0]);*/
 	       		$('#graph_text').text(""); 
 	       	}, 7000);
 				}
-				// var temp = "";
-				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
-				// $("div."+prcss_id).html(temp);
 			}
 
 		});
@@ -164,9 +147,6 @@ print_r($allocation[0]);*/
 
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
-							<script type="text/javascript">
-								//yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
-							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>1">
 									<?php
@@ -175,38 +155,38 @@ print_r($allocation[0]);*/
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
 											<table style="font-size:11px;width:100%;text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['amount']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['amount'], 0, ".", "'"); ?>
 												</td>
 												<td style="text-align:right;">
 												 <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['cost']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['cost'], 0, ".", "'"); ?>
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['env_impact']; ?>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['env_impact'], 0, ".", "'"); ?>
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['amount']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo  number_format($allocationveri[$bak]['amount'], 0, ".", "'"); ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo number_format($allocationveri[$bak]['cost'], 0, ".", "'"); ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> 
+												<tr><td class="table-numbers" style="width:80%"><?php echo number_format($allocationveri[$bak]['env_impact'], 0, ".", "'"); ?> 
 												</td>
 												<td style="text-align:right;">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
 											</table>
 										<?php endif ?>
-										<?php //print_r($allocationveri[$bak]); ?>
+										
 									<?php	else: ?>
-										<?php //echo $bak; ?>
+										
 									<?php	endif ?>
 								</div>
 							</td>
@@ -298,23 +278,23 @@ print_r($allocation[0]);*/
 									?>
 										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['amount'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['cost'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info">	<?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
-												<tr><td class="table-numbers" style="width:70%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<tr><td class="table-numbers" style="width:70%"><?php echo number_format($allocationveri[$bak]['env_impact'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right">
 												<?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
 											</table>
 										<?php else: ?>
 											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
-												<tr><td class="table-numbers" style="width:80%"> <?php echo $allocationveri[$bak]['amount']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"> <?php echo number_format($allocationveri[$bak]['amount'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['cost']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"><?php echo number_format($allocationveri[$bak]['cost'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right;"> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
-												<tr><td class="table-numbers" style="width:80%"><?php echo $allocationveri[$bak]['env_impact']; ?> </td>
+												<tr><td class="table-numbers" style="width:80%"><?php echo number_format($allocationveri[$bak]['env_impact'], 0, ".", "'"); ?> </td>
 												<td style="text-align:right;"><?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
 											</table>
 										<?php endif ?>
@@ -366,7 +346,6 @@ print_r($allocation[0]);*/
     		<p style="float:left;"><?php echo lang("cpscopingheading3"); ?></p>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()"><?php echo lang("saveallchanges"); ?></a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()"><?php echo lang("cancelallchanges"); ?></a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()"><?php echo lang("seechanges"); ?></a>
     </div>
     <script type="text/javascript">
     function formatPrice(input){
@@ -378,7 +357,7 @@ print_r($allocation[0]);*/
 			    if (parseFloat(input)) {
 			        input = new String(input); // so you can perform string operations
 			        var parts = input.split("."); // remove the decimal part
-			        parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+			        parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1'").split("").reverse().join("");
 			        output = parts.join(".");
 			    }
 	    return output;
