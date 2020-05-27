@@ -174,7 +174,7 @@ $lang["unit"]                 = "Unit";
 $lang["number"]               = "Number";
 $lang["percentage"]           = "Percentage";
 $lang["process"]              = "Process";
-$lang["accuratei"]            = "Example: </br> Amount=10kg </br> Accuracy rate=90% </br> means the amount varies by 10% or +/- 5%, </br> thus between  9.5kg and 10.5kg";
+$lang["accuratei"]            = "Example: </br> Amount=10kg </br> Accuracy rate=90% </br> means the amount varies by 10% or +/- 5%, </br> thus between  9.5kg and 10.5kg. </br> The default value is 80%. This value is only relevant for the graph </br> and calculations on the CP potentials identificatio page.";
 $lang["reference-ttip"]       = "Example: </br> Amount=Product, material or energy flow (e.g. 100kg steel) </br> Reference=Input used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg steel/kWh electricity)";
 $lang["amount-ttip"]          = "Amount: Product, material or energy flow </br> By selecting a process & flow on the left this value is automatically inserted";
 $lang["allocation-ttip"]      = "Allocation: The percentage that can be allocated to this process </br> The field on the left is automatically calculated when an allocation value is entered";
@@ -211,7 +211,7 @@ $lang["selectedcandidate"]    = "Candidate";
 //KPI page
 $lang["edit"]                 = "Edit";
 $lang["kpiheading1"]          = "KPI View and Edit Table";
-$lang["kpiheading2"]          = "KPIs vs Benchmark KPIs Comparison Graph";
+$lang["kpiheading2"]          = "KPIs vs Benchmark Comparison Graph";
 $lang["documentupload"]       = "Document Upload";
 $lang["allowedfiletypes"]     = "Allowed are PDF and Word Documents up to 20MB";
 $lang["searchdocument"]       = "Search for Documents";
@@ -220,7 +220,7 @@ $lang["savefile"]             = "Save file";
 $lang["filename"]             = "File name";
 $lang["isoption"]             = "Is option";
 $lang["gotocp"]               = "Go to Cp Scoping";
-$lang["benchmark"]            = "Benchmark KPI";
+$lang["benchmark"]            = "Benchmark";
 
 //CBA page
 $lang["cbaheading"]           = "Cost - Benefit Analysis, CP and IS Potentials";

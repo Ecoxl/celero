@@ -172,7 +172,7 @@ $lang["unit"]                 = "Birim";
 $lang["number"]               = "Sayı";
 $lang["percentage"]           = "Oran";
 $lang["process"]              = "İşlem";
-$lang["accuratei"]            = "Örnek: </br> Miktar=10kg </br> Doğruluk oranı=90% </br> ise +/- 5% oranında miktardan sapma olur demektir, </br> yani değer  9.5kg ile 10.5kg arasındadır";
+$lang["accuratei"]            = "Örnek: </br> Miktar=10kg </br> Doğruluk oranı=90% </br> ise +/- 5% oranında miktardan sapma olur demektir, </br> yani değer  9.5kg ile 10.5kg arasındadır. </br> The default value is 80%. This value is only relevant for the graph </br> and calculations on the CP potentials identificatio page.";
 $lang["reference-ttip"]       = "Example: </br> Amount= Product or material (e.g. 10kg) </br> Reference= Amount inputs used to produce the amount (e.g. 50kWh) </br> Results in a KPI of amount produced per amount of input </br> (e.g. 2kg product/kWh electricity"; #todo please translate
 $lang["savedata"]             = "Veriyi kaydet";
 $lang["cancel"]               = "Cancel";
@@ -216,7 +216,7 @@ $lang["savefile"]             = "Dosyayı kaydet";
 $lang["filename"]             = "Dosya ismi";
 $lang["isoption"]             = "Seçenek mi";
 $lang["gotocp"]               = "Temiz üretim potansiyelleri sayfasına git";
-$lang["benchmark"]            = "Kıyaslama KPI'ı";
+$lang["benchmark"]            = "Kıyaslama";
 
 //CBA sayfası
 $lang["cbaheading"]           = "Fayda - maliyet analizi, TÜ ve ES potansiyelleri";

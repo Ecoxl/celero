@@ -47,7 +47,6 @@
     		<p style="float:left;"><?php echo lang("kpiheading1"); ?></p>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()"><?php echo lang("saveallchanges"); ?></a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()"><?php echo lang("cancelallchanges"); ?></a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()"><?php echo lang("seechanges"); ?></a>
     </div>
     <script>
 			function formatDetail(value,row){
