@@ -254,7 +254,7 @@ if ($prcss_info[$i]['company_process_id'] == set_value('prcss_name')) {
 				</div>
 
 				<div class="col-md-3">
-					<input type="text" class="form-control" value="<?php echo set_value('error_amount'); ?>" id="error_amount" placeholder="<?php echo lang("percentage"); ?>" name="error_amount">
+					<input type="text" class="form-control" value="<?php echo set_value('error_amount', 80); ?>" id="error_amount" placeholder="<?php echo lang("percentage"); ?>" name="error_amount">
 				</div>
 			</div>
 			<hr>
@@ -279,7 +279,7 @@ if ($prcss_info[$i]['company_process_id'] == set_value('prcss_name')) {
 					<input type="text" class="form-control" value="<?php echo set_value('allocation_cost'); ?>" id="allocation_cost" placeholder="<?php echo lang("percentage"); ?>" name="allocation_cost">
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" value="<?php echo set_value('error_cost'); ?>" id="error_cost" placeholder="<?php echo lang("percentage"); ?>" name="error_cost">
+					<input type="text" class="form-control" value="<?php echo set_value('error_cost', 80); ?>" id="error_cost" placeholder="<?php echo lang("percentage"); ?>" name="error_cost">
 				</div>
 			</div>
 			<hr>
@@ -298,7 +298,7 @@ if ($prcss_info[$i]['company_process_id'] == set_value('prcss_name')) {
 					<input type="text" class="form-control" value="<?php echo set_value('allocation_env_impact'); ?>" id="allocation_env_impact" placeholder="<?php echo lang("percentage"); ?>" name="allocation_env_impact">
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" value="<?php echo set_value('error_ep'); ?>" id="error_ep" placeholder="<?php echo lang("percentage"); ?>" name="error_ep">
+					<input type="text" class="form-control" value="<?php echo set_value('error_ep', 80); ?>" id="error_ep" placeholder="<?php echo lang("percentage"); ?>" name="error_ep">
 				</div>
 			</div>
 			<hr>
