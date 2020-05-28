@@ -99,13 +99,14 @@ class Dataset extends CI_Controller {
 	
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback_alpha_dash_space');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
-		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric|max_length[8]');
+		$this->form_validation->set_rules('quantity', 'Quantity', 
+			"trim|required|xss_clean|strip_tags|regex_match[/^(\d+|\d{1,3}('\d{3})*)((\,|\.)\d+)?$/]|max_length[8]");
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric|max_length[8]');
+		$this->form_validation->set_rules('cost', 'Cost', "trim|required|xss_clean|strip_tags|regex_match[/^(\d+|\d{1,3}('\d{3})*)((\,|\.)\d+)?$/]|max_length[8]");
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('ep', 'EP', 'trim|xss_clean|strip_tags|numeric|max_length[25]');
+		$this->form_validation->set_rules('ep', 'EP', 
+			"trim|xss_clean|strip_tags|max_length[25]|regex_match[/^(\d+|\d{1,3}('\d{3})*)((\,|\.)\d+)?$/]");
 		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|xss_clean|strip_tags');
-
 		$this->form_validation->set_rules('charactertype', 'Flow Character Type', 'trim|xss_clean|strip_tags|max_length[50]');
 		$this->form_validation->set_rules('availability', 'Availability', 'trim|xss_clean');
 		$this->form_validation->set_rules('cf', 'Chemical Formula', 'trim|xss_clean|max_length[30]');
@@ -128,11 +129,20 @@ class Dataset extends CI_Controller {
 			$charactertype = $this->input->post('charactertype');
 			$flowtypeID = $this->input->post('flowtype');
 			$flowfamilyID = $this->input->post('flowfamily');
-			$ep = $this->input->post('ep');
+
+			#EP input field: By regex_match , . and ' are allowed.
+			#this replaces , with . and removes thousand separator ' to store numeric in DB later
+			$ep = $this->numeric_input_formater($this->input->post('ep'));
 			$epUnit = $this->input->post('epUnit');
-			$cost = $this->input->post('cost');
+
+			#Cost input field: By regex_match , . and ' are allowed.
+			#this replaces , with . and removes thousand separator ' to store numeric in DB later
+			$cost = $this->numeric_input_formater($this->input->post('cost'));
 			$costUnit = $this->input->post('costUnit');
-			$quantity = $this->input->post('quantity');
+
+			#Quantity input field: By regex_match , . and ' are allowed.
+			#this replaces , with . and removes thousand separator ' to store numeric in DB later
+			$quantity = $this->numeric_input_formater($this->input->post('quantity'));
 			$quantityUnit = $this->input->post('quantityUnit');
 
 			$cf = $this->input->post('cf');
@@ -145,20 +155,13 @@ class Dataset extends CI_Controller {
 			$state = $this->input->post('state');
 			$quality = $this->input->post('quality');
 			$oloc = $this->input->post('oloc');
-			//$odis = $this->input->post('odis');
-			//$otrasmean = $this->input->post('otrasmean');
-			//$sdis = $this->input->post('sdis');
-			//$strasmean = $this->input->post('strasmean');
-			//$rtech = $this->input->post('rtech');
 			$desc = $this->input->post('desc');
 			$spot = $this->input->post('spot');
 			$comment = $this->input->post('comment');
-			//echo "d";
 
 			//CHECK IF FLOW IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
-			//echo $flowID;
-//exit;
+
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
@@ -193,9 +196,6 @@ class Dataset extends CI_Controller {
 
 			$this->flow_model->register_flow_to_company($flow);
 			redirect(current_url());
-			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullan�labilir.
-			//�uan sayfa yenileniyor her seferinde database'den sat�rlar ekleniyor.
-
 		}
 
 		$data['flownames'] = $this->flow_model->get_flowname_list();
@@ -341,6 +341,14 @@ class Dataset extends CI_Controller {
 	function alpha_dash_space($str)
 	{
 	  return ( ! preg_match("/^([-a-z0-9_ ])+$/i", $str)) ? FALSE : TRUE;
+	}
+
+	function numeric_input_formater($int)
+	{
+		#replaces , with . and thousand separator ' with nothing
+		$int = str_replace(',', '.', $int);
+		$int = str_replace("'", '', $int);
+	  	return $int;
 	}
 
 	public function new_component($companyID){
