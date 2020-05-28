@@ -55,7 +55,7 @@
             <div class="col-md-8">
                 <label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span
                             style="color:red;">*</span></label>
-                <input class="form-control" onchange="getFlowId('<?php echo $user['id']; ?>')" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>"
+                <input class="form-control" onchange="getFlowId('<?php echo $user['id']; ?>')" id="quantity" name="quantity" placeholder="e.g. 12'123'000.00"
                        value="<?php echo set_value('quantity'); ?>">
             </div>
             <div class="col-md-4">
@@ -75,7 +75,7 @@
             <div class="col-md-8">
                 <label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span
                             style="color:red;">*</span></label>
-                <input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost'); ?>" >
+                <input class="form-control" id="cost" name="cost" placeholder="e.g. 12'123'000.00" value="<?php echo set_value('cost'); ?>" >
             </div>
             <div class="col-md-4">
                 <label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-md-8">
                 <label for="ep">EP (<?php echo lang("annual"); ?>)</label>
-                <input class="form-control" id="ep" name="ep" placeholder="EP (<?php echo lang("annual"); ?>) "
+                <input class="form-control" id="ep" name="ep" placeholder="e.g. 12'123'000.00"
                        value="<?php echo set_value('ep'); ?>">
             </div>
             <div class="col-md-4">
@@ -119,14 +119,12 @@
     </div>
 
     <div class="form-group">
-        <label for="quality"><?php echo lang("quality"); ?></label>
-        <input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>"
-               value="<?php echo set_value('quality'); ?>">
+        <input class="form-control" id="quality" name="quality" type="hidden" placeholder="<?php echo lang("quality"); ?>"
+               value="<?php echo set_value('quality', 'true'); ?>">
     </div>
 
     <div class="form-group">
-        <label for="spot"><?php echo lang("substitute_potential"); ?></label>
-        <input class="form-control" id="spot" name="spot" value="<?php echo set_value('spot'); ?>"
+        <input class="form-control" id="spot" name="spot" type="hidden" value="<?php echo set_value('spot', 'true'); ?>"
                placeholder="<?php echo lang("substitute_potential"); ?>">
     </div>
 
@@ -167,8 +165,6 @@
                     <button id="prefix" class="btn btn-default btn-sm"> pts</button>
                 </th>
                 <th><?php echo lang("state"); ?></th>
-                <th><?php echo lang("quality"); ?></th>
-                <th><?php echo lang("substitute_potential"); ?></th>
                 <th><?php echo lang("description"); ?></th>
                 <th style="width:100px;"><?php echo lang("manage"); ?></th>
             </tr>
@@ -198,8 +194,6 @@
                         } else {
                             echo "n/a";
                         } ?></td>
-                    <td><?php echo $flow['quality']; ?></td>
-                    <td><?php echo $flow['substitute_potential']; ?></td>
                     <td><?php echo $flow['description']; ?></td>
                     <td>
                         <a href="<?php echo base_url('edit_flow/' . $companyID . '/' . $flow['flow_id'] . '/' . $flow['flow_type_id']); ?>"
