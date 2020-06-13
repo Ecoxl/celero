@@ -1,10 +1,12 @@
-<div style="padding:20px;">
+<div style="padding:20px;padding-top:0px;">
     <div >
-
-    <div class="col-md-12" style=" background-color: aliceblue;padding: 15px 20px 25px 15px;">
-        <h6>Upload/Update Excel</h6>
-        <a class="btn btn-info" href="<?php echo site_url('uploadExcel') ?>">Upload Excel</a>
-        <a class="btn btn-warning" href="<?php echo asset_url('excels/default.xlsx'); ?>">Download Excel Template</a>
+    <div class="row">
+    <div class="col-md-12" style="margin-bottom:30px; background-color:#f0f0f0; padding:20px;">
+        <div style="font-weight:800; font-size:20px; margin-right:20px;" class="pull-left">Upload/Update Excel</div>
+        <div class="pull-left">
+            <a class="btn btn-info" href="<?php echo site_url('uploadExcel') ?>" style="margin-right:10px;">Upload Excel</a>
+            <a class="btn btn-warning" href="<?php echo asset_url('excels/default.xlsx'); ?>">Download Excel Template</a>
+        </div>
         
     </div>
     <div class="col-md-12">
@@ -17,70 +19,71 @@
             </div>
         <?php endif ?>
     </div>
-    <div class="col-md-5">
-        <h6>Excel Content</h6>
-        <table class="table">
-            <th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Resource Unit</th><th>Add EP to your list</th>
-        <?php foreach ($excelcontents as $ec): ?>
-            <?php echo form_open_multipart('datasetexcel'); ?>
-            <?php //print_r($ec); ?>
-                <tr>
-                <td>
-                    <div class="form-group">
-                        <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" disabled>
-                        <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" type="hidden">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input class="form-control" id="epvalue" name="epvalue" value="<?php echo $ec[1]; ?>">
-                        </div>
-                    </td>
-                    <td>EP</td>
-                    <td>
-                        <div class="form-group">
-                            <select style="width:120px;" id="selectize-units" class="info select-block" name="epQuantityUnit" disabled> 
-                                <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
-                                
-                                <?php foreach ($units as $unit): ?>
-                                    <option value="<?php echo $unit['id']; ?>" <?php echo set_select('epQuantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <select style="width:120px;visibility:hidden;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
-                                <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-info">Add EP</button>
-                    </td>
-                </tr>
-            </form>
-        <?php endforeach ?>
-        </table>
-    </div>
-    <div class="col-md-7">
-        <h6>Your EP Data</h6> 
-        <table class="table">
-            <th>Flow Name</th><th>EP Value</th><th>Flow Unit</th><th>Delete</th>
-            <?php foreach ($userepvalues as $uep): ?>
+        <div class="col-md-5">
+            <div style="font-weight:800; font-size:20px;">Excel Content</div>
+            <table class="table table-sm">
+                <th>Flow Name</th><th>Ep Value</th><th>Ep Unit</th><th>Resource Unit</th><th>Add EP to your list</th>
+            <?php foreach ($excelcontents as $ec): ?>
+                <?php echo form_open_multipart('datasetexcel'); ?>
                 <?php //print_r($ec); ?>
-                <tr>
+                    <tr>
                     <td>
-                        <?php echo $uep['flow_name']; ?>
-                    </td>
-                    <td>
-                        <?php echo $uep['ep_value']; ?>
-                    </td>
-                    <td>
-                        <?php echo $uep['qntty_unit_name']; ?>
-                    </td>
-                    <td>
-                    <a href="<?php echo base_url('deleteuserep/'.$uep['flow_name'].'/'.$uep['ep_value']); ?>" class="label label-info">Delete</a>
-                    </td>
-                </tr>
+                        <div class="">
+                            <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" disabled>
+                            <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" type="hidden">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input class="form-control" id="epvalue" name="epvalue" value="<?php echo $ec[1]; ?>">
+                            </div>
+                        </td>
+                        <td>EP</td>
+                        <td>
+                            <div class="">
+                                <select style="width:120px;" id="selectize-units" class="info select-block" name="epQuantityUnit" disabled> 
+                                    <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
+                                    
+                                    <?php foreach ($units as $unit): ?>
+                                        <option value="<?php echo $unit['id']; ?>" <?php echo set_select('epQuantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                <select style="width:120px;display:none;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
+                                    <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-info">Add EP</button>
+                        </td>
+                    </tr>
+                </form>
             <?php endforeach ?>
-        </table>
+            </table>
+        </div>
+        <div class="col-md-7">
+            <div style="font-weight:800; font-size:20px;">Your EP Data</div> 
+            <table class="table">
+                <th>Flow Name</th><th>EP Value</th><th>Flow Unit</th><th>Delete</th>
+                <?php foreach ($userepvalues as $uep): ?>
+                    <?php //print_r($ec); ?>
+                    <tr>
+                        <td>
+                            <?php echo $uep['flow_name']; ?>
+                        </td>
+                        <td>
+                            <?php echo $uep['ep_value']; ?>
+                        </td>
+                        <td>
+                            <?php echo $uep['qntty_unit_name']; ?>
+                        </td>
+                        <td>
+                        <a href="<?php echo base_url('deleteuserep/'.$uep['flow_name'].'/'.$uep['ep_value']); ?>" class="label label-info">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </table>
+        </div>
     </div>
     </div>
 </div>

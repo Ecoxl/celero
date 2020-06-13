@@ -17,7 +17,7 @@
 
 $config['sess_save_path'] = sys_get_temp_dir();
 
-$config['base_url']	= 'http://localhost:8888/celero/';
+$config['base_url']	= 'http://localhost/';
 
 /*
 |--------------------------------------------------------------------------
