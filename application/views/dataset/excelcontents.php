@@ -4,6 +4,8 @@
     <div class="col-md-12" style=" background-color: aliceblue;padding: 15px 20px 25px 15px;">
         <h6>Upload/Update Excel</h6>
         <a class="btn btn-info" href="<?php echo site_url('uploadExcel') ?>">Upload Excel</a>
+        <a class="btn btn-warning" href="<?php echo asset_url('excels/default.xlsx'); ?>">Download Excel Template</a>
+        
     </div>
     <div class="col-md-12">
         <?php if(validation_errors() != NULL ): ?>
@@ -25,7 +27,8 @@
                 <tr>
                 <td>
                     <div class="form-group">
-                        <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>">
+                        <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" disabled>
+                        <input class="form-control" id="flowname" name="flowname" value="<?php echo $ec[0]; ?>" type="hidden">
                         </div>
                     </td>
                     <td>
@@ -36,11 +39,15 @@
                     <td>EP</td>
                     <td>
                         <div class="form-group">
-                            <select style="width:120px;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
-                                <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+                            <select style="width:120px;" id="selectize-units" class="info select-block" name="epQuantityUnit" disabled> 
+                                <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
+                                
                                 <?php foreach ($units as $unit): ?>
                                     <option value="<?php echo $unit['id']; ?>" <?php echo set_select('epQuantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
                                 <?php endforeach ?>
+                            </select>
+                            <select style="width:120px;visibility:hidden;" id="selectize-units" class="info select-block" name="epQuantityUnit"> 
+                                <option value="<?php echo $ec[3]; ?>" ><?php echo $ec[2]; ?></option>
                             </select>
                         </div>
                     </td>
