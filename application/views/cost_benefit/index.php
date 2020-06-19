@@ -23,6 +23,8 @@
             $cp_or_is="is";} ?>
         <!-- if no unit_cost is defined a "-" is placed!-->
 		<?php if(empty($a['unit_cost'])){$a['unit_cost']="-";} ?>
+        <!-- if no capexold is defined make it 0 (because its a numeric field in the DB, if empty = error!-->
+        <?php if(empty($a['capexold'])){$a['capexold']=0;} ?>
 		<?php $attributes = array('id' => 'form-'.$i); ?>
 		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
     <table class="tg costtable">
@@ -34,7 +36,6 @@
             <th colspan="20" style="font-size: 12px; border-left:2px solid grey; text-align: left;">Option</th>
         </tr>
         <tr>
-            <!--<th class="th-yw4l" bgcolor="#fefefc"><div style="width: 100px;">Option</div></th>-->
             <th class="th-yw4l" bgcolor="#fefefc">CAPEX (<?php echo $a['unit_cost']; ?>/a)</th>
             <th class="th-yw4l" bgcolor="#fefefc" colspan="2">Annual energy and material flows</th>
             <th class="th-yw4l" bgcolor="#fefefc">unit</th>
@@ -69,11 +70,6 @@
             <th class="th-yw4l" style=" text-align: center;">Save</th>
         </tr>
         <tr>
-        <!--<td class="tg-yw4l" rowspan="7">							
-        <span class="text-info" style="font-weight: 600;">
-        	<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from/to ".$a['cmpny_from_name']; } ?>
-        </span>
-        </td>-->
         <td class="tg-yw4l" rowspan="7">
         	<div class="  "><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div>
         </td>
@@ -1009,7 +1005,7 @@
 	svg.append("text")
 		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 305) + ")")
 		.style("text-anchor", "middle")
-		.text("<?php echo lang('ecologicalbenefit'); ?> (EP)");
+		.text("<?php echo lang('ecologicalbenefit'); ?> (EP/a)");
 
 	//y axis label
 	svg.append("text")
@@ -1107,6 +1103,16 @@
         document.getElementById('flow-specost-1-'+k).value = cost/amount;
         document.getElementById('flow-eipunit-1-'+k).value = env_impact/amount;
     }
+
+    //inserts the values on the option side if the value is empty
+    if(document.getElementById('flow-name-2-'+k).value=="" || document.getElementById('flow-value-2-'+k).value==""){
+        document.getElementById('flow-name-2-'+k).value = flownamedef;
+        document.getElementById('flow-unit-2-'+k).value = qntty_unit;
+        document.getElementById('flow-value-2-'+k).value = amount;
+        document.getElementById('flow-specost-2-'+k).value = cost/amount;
+        document.getElementById('flow-eipunit-2-'+k).value = env_impact/amount;
+    }
+
 </script>
 
 <script type="text/javascript">
