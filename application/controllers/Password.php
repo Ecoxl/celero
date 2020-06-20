@@ -117,50 +117,55 @@ class Password extends CI_Controller{
 	}
 
 	public function new_password($rnd_string){
-		$data['random_string'] = $rnd_string;
+		$user_id = $this->password_model->get_user_id($rnd_string);
+		if(isset($user_id)){
+			$data['random_string'] = $rnd_string;
 
-		$this->form_validation->set_rules('new_pass', 'New Password', 'trim|xss_clean|required');
-		$this->form_validation->set_rules('new_pass_again', 'New Password(Again)', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('new_pass', 'New Password', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('new_pass_again', 'New Password(Again)', 'trim|xss_clean|required');
 
-		if ($this->form_validation->run() !== FALSE){
-			if($this->password_check() == true){
-				$user_id = $this->password_model->get_user_id($rnd_string);
-				$new_pass = $this->input->post('new_pass');
-				$control = array(
-					'psswrd' => md5($new_pass)
-				);
-				$this->password_model->change_pass($user_id,$control);
+			if ($this->form_validation->run() !== FALSE){
+				if($this->password_check() == true){
+					$new_pass = $this->input->post('new_pass');
+					$control = array(
+						'psswrd' => md5($new_pass)
+					);
+					$this->password_model->change_pass($user_id,$control);
 
-				$message = 'Your password has been changed. Your new password is: '.$new_pass;
-				$email = $this->password_model->get_email($user_id);
+					$message = 'Your password has been changed. Your new password is: '.$new_pass;
+					$email = $this->password_model->get_email($user_id);
 
-				$send_email = array(
-					'message' => $message,
-					'email' => $email
-				);
-				$mailCheck = $this->sendMAil($send_email);
+					$send_email = array(
+						'message' => $message,
+						'email' => $email
+					);
+					$mailCheck = $this->sendMAil($send_email);
 
-				$rnd_str = array(
-					'random_string' => null,
-					'click_control' => 0
-				);
-                                
-                                if($mailCheck) {
-                                    $message = 'Your mail has been sent.';
-                                } else {
-                                     $message = 'Your mail has not been sent.You could not change password';
-                                }
-                                $this->password_model->set_random_string_zero($rnd_string,$rnd_str);
-                                $data['success'] = $message;
-				//redirect('login','refresh');
+					$rnd_str = array(
+						'random_string' => null,
+						'click_control' => 0
+					);
+											
+											if($mailCheck) {
+													$message = 'Your mail has been sent.';
+											} else {
+													$message = 'Your mail has not been sent.You could not change password';
+											}
+											$this->password_model->set_random_string_zero($rnd_string,$rnd_str);
+											$data['success'] = $message;
+					//redirect('login','refresh');
+				}
 			}
-		}
 
-		$this->load->view('template/header');
-		$this->load->view('password/new_pass',$data);
-		$this->load->view('template/footer');
+			$this->load->view('template/header');
+			$this->load->view('password/new_pass',$data);
+			$this->load->view('template/footer');
+		}else{
+			echo "Wrong pass number.";
+		}
 	}
 
+	// sends mail to user. We need to change this settings.
 	public function sendMail($data)
 	{
 		$config = Array(
@@ -188,12 +193,13 @@ class Password extends CI_Controller{
 		}
 		else
 		{
-			//echo 'olmadi';
-			//exit();
+			echo 'olmadi';
+			exit();
                     return false;
 		}
 	}
 
+	// checks password matches
 	public function password_check(){
 		if($this->input->post('new_pass') == $this->input->post('new_pass_again')){
 			return true;
@@ -204,6 +210,7 @@ class Password extends CI_Controller{
 		}
 	}
 
+	// generates 20 char random string for every user.
 	public function generateRandomString() {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    $randomString = '';
@@ -213,6 +220,7 @@ class Password extends CI_Controller{
 	    return $randomString;
 	}
 
+	// come on.
 	public function user_logout(){
 		$this->session->sess_destroy();
 		redirect('', 'refresh');
