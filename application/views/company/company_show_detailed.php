@@ -51,6 +51,7 @@
 				<ul class="nav nav-list">
 				<?php foreach ($cmpnyperson as $cmpprsn): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
+					<a href="<?php echo base_url("removeUserfromCompany/".$companies['id']."/".$cmpprsn['id']); ?>"><i class="fa fa-pencil-square-o"></i> remove</a>
 				<?php endforeach ?>
 				</ul>
 			</div>

@@ -245,6 +245,14 @@ class Company_model extends CI_Model
         $this->db->insert('t_cmpny_prsnl', $user);
     }
 
+    public function remove_worker_to_company($user)
+    {
+        $this->db->where('user_id', $user['user_id']);
+        $this->db->where('cmpny_id', $user['cmpny_id']);
+        $this->db->where('is_contact', '0');
+        $this->db->delete('t_cmpny_prsnl');
+    }
+
     public function is_in_nace($nace)
     {
         $query = $this->db->get_where('t_nace_code_rev2', array('code' => $nace))->row_array();

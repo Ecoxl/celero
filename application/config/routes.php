@@ -179,6 +179,7 @@ $route['mycompanies'] = "company/show_my_companies";
 $route['projectcompanies'] = "company/show_project_companies";
 $route['company/(:any)'] = "company/companies/$1";
 $route['addUsertoCompany/(:any)'] = "company/addUsertoCompany/$1";
+$route['removeUserfromCompany/(:any)/(:any)'] = "company/removeUserfromCompany/$1/$2";
 
 $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";

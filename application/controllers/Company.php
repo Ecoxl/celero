@@ -288,7 +288,7 @@ class Company extends CI_Controller{
 	}
 
 	public function addUsertoCompany($term){
-		//kullanýcýnýn company'i editleme hakký varmý kontrolü
+		// check if user has a permission to edit company info
 		$kullanici = $this->session->userdata('user_in');
 		if(!$this->user_model->can_edit_company($kullanici['id'],$term)){
 			redirect(base_url(),'refresh');
@@ -305,6 +305,23 @@ class Company extends CI_Controller{
     	$this->company_model->add_worker_to_company($user);
 		}
 
+		redirect('company/'.$term, 'refresh');
+
+	}
+
+	public function removeUserfromCompany($term,$selected_user_id){
+		// check if user has a permission to edit company info, if not redirects to main page.
+		$user = $this->session->userdata('user_in');
+		if(!$this->user_model->can_edit_company($user['id'],$term)){
+			redirect(base_url(),'refresh');
+		}
+
+		$user = array(
+			'user_id' => $selected_user_id,
+			'cmpny_id' => $term,
+			'is_contact' => 0
+		);
+    	$this->company_model->remove_worker_to_company($user);
 		redirect('company/'.$term, 'refresh');
 
 	}
