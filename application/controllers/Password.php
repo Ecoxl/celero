@@ -172,8 +172,8 @@ class Password extends CI_Controller{
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'ssl://smtp.googlemail.com',
 		  'smtp_port' => 465,
-		  'smtp_user' => 'ostimteknoloji@gmail.com', // change it to yours
-		  'smtp_pass' => 'ostim321', // change it to yours
+		  'smtp_user' => 'celero.info@gmail.com', // change it to yours
+		  'smtp_pass' => '8dwa9z&*', // change it to yours
 		  'mailtype' => 'html',
 		  'charset' => 'iso-8859-1',
 		  'wordwrap' => TRUE
@@ -182,9 +182,9 @@ class Password extends CI_Controller{
 		$message = '';
         $this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
-		$this->email->from('ostimteknoloji@gmail.com'); // change it to yours
+		$this->email->from('celero.info@gmail.com'); // change it to yours
 		$this->email->to($data['email']);// change it to yours
-		$this->email->subject('About your ecoman account!');
+		$this->email->subject('About your ecoman account');
 		$this->email->message($data['message']);
 		if($this->email->send())
 		{
@@ -193,7 +193,7 @@ class Password extends CI_Controller{
 		}
 		else
 		{
-			echo 'olmadi';
+			echo 'error sending email. please report to celero.info@gmail.com';
 			exit();
                     return false;
 		}
