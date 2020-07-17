@@ -105,16 +105,6 @@
 			</div>
 
 			<div class="form-group">
-				<label for="quality"><?php echo lang("quality"); ?></label>
-				<input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>" value="<?php echo set_value('quality',$flow['quality']); ?>">
-			</div>				
-			
-			<div class="form-group">
-				<label for="spot"><?php echo lang("substitute_potential"); ?></label>
-				<input class="form-control" id="spot" name="spot" placeholder="<?php echo lang("substitute_potential"); ?>" value="<?php echo set_value('substitute_potential',$flow['substitute_potential']); ?>">
-			</div>
-
-			<div class="form-group">
 				<label for="desc"><?php echo lang("description"); ?></label>
 					<textarea class="form-control" rows="5" id="desc" name="desc" placeholder="<?php echo lang("description"); ?>"><?php echo set_value('description',$flow['description']); ?></textarea>
 			</div>

@@ -12,6 +12,14 @@ class Dataset extends CI_Controller {
 		$this->load->model('component_model');
 		$this->load->model('cpscoping_model');
 		$this->load->library('form_validation');
+	    header('Access-Control-Allow-Origin: *');
+	    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+	    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+	    $method = $_SERVER['REQUEST_METHOD'];
+	    if($method == "OPTIONS") {
+	        die();
+	    }
+
 
 		$this->config->set_item('language', $this->session->userdata('site_lang'));
 
@@ -96,7 +104,12 @@ class Dataset extends CI_Controller {
 
 	public function new_flow($companyID)
 	{
-	
+		//checks permissions, if not loged in a redirect happens
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
+
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback_alpha_dash_space');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
 		$this->form_validation->set_rules('quantity', 'Quantity', 
@@ -124,11 +137,39 @@ class Dataset extends CI_Controller {
 
 		if($this->form_validation->run() !== FALSE) {
 
-			$flowID = str_replace(' ', '_', $this->input->post('flowname'));
-			$flowID = strtolower($flowID);
+			$data['flownames'] = $this->flow_model->get_flowname_list();
+
+			//do we need to replace spaces with _ anymore? str_replace(' ', '_', $variable);
+			$flowID = $this->input->post('flowname');
+			//and make it to lower case? Its anyway predefined right now
+			//$flowID = strtolower($flowID);
+
+			//if the flow already exists the id is used, 
+			// other wise the name is used an new flow enty is created with is_new_flow($flowID,$flowfamilyID);
+			foreach ($data['flownames'] as $flowname) {
+				if ($flowID == $flowname['name']) {
+					$flowID = $flowname['id'];
+				}
+			}
+
+
 			$charactertype = $this->input->post('charactertype');
 			$flowtypeID = $this->input->post('flowtype');
 			$flowfamilyID = $this->input->post('flowfamily');
+
+			//checks if flow already exist (as input OR output), same as flow_varmi()
+			$companyID = $this->uri->segment(2);
+			if(is_numeric($flowID)){
+				if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
+					$this->session->set_flashdata('message', 'Flow can only be added twice (as input and output), please check your flows.');
+					//print_r("false");
+			    	redirect(current_url());
+				}
+			}
+
+
+			//CHECKs IF FLOW IS NEW (old flows have their IDs)
+			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
 			#EP input field: By regex_match , . and ' are allowed.
 			#this replaces , with . and removes thousand separator ' to store numeric in DB later
@@ -145,6 +186,19 @@ class Dataset extends CI_Controller {
 			$quantity = $this->numeric_input_formater($this->input->post('quantity'));
 			$quantityUnit = $this->input->post('quantityUnit');
 
+			$data['units'] = $this->flow_model->get_unit_list();
+			//the quantity unit gets passed as string but is predefined! User has only a specific set of units to chose from
+			foreach ($data['units'] as $unit) {
+				//if the submited unit matches the unit array, the id is assigned
+				if ($quantityUnit == $unit['name']) {
+					$quantityUnit = $unit['id'];
+				}
+				else {
+					#todo what about those special units?
+					#add them to the DB manually....
+				}
+			}
+			
 			$cf = $this->input->post('cf');
 			$availability = $this->input->post('availability');
 			$conc = $this->input->post('conc');
@@ -158,9 +212,6 @@ class Dataset extends CI_Controller {
 			$desc = $this->input->post('desc');
 			$spot = $this->input->post('spot');
 			$comment = $this->input->post('comment');
-
-			//CHECK IF FLOW IS NEW?
-			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
 			$flow = array(
 				'cmpny_id'=>$companyID,
@@ -198,14 +249,12 @@ class Dataset extends CI_Controller {
 			redirect(current_url());
 		}
 
-		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 		$data['flowfamilys'] = $this->flow_model->get_flowfamily_list();
-
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-		$data['units'] = $this->flow_model->get_unit_list();
+		
 		$data['user'] = $this->session->userdata('user_in');
 
 		$this->load->view('template/header');
@@ -628,6 +677,111 @@ class Dataset extends CI_Controller {
 	public function my_ep_values($flowname,$userid){
 		$epvalue=$this->flow_model->get_My_Ep_Values($flowname,$userid);
 		echo json_encode($epvalue);
+	}
+
+	// REFFNET UBP values
+	public function UBP_values(){
+		//todo only users with permission/licenese should be able to get the UBP value
+
+		//checks permissions, if not loged in a redirect happens
+		$user = $this->session->userdata('user_in');
+		if(empty($user)){
+			redirect('', 'refresh');
+		}
+
+		//All users can have their own imported / created UBP Data
+		$data['userepvalues'] = $this->flow_model->get_userep($user['id']);
+
+		//if they have UBP data they are shown, else they get an info in the miller 
+		if (!empty($data['userepvalues'])) {
+			$obj[] = array(
+				'Einheit' => null,
+				'DbId' => 000,
+				'Name' => "My own UBP values",
+				'Nr' => 1000,
+				'ParentNr' => -1,
+				'UbpPerEinheit' => -1,
+				'VersionNr' => "v2"
+			);
+
+			$i = 1001; 
+			foreach ($data['userepvalues'] as $epvalue) {
+				
+				$obj[] = array(
+					'Einheit' => $epvalue['qntty_unit_name'],
+					'DbId' => $epvalue['primary_id'],
+					'Name' => $epvalue['flow_name'],
+					'Nr' => $i,
+					'ParentNr' => 1000,
+					'UbpPerEinheit'=> $epvalue['ep_value'],
+					'VersionNr'=> "v2"
+				);
+				$i++; 
+			}
+
+			$json = $obj;
+		}
+		else {
+			$obj[] = array(
+				'Einheit' => null,
+				'DbId' => 000,
+				'Name' => "My own UBP values",
+				'Nr' => 1000,
+				'ParentNr' => -1,
+				'UbpPerEinheit' => -1.0,
+				'VersionNr' => "v2"
+			);
+
+			$obj[] = array(
+				'Einheit' => -1,
+				'DbId' => 000,
+				'Name' => 'You dont have entered any UBP values yet. Please go to "My EP Data" and add or import values.',
+				'Nr' => 0,
+				'ParentNr' => 1000,
+				'UbpPerEinheit'=> -1.0,
+				'VersionNr'=> "v2"
+			);
+
+			$json = $obj;
+		}
+
+
+		$is_consultant = $this->user_model->is_user_consultant($user['id']);
+		//only consultants get UBP data (needs to be even stricter in future!)
+		if ($is_consultant) {
+			$url = 'https://reffnetservice.azurewebsites.net/api/LCA/GetAll?parentNr=500&token=TOKEN';
+
+			//Use file_get_contents to GET the URL in question.
+			$contents = file_get_contents($url);
+
+			//Decodes json to check if the UBP data is array and object and to merge if it is possible
+			//Decodes contents
+			$json_EBP = json_decode($contents, true);
+			
+			//if contents is not json do error handling  
+			if( !is_object($json_EBP) && !is_array($json_EBP)) {
+				//TODO Error handling
+			}
+			else {
+				//merges both arrays (from EBP and from EP import)
+				$json = array_merge($json_EBP, $obj);	
+			}
+		}
+
+		#sorts the json by its name values ascending (a to z)
+	    usort($json, function($a, $b) {
+	        return $a['Name'] <=> $b['Name'];
+	    });
+
+		//If $contents is not a boolean FALSE value.
+		if(!empty($json)){
+		    //Print out the contents.
+		    echo json_encode($json);
+		}
+		else {
+			echo "UBP access failed"; // todo if get json failed, send error
+		}
+		
 	}
 
 	public function delete_process($companyID,$company_process_id,$company_flow_id){

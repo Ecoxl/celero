@@ -297,7 +297,7 @@
 }
 
 .material-icons {
-    color: rgba(187, 187, 187, 0);
+    color: #bbb;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
     -ms-transition: 300ms;

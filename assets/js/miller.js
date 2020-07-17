@@ -2,6 +2,223 @@
  * v1.3.1.1
  */
 
+function miller_column_UBP(){
+    
+    $.ajax({
+                url: 'http://localhost/UBP_values',
+                type: 'GET',
+                crossDomain: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: AjaxSucceeded,
+                error: AjaxFailed
+            });
+            function AjaxSucceeded(result) {
+                startNace(result);
+            }
+            function AjaxFailed(result) {
+                //TODO create better error message 
+                console.log(result);
+            }
+
+    function startNace(json) {
+
+        var $millerCol = $("#miller_col");
+        var UBP_json = [];
+        var parentIds = [];
+
+        //Categories
+        UBP_json.push(
+            {"categoryId": 1,
+             "categoryName": "level 1",
+             "parentId": "null",
+             "isLowestLevel": false,
+             "items": []},
+            {"categoryId": 2,
+             "categoryName": "level 2",
+             "parentId": "null",
+             "isLowestLevel": false,
+             "items": []},
+            {"categoryId": 3,
+             "categoryName": "level 3",
+             "parentId": "null",
+             "isLowestLevel": false,
+             "items": []},
+            {"categoryId": 4,
+             "categoryName": "level 4",
+             "parentId": "null",
+             "isLowestLevel": false,
+             "items": []}
+        );
+        
+        for (var key in json) {
+            parentIds.push(json[key].ParentNr);
+        }
+
+        //Level 1 and 2
+        for (var key in json) {
+           if (json.hasOwnProperty(key)) {
+                if (json[key].ParentNr == "-1") {
+                    UBP_json[0]["items"].push(
+                        {"categoryId": 1,
+                         "itemId":json[key].Nr,
+                         "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                         "isDeleteable": false,
+                         "hasChildren": true,
+                         "parentId": "null",
+                         "UbpPerEinheit": json[key].UbpPerEinheit,
+                         "Einheit": json[key].Einheit});
+                    //delete json[key]; todo delete the ones that were already pushed, for performance
+                }
+                if ([1000, 100, 200, 300, 400, 500].includes(json[key].ParentNr)) {
+                    //if Nr is in parentIds array then it has children
+                    if (parentIds.includes(json[key].Nr)) {
+                        UBP_json[1]["items"].push(
+                            {"categoryId": 2,
+                             "itemId":json[key].Nr,
+                             "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                             "isDeleteable": false,
+                             "hasChildren": true,
+                             "parentId": json[key].ParentNr,
+                             "UbpPerEinheit": json[key].UbpPerEinheit,
+                             "Einheit": json[key].Einheit});
+                    }
+                    //if the Nr is not in parentIds it doenst have children
+                    else {
+                        UBP_json[1]["items"].push(
+                            {"categoryId": 2,
+                             "itemId":json[key].Nr,
+                             "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                             "isDeleteable": false,
+                             "hasChildren": false,
+                             "parentId": json[key].ParentNr,
+                             "UbpPerEinheit": json[key].UbpPerEinheit,
+                             "Einheit": json[key].Einheit});
+                    }
+                }
+            }
+        }
+
+        //Level 3
+        var itemIdslvl2 = [];
+        for (var key in UBP_json[1]["items"]) {
+            itemIdslvl2.push(UBP_json[1]["items"][key]["itemId"])
+        }
+
+        for (var key in json) {
+            if (itemIdslvl2.includes(json[key].ParentNr)) {
+                    if (parentIds.includes(json[key].Nr)) {
+                        UBP_json[2]["items"].push(
+                            {"categoryId": 3,
+                             "itemId":json[key].Nr,
+                             "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                             "isDeleteable": false,
+                             "hasChildren": true, 
+                             "parentId": json[key].ParentNr,
+                             "UbpPerEinheit": json[key].UbpPerEinheit,
+                             "Einheit": json[key].Einheit});  
+                    }
+                    //if the Nr is not in parentIds it doenst have children
+                    else {
+                        UBP_json[2]["items"].push(
+                            {"categoryId": 3,
+                             "itemId":json[key].Nr,
+                             "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                             "isDeleteable": false,
+                             "hasChildren": false, 
+                             "parentId": json[key].ParentNr,
+                             "UbpPerEinheit": json[key].UbpPerEinheit,
+                             "Einheit": json[key].Einheit});  
+                    }
+            }
+        }
+
+        //Level 4
+        var itemIdslvl3 = [];
+        for (var key in UBP_json[2]["items"]) {
+            itemIdslvl3.push(UBP_json[2]["items"][key]["itemId"])
+        }
+
+        for (var key in json) {
+            if (itemIdslvl3.includes(json[key].ParentNr)) {
+                    UBP_json[3]["items"].push(
+                        {"categoryId": 4,
+                         "itemId":json[key].Nr,
+                         "itemName": json[key].Name.replace(/[^a-zA-Z ]/g, ""),
+                         "isDeleteable": false,
+                         "hasChildren": false,
+                         "parentId": json[key].ParentNr,
+                         "UbpPerEinheit": json[key].UbpPerEinheit,
+                         "Einheit": json[key].Einheit});
+            }
+        }
+
+        //generates the miller column        
+        $millerCol.millerColumn({
+            isReadOnly: true,
+            initData: UBP_json[0] 
+        });
+
+        //does the visible miller columns, eg. generates the next level items and show the values
+        $millerCol.on("item-selected", ".miller-col-list-item", function (event, data) {
+            var newcategory = jQuery.extend(true, {}, UBP_json[data.categoryId]);
+            var name = "";
+
+            //get list items in UBP_json for this category level
+            var json_lvl_items = UBP_json[data.categoryId-1].items;
+    
+            //search for UBP values in UBP_json by id
+            var filtered = json_lvl_items.filter(function (item) {
+                return item.itemId == data.itemId;
+            });
+            if (filtered[0].UbpPerEinheit === -1) {
+                filtered[0].UbpPerEinheit = "n/a";
+                filtered[0].Einheit = "x";
+            }
+
+            //if category (level) <4 it creats a new category, else it just puts the values in the input field
+            if(data.categoryId < 4){
+                for (i = UBP_json[data.categoryId].items.length-1; i >= 0; i--){
+                    if(UBP_json[data.categoryId].items[i]["parentId"] != data.itemId){
+                        newcategory.items.splice(i,1);
+                    }
+                }
+                name = data.itemName;
+
+                //sets the values in the top input field
+                $("input#flowname").val(name);
+                $("input#UBPval").val(filtered[0].UbpPerEinheit);
+                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit+"</strong>)");
+                $("#quantityUnit").val(filtered[0].Einheit);
+                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit+"</strong>");
+
+                //adds the next level/category
+                $millerCol.millerColumn("addCol", newcategory);
+
+                //if quantity field not empty: trigger change event for new calculation of total
+                if ( $("#myModalEPcalc input#quantity").val() ) {
+                    $("#myModalEPcalc input#quantity").trigger('input');
+                }
+                
+            } else{
+                //sets the values in the top input field
+                name = data.itemName;
+                val = data.UbpPerEinheit;
+                $("input#flowname").val(name);
+                $("input#UBPval").val(filtered[0].UbpPerEinheit);
+                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit+"</strong>)");
+                $("#quantityUnit").val(filtered[0].Einheit);
+                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit+"</strong>");
+
+                //if quantity field not empty: trigger change event for new calculation of total
+                if ( $("#myModalEPcalc input#quantity").val() ) {
+                    $("#myModalEPcalc input#quantity").trigger('input');
+                }
+            }
+        }); 
+    };
+}
+
 function miller_column_nace(){
     $.getJSON("/assets/js/miller-NACE-codes.json", function(json) {
         var nacejson = json;

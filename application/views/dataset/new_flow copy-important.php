@@ -27,47 +27,25 @@
     <!-- this is the new automatic Flow selector and EP calculator -->
     <div class="form-group">
         <label for="epcalc"><?php echo lang("epcalc"); ?></label>
-        <button type="button" data-toggle="modal" data-target="#myModalEPcalc" class="btn btn-block btn-primary" id="UBP-button"><?php echo lang("epbutton"); ?></button>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8">
-                <label for="quantity"><?php echo lang("quantity"); ?>/a <span style="color:red;">* </span></label>
-                <input type="text" class="form-control" id="quantity" name="quantity" style="color:#333333;" value="<?php echo set_value('quantity'); ?>" readonly/>
-            </div>
-            <div class="col-md-4">
-                <label for="quantityUnit"><?php echo lang("quantityunit"); ?> <span style="color:red;">* </span> </label>
-                <input type="text" class="form-control" id="quantityUnit" name="quantityUnit" style="color:#333333;" value="<?php echo set_value('quantityUnit'); ?>" readonly/>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
+        <button type="button" data-toggle="modal" data-target="#myModalEPcalc" class="btn btn-block btn-primary" id="nacecode-button"><?php echo lang("epbutton"); ?></button><br>
         <div class="row">
             <div class="col-md-12">
-                <label for="ep"><?php echo lang("flowname"); ?> <span style="color:red;">* </span></label>
-                <input type="text" class="form-control" placeholder="Flow name" id="flowname" name="flowname" style="color:#333333;" value="<?php echo set_value('flowname'); ?>" readonly/>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Flow name" id="naceCode" name="naceCode" style="color:#333333;" value="<?php echo set_value('naceCode'); ?>" readonly/>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="EP value" id="naceCode" name="naceCode" style="color:#333333;" value="<?php echo set_value('naceCode'); ?>" readonly/>
+                </div>
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-12">
-                <label for="ep"><strong><?php echo lang("total"); ?> UBP/a </strong> <span style="color:red;">* </span></label>
-                <input type="text" class="form-control" placeholder="EP value" id="ep" name="ep" style="color:#333333;" value="<?php echo set_value('ep'); ?>" readonly/>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!--
     <br>
         <button id="manualep-hide-show" type="button" class="close col-md-12" aria-hidden="true" style="float: left;">
             <label>Open form to enter EP manually (not recommended):</label>  
             <i class="fa fa-arrow-down"></i>
         </button>
-    <br> -->
-    <!-- this allows to enter flows calculate EP values manualy 
+    <br>
+    <!-- this allows to enter flows calculate EP values manualy -->
     <div id="manualep" style="display: none;">
         <div class="form-group">
             <label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
@@ -118,6 +96,24 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-8">
+                    <label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span
+                                style="color:red;">*</span></label>
+                    <input class="form-control" id="cost" name="cost" placeholder="e.g. 12'123'000.00" value="<?php echo set_value('cost'); ?>" >
+                </div>
+                <div class="col-md-4">
+                    <label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
+                    <select id="costUnit" class="info select-block" name="costUnit">
+                        <option value="CHF" <?php echo set_select('costUnit', 'CHF'); ?>>CHF</option>
+                        <option value="Euro" <?php echo set_select('costUnit', 'Euro'); ?>>Euro</option>
+                        <option value="Dollar" <?php echo set_select('costUnit', 'Dollar'); ?>>Dollar</option>
+                        <option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-8">
                     <label for="ep">EP (<?php echo lang("annual"); ?>)</label>
                     <input class="form-control" id="ep" name="ep" placeholder="e.g. 12'123'000.00"
                            value="<?php echo set_value('ep'); ?>">
@@ -128,39 +124,11 @@
                 </div>
             </div>
         </div>
-    </div>   -->
+    </div>   
     <!--hidden placeholder input (set to "true") for deactivated "availability" selection -->
     <div class="form-group">
         <input class="form-control" id="availability" name="availability" type="hidden"
                value="<?php echo set_value('availability', 'true'); ?>">
-    </div>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8">
-                <label for="cost"><?php echo lang("cost"); ?>/a <span style="color:red;">*</span></label>
-                <input class="form-control" id="cost" name="cost" placeholder="e.g. 12'123'000.00" value="<?php echo set_value('cost'); ?>" >
-            </div>
-            <div class="col-md-4">
-                <label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
-                <select id="costUnit" class="info select-block" name="costUnit">
-                    <option value="CHF" <?php echo set_select('costUnit', 'CHF'); ?>>CHF</option>
-                    <option value="Euro" <?php echo set_select('costUnit', 'Euro'); ?>>Euro</option>
-                    <option value="Dollar" <?php echo set_select('costUnit', 'Dollar'); ?>>Dollar</option>
-                    <option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="flowtype"><?php echo lang("flowtype"); ?> 
-            <span style="color:red;">* <small><?php echo lang("notchangable"); ?></small></span></label>
-        <select id="flowtype" class="info select-block" name="flowtype">
-            <?php foreach ($flowtypes as $flowtype): ?>
-                <option value="<?php echo $flowtype['id']; ?>" <?php echo set_select('flowtype', $flowtype['id']); ?>><?php echo $flowtype['name']; ?></option>
-            <?php endforeach ?>
-        </select>
     </div>
 
     <div class="form-group">
@@ -174,13 +142,15 @@
     </div>
 
     <div class="form-group">
-        <input class="form-control" id="quality" name="quality" type="hidden" placeholder="<?php echo lang("quality"); ?>"
-               value="<?php echo set_value('quality', 'true'); ?>">
+        <label for="quality"><?php echo lang("quality"); ?></label>
+        <input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>"
+               value="<?php echo set_value('quality'); ?>">
     </div>
 
     <div class="form-group">
-        <input class="form-control" id="spot" name="spot" value="<?php echo set_value('spot', 'true'); ?>"
-               type="hidden" placeholder="<?php echo lang("substitute_potential"); ?>">
+        <label for="spot"><?php echo lang("substitute_potential"); ?></label>
+        <input class="form-control" id="spot" name="spot" value="<?php echo set_value('spot'); ?>"
+               placeholder="<?php echo lang("substitute_potential"); ?>">
     </div>
 
     <div class="form-group">
@@ -198,29 +168,16 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel"><?php echo lang("selectflowsforep"); ?></h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="naceCode" name="nace-code" style="color:#333333;" readonly/>
+                        </div>
+              
+                    </div>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="flowname"><?php echo lang("flowname"); ?></label>
-                                <input type="text" class="form-control" id="flowname" name="flowname" style="color:#333333;" readonly/>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="quantity"><?php echo lang("quantity"); ?>/a <span style="color:red;">* </span></label>
-                                <input type="text" class="form-control" id="quantity" name="quantity" style="color:#333333;" />
-                            </div>
-                            <div class="col-md-3">
-                                <label for="UBPval"><?php echo lang("UBPperunit"); ?></label>
-                                <input type="text" class="form-control" id="UBPval" name="UBPval" style="color:#333333;" readonly/>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="ep"><?php echo lang("total"); ?> UBP/a</label>
-                                <input type="text" class="form-control" id="eptotal" name="eptotal" style="color:#333333;" readonly/>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Miller column UBP calculator -->
+                    <!-- Miller column NACE Code selector -->
                     <div id="miller_col"></div>
                     <br>
                     <button type="button" data-dismiss="modal" class="btn btn-info btn-block" aria-hidden="true"><?php echo lang("done"); ?></button>
@@ -231,19 +188,7 @@
     </div>
 </div>
 <?php if (validation_errors() == NULL): ?>
-
 <div class="col-md-12" id="buyukbas">
-
-    <!-- error message if flow arleady exist, passed with flash data -->
-    <?php if (!$this->session->flashdata('message') == NULL): ?>
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <p></p>
-                <p><?php echo $this->session->flashdata('message');?></p>
-            <p></p>
-        </div>
-    <?php endif ?>    
-
     <?php else: ?>
     <div class="col-md-8" id="buyukbas">
         <?php endif ?>
@@ -256,6 +201,7 @@
             <tr>
                 <th><?php echo lang("flowname"); ?></th>
                 <th><?php echo lang("flowtype"); ?></th>
+                <th><?php echo lang("flowfamily"); ?></th>
                 
                 <th colspan="2"><?php echo lang("quantity"); ?></th>
                 <th><?php
@@ -269,6 +215,8 @@
                     <button id="prefix" class="btn btn-default btn-sm"> pts</button>
                 </th>
                 <th><?php echo lang("state"); ?></th>
+                <th><?php echo lang("quality"); ?></th>
+                <th><?php echo lang("substitute_potential"); ?></th>
                 <th><?php echo lang("description"); ?></th>
                 <th style="width:100px;"><?php echo lang("manage"); ?></th>
             </tr>
@@ -284,6 +232,7 @@
                     <?php endif ?>
 
                     <td><?php echo $flow['flowtype']; ?></td>
+                    <td><?php echo $flow['flowfamily']; ?></td>
                     <td class="table-numbers"><?php echo number_format($flow['qntty'], 2, ".", "'"); ?></td>
                     <td class="table-units"><?php echo $flow['qntty_unit_name']; ?></td>
                     <td align="right"><?php echo number_format($flow['cost'], 0, "", "'"); ?></td>
@@ -297,6 +246,8 @@
                         } else {
                             echo "n/a";
                         } ?></td>
+                    <td><?php echo $flow['quality']; ?></td>
+                    <td><?php echo $flow['substitute_potential']; ?></td>
                     <td><?php echo $flow['description']; ?></td>
                     <td>
                         <a href="<?php echo base_url('edit_flow/' . $companyID . '/' . $flow['flow_id'] . '/' . $flow['flow_type_id']); ?>"
@@ -334,7 +285,7 @@
 
         $("#manualep-hide-show").click(function () {
             if ($("#manualep").is(":hidden")) {
-                //alert("hidden");
+                alert("hidden");
                 $("#manualep").slideDown();
                 $("#manualep-hide-show > i").attr("class", "fa fa-arrow-down");
             }
@@ -423,21 +374,6 @@
     </script>
 
     <script type="text/javascript">
-
-        //calculates the total ep value in the Env impact calculator
-        $('#myModalEPcalc input#quantity').on('input', function() {
-            amount = $('#myModalEPcalc input#quantity').val();
-            UBPval = $('#myModalEPcalc input#UBPval').val();
-            total = amount * UBPval;
-
-            //enters total into the modal
-            $('#myModalEPcalc input#eptotal').val(total.toFixed(0));
-
-            //enters total into the left side panel
-            $('input#ep').val(total.toFixed(0));
-            $('#quantity').val(amount);
-        });
-
         function getSelectedText(elementId) {
             var elt = document.getElementById(elementId);
 
@@ -446,7 +382,6 @@
 
             return elt.options[elt.selectedIndex].text;
         }
-
         function getEPValues( flowname, userid )
         {
             jQuery.ajax({
@@ -477,7 +412,7 @@
                     }
                 } 
             });
-        }        
+        }
 
         $('#gizle > form').submit(function() {
             if($('#flowfamily').val() == "" && $('#flow-family').is(':visible')){
@@ -487,5 +422,5 @@
         });
 
         //js function for miller-coloumn NACE-code selector
-        miller_column_UBP();
+        miller_column_nace();
     </script>
