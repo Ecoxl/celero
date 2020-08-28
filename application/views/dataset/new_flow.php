@@ -52,7 +52,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
-                <label for="ep"><strong><?php echo lang("total"); ?> UBP/a </strong> <span style="color:red;">* </span></label>
+                <label for="ep"><strong><?php echo lang("total"); ?> <?php echo lang("ep"); ?> </strong> <span style="color:red;">* </span></label>
                 <input type="text" class="form-control" placeholder="EP value" id="ep" name="ep" style="color:#333333;" value="<?php echo set_value('ep'); ?>" readonly/>
             </div>
         </div>
@@ -215,7 +215,7 @@
                                 <input type="text" class="form-control" id="UBPval" name="UBPval" style="color:#333333;" readonly/>
                             </div>
                             <div class="col-md-3">
-                                <label for="ep"><?php echo lang("total"); ?> UBP/a</label>
+                                <label for="ep"><?php echo lang("total"); ?> <?php echo lang("ep"); ?>/a</label>
                                 <input type="text" class="form-control" id="eptotal" name="eptotal" style="color:#333333;" readonly/>
                             </div>
                         </div>
@@ -428,13 +428,13 @@
         $('#myModalEPcalc input#quantity').on('input', function() {
             amount = $('#myModalEPcalc input#quantity').val();
             UBPval = $('#myModalEPcalc input#UBPval').val();
-            total = amount * UBPval;
+            total = amount * UBPval / 1000000;
 
             //enters total into the modal
-            $('#myModalEPcalc input#eptotal').val(total.toFixed(0));
+            $('#myModalEPcalc input#eptotal').val(total.toFixed(2));
 
             //enters total into the left side panel
-            $('input#ep').val(total.toFixed(0));
+            $('input#ep').val(total.toFixed(2));
             $('#quantity').val(amount);
         });
 
