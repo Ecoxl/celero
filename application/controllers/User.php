@@ -17,17 +17,22 @@ class User extends CI_Controller {
 
     public function dataFromExcel(){
         $this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('epvalue', 'EP Value', 'trim|numeric|required|xss_clean');
+        $this->form_validation->set_rules('epvalue', 'EP Value', 
+        	"trim|required|xss_clean|strip_tags|regex_match[/^(\d+|\d{1,3}('\d{3})*)((\,|\.)\d+)?$/]");
         $this->form_validation->set_rules('epQuantityUnit', 'EP Quantity Value', 'trim|required|xss_clean');
 		$kullanici = $this->session->userdata('user_in');
 		
+		//formats number correctly
+		$quantity = str_replace(',', '.', $this->input->post('epvalue'));
+		$quantity = str_replace("'", '', $quantity);
+
         //print_r($kullanici);
         if($this->form_validation->run() !== FALSE) {
             $epArray = array(
                     'user_id' => $kullanici['id'],
                     'flow_name' => $this->input->post('flowname'),
                     'ep_q_unit' => $this->input->post('epQuantityUnit'),
-                    'ep_value' => $this->sifirla($this->input->post('epvalue')),
+                    'ep_value' => $this->sifirla($quantity),
                 );
             $this->flow_model->set_userep($epArray);
         }
@@ -58,8 +63,8 @@ class User extends CI_Controller {
         $highestColumn = $sheet->getHighestColumn();
 
         $excelcontents = [];
-        //  Loop through each row of the worksheet in turn
-        for ($row = 1; $row <= $highestRow; $row++){
+        //  Loop through each row (starts at 2, first is header line) of the worksheet in turn
+        for ($row = 2; $row <= $highestRow; $row++){
 
             //  Read a row of data into an array
             $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
@@ -82,6 +87,7 @@ class User extends CI_Controller {
 	
 	public function deleteUserEp($flow_name,$ep_value){
 		$kullanici = $this->session->userdata('user_in');
+		$flow_name = urldecode($flow_name);
 		$this->flow_model->delete_userep($flow_name,$ep_value,$kullanici['id']);
 		redirect('datasetexcel', 'refresh');
 	}

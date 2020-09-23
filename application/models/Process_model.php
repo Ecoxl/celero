@@ -105,7 +105,7 @@ class Process_model extends CI_Model {
 		}
 		else{
 			$data = array(
-				'name' => mb_strtolower($flowID,'UTF-8'),
+				'name' => $flowID,
 				'flow_family_id' => $flowfamilyID,
 				'active' => 1,
 			);

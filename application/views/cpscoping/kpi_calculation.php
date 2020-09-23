@@ -250,9 +250,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 	function deneme() {
-		google.load("visualization", "1", {packages:["corechart"]});
-		google.setOnLoadCallback(deneme);
-
 		var prjct_id = <?php echo $this->uri->segment(2); ?>;
 		var cmpny_id = <?php echo $this->uri->segment(3); ?>;
 
@@ -343,5 +340,6 @@
 	};
 </script>
 <script type="text/javascript">
-	deneme();
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(deneme);
 </script> 
