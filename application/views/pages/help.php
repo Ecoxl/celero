@@ -9,7 +9,7 @@ load->view('template/header'); ?>
         </h>
         <br>
         <br> <!-- file name for the user manual is case sensitive on the server! -->
-        <a href="<?php echo asset_url('CELERO_User_Manual120220.pdf'); ?>">
+        <a href="<?php echo asset_url('28_8_20_Celero_User_Manual_prnt.pdf'); ?>">
             <div style="background-color:#2D8B42; color:white; text-align: center;">
                 <?php echo lang("usermanual"); ?>
                 <span class="glyphicon glyphicon-book">
@@ -213,6 +213,29 @@ Kullanıcı manuel olarak eşleşme gerçekleştirebilmektedir.
                             </div>
                         </div>
                         <?php else: ?>
+                        <div class="col-md-10">
+                            <iframe width="750" height="320" src="https://www.youtube.com/embed/TndTasntKjk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                        <div class="col-md-10">
+                            <iframe width="750" height="320" src="https://www.youtube.com/embed/0F7TKdyX_6I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                        <div class="col-md-10">
+                            <iframe width="750" height="320" src="https://www.youtube.com/embed/EXQXdQ5Lb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                        <div class="col-md-10">
+                            <iframe width="750" height="320" src="https://www.youtube.com/embed/XNK3CwElNQg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                        <div class="col-md-10">
+                            <iframe width="750" height="320" src="https://www.youtube.com/embed/TT217255jlY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <!-- English FAQ -->
                         <div class="col-md-10">
                             <div class="swissheader">

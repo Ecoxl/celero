@@ -92,7 +92,7 @@
 
       <ul id="manual" class="nav navbar-nav alt-nav" style="display:none;">
         <li><a href="#" class="nav-info"></a></li>
-        <li><a href="<?php echo base_url('help'); ?>"><i class="fa fa-envelope"></i> FAQ & <?php echo lang("usermanual"); ?> </a></li>
+        <li><a href="<?php echo base_url('help'); ?>"><i class="fa fa-envelope"></i><?php echo lang("usermanual"); ?>, Video Instructions & FAQ</a></li>
       </ul>
 
       <ul id="cases" class="nav navbar-nav alt-nav" style="display:none;">
