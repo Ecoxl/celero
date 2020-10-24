@@ -28,7 +28,8 @@
     <div class="form-group">
         <label for="epcalc"><?php echo lang("epcalc"); ?></label>
         <button type="button" data-toggle="modal" data-target="#myModalEPcalc" class="btn btn-block btn-primary" id="UBP-button"><?php echo lang("epbutton"); ?></button>
-        <span class="small">To add a flow which is not in the calculator, you have to define it (and its' UBP) under <a href="<?php echo base_url('datasetexcel'); ?>"><i class="fa fa-globe"></i> My EP Data</a> page.</span>
+        <span class="small">Environmental Impact Calculator is based on the UBP-Values of "Licence" or the data you added under "Import UBP values" page.</span>
+        <span class="small">To add a flow which is not in the calculator, you have to define it (and its' UBP) under <a href="<?php echo base_url('datasetexcel'); ?>"><i class="fa fa-globe"></i> Import UBP values</a> page.</span>
     </div>
     <div class="form-group">
         <div class="row">

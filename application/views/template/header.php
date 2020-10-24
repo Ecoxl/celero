@@ -110,7 +110,7 @@
         ?>
             <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize; padding: 15px 1px 15px 21px"" ><i class="fa fa-user"></i> <?php echo $tmp['username']; ?></a></li>
             <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" ><i class="fa fa-pencil-square-o"></i> <?php echo lang("updateprofile"); ?></a></li>
-            <li class="head-li"><a href="<?php echo base_url('datasetexcel'); ?>"><i class="fa fa-globe"></i> My EP Data</a></li>
+            <li class="head-li"><a href="<?php echo base_url('datasetexcel'); ?>"><i class="fa fa-globe"></i> Import UBP values</a></li>
             <li class="head-li"><a href="<?php echo base_url('mycompanies'); ?>" style="padding: 15px 1px 15px 21px"><i class="fa fa-building-o"></i> <?php echo lang("mycompanies"); ?></a></li>
             <?php if ($tmp['role_id'] == 1): ?>            
               <li class="head-li"><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
