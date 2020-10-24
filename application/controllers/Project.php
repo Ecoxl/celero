@@ -6,6 +6,7 @@ class Project extends CI_Controller{
 		$this->load->model('project_model');
 		$this->load->model('company_model');
 		$this->load->model('user_model');
+		$this->load->library('form_validation');
 		$temp = $this->session->userdata('user_in');
 		if(empty($temp)){
 			redirect(base_url('login'),'refresh');
@@ -230,6 +231,7 @@ class Project extends CI_Controller{
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
 		$data['companies'] = $this->project_model->get_prj_companies($prj_id);
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
+		$data['allconsultants'] = $this->user_model->get_consultants();
 
 		$this->load->library('googlemaps');
 		$marker = array();
@@ -397,5 +399,30 @@ class Project extends CI_Controller{
 			redirect(base_url(''),'refresh');
 		}	
 	}
+
+	public function addConsultantToProject($term){
+		// check if user has a permission to edit company info
+		$kullanici = $this->session->userdata('user_in');
+		if(!$this->project_model->can_update_project_information($kullanici['id'],$term)){
+			redirect(base_url(),'refresh');
+		}
+
+		$this->form_validation->set_rules('users','User','required|callback_check_consultant['.$term.']');
+		if ($this->form_validation->run() !== FALSE)
+		{	
+			$prj_cnsltnt=array(
+				'prj_id' => $term,
+				'cnsltnt_id' => $this->input->post('users'),
+				'active' => 1
+				);
+			$this->project_model->insert_project_consultant($prj_cnsltnt);
+		}
+		redirect('project/'.$term, 'refresh');
+	}
+
+	function check_consultant($str,$term) {
+		return !$this->project_model->can_update_project_information($str,$term);
+	}
+	
 }
 ?>

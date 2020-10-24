@@ -20,7 +20,7 @@
 
 					<div id="target" class="well" style="display: none">
 						<p>
-							Select user to add
+							Here you can give other Users access to your Company. Select users to add.
 						</p>
 						<div class="content">
 							<p>
@@ -30,7 +30,7 @@
 										<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
 										<?php endforeach ?>
 									</select>
-									<button type="submit" class="btn btn-primary">Add</button>
+									<button type="submit" class="btn btn-primary">Add Users</button>
 								</form>
 							</p>
 						</div>

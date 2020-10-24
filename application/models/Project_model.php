@@ -183,4 +183,5 @@ class Project_model extends CI_Model
         $this->db->where('id', $project_id);
         $this->db->delete('t_prj');
     }
+
 }

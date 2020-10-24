@@ -166,6 +166,8 @@ $route['myprojects'] = "project/show_my_project";
 $route['contactperson']="project/contact_person";
 $route['project/(:any)'] = "project/view_project/$1";
 $route['deleteproject/(:any)'] = "project/delete_project/$1";
+$route['addConsultantToProject/(:any)'] = "project/addConsultantToProject/$1";
+
 
 $route['tuna_json/(:any)']="company/get_company_info/$1";
 $route['companySearch']="company/company_search";
