@@ -23,7 +23,7 @@
 	 			</div>
 
 	 			<div class="form-group">
-	 				<label for="datePicker"><?php echo lang("startdate"); ?></label>
+	 				<label for="datePicker"><?php echo lang("startdate"); ?> <span class="small" style="color:gray;">Optional</span></label>
 	    			<div class="input-group">
 				    	<span class="input-group-btn">
 				      		<button class="btn" type="button" style="height: 38px; border: 1px solid;"><span class="fui-calendar"></span></button>
@@ -72,7 +72,7 @@
  				</div>
 
 	 			<div class="form-group">
-	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?></label>
+	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<!--  <input type="text" id="companySearch" />	-->
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 
@@ -86,7 +86,7 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?></label>
+	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 
 						<?php foreach ($consultants as $consultant): ?>
@@ -100,7 +100,7 @@
 	 			</div>
         		<?php $mevcut = $this->session->userdata('user_in'); ?>
 	 			<div class="form-group">
-    				<label for="assignContactPerson"><?php echo lang("assigncontact"); ?></label>
+    				<label for="assignContactPerson"><?php echo lang("assigncontact"); ?> <span class="small" style="color:red;">*Required</span></label>
     				<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
             			<option value="<?php echo $mevcut['id']; ?>">Creator of the project (<?php echo $mevcut['username']; ?>)</option>
 					</select>
