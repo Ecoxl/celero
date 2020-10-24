@@ -45,14 +45,15 @@ class Project extends CI_Controller{
 	}
 
 	public function new_project(){
+		$this->load->library('googlemaps');
 		$kullanici = $this->session->userdata('user_in');
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
+
 		if(!$is_consultant){
 			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you need to be a consultant to create a new project.');
 			redirect('myprojects', 'refresh');
 		}
 
-    $this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
 		$config['center'] = '47.566667, 7.600000'; //Basel (at center of europe)
 		$config['zoom'] = '4';
@@ -63,13 +64,11 @@ class Project extends CI_Controller{
 		$this->googlemaps->initialize($config);
 
 		$data['map'] = $this->googlemaps->create_map();
-
 		$data['companies']=$this->company_model->get_my_companies($kullanici['id']);
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
 
 		$this->load->library('form_validation');
-
  		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean|required');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean|required');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|max_length[200]|mb_strtolower|is_unique[t_prj.name]');

@@ -16,10 +16,12 @@
 	<?php echo form_open('newproject'); ?>
 		<div class="row">
 			<div class="col-md-8">
+
 				<div class="form-group">
-	    			<label for="projectName"><?php echo lang("name"); ?></label>
+	    			<label for="projectName"><?php echo lang("name"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<input type="text" class="form-control" id="projectName" placeholder="<?php echo lang("name"); ?>" value="<?php echo set_value('projectName'); ?>" name="projectName">
 	 			</div>
+
 	 			<div class="form-group">
 	 				<label for="datePicker"><?php echo lang("startdate"); ?></label>
 	    			<div class="input-group">
@@ -29,35 +31,45 @@
 				    	<input type="text" class="form-control" value="<?php echo set_value('datepicker'); ?>" id="datepicker-01" name="datepicker">
 				  	</div>
 	 			</div>
+
 	 			<div class="form-group">
 	    			<label for="status"><?php echo lang("status"); ?></label>
 	    			<div>
 		    			<select id="status" class="info select-block" name="status">
 		  					<?php foreach ($project_status as $status): ?>
-								<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
+								<?php if ($status['id'] == $_POST['status']) { ?>
+									<option value="<?php echo $status['id']; ?>" selected><?php echo $status['name']; ?></option>
+								<?php } else { ?>
+									<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
+								<?php } ?>
 							<?php endforeach ?>
 						</select>
 					</div>
 	 			</div>
+
 	 			<div class="form-group">
-	    			<label for="description"><?php echo lang("description"); ?></label>
+	    			<label for="description"><?php echo lang("description"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="<?php echo lang("description"); ?>" ><?php echo set_value('description'); ?></textarea>
 	 			</div>
+
 				<div class="form-group">
-				<label for="coordinates"><?php echo lang("coordinates"); ?></label>
-				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-block btn-inverse" id="coordinates" ><?php echo lang("selectonmap"); ?></button><br>
-				<div class="row">
-            <div class="col-md-4">
-            <input type="text" class="form-control" id="lat" placeholder="<?php echo lang("lat"); ?>" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
-            </div>
-            <div class="col-md-4">
-            <input type="text" class="form-control" id="long" placeholder="<?php echo lang("long"); ?>" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
-            </div>
-            <div class="col-md-4">
-            <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
-            </div>
-				</div>
- 			</div>
+					<label for="coordinates"><?php echo lang("coordinates"); ?></label>
+					<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-block btn-inverse" id="coordinates" ><?php echo lang("selectonmap"); ?></button><br>
+					<div class="row">
+						<div class="col-md-4">
+							<span class="small" style="color:red;">*Required</span>
+							<input type="text" class="form-control" id="lat" placeholder="<?php echo lang("lat"); ?>" name="lat" style="color:#333333;" value="<?php echo set_value('lat'); ?>" readonly/>
+						</div>
+						<div class="col-md-4">
+							<span class="small" style="color:red;">*Required</span>
+							<input type="text" class="form-control" id="long" placeholder="<?php echo lang("long"); ?>" name="long" style="color:#333333;" value="<?php echo set_value('long'); ?>" readonly/>
+						</div>
+						<div class="col-md-4">
+							<span class="small" style="color:gray;">Optional</span>
+							<input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php echo set_value('zoomlevel'); ?>" />
+						</div>
+					</div>
+ 				</div>
 
 	 			<div class="form-group">
 	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?></label>
@@ -65,7 +77,11 @@
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 
 						<?php foreach ($companies as $company): ?>
-							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
+							<?php if (in_array($company['id'], $_POST['assignCompany'])) { ?>
+								<option value="<?php echo $company['id']; ?>" selected><?php echo $company['name']; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
+							<?php } ?>
 						<?php endforeach ?>
 					</select>
 	 			</div>
@@ -74,18 +90,22 @@
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 
 						<?php foreach ($consultants as $consultant): ?>
-							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<?php if (in_array($consultant['id'], $_POST['assignConsultant'])) { ?>
+								<option value="<?php echo $consultant['id']; ?>" selected><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<?php } ?>
 						<?php endforeach ?>
 					</select>
 	 			</div>
-        <?php $mevcut = $this->session->userdata('user_in'); ?>
+        		<?php $mevcut = $this->session->userdata('user_in'); ?>
 	 			<div class="form-group">
-    			<label for="assignContactPerson"><?php echo lang("assigncontact"); ?></label>
-    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
-            <option value="<?php echo $mevcut['id']; ?>">Creator of the project (<?php echo $mevcut['username']; ?>)</option>
+    				<label for="assignContactPerson"><?php echo lang("assigncontact"); ?></label>
+    				<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
+            			<option value="<?php echo $mevcut['id']; ?>">Creator of the project (<?php echo $mevcut['username']; ?>)</option>
 					</select>
 	 			</div>
-        <button type="submit" class="btn btn-block btn-primary"><?php echo lang("createproject"); ?></button>
+        		<button type="submit" class="btn btn-block btn-primary"><?php echo lang("createproject"); ?></button>
 
 			</div>
 			<div class="col-md-4">
