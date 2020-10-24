@@ -58,28 +58,25 @@ class Process_model extends CI_Model {
 		$this->db->select('*');
     	$this->db->from('t_prcss');
         $this->db->where('name',$process_name);
-
-    $query = $this->db->get();
-    return $query->row_array();
+		$query = $this->db->get();
+		return $query->row_array();
 	}
 
 	public function get_process_from_process_id($prcss_id){
 		$this->db->select('*');
     	$this->db->from('t_prcss');
         $this->db->where('id',$prcss_id);
-
-    $query = $this->db->get();
-    return $query->row_array();
+		$query = $this->db->get();
+		return $query->row_array();
 	}
-	
 	
 	public function get_main_process(){
 		$this->db->select('*');
-	  $this->db->from('t_prcss');
-	//$this->db->where('mother_id',NULL);
-	  $this->db->where('active',1);
-	  $query = $this->db->get();
-	  return $query->result_array();
+		$this->db->from('t_prcss');
+		//$this->db->where('mother_id',NULL);
+		$this->db->where('active',1);
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 
 	public function is_new_process($process_id,$processfamilyID = false){

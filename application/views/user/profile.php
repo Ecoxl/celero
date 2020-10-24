@@ -12,10 +12,10 @@
 		  	<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;"><?php echo lang("changepassword"); ?></a>
 		  	<?php endif ?>
 		  	<?php if(($userInfo['role_id']=='2') && $this->session->userdata('user_in')['id'] == $userInfo['id']): ?>
-		  	<a class="btn btn-success btn-block" href="<?php echo base_url("become_consultant"); ?>"><?php echo lang("becomeconsultant"); ?></a>
+		  		<a class="btn btn-success btn-block consultant" title="If you apply for consultant, the administrator has to approve it." data-placement='bottom' href="<?php echo base_url("become_consultant"); ?>"><?php echo lang("becomeconsultant"); ?></a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>
-		  	<div class="btn btn-success btn-block" style="cursor: default;"><?php echo lang("thisisconsultant"); ?></div>
+		  		<div class="btn btn-success btn-block consultant" title="Consultants have full access to all functionalities of the Platform." data-placement='bottom' style="cursor: default;"><?php echo lang("thisisconsultant"); ?></div>
 		  	<?php endif ?>
 		  </div>
 		</div>
@@ -88,3 +88,9 @@
 
 	</div>
 </div>
+
+<script>
+	$(function() {
+		$('.consultant').tooltip();
+	});
+</script>

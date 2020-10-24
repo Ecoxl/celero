@@ -1,18 +1,18 @@
-		<script type="text/javascript">
-		function getProcessId(){
-		    var id = $('.selectize-input .item').html();
-		    var isnum = /^\d+$/.test(id);
-		    if(isnum){
-		    	alert("You can't enter only numerical characters as a flow name!");
-		    	$("select[id=selectize] option").remove();
-		    }
-		    var newid = $('select[name=process]').val();
-				var newisnum = /^\d+$/.test(newid);
-				if(!newisnum && newid !=""){
-					$('#process-family').show("slow");
-				}
+<script type="text/javascript">
+	function getProcessId(){
+		var id = $('.selectize-input .item').html();
+		var isnum = /^\d+$/.test(id);
+		if(isnum){
+			alert("You can't enter only numerical characters as a flow name!");
+			$("select[id=selectize] option").remove();
 		}
-	</script>
+		var newid = $('select[name=process]').val();
+		var newisnum = /^\d+$/.test(newid);
+		if(!newisnum && newid !=""){
+			$('#process-family').show("slow");
+		}	
+	}
+</script>
 
 		<div class="col-md-3 borderli">
 		<?php echo form_open_multipart('new_process/'.$companyID); ?>
