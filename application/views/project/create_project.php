@@ -88,7 +88,6 @@
 	 			<div class="form-group">
 	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
-
 						<?php foreach ($consultants as $consultant): ?>
 							<?php if (in_array($consultant['id'], $_POST['assignConsultant'])) { ?>
 								<option value="<?php echo $consultant['id']; ?>" selected><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>

@@ -1,29 +1,3 @@
-<script> 
-
-//UNUSED CODE?
-/*$.ajax({
-                url: '../../../../Proxy/SlimProxyAdmin.php',
-                type: 'GET',
-                dataType : 'json',
-                data: { url:'getCountries_rpt' },
-                success: function(data, textStatus, jqXHR) {
-                  //console.warn('success text status-->'+textStatus);
-                  console.warn(data);
-                  var options ='<option>Please Select..</option>';
-                  $.each(data , function(key, value) {
-                      //console.log(key);
-                      options+='<option >'+value.desc+'</option>';
-                      
-                  })
-                  console.log(options);
-                    //$('#selectize2').html(options);
-                  //$('#totalProjects').html(data['totalProjects']);
-                }
-            }); */
-
-</script>
-
-
 <?php echo $map['js']; ?>
 <div class="container">
 	<p class="lead"><?php echo lang("createcompany"); ?></p>
@@ -74,16 +48,6 @@
 		    				<input type="text" class="form-control" placeholder="NACE Code" id="naceCode" name="naceCode" style="color:#333333;" value="<?php echo set_value('naceCode'); ?>" readonly/>
 		    			</div>
 		    		</div>
-
-<!--                <label for="naceCode"><?php echo lang("nacecode"); ?></label>
-					<select id="selectize" name="naceCode">
-						<option value="">Nothing Selected</option>
-						<?php foreach ($all_nace_codes as $anc): ?>
-							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?></option>
-						<?php endforeach ?>
-					</select>
-					<small><?php echo lang("createcompanyinfo"); ?></small> 
--->	
 	 			</div>
 
                             
@@ -91,24 +55,16 @@
                     <label for="country">Country</label>
 					<select id="selectize" name="country">
 						<option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
-						<!--<option value="">Nothing Selected</option>-->
 						<?php foreach ($countries as $anc): ?>
 							<option value="<?php echo $anc['id']; ?>"><?php echo $anc['country_name']; ?> </option>
 						<?php endforeach?>
 					</select>
 					<small></small>
-	 			</div>
-                            
-                                
-                            
+	 			</div>      
 				<div class="form-group">
 	    			<label for="email"><?php echo lang("email"); ?></label>
 	    			<input type="text" class="form-control" id="email" placeholder="<?php echo lang("email"); ?>" value="<?php echo set_value('email'); ?>"  name="email">
 	 			</div>
-<!-- 	 			<div class="form-group">
-	    			<label for="cellPhone">Cell Phone</label>
-	    			<input type="text" class="form-control" id="cellPhone" placeholder="Cell Phone" value="<?php echo set_value('cellPhone'); ?>" name="cellPhone">
-	 			</div> -->
 	 			<div class="form-group">
 	    			<label for="workPhone"><?php echo lang("workphone"); ?></label>
 	    			<input type="text" class="form-control" id="workPhone" placeholder="<?php echo lang("workphone"); ?>" value="<?php echo set_value('workPhone'); ?>" name="workPhone">
@@ -129,7 +85,6 @@
 		    			</div>
 	    			</div>
 	 			</div>
-
 	 			<div class="form-group">
 	    			<label for="address"><?php echo lang("address"); ?></label>
 	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="<?php echo lang("address"); ?>"><?php echo set_value('address'); ?></textarea>
@@ -137,6 +92,18 @@
 	 			<div class="form-group">
 	    			<label for="companyDescription"><?php echo lang("companydescription"); ?></label>
 	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="<?php echo lang("companydescription"); ?>"><?php echo set_value('companyDescription'); ?></textarea>
+	 			</div>
+				 <div class="form-group">
+	    			<label for="users"><?php echo lang("assignconsultant"); ?></label>
+	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="users" name="users[]">
+						<?php foreach ($users as $consultant): ?>
+							<?php if (in_array($consultant['id'], $_POST['users'])) { ?>
+								<option value="<?php echo $consultant['id']; ?>" selected><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<?php } ?>
+						<?php endforeach ?>
+					</select>
 	 			</div>
 	 			<button type="submit" class="btn btn-primary btn-block"><?php echo lang("createcompany"); ?></button>
 			</div>

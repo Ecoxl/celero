@@ -45,6 +45,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('address', 'Address', 'required|trim|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('users', 'Company User', 'trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -73,6 +74,17 @@ class Company extends CI_Controller{
 		    	'cmpny_id' => $last_id,
 		    	'nace_code_id' => $nace_code_id['id']
 		    );
+
+			$users = $_POST['users']; // multiple select , secilen consultant'lar
+
+			foreach ($users as $consultant) {
+				$user = array(
+					'user_id' => $consultant,
+					'cmpny_id' => $last_id,
+					'is_contact' => 0
+				);
+				$this->company_model->add_worker_to_company($user);	
+			}
 
 		    $this->company_model->insert_cmpny_prsnl($last_id);
 		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
@@ -108,6 +120,7 @@ class Company extends CI_Controller{
 		}
 		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
         $data['countries'] = $this->company_model->get_countries();
+		$data['users']=$this->user_model->get_consultants();
 
 		$this->load->view('template/header');
 		$this->load->view('company/create_company',$data);
@@ -298,7 +311,7 @@ class Company extends CI_Controller{
 			redirect(base_url(),'refresh');
 		}
 
-		$this->form_validation->set_rules('users','User','required');
+		$this->form_validation->set_rules('users','User','required|callback_check_companyuser['.$term.']');
 		if ($this->form_validation->run() !== FALSE)
 		{
 			$user = array(
@@ -311,6 +324,10 @@ class Company extends CI_Controller{
 
 		redirect('company/'.$term, 'refresh');
 
+	}
+
+	function check_companyuser($str,$term) {
+		return !$this->user_model->can_edit_company($str,$term);
 	}
 
 	public function removeUserfromCompany($term,$selected_user_id){
