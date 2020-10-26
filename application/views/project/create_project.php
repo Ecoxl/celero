@@ -1,6 +1,12 @@
 <!-- for datepicker -->
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+<script>
+    $( function() {
+        $( document ).tooltip();
+    } );
+</script>
 <?php echo $map['js']; ?>
 
 <div class="container">
@@ -34,6 +40,7 @@
 
 	 			<div class="form-group">
 	    			<label for="status"><?php echo lang("status"); ?></label>
+                    <i class="fa fa-info-circle" title="Give your Projects a status to keep track of them."></i>
 	    			<div>
 		    			<select id="status" class="info select-block" name="status">
 		  					<?php foreach ($project_status as $status): ?>
@@ -74,7 +81,9 @@
 	 			<div class="form-group">
 	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?> <span class="small" style="color:red;">*Required</span></label>
 	    			<!--  <input type="text" id="companySearch" />	-->
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
+                    <i class="fa fa-info-circle" title="Choose the Companies you want to analyse in this Project."></i>
+
+                    <select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 
 						<?php foreach ($companies as $company): ?>
 							<?php if (in_array($company['id'], $_POST['assignCompany'])) { ?>
@@ -87,7 +96,9 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?> <span class="small" style="color:red;">*Required</span></label>
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
+                    <i class="fa fa-info-circle" title="Choose the corresponding consultants to the Project. They will have full access to this project."></i>
+
+                    <select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 						<?php foreach ($consultants as $consultant): ?>
 							<?php if (in_array($consultant['id'], $_POST['assignConsultant'])) { ?>
 								<option value="<?php echo $consultant['id']; ?>" selected><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
@@ -195,29 +206,29 @@
 </script>
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('#assignCompany').change(function () {
-      var company = $(this).val();
-      $.ajax({
-        url: "<?php echo base_url('contactperson');?>",
-        async: false,
-        type: "POST",
-        data: "company_id="+company,
-        dataType: "json",
-        success: function(data) {
-          //$('#assignContactPerson option').remove();
+    $(document).ready(function () {
+        $('#assignCompany').change(function () {
+          var company = $(this).val();
+          $.ajax({
+            url: "<?php echo base_url('contactperson');?>",
+            async: false,
+            type: "POST",
+            data: "company_id="+company,
+            dataType: "json",
+            success: function(data) {
+              //$('#assignContactPerson option').remove();
 
-          for (var k = 0; k < data.length; k++) {
-            for (var i = 0; i < data[k].length; i++) {
-              var opt =data[k][i]['id'];
-              if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
-              {
-                $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+              for (var k = 0; k < data.length; k++) {
+                for (var i = 0; i < data[k].length; i++) {
+                  var opt =data[k][i]['id'];
+                  if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
+                  {
+                    $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+                  }
+                }
               }
             }
-          }
-        }
-      })
+          })
+        });
     });
-  });
 </script>

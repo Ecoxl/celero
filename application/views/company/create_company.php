@@ -41,7 +41,7 @@
 	 			</div>
 
 	 			<div class="form-group">
-	 				<label for="naceCode"><?php echo lang("nacecode"); ?></label>
+	 				<label for="naceCode"><?php echo lang("nacecode"); ?> <i title="NACE is the Statistical Classification of Economic Activities in the European Community derived from the UN classification ISIC. The aim of this systematics is to make statistics from different Countries comparable." class="fa fa-question-circle" rel="tooltip" href="#"></i></label>
 	    			<button type="button" data-toggle="modal" data-target="#myModalNACE" class="btn btn-block btn-primary" id="nacecode-button"><?php echo lang("selectnace"); ?></button><br>
 	    			<div class="row">
 		    			<div class="col-md-12">
@@ -170,5 +170,7 @@
 
 	//js function for miller-coloumn NACE-code selector
 	miller_column_nace();
-
+    $(document).ready(function(){
+        $("[rel=tooltip]").tooltip({ placement: 'right' });
+    });
 </script>

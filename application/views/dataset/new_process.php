@@ -1,3 +1,12 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $( function() {
+        $( document ).tooltip();
+    } );
+</script>
+
 <script type="text/javascript">
 	function getProcessId(){
 		var id = $('.selectize-input .item').html();
@@ -20,6 +29,8 @@
 			<p class="lead"><?php echo lang("addprocess"); ?></p>
 			<div class="form-group">
 	    	<label for="status"><?php echo lang("processname"); ?> <span style="color:red;">*</span></label>
+                <i class="fa fa-info-circle" title="One process can contain multiple flows and one
+                flow can go through multiple processes."></i>
 				<select id="selectize" onchange="getProcessId()" name="process">
 					<option value=""><?php echo lang("pleaseselect"); ?></option>
 					<?php foreach ($process as $pro): ?>

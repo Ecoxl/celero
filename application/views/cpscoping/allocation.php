@@ -324,7 +324,9 @@ if ($prcss_info[$i]['company_process_id'] == set_value('prcss_name')) {
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-3"><?php echo lang("kpi"); ?></label>
+				<label class="control-label col-md-3">
+                    <?php echo lang("kpi"); ?>
+                </label>
 				<label class="control-label col-md-3"><?php echo lang("kpiunit"); ?></label>
 				<label class="control-label col-md-6"><?php echo lang("kpidef"); ?></label>
 				<div class="col-md-3">

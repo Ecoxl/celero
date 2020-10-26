@@ -137,8 +137,7 @@
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-3 tooltip-ref" data-toggle="tooltip">
-					<?php echo lang("reference"); ?> <i style="color:red;" class="fa fa-question-circle"></i></label>
+				<label class="control-label col-md-3 tooltip-ref" data-toggle="tooltip"><?php echo lang("reference"); ?> <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<label class="control-label col-md-3"><?php echo lang("unit"); ?></label>
 				<label class="control-label col-md-6"><?php echo lang("nameofref"); ?></label>
 				<div class="col-md-3">

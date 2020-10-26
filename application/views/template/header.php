@@ -19,6 +19,7 @@
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
+
       <![endif]-->
 
       <script src="<?php echo asset_url('js/jquery-3.3.1.min.js'); ?>"></script>

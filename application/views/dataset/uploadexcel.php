@@ -2,6 +2,8 @@
     <h4>Add new excel</h4>
     <div style="border: 1px solid #d0d0d0; padding: 15px; margin-bottom: 20px; overflow:hidden;">
         <i>This will replace your whole excel data. Inserted data won't be affected. Only xls and xlsx filetype is allowed.</i>
+        <div>For CELERO to correctly understand the input, the Excel has to be in the same Form as the Template.</div>
+
         <div style="padding: 20px 0; padding-bottom: 0px;">
             <?php
                 if(isset($error)) {

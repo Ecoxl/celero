@@ -1,7 +1,19 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $( function() {
+        $( document ).tooltip();
+    } );
+</script>
+
 <div style="padding:20px;padding-top:0px;">
     <div class="row">
         <div class="col-md-12" style="margin-bottom:30px; background-color:#f0f0f0; padding:20px;">
-            <div style="font-weight:800; font-size:20px; margin-right:20px;" class="pull-left">Upload/Update Excel</div>
+            <div style="font-weight:800; font-size:20px; margin-right:20px;" class="pull-left">Upload/Update Excel
+                <i class="fa fa-info-circle" title="You can upload your own UBP-Data:
+                First download the Template, then fill in your data and click on upload excel."></i>
+            </div>
             <div class="pull-left">
                 <a class="btn btn-info" href="<?php echo site_url('uploadExcel') ?>" style="margin-right:10px;">Upload Excel</a>
                 <a class="btn btn-warning" href="<?php echo asset_url('excels/default.xlsx'); ?>">Download Excel Template</a>
@@ -22,7 +34,7 @@
                 <div style="font-weight:800; font-size:20px;">Manual UBP value import</div>
                 <table class="table table-sm">
                     <th>Name</th>
-                    <th>EP Value (UBP/x)</th>
+                    <th>EP Value (UBP/x) <i class="fa fa-info-circle" title="Megapoints UBP oder"></i></th>
                     <th>Unit (x)</th>
                     <th>save</th>
                     <?php echo form_open_multipart('datasetexcel'); ?>
@@ -62,7 +74,7 @@
                     <th>Name</th>
                     <th>EP Value (UBP/x)</th>
                     <th>Unit (x)</th>
-                    <th>save</th>
+                    <th>Add <i class="fa fa-info-circle" title="Click here to save the UBP-Data you want (This will make them appear on the right side)"></i></th>
                     <?php foreach ($excelcontents as $ec): ?>
                         <?php echo form_open_multipart('datasetexcel'); ?>
                             <tr>

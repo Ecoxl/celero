@@ -20,7 +20,7 @@
 
 					<div id="target" class="well" style="display: none">
 						<p>
-							Here you can give other Users access to your Company. Select users to add.
+							Here you can give other Users access to your Company. Select users to add. Added users will have full access to this company.
 						</p>
 						<div class="content">
 							<p>

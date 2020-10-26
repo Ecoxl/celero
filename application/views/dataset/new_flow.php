@@ -1,3 +1,12 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $( function() {
+        $( document ).tooltip();
+    } );
+</script>
+
 <script type="text/javascript">
     function getFlowId(userid) {
         var id = $('.selectize-input .item').html();
@@ -247,7 +256,10 @@
     <?php else: ?>
     <div class="col-md-8" id="buyukbas">
         <?php endif ?>
-        <p class="lead pull-left"><?php echo lang("companyflows"); ?></p>
+        <p class="lead pull-left"><?php echo lang("companyflows"); ?>
+            <i class="fa fa-info-circle" title="Flows describe the total flow of Materials, Water and Energy
+            of a company in order to generate products."></i>
+        </p>
         <?php if (validation_errors() == NULL): ?>
             <button id="ac" class="btn btn-warning" style="margin-left: 20px;"> <?php echo lang("addflow"); ?></button>
         <?php endif ?>
