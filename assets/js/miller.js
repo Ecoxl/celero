@@ -188,9 +188,9 @@ function miller_column_UBP(){
                 //sets the values in the top input field
                 $("input#flowname").val(name);
                 $("input#UBPval").val(filtered[0].UbpPerEinheit);
-                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit+"</strong>)");
-                $("#quantityUnit").val(filtered[0].Einheit);
-                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit+"</strong>");
+                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²")+"</strong>)");
+                $("#quantityUnit").val(filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²"));
+                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²")+"</strong>");
 
                 //adds the next level/category
                 $millerCol.millerColumn("addCol", newcategory);
@@ -206,9 +206,9 @@ function miller_column_UBP(){
                 val = data.UbpPerEinheit;
                 $("input#flowname").val(name);
                 $("input#UBPval").val(filtered[0].UbpPerEinheit);
-                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit+"</strong>)");
-                $("#quantityUnit").val(filtered[0].Einheit);
-                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit+"</strong>");
+                $("#myModalEPcalc label[for='quantity']").html("Quantity/a (in <strong>"+filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²")+"</strong>)");
+                $("#quantityUnit").val(filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²"));
+                $("label[for='UBPval']").html("UBP/<strong>"+filtered[0].Einheit.replace("m3", "m³").replace("m2", "m²")+"</strong>");
 
                 //if quantity field not empty: trigger change event for new calculation of total
                 if ( $("#myModalEPcalc input#quantity").val() ) {
