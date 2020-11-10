@@ -708,7 +708,7 @@
                         $("#flow-opex-1-6-<?php echo $i; ?>").val(($("#flow-specost-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val()).toFixed(2));
 
                         //sum-1
-                        $("#sum-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-<?php echo $i; ?>").val()));
+                        $("#sum-1-<?php echo $i; ?>").val((parseFloat($("#flow-opex-1-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-<?php echo $i; ?>").val())).toFixed(2));
 
                         //flow eip-1
                         $("#flow-eip-1-<?php echo $i; ?>").val(($("#flow-eipunit-1-<?php echo $i; ?>").val()*$("#flow-value-1-<?php echo $i; ?>").val()).toFixed(4));
@@ -724,7 +724,7 @@
                         $("#flow-eip-1-6-<?php echo $i; ?>").val(($("#flow-eipunit-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val()).toFixed(4));
 
                         //sum-2
-                        $("#sum-2-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-6-<?php echo $i; ?>").val()));
+                        $("#sum-2-<?php echo $i; ?>").val((parseFloat($("#flow-eip-1-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-6-<?php echo $i; ?>").val())).toFixed(4));
 
                         //annual-cost-1
                         $("#annual-cost-1-<?php echo $i; ?>").val((parseFloat($("#sum-1-<?php echo $i; ?>").val())+parseFloat($("#capexold-<?php echo $i; ?>").val())).toFixed(2));
@@ -778,10 +778,10 @@
                         $("#flow-eip-2-6-<?php echo $i; ?>").val(($("#flow-eipunit-2-6-<?php echo $i; ?>").val()*$("#flow-value-2-6-<?php echo $i; ?>").val()).toFixed(4));
 
                          //sum-2
-                        $("#sum-1-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-2-<?php echo $i; ?>").val()));
+                        $("#sum-1-1-<?php echo $i; ?>").val((parseFloat($("#flow-opex-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-2-<?php echo $i; ?>").val())).toFixed(2));
 
                          //eip2-1
-                        $("#sum-2-1-<?php echo $i; ?>").val(parseFloat($("#flow-eip-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val()));
+                        $("#sum-2-1-<?php echo $i; ?>").val((parseFloat($("#flow-eip-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val())).toFixed(4));
 
                         //annual-cost-2
                         $("#annual-cost-2-<?php echo $i; ?>").val(parseFloat($("#sum-1-1-<?php echo $i; ?>").val())+parseFloat($("#capex-1-<?php echo $i; ?>").val()));
@@ -827,10 +827,10 @@
                         $("#ecoben-eip-1-6-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-6-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val()));
 
                         //sum-3-1
-                        $("#sum-3-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-6-<?php echo $i; ?>").val()));
+                        $("#sum-3-1-<?php echo $i; ?>").val((parseFloat($("#flow-opex-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-6-<?php echo $i; ?>").val())).toFixed(2));
 
                         //sum-3-2
-                        $("#sum-3-2-<?php echo $i; ?>").val(parseFloat($("#ecoben-eip-1-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-6-<?php echo $i; ?>").val()));
+                        $("#sum-3-2-<?php echo $i; ?>").val((parseFloat($("#ecoben-eip-1-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-6-<?php echo $i; ?>").val())).toFixed(4));
 
                         //ecoben-1
                         $("#ecoben-1-<?php echo $i; ?>").val(parseFloat($("#annual-cost-2-<?php echo $i; ?>").val())-parseFloat($("#annual-cost-1-<?php echo $i; ?>").val()));
