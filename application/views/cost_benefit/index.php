@@ -708,7 +708,7 @@
                         $("#flow-opex-1-6-<?php echo $i; ?>").val(($("#flow-specost-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val()).toFixed(2));
 
                         //sum-1
-                        $("#sum-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-<?php echo $i; ?>").val()));
+                        $("#sum-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-1-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-<?php echo $i; ?>").val()));
 
                         //flow eip-1
                         $("#flow-eip-1-<?php echo $i; ?>").val(($("#flow-eipunit-1-<?php echo $i; ?>").val()*$("#flow-value-1-<?php echo $i; ?>").val()).toFixed(4));
@@ -724,10 +724,10 @@
                         $("#flow-eip-1-6-<?php echo $i; ?>").val(($("#flow-eipunit-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val()).toFixed(4));
 
                         //sum-2
-                        $("#sum-2-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-3-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-4-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-5-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-6-<?php echo $i; ?>").val()));
+                        $("#sum-2-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-1-6-<?php echo $i; ?>").val()));
 
                         //annual-cost-1
-                        $("#annual-cost-1-<?php echo $i; ?>").val((parseInt($("#sum-1-<?php echo $i; ?>").val())+parseInt($("#capexold-<?php echo $i; ?>").val())).toFixed(2));
+                        $("#annual-cost-1-<?php echo $i; ?>").val((parseFloat($("#sum-1-<?php echo $i; ?>").val())+parseFloat($("#capexold-<?php echo $i; ?>").val())).toFixed(2));
 
                         //Ann. costs old option calculation
                         //D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
@@ -778,68 +778,68 @@
                         $("#flow-eip-2-6-<?php echo $i; ?>").val(($("#flow-eipunit-2-6-<?php echo $i; ?>").val()*$("#flow-value-2-6-<?php echo $i; ?>").val()).toFixed(4));
 
                          //sum-2
-                        $("#sum-1-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-2-<?php echo $i; ?>").val()));
+                        $("#sum-1-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val())+($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-2-<?php echo $i; ?>").val()));
 
                          //eip2-1
-                        $("#sum-2-1-<?php echo $i; ?>").val(parseInt($("#flow-eip-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-6-<?php echo $i; ?>").val()));
+                        $("#sum-2-1-<?php echo $i; ?>").val(parseFloat($("#flow-eip-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val()));
 
                         //annual-cost-2
-                        $("#annual-cost-2-<?php echo $i; ?>").val(parseInt($("#sum-1-1-<?php echo $i; ?>").val())+parseInt($("#capex-1-<?php echo $i; ?>").val()));
+                        $("#annual-cost-2-<?php echo $i; ?>").val(parseFloat($("#sum-1-1-<?php echo $i; ?>").val())+parseFloat($("#capex-1-<?php echo $i; ?>").val()));
 
                         //difference-1
-                        $("#flow-value-3-<?php echo $i; ?>").val(parseInt($("#flow-value-1-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-<?php echo $i; ?>").val()));
+                        $("#flow-value-3-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-<?php echo $i; ?>").val()));
                         //difference-2
-                        $("#flow-value-3-2-<?php echo $i; ?>").val(parseInt($("#flow-value-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-2-<?php echo $i; ?>").val()));
+                        $("#flow-value-3-2-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-2-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-2-<?php echo $i; ?>").val()));
                         //difference-3
-                        $("#flow-value-3-3-<?php echo $i; ?>").val(parseInt($("#flow-value-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-3-<?php echo $i; ?>").val()));                        
+                        $("#flow-value-3-3-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-3-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-3-<?php echo $i; ?>").val()));                        
                         //difference-4
-                        $("#flow-value-3-4-<?php echo $i; ?>").val(parseInt($("#flow-value-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-4-<?php echo $i; ?>").val()));                        
+                        $("#flow-value-3-4-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-4-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-4-<?php echo $i; ?>").val()));                        
                         //difference-5
-                        $("#flow-value-3-5-<?php echo $i; ?>").val(parseInt($("#flow-value-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-5-<?php echo $i; ?>").val()));                        
+                        $("#flow-value-3-5-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-5-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-5-<?php echo $i; ?>").val()));                        
                         //difference-6
-                        $("#flow-value-3-6-<?php echo $i; ?>").val(parseInt($("#flow-value-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-6-<?php echo $i; ?>").val()));
+                        $("#flow-value-3-6-<?php echo $i; ?>").val(parseFloat($("#flow-value-1-6-<?php echo $i; ?>").val())-parseFloat($("#flow-value-2-6-<?php echo $i; ?>").val()));
 
 
                         //opex_dif-1
-                        $("#flow-opex-3-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-<?php echo $i; ?>").val()));
+                        $("#flow-opex-3-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-<?php echo $i; ?>").val()));
                         //opex_dif-2
-                        $("#flow-opex-3-2-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val()));
+                        $("#flow-opex-3-2-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-2-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-2-<?php echo $i; ?>").val()));
                         //opex_dif-3
-                        $("#flow-opex-3-3-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val()));                        
+                        $("#flow-opex-3-3-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-3-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-3-<?php echo $i; ?>").val()));                        
                         //opex_dif-4
-                        $("#flow-opex-3-4-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-4-<?php echo $i; ?>").val()));                        
+                        $("#flow-opex-3-4-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-4-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-4-<?php echo $i; ?>").val()));                        
                         //opex_dif-5
-                        $("#flow-opex-3-5-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val()));                        
+                        $("#flow-opex-3-5-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-5-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-5-<?php echo $i; ?>").val()));                        
                         //opex_dif-6
-                        $("#flow-opex-3-6-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val()));
+                        $("#flow-opex-3-6-<?php echo $i; ?>").val(parseFloat($("#flow-opex-1-6-<?php echo $i; ?>").val())-parseFloat($("#flow-opex-2-6-<?php echo $i; ?>").val()));
 
                         //opex_dif-1
-                        $("#ecoben-eip-1-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-<?php echo $i; ?>").val()));
+                        $("#ecoben-eip-1-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-<?php echo $i; ?>").val()));
                         //opex_dif-2
-                        $("#ecoben-eip-1-2-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-2-<?php echo $i; ?>").val()));
+                        $("#ecoben-eip-1-2-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-2-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-2-<?php echo $i; ?>").val()));
                         //opex_dif-3
-                        $("#ecoben-eip-1-3-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-3-<?php echo $i; ?>").val()));                        
+                        $("#ecoben-eip-1-3-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-3-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-3-<?php echo $i; ?>").val()));                        
                         //opex_dif-4
-                        $("#ecoben-eip-1-4-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-4-<?php echo $i; ?>").val()));                        
+                        $("#ecoben-eip-1-4-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-4-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-4-<?php echo $i; ?>").val()));                        
                         //opex_dif-5
-                        $("#ecoben-eip-1-5-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-5-<?php echo $i; ?>").val()));                        
+                        $("#ecoben-eip-1-5-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-5-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-5-<?php echo $i; ?>").val()));                        
                         //opex_dif-6
-                        $("#ecoben-eip-1-6-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-6-<?php echo $i; ?>").val()));
+                        $("#ecoben-eip-1-6-<?php echo $i; ?>").val(parseFloat($("#flow-eip-1-6-<?php echo $i; ?>").val())-parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val()));
 
                         //sum-3-1
-                        $("#sum-3-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-6-<?php echo $i; ?>").val()));
+                        $("#sum-3-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-3-6-<?php echo $i; ?>").val()));
 
                         //sum-3-2
-                        $("#sum-3-2-<?php echo $i; ?>").val(parseInt($("#ecoben-eip-1-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-2-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-3-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-4-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-5-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-6-<?php echo $i; ?>").val()));
+                        $("#sum-3-2-<?php echo $i; ?>").val(parseFloat($("#ecoben-eip-1-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-2-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-3-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-4-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-5-<?php echo $i; ?>").val())+parseFloat($("#ecoben-eip-1-6-<?php echo $i; ?>").val()));
 
                         //ecoben-1
-                        $("#ecoben-1-<?php echo $i; ?>").val(parseInt($("#annual-cost-2-<?php echo $i; ?>").val())-parseInt($("#annual-cost-1-<?php echo $i; ?>").val()));
+                        $("#ecoben-1-<?php echo $i; ?>").val(parseFloat($("#annual-cost-2-<?php echo $i; ?>").val())-parseFloat($("#annual-cost-1-<?php echo $i; ?>").val()));
 
                         //marcos-1
-                        $("#marcos-1-<?php echo $i; ?>").val((parseInt($("#ecoben-1-<?php echo $i; ?>").val())/parseInt($("#sum-3-2-<?php echo $i; ?>").val())).toFixed(2));
+                        $("#marcos-1-<?php echo $i; ?>").val((parseFloat($("#ecoben-1-<?php echo $i; ?>").val())/parseFloat($("#sum-3-2-<?php echo $i; ?>").val())).toFixed(2));
 
                         //payback-1
-                        $("#payback-1-<?php echo $i; ?>").val(((parseInt($("#ltold-<?php echo $i; ?>").val())*parseInt($("#capex-1-<?php echo $i; ?>").val()))/(parseInt($("#sum-1-<?php echo $i; ?>").val())-parseInt($("#sum-1-1-<?php echo $i; ?>").val()))).toFixed(2));
+                        $("#payback-1-<?php echo $i; ?>").val(((parseFloat($("#ltold-<?php echo $i; ?>").val())*parseFloat($("#capex-1-<?php echo $i; ?>").val()))/(parseFloat($("#sum-1-<?php echo $i; ?>").val())-parseFloat($("#sum-1-1-<?php echo $i; ?>").val()))).toFixed(2));
                         //------------------------------
 
 						//OPEX OLD calculation
