@@ -778,7 +778,7 @@
                         $("#flow-eip-2-6-<?php echo $i; ?>").val(($("#flow-eipunit-2-6-<?php echo $i; ?>").val()*$("#flow-value-2-6-<?php echo $i; ?>").val()).toFixed(4));
 
                          //sum-2
-                        $("#sum-1-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val())+($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-2-<?php echo $i; ?>").val()));
+                        $("#sum-1-1-<?php echo $i; ?>").val(parseFloat($("#flow-opex-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseFloat($("#maintan-1-2-<?php echo $i; ?>").val()));
 
                          //eip2-1
                         $("#sum-2-1-<?php echo $i; ?>").val(parseFloat($("#flow-eip-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseFloat($("#flow-eip-2-6-<?php echo $i; ?>").val()));
