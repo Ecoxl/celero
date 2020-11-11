@@ -922,8 +922,6 @@
 	$toplameco=0;
     $alloc = $allocation;
 
-    print_r($alloc);
-
     #sorts the allocation by marcos-1 ascending (lowest value first)
     usort($alloc, function($a, $b) {
         return $a['marcos-1'] <=> $b['marcos-1'];
@@ -956,8 +954,6 @@
     		$t++;
     	}
     }
-
-    print_r($tuna_array);
 ?>
 <script type="text/javascript">
 	setTimeout(function()
