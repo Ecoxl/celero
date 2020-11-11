@@ -555,7 +555,7 @@
                     } ?>
                     </td>
                     <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', "'"); ?></td>
-                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 0, '.', "'"); ?></td></tr>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 2, '.', "'"); ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>
