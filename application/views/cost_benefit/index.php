@@ -513,7 +513,8 @@
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-1" id="sum-3-1-<?php echo $i; ?>"  value="<?php echo $a['sum-3-1']; ?>" class="form-control" placeholder="sum-3-1" ></div></td>
-        <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-2" id="sum-3-2-<?php echo $i; ?>"  value="<?php echo $a['sum-3-2']; ?>" class="form-control" placeholder="sum-3-2" ></div></td>
+        <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-2" id="sum-3-2-<?php echo $i; ?>"  
+            value="<?php echo number_format((float)$a['sum-3-2'], 2, '.', "'"); ?>" class="form-control" placeholder="sum-3-2" ></div></td>
     </tr>
 </table>
 </br>
@@ -555,7 +556,7 @@
                     } ?>
                     </td>
                     <td style="text-align: right;"><?php echo number_format((float)$a['marcos-1'], 2, '.', "'"); ?></td>
-                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 0, '.', "'"); ?></td></tr>
+                    <td style="text-align: right;"><?php echo number_format((float)$a['sum-3-2'], 2, '.', "'"); ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>
@@ -932,23 +933,23 @@
     		
     		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     		if($a['marcos-1']>0){
-    			$tuna_array[$t]['ymax']= $a['marcos-1'];
+    			$tuna_array[$t]['ymax']= floatval($a['marcos-1']);
     		}
     		else{
     			$tuna_array[$t]['ymax']= 0;
     		}
 
     		$toplameco+=$a['sum-3-2'];
-    		$tuna_array[$t]['xmax']= intval($a['sum-3-2']);
+    		$tuna_array[$t]['xmax']= floatval($a['sum-3-2']);
 
-    		$eksieco = $toplameco - $a['sum-3-2'];
+    		$eksieco = $toplameco - floatval($a['sum-3-2']);
     		$tuna_array[$t]['xmin']= $eksieco;
 
     		if($a['marcos-1']>0){
     			$tuna_array[$t]['ymin']= "0";
     		}
     		else{
-    			$tuna_array[$t]['ymin']= $a['marcos-1'];
+    			$tuna_array[$t]['ymin']= floatval($a['marcos-1']);
     		}
     		$t++;
     	}
