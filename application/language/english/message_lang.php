@@ -485,4 +485,5 @@ $lang["employeeinfo"] = 'Write a employee and pick an industrial zone and cluste
 $lang["insertconsultant"] = 'Save Consultant';
 $lang["consultant"] = 'Consultant';
 $lang["consultantinfo"] = 'Write consultant info';
+$lang["nis"] = 'New Is Scoping';
 

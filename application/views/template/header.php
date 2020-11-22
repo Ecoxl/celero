@@ -190,7 +190,8 @@
             </div>
           </li>
           <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-euro"></i> <?php echo lang("costbenefitanalysis"); ?></a></li>
-          <!--link to the ecotracking is ".not-active" atm 
+          <li><a href="<?php echo base_url('nis'); ?>"><i class="fa fa-exchange"></i> <?php echo lang("nis"); ?></a></li>
+          <!--link to the ecotracking is ".not-active" atm
           <li><a class="not-active" title="Not available yet"><i class="fa fa-area-chart"></i> <?php echo lang("ecotracking"); ?></a></li>-->
           <!--link to the gis panel moved to the last position and is ".not-active" atm 
           <li><a class="not-active" title="Not available yet"><i class="fa fa-globe"></i> <?php echo lang("gis"); ?></a></li>--> 
@@ -233,7 +234,7 @@
                 $('#analysis').fadeIn('slow');
             }
 
-            else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("isscenarios") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0) ){
+            else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("isscenarios") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("nis") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0) ){
                 $('#l4').css('background-color', '#84BFC3');
                 $('.content-container ul.nav').hide();
                 $('#analysis').fadeIn('slow');

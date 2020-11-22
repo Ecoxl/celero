@@ -187,7 +187,8 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-	public function show_tuna($flow_id=FALSE){
+	public function isSelectionWithFlow($flow_id=FALSE){
+		$data['flowlist'] = $this->flow_model->get_flowname_list();
 		$cluster_id = $this->input->post('cluster');
 		if($cluster_id == null || $cluster_id == 0){
 			if(!empty($flow_id)){

@@ -2,31 +2,37 @@
 <script type="text/javascript" src="<?php echo asset_url('js/jquery.json2html.js'); ?>"></script>
 
 <div class="">
+    <div style="padding:10px 20px;">
+        Select flow:
+        <?php foreach ($flowlist as $flow): ?>
+            <a href="<?php echo base_url('/nis/').$flow['id']; ?>"><?php echo $flow['name']; ?></a>
+        <?php endforeach; ?>
+    </div>
   <div class="">
     <div class="col-md-3">
-            <div class="swissheader">Select a Company</div>
-      <div class="heightlimit">
-      <table style="clear:both; width: 100%;" class="table-hover">
-      <?php //print_r($companies); ?>
-        <?php foreach ($companies as $com): ?>
-          <tr>
-            <td style="padding: 10px 15px;">
-            <a class="a" href="javascript:;" id="<?php echo $com['id']; ?>" style="display: block; cursor:pointer;">
-            <div class="row">
-              <div class="col-md-9">
-                <div><b><?php echo $com['name']; ?></b></div>
-                <div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
-              </div>
-              <div class="col-md-3">
+        <div class="">Select a Company</div>
+          <div class="heightlimit">
+          <table style="clear:both; width: 100%;" class="table-hover">
+          <?php //print_r($companies); ?>
+            <?php foreach ($companies as $com): ?>
+              <tr>
+                <td style="padding: 10px 15px;">
+                <a class="a" href="javascript:;" id="<?php echo $com['id']; ?>" style="display: block; cursor:pointer;">
+                <div class="row">
+                  <div class="col-md-9">
+                    <div><b><?php echo $com['name']; ?></b></div>
+                    <div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+                  </div>
+                  <div class="col-md-3">
 
-              </div>
+                  </div>
+                </div>
+                </a>
+                </td>
+              </tr>
+            <?php endforeach ?>
+            </table>
             </div>
-            </a>
-            </td>
-          </tr>
-        <?php endforeach ?>
-        </table>
-        </div>
       <?php echo form_open_multipart('tuna'); ?>
       <div class="well" style="margin-top: 20px;">
         <label for="cluster">Select Cluster</label>

@@ -478,3 +478,4 @@ $lang["employeeinfo"] = 'Çalışan adı yazınız, bölge ve küme seçiniz';
 $lang["insertconsultant"] = 'Danışman Kaydet';
 $lang["consultant"] = 'Danışman';
 $lang["consultantinfo"] = 'Danışman Bilgilerini Yazınız';
+$lang["consultantinfo"] = 'Yeni IS Karşılaştırma';
