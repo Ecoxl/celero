@@ -49,8 +49,8 @@
     <div class="col-md-5">
         <div class="swissheader"><?php echo $cluster_name['name'];?></div>
         <!-- harita -->
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+        <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <?php
         $company_array = array();
         foreach ($companies as $com => $k) {
