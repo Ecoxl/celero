@@ -16,13 +16,14 @@
             alert("You can't enter only numerical characters as a flow name!");
             $("select[id=selectize] option").remove();
         }
+        
         //console.log(id);
         var newid = $('select[name=flowname]').val();
         var newisnum = /^\d+$/.test(newid);
         if (!newisnum && newid != "") {
             $('#flow-family').show("slow");
         }
-        getEPValues(id,userid);
+        //getEPValues(id,userid);
     }
 </script>
 <div class="col-md-4 borderli" <?php if (validation_errors() == NULL) {
@@ -94,7 +95,7 @@
                     <option value="<?php echo $flowtype['id']; ?>" <?php echo set_select('flowtype', $flowtype['id']); ?>><?php echo $flowtype['name']; ?></option>
                 <?php endforeach ?>
             </select>
-        </div>
+        </div> -->
         <div class="form-group" id="flow-family" style="display:none;">
             <label for="flowfamily"><?php echo lang("flowfamily"); ?> <span style="color:red;">* <?php echo lang("notchangable"); ?></span></label>
             <select id="flowfamily" class="info select-block" name="flowfamily">
@@ -104,6 +105,7 @@
                 <?php endforeach ?>
             </select>
         </div>
+        <!--
         <div class="form-group">
             <div class="row">
                 <div class="col-md-8">
@@ -442,6 +444,9 @@
             UBPval = $('#myModalEPcalc input#UBPval').val();
             total = amount * UBPval / 1000000;
 
+            //checks if flowfamily needs to be set
+            getFlowId('<?php echo $user['id']; ?>');
+
             //enters total into the modal
             $('#myModalEPcalc input#eptotal').val(total.toFixed(2));
 
@@ -466,10 +471,10 @@
                 type: 'get',
                 dataType: "json",
                 success:function(data)
-                {
+                {   
                     //checks if data is empty/blank
                     if($.trim(data)){
-                        //console.log(data[0]);
+                        console.log(data[0]);
                         //console.log(data[0]['ep_value']);
                         var value = document.getElementById("quantity").value;
                         var value1 = getSelectedText('selectize-units');
