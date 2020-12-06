@@ -3,6 +3,20 @@
 
 <div class="">
     <div style="padding:10px 20px;">
+        <div>Select Flows to Filter. You can select multiple flows</div>
+        <small>When flows selected, system will only show companies which have selected flows in its dataset.</small>
+        <select id="selectize-units" class="info select-block" name="selectedFlows" multiple>
+            <option value="" disabled selected><?php echo lang("pleaseselect"); ?></option>
+            <?php foreach ($flowlist as $flow): ?>
+                <option value="<?php echo $flow['id']; ?>"><?php echo $flow['name']; ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <input type="button" onclick="getFilteredFlows()" value="Filter" />
+        <input type="button" onclick="clearFilteredFlows()" value="Clear Selected" />
+
+    </div>
+    <div style="padding:10px 20px;">
         Select flow:
         <?php foreach ($flowlist as $flow): ?>
             <a href="<?php echo base_url('/nis/').$flow['id']; ?>"><?php echo $flow['name']; ?></a>
@@ -233,7 +247,7 @@
 
   var company_flows_transform =
     {"tag":"tr","children":[
-      {"tag":"td","children":[{"tag":"a","href":"<?php echo base_url("tuna"); ?>/${flow_id}","html":"${flowname}"}]},
+      {"tag":"td","children":[{"tag":"a","href":"<?php echo base_url("nis"); ?>/${flow_id}","html":"${flowname}"}]},
       {"tag":"td","html":"${flowtype}"},
       {"tag":"td","html":"${qntty} ${cost_unit}"},
       {"tag":"td","html":"${cost} ${qntty_unit_name}"},
@@ -260,8 +274,6 @@
       {"tag":"td","html":"${tper}"},
       {"tag":"td","html":"${ucost} ${ucostu}"},
     ]};
-
-
             $('#info').json2html(data, transform, {replace:false});
           },
           type: 'GET'
@@ -271,4 +283,22 @@
         var cM = map.project(e.popup._latlng);
         map.setView(map.unproject(cM),16, {animate: true});
   }
+</script>
+<script>
+    // used for flow filtering on new IS page.
+    var $select = $('#selectize-units').selectize({
+        create: false,
+        closeAfterSelect: true
+    });
+    // this is the select element.
+    var selectize = $select[0].selectize;
+    function getFilteredFlows(){
+        console.log("selected flow ids: " + selectize.items);
+        var link = '<?php echo base_url('/nis/')."'+selectize.items.toString().replace(/,/g, '_')"; ?>;
+        //TODO: it is working right now but I need to modify controllers as well. Until its done, i will comment next line.
+        //window.location.replace(link);
+    }
+    function clearFilteredFlows(){
+        selectize.clear();
+    }
 </script>
