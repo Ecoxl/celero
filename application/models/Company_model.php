@@ -287,7 +287,18 @@ class Company_model extends CI_Model
         $this->db->select('*,t_cmpny.id as id');
         $this->db->from('t_cmpny');
         $this->db->join('t_cmpny_flow', 't_cmpny_flow.cmpny_id = t_cmpny.id');
-        $this->db->where('t_cmpny_flow.flow_id', $flow_id);
+
+        if( strpos( $flow_id, "-" ) !== false) {
+            $flow_array = explode('-', $flow_id);
+            foreach ($flow_array as $fi){
+                $this->db->or_where('t_cmpny_flow.flow_id', $fi);
+            }
+        }else{
+            $this->db->where('t_cmpny_flow.flow_id', $flow_id);
+        }
+
+        $this->db->distinct();
+
         $query = $this->db->get()->result_array();
         return $query;
     }

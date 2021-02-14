@@ -193,6 +193,7 @@ class Company extends CI_Controller{
 		if($cluster_id == null || $cluster_id == 0){
 			if(!empty($flow_id)){
 				$data['cluster_name']['name'] = 'All Companies in selected flow';
+				$data['companies'] = [];
 				$data['companies'] = $this->company_model->get_companies_from_flow($flow_id);
 			}else{
 				$data['cluster_name']['name'] = 'All Companies';

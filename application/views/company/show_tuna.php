@@ -16,12 +16,7 @@
         <input type="button" onclick="clearFilteredFlows()" value="Clear Selected" />
 
     </div>
-    <div style="padding:10px 20px;">
-        Select flow:
-        <?php foreach ($flowlist as $flow): ?>
-            <a href="<?php echo base_url('/nis/').$flow['id']; ?>"><?php echo $flow['name']; ?></a>
-        <?php endforeach; ?>
-    </div>
+
   <div class="">
     <div class="col-md-3">
         <div class="">Select a Company</div>
@@ -294,9 +289,9 @@
     var selectize = $select[0].selectize;
     function getFilteredFlows(){
         console.log("selected flow ids: " + selectize.items);
-        var link = '<?php echo base_url('/nis/')."'+selectize.items.toString().replace(/,/g, '_')"; ?>;
+        var link = '<?php echo base_url('/nis/')."'+selectize.items.toString().replace(/,/g, '-')"; ?>;
         //TODO: it is working right now but I need to modify controllers as well. Until its done, i will comment next line.
-        //window.location.replace(link);
+        window.location.replace(link);
     }
     function clearFilteredFlows(){
         selectize.clear();
