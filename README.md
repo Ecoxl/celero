@@ -91,7 +91,7 @@ $db['default']['port'] = 5432;
 /* End of file database.php */
 /* Location: ./application/config/database.php */
 ```
+Install apache tomcat and run the localhost.
 
 
-
-
+Share errors by creating issues :)
