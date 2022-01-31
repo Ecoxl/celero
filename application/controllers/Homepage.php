@@ -8,6 +8,7 @@ class Homepage extends CI_Controller {
 	}
 
 	public function index(){
+		//phpinfo();
 		$this->load->view('template/header');
 		$this->load->view('homepage/index');
 		$this->load->view('template/footer');
