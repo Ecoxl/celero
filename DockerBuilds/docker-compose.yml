@@ -31,5 +31,5 @@ services:
     image: cogniteev/echo
     command: echo 'Data Container for PostgreSQL'
     volumes:
-      - /Users/tcg/Documents/celero/celerodb_new:/var/lib/postgresql/data
+      - /Users/Documents/celero/celerodb_new:/var/lib/postgresql/data
     container_name: celerodbdata
