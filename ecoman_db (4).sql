@@ -4258,10 +4258,10 @@ CREATE INDEX role_id ON t_user (role_id);
 --
 
 INSERT INTO t_user (id, name, surname, user_name, psswrd, role_id, title, phone_num_1, phone_num_2, fax_num, email, description, linkedin_user, photo, active, random_string, click_control) VALUES
-(1, 'Tuna Çağlar', 'Gümüş', 'tcgumus', '8287458823facb8ff918dbfabcd22ccb', 1, 'Engineer', '0555-201-01-03', '0555-201-01-03', '1234-123-12-12', 'tunacaglargumus@gmail.com', 'Engineer at lead era ecoman project', NULL, '1.jpg', 0, '', 0),
-(2, 'Burak', 'Dikili', 'burakdikili', '39109a5bb10ccb7aff1313d369804b74', 1, 'Manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'burakdikili@gmail.com', 'desc', NULL, '2.jpg', 0, '', 0),
-(3, 'Ertan', 'Tolan', 'etolan', '31663bdaeeefb7ae67859c6413d58b39', 1, 'job title', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'etolan.11@gmail.com', 'description', NULL, '3.jpg', 0, '', 0),
-(6, 'Cansın Ahmet', 'Bayrak', 'cansin123', '8287458823facb8ff918dbfabcd22ccb', 2, 'manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'cansin@gmail.com', 'desc', NULL, '6.jpg', 0, '', 0);
+(1, 'User', 'surname', 'example', '8287458823facb8ff918dbfabcd22ccb', 1, 'Engineer', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'example@gmail.com', 'Engineer at lead era ecoman project', NULL, '1.jpg', 0, '', 0),
+(2, 'User', 'surname2', 'example1', '39109a5bb10ccb7aff1313d369804b74', 1, 'Manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'example2@gmail.com', 'desc', NULL, '2.jpg', 0, '', 0),
+(3, 'User', 'surname3', 'example2', '31663bdaeeefb7ae67859c6413d58b39', 1, 'job title', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'example3@gmail.com', 'description', NULL, '3.jpg', 0, '', 0),
+(6, 'User', 'surname4', 'example3', '8287458823facb8ff918dbfabcd22ccb', 2, 'manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'example4@gmail.com', 'desc', NULL, '6.jpg', 0, '', 0);
 
 -- --------------------------------------------------------
 
